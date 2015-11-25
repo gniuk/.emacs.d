@@ -446,6 +446,8 @@
  '(shell-pop-window-position "bottom"))
 
 ;;; dot in org-mode
+; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
+; #+END_SRC
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((dot . t)))
