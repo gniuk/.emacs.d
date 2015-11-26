@@ -448,6 +448,8 @@
 ;;; dot in org-mode
 ; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
 ; #+END_SRC
+; C-c C-c to run src code
+; put cursor on link, C-c C-x v to toggle view pic
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((dot . t)))
