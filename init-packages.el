@@ -262,7 +262,9 @@
 (add-hook 'comint-mode-hook
           (lambda ()
             (define-key comint-mode-map (kbd "M-<up>") 'comint-previous-input)
-            (define-key comint-mode-map (kbd "M-<down>") 'comint-next-input)))
+            (define-key comint-mode-map (kbd "M-<down>") 'comint-next-input)
+            (define-key comint-mode-map (kbd "ESC <up>") 'comint-next-input) ;used in console with Alt(Meta) key
+            (define-key comint-mode-map (kbd "ESC <down>") 'comint-next-input)))
 
 ;; ;;; theme
 ;; (require 'color-theme-sanityinc-solarized)
