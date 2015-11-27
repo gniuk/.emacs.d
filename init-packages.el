@@ -164,10 +164,6 @@
 (add-hook 'company-mode-hook 'global-smartscan-mode)
 (global-set-key (kbd "M-S-n") 'smartscan-symbol-go-forward)
 (global-set-key (kbd "M-S-p") 'smartscan-symbol-go-backward)
-(eval-after-load  "shell-mode"
-  '(local-unset-key (kbd "M-p")))
-(eval-after-load  "shell-mode"
-  '(local-unset-key (kbd "M-n")))
 
 ;;; load global-set.el
 ;(load "~/.emacs.d/global-set.el")
@@ -263,6 +259,10 @@
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
 ;; smartscan). Or, M-r to start search, and then C-r to find history.
 ;; C-c C-p goto last shell prompt
+(add-hook 'comint-mode-hook
+          (lambda ()
+            (define-key comint-mode-map (kbd "M-<up>") 'comint-previous-input)
+            (define-key comint-mode-map (kbd "M-<down>") 'comint-next-input)))
 
 ;; ;;; theme
 ;; (require 'color-theme-sanityinc-solarized)
