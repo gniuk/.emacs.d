@@ -414,7 +414,6 @@
 (require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
-(ace-pinyin-mode 1)
 (turn-on-ace-pinyin-mode)
 (global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
