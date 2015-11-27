@@ -419,10 +419,14 @@
 (global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
 ;; override C-' in org-mode
-(eval-after-load 'org
-  '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
-(eval-after-load 'org
-  '(setq org-log-done t))
+;; (eval-after-load 'org
+;;   '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
+;; (eval-after-load 'org
+;;   '(setq org-log-done t))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char)
+            (setq org-log-done t)))
 
 ;;; auctex
 (load "auctex.el" nil t t)
