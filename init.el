@@ -62,6 +62,7 @@
 ;position, like vim dd
 ;(global-set-key (kbd "M-g") 'goto-line)
 
+(global-subword-mode)                   ;navigate camelCase word!
 (load-theme 'sanityinc-solarized-light t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
