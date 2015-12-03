@@ -459,6 +459,9 @@
  'org-babel-load-languages
  '((dot . t)))
 
+;;; proced
+(global-set-key (kbd "C-x p p") 'proced)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
