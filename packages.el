@@ -69,6 +69,7 @@
     ace-pinyin
     company-auctex
     shell-pop
+    helm-company
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
