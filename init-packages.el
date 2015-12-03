@@ -266,6 +266,10 @@
             (define-key comint-mode-map (kbd "ESC <up>") 'comint-next-input) ;used in console with Alt(Meta) key
             (define-key comint-mode-map (kbd "ESC <down>") 'comint-next-input)))
 
+(add-hook 'shell-mode-hook 
+     '(lambda () (toggle-truncate-lines 1)))
+(setq comint-prompt-read-only t)
+
 ;; ;;; theme
 ;; (require 'color-theme-sanityinc-solarized)
 ;; (load-theme 'sanityinc-solarized-light)
