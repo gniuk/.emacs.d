@@ -73,6 +73,7 @@
     helm-company
     popwin
     youdao-dictionary
+    color-identifiers-mode
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
