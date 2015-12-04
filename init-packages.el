@@ -273,7 +273,7 @@
 
 (add-hook 'shell-mode-hook 
      '(lambda () (toggle-truncate-lines 1)))
-(setq comint-prompt-read-only t)
+;(setq comint-prompt-read-only t)    ; When debugging in output, sometimes need select all(C-x h) to clear. readonly prevent this.
 
 ;; ;;; theme
 ;; (require 'color-theme-sanityinc-solarized)
