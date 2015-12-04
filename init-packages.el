@@ -24,7 +24,7 @@
 (yas-global-mode 1)
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151108.1505/snippets")
+(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
 
 ;;; autopair
 (require 'autopair)
@@ -325,6 +325,9 @@
 ;;     'company-backends 'company-readline))
 (push 'company-readline company-backends)
 (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
+; noting, color in shell(powered by $TERM=xterm,xterm-256color,screen. etc)
+; conflicts to readline-complete in shell. Finnaly find it! 
+
 
 ;;; neotree
 (require 'neotree)
