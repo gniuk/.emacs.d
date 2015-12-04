@@ -70,6 +70,8 @@
     company-auctex
     shell-pop
     helm-company
+    popwin
+    youdao-dictionary
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)

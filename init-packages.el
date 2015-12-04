@@ -477,6 +477,25 @@
      (define-key company-mode-map (kbd "C-:") 'helm-company)
      (define-key company-active-map (kbd "C-:") 'helm-company)))
 
+;;; popwin
+(require 'popwin)
+(popwin-mode 1)
+
+;;; youdao-dictionary
+; sudo pacman -S ydcv
+; sudo npm install fanyi -g
+;; Enable Cache
+(setq url-automatic-caching t)
+
+;; Example Key binding
+(global-set-key (kbd "C-c f") 'youdao-dictionary-search-at-point)
+
+;; Integrate with popwin-el (https://github.com/m2ym/popwin-el)
+(push "*Youdao Dictionary*" popwin:special-display-config)
+
+;; Set file path for saving search history
+(setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao")
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
