@@ -43,6 +43,7 @@
     helm-projectile
     rtags
     color-theme-sanityinc-solarized
+    color-theme-sanityinc-tomorrow
     magit
     cmake-mode
     ;web-mode  ;; not yet needed

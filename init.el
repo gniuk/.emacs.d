@@ -63,7 +63,8 @@
 ;(global-set-key (kbd "M-g") 'goto-line)
 
 (global-subword-mode)                   ;navigate camelCase word!
-(load-theme 'sanityinc-solarized-light t)
+;(load-theme 'sanityinc-solarized-light t)
+(load-theme 'sanityinc-tomorrow-eighties t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;
