@@ -484,6 +484,7 @@
 ;;; youdao-dictionary
 ; sudo pacman -S ydcv
 ; sudo npm install fanyi -g
+; ydcv, fanyi not required, just tools used in console
 ;; Enable Cache
 (setq url-automatic-caching t)
 
