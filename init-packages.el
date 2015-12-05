@@ -514,6 +514,11 @@
 (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
 (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
 
+;;; cc-mode
+(add-hook 'c-mode-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
