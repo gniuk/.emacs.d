@@ -62,6 +62,9 @@
 ;position, like vim dd
 ;(global-set-key (kbd "M-g") 'goto-line)
 
+(push "~/.emacs.d/mylisp" load-path)
+(require 'useful-single-key)
+
 (global-subword-mode)                   ;navigate camelCase word!
 ;(load-theme 'sanityinc-solarized-light t)
 (load-theme 'sanityinc-tomorrow-eighties t)
