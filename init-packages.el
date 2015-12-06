@@ -519,6 +519,14 @@
           (lambda ()
             (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
 
+;;; chinese-yasdcv
+; C-h v to see the variables
+(require 'chinese-yasdcv)
+(setq yasdcv-sdcv-dicts
+      '(("oxford-gb" "牛津现代英汉双解词典" "oald" t)
+        ("langdao-ec-gb" "朗道英汉字典5.0" "langdao" t)
+        ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)))
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
