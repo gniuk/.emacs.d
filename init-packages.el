@@ -523,7 +523,8 @@
 ; C-h v to see the variables
 (require 'chinese-yasdcv)
 (setq yasdcv-sdcv-dicts
-      '(("oxford-gb" "牛津现代英汉双解词典" "oald" t)
+      '(("oxford-gb" "牛津现代英汉双解词典" "oald" nil)
+        ("21shiji" "chinese english chinese dictionary" "21cen" t)
         ("langdao-ec-gb" "朗道英汉字典5.0" "langdao" t)
         ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)))
 
