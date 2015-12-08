@@ -15,6 +15,7 @@
 ;(set-frame-font "Monospace-14")
 ;(set-frame-font "Inconsolata-g-14")
 (set-frame-font "SourceCodePro-14")
+;(set-frame-font "LiberationMono-14")
 ;(set-default-font "Inconsolata-14")
 (tool-bar-mode 0)
 (menu-bar-mode 0)
@@ -105,5 +106,6 @@
 ; M-m - back-to-indentation, ie. the first none space char.                   ;;
 ; M-S-^ join this line to previous.                                           ;;
 ; C-M-o at line beginning to open new line above and jump to it.              ;;
+; C-M-\ indent region, so nice.                                               ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
