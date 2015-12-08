@@ -527,6 +527,7 @@
         ("21shiji" "chinese english chinese dictionary" "21cen" t)
         ("langdao-ec-gb" "朗道英汉字典5.0" "langdao" t)
         ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)))
+(global-set-key (kbd "C-c d") 'yasdcv-translate-at-point)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
