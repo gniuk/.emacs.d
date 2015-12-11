@@ -44,6 +44,7 @@
     rtags
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
+    afternoon-theme
     magit
     cmake-mode
     ;web-mode  ;; not yet needed
