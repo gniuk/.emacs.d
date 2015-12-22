@@ -31,7 +31,7 @@
 (global-semantic-idle-scheduler-mode 1)
 (semantic-mode 1)
 
-(global-set-key (kbd "C-c C-d") 'kill-whole-line)
+;(global-set-key (kbd "C-c C-d") 'kill-whole-line)
 ;(global-set-key (kbd "<C-backspace>") 'kill-whole-line) ;kill whole line at any
                                         ;position, like vim dd
 

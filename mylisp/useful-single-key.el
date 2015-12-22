@@ -48,6 +48,16 @@
     (erase-buffer)
     (eshell-send-input)))
 
+
+(defun gniuk/dd ()
+  "Like vim dd, but no prefix blank chars or tailing newline char.
+No more indentation adjustment after paste to the destination point."
+  (interactive)
+  (back-to-indentation)
+  (kill-line)
+  (delete-blank-lines))
+(global-set-key (kbd "C-c C-d") 'gniuk/dd)
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
