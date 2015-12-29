@@ -529,6 +529,16 @@
         ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)))
 (global-set-key (kbd "C-c d") 'yasdcv-translate-at-point)
 
+;;; god-mode
+;;; My left hand holding a cup of water, my right can navigate without my left hand.
+;;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
+;;; with my flavor or the emacs environment, omit it.
+;;; Now I'm happy.
+;;; Most important, the navigation keys is my emacs key bindings without the
+;;; modify key while the original key bindings are still useful there.
+;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
+(require 'god-mode)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
