@@ -538,6 +538,11 @@
 ;;; modify key while the original key bindings are still useful there.
 ;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
 (require 'god-mode)
+(define-key god-local-mode-map (kbd "i") 'god-local-mode)
+(global-set-key (kbd "<escape>") 'god-local-mode)
+; oh, somelike vim. OK, I now use both emacs and vim.
+; use xmodmap to map escape key to caps_lock.
+(define-key god-local-mode-map (kbd ".") 'repeat)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
