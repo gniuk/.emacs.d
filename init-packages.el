@@ -326,7 +326,7 @@
 (push 'company-readline company-backends)
 (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
 ; noting, color in shell(powered by $TERM=xterm,xterm-256color,screen. etc)
-; conflicts to readline-complete in shell. Finnaly find it! 
+; conflicts to readline-complete in shell. Finally find it! 
 
 
 ;;; neotree
