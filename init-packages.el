@@ -543,6 +543,13 @@
 ; oh, somelike vim. OK, I now use both emacs and vim.
 ; use xmodmap to map escape key to caps_lock.
 (define-key god-local-mode-map (kbd ".") 'repeat)
+(defun my-update-cursor ()
+  (setq cursor-type (if (or god-local-mode buffer-read-only)
+                        'box
+                      'bar)))
+
+(add-hook 'god-mode-enabled-hook 'my-update-cursor)
+(add-hook 'god-mode-disabled-hook 'my-update-cursor)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
