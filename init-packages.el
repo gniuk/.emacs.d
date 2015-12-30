@@ -458,9 +458,9 @@
  '(shell-pop-shell-type (quote ("shell" "*shell*" (lambda nil (shell shell-pop-term-shell)))))
  '(shell-pop-term-shell "/bin/bash")
  '(shell-pop-universal-key "<f1>")
- '(shell-pop-window-size 40)
+ '(shell-pop-window-size 45)
  '(shell-pop-full-span t)
- '(shell-pop-window-position "bottom"))
+ '(shell-pop-window-position "right"))
 
 ;;; dot in org-mode
 ; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
