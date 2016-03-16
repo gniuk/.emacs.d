@@ -69,7 +69,7 @@ No more indentation adjustment after paste to the destination point."
   (move-end-of-line 1)
   (setq p2 (point))
   (kill-ring-save p1 p2)
-  (next-line)
+  (forward-line)
   (yank))
 (global-set-key (kbd "C-c C-a") 'gniuk/cpAbLine)
 
