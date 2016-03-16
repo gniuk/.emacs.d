@@ -71,7 +71,7 @@ No more indentation adjustment after paste to the destination point."
   (kill-ring-save p1 p2)
   (forward-line)
   (yank))
-(global-set-key (kbd "C-c C-a") 'gniuk/cpAbLine)
+(global-set-key (kbd "C-c C-a") 'gniuk/cpAboveLine)
 
 (defun gniuk/copyLine (arg)
   "Copy lines (as many as prefix ARG) in the kill ring."
