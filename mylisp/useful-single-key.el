@@ -58,6 +58,21 @@ No more indentation adjustment after paste to the destination point."
   (delete-blank-lines))
 (global-set-key (kbd "C-c C-d") 'gniuk/dd)
 
+(defvar p1 nil)                         ; assignment to free variable warning
+(defvar p2 nil)
+(defun gniuk/cpAboveLine ()
+  "Copy Above line at cursor position."
+  (interactive)
+  (forward-line -1)
+  (back-to-indentation)
+  (setq p1 (point))
+  (move-end-of-line 1)
+  (setq p2 (point))
+  (kill-ring-save p1 p2)
+  (next-line)
+  (yank))
+(global-set-key (kbd "C-c C-a") 'gniuk/cpAbLine)
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
