@@ -12,11 +12,16 @@
 (show-paren-mode t)
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
+;; (add-to-list 'default-frame-alist
+;;              '(font . "LiberationMono-14"))
+(add-to-list 'default-frame-alist
+             '(font . "SourceCodePro-14"))
 ;(set-frame-font "Monospace-14")
 ;(set-frame-font "Inconsolata-g-14")
-(set-frame-font "SourceCodePro-14")
+;(set-frame-font "SourceCodePro-14")
 ;(set-frame-font "LiberationMono-14")
 ;(set-default-font "Inconsolata-14")
+;(set-default-font "Monospace-14")
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (scroll-bar-mode 0)
