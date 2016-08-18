@@ -550,6 +550,7 @@
 
 (add-hook 'god-mode-enabled-hook 'my-update-cursor)
 (add-hook 'god-mode-disabled-hook 'my-update-cursor)
+(add-to-list 'auto-mode-alist '("\\.asm$" . nasm-mode))
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
