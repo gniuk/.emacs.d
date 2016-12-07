@@ -429,6 +429,7 @@
 (turn-on-ace-pinyin-mode)
 (global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
+(global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
 ;; override C-' in org-mode
 ;; (eval-after-load 'org
 ;;   '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
@@ -539,7 +540,8 @@
 ;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
 (require 'god-mode)
 (define-key god-local-mode-map (kbd "i") 'god-local-mode)
-(global-set-key (kbd "<escape>") 'god-local-mode)
+;(global-set-key (kbd "<escape>") 'god-local-mode)
+(global-set-key (kbd "C-c g") 'god-local-mode)
 ; oh, somelike vim. OK, I now use both emacs and vim.
 ; use xmodmap to map escape key to caps_lock.
 (define-key god-local-mode-map (kbd ".") 'repeat)
