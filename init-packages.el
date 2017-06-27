@@ -24,7 +24,7 @@
 (yas-global-mode 1)
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
-(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
+;(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
 
 ;;; autopair
 (require 'autopair)
@@ -45,7 +45,9 @@
 
 ;;; expand-region
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
+;(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some k
+eys on remote server via ssh, change to Meta(Alt) key
 ;(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx.
 
 ;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
@@ -254,6 +256,7 @@
 ;; build system to generate clang compile-commands.json database.
 ;; rdm &
 ;; rc -J .
+(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el
 (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
 (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
 (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
@@ -291,7 +294,7 @@
 (guide-key-mode 1)
 
 ;;; nyan-mode
-(nyan-mode 1)
+;(nyan-mode 1)
 
 ;;; multiple-cursors
 (require 'multiple-cursors)
@@ -441,8 +444,8 @@
             (setq org-log-done t)))
 
 ;;; auctex
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+;(load "auctex.el" nil t t)
+;(load "preview-latex.el" nil t t)
 
 ;;; company-auctex
 (require 'company-auctex)
@@ -541,7 +544,9 @@
 (require 'god-mode)
 (define-key god-local-mode-map (kbd "i") 'god-local-mode)
 ;(global-set-key (kbd "<escape>") 'god-local-mode)
-(global-set-key (kbd "C-c g") 'god-local-mode)
+;(global-set-key (kbd "C-c g") 'god-local-mode)
+; set "M-g g" to god-mode, now only "M-g M-g" binding to goto-line
+(global-set-key (kbd "M-g g") 'god-local-mode)
 ; oh, somelike vim. OK, I now use both emacs and vim.
 ; use xmodmap to map escape key to caps_lock.
 (define-key god-local-mode-map (kbd ".") 'repeat)
