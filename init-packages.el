@@ -45,10 +45,10 @@
 
 ;;; expand-region
 (require 'expand-region)
-;(global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
 (global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some k
 eys on remote server via ssh, change to Meta(Alt) key
-;(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx.
+(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
 
 ;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
 ;(global-hl-line-mode t)
@@ -562,6 +562,8 @@ eys on remote server via ssh, change to Meta(Alt) key
 
 ;;; custom Emacs key set
 (global-unset-key (kbd "C-z")) ; C-z is suspend-frame, in case of typing it by mistake, disable it
+(global-unset-key (kbd "C-x C-b"))      ; it is for list-buffers, no need
+(global-set-key (kbd "C-x C-b") 'helm-mini) ; rebind it to helm-mini, then use it in god-mode, then use xb to switch buffer quickly.
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
