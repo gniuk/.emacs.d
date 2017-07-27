@@ -549,7 +549,8 @@ eys on remote server via ssh, change to Meta(Alt) key
 (global-set-key (kbd "M-g g") 'god-local-mode)
 ; oh, somelike vim. OK, I now use both emacs and vim.
 ; use xmodmap to map escape key to caps_lock.
-(define-key god-local-mode-map (kbd ".") 'repeat)
+;(define-key god-local-mode-map (kbd ".") 'repeat)
+(define-key god-local-mode-map (kbd "z") 'repeat) ; bind z to repeat, . is for C-. in ace-pinyin-jump
 (defun my-update-cursor ()
   (setq cursor-type (if (or god-local-mode buffer-read-only)
                         'box
@@ -558,6 +559,9 @@ eys on remote server via ssh, change to Meta(Alt) key
 (add-hook 'god-mode-enabled-hook 'my-update-cursor)
 (add-hook 'god-mode-disabled-hook 'my-update-cursor)
 (add-to-list 'auto-mode-alist '("\\.asm$" . nasm-mode))
+
+;;; custom Emacs key set
+(global-unset-key (kbd "C-z")) ; C-z is suspend-frame, in case of typing it by mistake, disable it
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
