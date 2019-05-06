@@ -39,10 +39,12 @@
     irony
     company-irony
     company-irony-c-headers
+    company-rtags
+    helm-rtags
     flycheck-irony
     projectile
     helm-projectile
-    rtags
+    ;rtags
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     afternoon-theme

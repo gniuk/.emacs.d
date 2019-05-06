@@ -167,7 +167,7 @@
          (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
          (define-key helm-gtags-mode-map (kbd "C-c g ,") 'helm-gtags-pop-stack)))
 
-;;; smartscan
+;;;smartscan
 ; smart scan replace text! M-' good!
 (global-smartscan-mode 1)
 (add-hook 'company-mode-hook 'global-smartscan-mode)
@@ -235,9 +235,10 @@
   (define-key irony-mode-map [remap complete-symbol]
     'irony-completion-at-point-async))
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-
-(eval-after-load 'company                         
-  '(add-to-list 'company-backends 'company-irony))
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-irony))
 
 (require 'company-irony-c-headers)
    ;; Load with `irony-mode` as a grouped backend
@@ -261,12 +262,25 @@
 ;; build system to generate clang compile-commands.json database.
 ;; rdm &
 ;; rc -J .
-(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el
+;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
+;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
+(require 'rtags)
+
+(require 'company-rtags)
+(setq rtags-completions-enabled t)
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends 'company-rtags))
+(setq rtags-autostart-diagnostics t)
+(rtags-enable-standard-keybindings)
+(require 'helm-rtags)
+(setq rtags-use-helm t)
+
 (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
 (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
 (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
 (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
-(define-key irony-mode-map (kbd "M-i") 'rtags-imenu)
+;(define-key irony-mode-map (kbd "M-i") 'rtags-imenu) ; use C-c r I. M-i used for helm-swoop!
 
 ;;; shell-mode, comint-previous-input and comint-next-input
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
