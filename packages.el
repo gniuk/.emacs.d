@@ -31,7 +31,7 @@
     smartscan
     ace-jump-mode
     ;fill-column-indicator
-    col-highlight
+    ;col-highlight ; not in melpa now, put it in nonmelpa
     ;company-ycmd
     flycheck
     helm-flycheck

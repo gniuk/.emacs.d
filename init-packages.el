@@ -196,7 +196,10 @@
 ;(require 'fill-column-indicator)
 
 ;;; col-highlight
-(global-set-key (kbd "<f8>") 'flash-column-highlight)
+(push "~/.emacs.d/nonmelpa/col-highlight" load-path)
+(require 'col-highlight)
+(setq col-highlight-period 2)
+(global-set-key (kbd "<f8>") 'flash-column-highlight) ; manually flash current column when necessary
 
 ;;; ycmd
 ;; (require 'ycmd)
