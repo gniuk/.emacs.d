@@ -11,6 +11,7 @@
     company-web
     company-anaconda
     yasnippet
+    yasnippet-snippets
     autopair
     paredit
     switch-window
