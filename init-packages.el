@@ -168,12 +168,12 @@
          (define-key helm-gtags-mode-map (kbd "C-c g ,") 'helm-gtags-pop-stack)))
 
 ;;;smartscan
-; smart scan replace text! M-' good!
-(global-smartscan-mode 1)
-(add-hook 'company-mode-hook 'global-smartscan-mode)
-(global-set-key (kbd "M-S-n") 'smartscan-symbol-go-forward)
-(global-set-key (kbd "M-S-p") 'smartscan-symbol-go-backward)
-
+;; ; smart scan replace text! M-' good!
+;; (global-smartscan-mode 1)
+;; (add-hook 'company-mode-hook 'global-smartscan-mode)
+;; (global-set-key (kbd "M-S-n") 'smartscan-symbol-go-forward)
+;; (global-set-key (kbd "M-S-p") 'smartscan-symbol-go-backward)
+; bug, symbol_with_underscore-minus not recognized. replace text maybe use highlight-symbol replace.
 ;;; load global-set.el
 ;(load "~/.emacs.d/global-set.el")
 
@@ -612,6 +612,11 @@
 (require 'ace-isearch)
 (global-ace-isearch-mode +1)
 (setq ace-isearch-jump-delay 0.8)
+
+;;; highlight-symbol, replace smart-scan using highlight-symbol
+(require 'highlight-symbol)
+(global-set-key (kbd "M-n") 'highlight-symbol-next)
+(global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 ;;; other
 (add-hook 'before-save-hook 'delete-trailing-whitespace)

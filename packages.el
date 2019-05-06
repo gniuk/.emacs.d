@@ -29,7 +29,7 @@
     rainbow-delimiters
     rainbow-identifiers
     auto-highlight-symbol
-    smartscan
+    ;smartscan ; symbol_with_underscore not recognized. using highlight-symbol to navigate
     ace-jump-mode
     ;fill-column-indicator
     ;col-highlight ; not in melpa now, put it in nonmelpa
@@ -85,6 +85,7 @@
     diminish
     workgroups2
     ace-isearch
+    highlight-symbol
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
