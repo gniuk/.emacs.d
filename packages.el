@@ -60,7 +60,7 @@
     hlinum  ;; replace hl-line
     smooth-scrolling
     readline-complete
-    dired+
+    ;dired+ ; no more dired+ in melpa, use plain builtin dired, or just neotree is enough
     neotree
     indent-guide
     window-numbering
