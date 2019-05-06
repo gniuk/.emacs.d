@@ -180,7 +180,7 @@
   "ace-jump-mode"
   "Emacs quick move minor mode"
   t)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 ;(global-set-key (kbd "C-c j") 'ace-jump-mode)
 ;(global-set-key (kbd "C-'") 'ace-jump-mode)
 (autoload
@@ -435,6 +435,7 @@
 (global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
+(global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
 ;; override C-' in org-mode
 ;; (eval-after-load 'org
 ;;   '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
