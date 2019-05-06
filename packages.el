@@ -81,6 +81,7 @@
     god-mode
     which-key
     diminish
+    workgroups2
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)

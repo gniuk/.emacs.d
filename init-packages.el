@@ -582,6 +582,12 @@
 (diminish 'flycheck-mode)
 (diminish 'company-mode "CP")
 
+;;; workgroups2
+(require 'workgroups2)
+(setq wg-prefix-key (kbd "C-c w"))      ; default is C-c z. c,v,A,k,C-s,C-f
+(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+(workgroups-mode 1)
+
 ;;; other
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
