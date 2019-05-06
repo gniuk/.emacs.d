@@ -82,6 +82,7 @@
     which-key
     diminish
     workgroups2
+    ace-isearch
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
