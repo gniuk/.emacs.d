@@ -581,6 +581,9 @@
 (diminish 'flycheck-mode)
 (diminish 'company-mode "CP")
 
+;;; other
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
 
