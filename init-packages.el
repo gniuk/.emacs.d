@@ -289,11 +289,11 @@
 ;;; cmake-mode
 (require 'cmake-mode)
 
-;;; guide-key
-(require 'guide-key)
-(setq guide-key/guide-key-sequence t)
-(setq guide-key/idle-delay 1)
-(guide-key-mode 1)
+;;; guide-key ; replaced by which-key now
+;; (require 'guide-key)
+;; (setq guide-key/guide-key-sequence t)
+;; (setq guide-key/idle-delay 1)
+;; (guide-key-mode 1)
 
 ;;; nyan-mode
 ;(nyan-mode 1)
@@ -566,6 +566,10 @@
 (global-unset-key (kbd "C-z")) ; C-z is suspend-frame, in case of typing it by mistake, disable it
 (global-unset-key (kbd "C-x C-b"))      ; it is for list-buffers, no need
 (global-set-key (kbd "C-x C-b") 'helm-mini) ; rebind it to helm-mini, then use it in god-mode, then use xb to switch buffer quickly.
+
+;;; which-key, replace guide-key
+(which-key-mode)
+(setq which-key--god-mode-support-enabled t)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

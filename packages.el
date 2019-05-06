@@ -49,7 +49,7 @@
     magit
     cmake-mode
     ;web-mode  ;; not yet needed
-    guide-key
+    ;guide-key ; replaced by which-key
     nyan-mode
     helm-c-yasnippet
     multiple-cursors
@@ -79,6 +79,7 @@
     chinese-yasdcv
     helm-ag
     god-mode
+    which-key
     ) "a list of packages to ensure are installed at launch.")
 
 (require 'cl)
