@@ -25,6 +25,9 @@
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
 ;(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
+;; no more yas-load-directory for official snippets,
+;; yasnippet will automatically find yasnippet-snippets-whatever.xxxxxx
+
 
 ;;; autopair
 (require 'autopair)
@@ -99,7 +102,7 @@
 (add-hook 'python-mode-hook 'anaconda-mode)
 (eval-after-load "anaconda-mode"
   '(progn
-     (define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
+     ;(define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
      (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments)))
 (setq python-indent-offset 4)
 
