@@ -624,14 +624,19 @@
 (setq highlight-indent-guides-character ?\|)
 (setq highlight-indent-guides-delay 0.5)
 
+;;; company-shell. $PATH bin, fish-shell-builtin, env
+(eval-after-load 'company
+  '(add-to-list
+    'company-backends '(company-shell company-shell-env company-fish-shell)))
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 (define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
 (global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
 (global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
 
-
-;;; other
+;;; other config
+; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (provide 'init-packages)

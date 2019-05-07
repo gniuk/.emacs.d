@@ -106,6 +106,7 @@ There are two things you can do about this warning:
     ace-isearch
     highlight-symbol
     highlight-indent-guides
+    company-shell
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
