@@ -107,6 +107,7 @@ There are two things you can do about this warning:
     highlight-symbol
     highlight-indent-guides
     company-shell
+    pcmpl-args
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

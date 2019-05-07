@@ -629,6 +629,9 @@
   '(add-to-list
     'company-backends '(company-shell company-shell-env company-fish-shell)))
 
+;;; pcmpl-args
+(require 'pcmpl-args)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 (define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
