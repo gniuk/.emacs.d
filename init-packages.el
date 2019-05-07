@@ -355,12 +355,12 @@
 (require 'neotree)
 (global-set-key (kbd "<f7>") 'neotree-toggle)
 
-;;; indent-guide
-(indent-guide-global-mode t)
-;(set-face-background 'indent-guide-face "dimgray")
-(setq indent-guide-delay 0.1)
-(setq indent-guide-recursive t)
-(setq indent-guide-char "|")
+;;; indent-guide. replaced by highlight-indent-guides
+;; (indent-guide-global-mode t)
+;; ;(set-face-background 'indent-guide-face "dimgray")
+;; (setq indent-guide-delay 0.1)
+;; (setq indent-guide-recursive t)
+;; (setq indent-guide-char "|")
 
 ;;; window-numbering
 (window-numbering-mode t)
