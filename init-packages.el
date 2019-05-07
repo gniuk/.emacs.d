@@ -49,7 +49,7 @@
 ;;; expand-region
 (require 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
-(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
+;(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
 (global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
 
 ;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
@@ -623,6 +623,13 @@
 (setq highlight-indent-guides-method 'character)
 (setq highlight-indent-guides-character ?\|)
 (setq highlight-indent-guides-delay 0.5)
+
+;;; override keybinds
+; expand-region and multiple-cursor mark next
+(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
+(global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
+(global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
+
 
 ;;; other
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
