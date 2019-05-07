@@ -618,6 +618,12 @@
 (global-set-key (kbd "M-n") 'highlight-symbol-next)
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
+;;; highlight-indent-guides, replace indent-guide.
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(setq highlight-indent-guides-method 'character)
+(setq highlight-indent-guides-character ?\|)
+(setq highlight-indent-guides-delay 0.5)
+
 ;;; other
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
