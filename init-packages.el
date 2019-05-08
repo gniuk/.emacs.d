@@ -120,7 +120,7 @@
 
 
 ;;; nodejs
-;; sudo npm install -g tern 
+;; sudo npm install -g tern
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (eval-after-load "company"
@@ -225,8 +225,8 @@
 
 ;;; irony-mode
 ;; M-x irony-install-server to install server
-(add-hook 'c++-mode-hook 'irony-mode) 
-(add-hook 'c-mode-hook 'irony-mode)   
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
 (defun my-irony-mode-hook ()
@@ -293,7 +293,7 @@
             (define-key comint-mode-map (kbd "ESC <up>") 'comint-next-input) ;used in console with Alt(Meta) key
             (define-key comint-mode-map (kbd "ESC <down>") 'comint-next-input)))
 
-(add-hook 'shell-mode-hook 
+(add-hook 'shell-mode-hook
      '(lambda () (toggle-truncate-lines 1)))
 ;(setq comint-prompt-read-only t)    ; When debugging in output, sometimes need select all(C-x h) to clear. readonly prevent this.
 
@@ -348,7 +348,7 @@
 (push 'company-readline company-backends)
 (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
 ; noting, color in shell(powered by $TERM=xterm,xterm-256color,screen. etc)
-; conflicts to readline-complete in shell. Finally find it! 
+; conflicts to readline-complete in shell. Finally find it!
 
 
 ;;; neotree
@@ -449,10 +449,11 @@
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
 (turn-on-ace-pinyin-mode)
-(global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
+;(global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
+(global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
 ;; override C-' in org-mode
 ;; (eval-after-load 'org
 ;;   '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
@@ -644,4 +645,3 @@
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
-
