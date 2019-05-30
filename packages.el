@@ -108,6 +108,9 @@ There are two things you can do about this warning:
     highlight-indent-guides
     company-shell
     pcmpl-args
+    go-mode
+    company-go
+    go-eldoc
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

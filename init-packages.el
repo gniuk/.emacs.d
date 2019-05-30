@@ -633,6 +633,40 @@
 ;;; pcmpl-args
 (require 'pcmpl-args)
 
+;;; company-go
+(eval-after-load "company"
+ '(progn
+    (add-to-list 'company-backends 'company-go)))
+;(require 'company-go)
+(setq company-tooltip-limit 20)                      ; bigger popup window
+(setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
+(setq company-echo-delay 0)                          ; remove annoying blinking
+(setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+
+(add-hook 'go-mode-hook (lambda ()
+                          (set (make-local-variable 'company-backends) '(company-go))
+                          (company-mode)))
+;; customize company popup menu (actually it is global company). More comfortable in terminal!
+(custom-set-faces
+ '(company-preview
+   ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common
+   ((t (:inherit company-preview))))
+ '(company-tooltip
+   ((t (:background "lightgray" :foreground "black"))))
+ '(company-tooltip-selection
+   ((t (:background "steelblue" :foreground "white"))))
+ '(company-tooltip-common
+   ((((type x)) (:inherit company-tooltip :weight bold))
+    (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection
+   ((((type x)) (:inherit company-tooltip-selection :weight bold))
+    (t (:inherit company-tooltip-selection)))))
+
+;;; go-eldoc
+;(require 'go-eldoc) ;; Don't need to require, if you install by package.el
+(add-hook 'go-mode-hook 'go-eldoc-setup)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 (define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
