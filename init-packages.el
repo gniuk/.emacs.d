@@ -664,6 +664,10 @@
 ;;     (t (:inherit company-tooltip-selection)))))
 
 ;;; go mode
+
+;; go get -u github.com/nsf/gocode
+;; go get -u github.com/rogpeppe/godef
+
 (defun my-go-mode-hook ()
   ; Call Gofmt before saving
   (add-hook 'before-save-hook 'gofmt-before-save)
