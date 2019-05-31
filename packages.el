@@ -58,6 +58,7 @@ There are two things you can do about this warning:
     irony
     company-irony
     company-irony-c-headers
+    irony-eldoc
     company-rtags
     helm-rtags
     flycheck-irony

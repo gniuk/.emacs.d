@@ -252,6 +252,9 @@
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
+;; irony-eldoc
+(add-hook 'irony-mode-hook #'irony-eldoc)
+
 ;;; projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x p f") 'helm-projectile)
