@@ -693,5 +693,10 @@
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;Turn on documentation in elisp mode
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+	     (turn-on-eldoc-mode)))
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
