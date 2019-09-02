@@ -114,6 +114,9 @@ There are two things you can do about this warning:
     go-eldoc
     gotest
     go-playground
+    markdown-mode
+    flymd
+    pandoc-mode
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

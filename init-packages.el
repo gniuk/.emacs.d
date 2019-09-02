@@ -683,6 +683,31 @@
 ;(require 'go-eldoc) ;; Don't need to require, if you install by package.el
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+;;; markdown-mode
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
+;;; flymd
+;(require 'flymd)
+
+;;; pandoc-mode
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+;(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+
+;;; emacs-livedown
+(push "~/.emacs.d/nonmelpa/emacs-livedown/" load-path)
+(custom-set-variables
+ '(livedown-autostart nil) ; automatically open preview when opening markdown files
+ '(livedown-open t)        ; automatically open the browser window
+ '(livedown-port 1337)     ; port for livedown server
+ '(livedown-browser nil))  ; browser to use
+(require 'livedown)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 (define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
