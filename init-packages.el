@@ -258,6 +258,7 @@
 ;;; projectile
 (projectile-global-mode)
 (global-set-key (kbd "C-x p f") 'helm-projectile)
+(global-set-key (kbd "C-x p s") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
 (which-function-mode t)
 
 ;;; rtags
