@@ -281,6 +281,7 @@
 (rtags-enable-standard-keybindings)
 (require 'helm-rtags)
 (setq rtags-use-helm t)
+(setq rtags-display-result-backend 'helm)
 
 (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
 (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
