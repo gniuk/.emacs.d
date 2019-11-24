@@ -51,9 +51,16 @@
 
 ;;; expand-region
 (require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
+;(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
 ;(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
-(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
+;(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
+; see the override keybinds. 2019-11-24
+
+; 2019-11-24, set key bindings for the er/mark function group
+(global-set-key (kbd "C-c m f") 'er/mark-defun)
+(global-set-key (kbd "C-c m p") 'er/mark-inside-pairs)
+(global-set-key (kbd "C-c m q") 'er/mark-inside-quotes)
+(global-set-key (kbd "C-c m u") 'er/mark-url)
 
 ;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
 ;(global-hl-line-mode t)
@@ -713,9 +720,17 @@
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
-(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
-(global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
-(global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
+;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
+;(global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
+;(global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
+
+(define-key window-numbering-keymap (kbd "M-9") nil)
+(global-set-key (kbd "M-9") 'mc/mark-next-like-this-symbol)
+(define-key window-numbering-keymap (kbd "M-0") nil)
+(global-set-key (kbd "M-0") 'er/expand-region)
+
+(define-key window-numbering-keymap (kbd "M-8") nil)
+(global-set-key (kbd "M-8") 'mc/edit-lines)
 
 ;;; other config
 ; automatic delete trailing spaces when saving file
