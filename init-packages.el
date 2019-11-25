@@ -561,14 +561,22 @@
             (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
 
 ;;; chinese-yasdcv
+; 1. commandline tool "sdcv"(stardict command version) needed
+; 2. http://download.huzheng.org/ to download offline dicts, uncompress and put them in ~/.stardict/dic/ (see man sdcv)
 ; C-h v to see the variables
 (require 'chinese-yasdcv)
 (setq yasdcv-sdcv-dicts
-      '(("oxford-gb" "牛津现代英汉双解词典" "oald" nil)
-        ("21shiji" "chinese english chinese dictionary" "21cen" t)
+      '(("oald_cn" "牛津高阶英汉双解" "oald" nil)
+        ("21shijishuangxiangcidian" "21世纪英汉汉英双向词典" "21cen" nil)
         ("langdao-ec-gb" "朗道英汉字典5.0" "langdao" t)
-        ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)))
+        ("langdao-ce-gb" "朗道汉英字典5.0" "langdao" t)
+        ("hanyuchengyucidian" "汉语成语词典" "chengyu" nil)
+        ("chengyudacidian" "中华成语大词典 2.1" "chengyu" t)))
 (global-set-key (kbd "C-c d") 'yasdcv-translate-at-point)
+; 第一个参数，字典代号(不重要)
+; 第二个参数，字典名(重要，在所有字典ifo文件中查找对应 bookname)
+; 第三个参数，自定义的输出美化函数
+; 第四个参数，是否开启该词典
 
 ;;; god-mode
 ;;; My left hand holding a cup of water, my right can navigate without my left hand.
