@@ -37,11 +37,11 @@
 
 ;built-in
 ;(require 'cc-mode)
-(require 'semantic)
-(require 'semantic/db)
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(semantic-mode 1)
+;(require 'semantic)
+;(require 'semantic/db)
+;(global-semanticdb-minor-mode 1)
+;(global-semantic-idle-scheduler-mode 1)
+;(semantic-mode 1)
 
 ;(global-set-key (kbd "C-c C-d") 'kill-whole-line)
 ;(global-set-key (kbd "<C-backspace>") 'kill-whole-line) ;kill whole line at any
@@ -54,10 +54,10 @@
 
 ;;(global-srecode-minor-mode 1)            ; Enable template insertion menu
 ;; Semantic
-(global-semantic-idle-scheduler-mode)
-(global-semantic-idle-completions-mode)
-(global-semantic-decoration-mode)
-(global-semantic-highlight-func-mode)
+;(global-semantic-idle-scheduler-mode)
+;(global-semantic-idle-completions-mode)
+;(global-semantic-decoration-mode)
+;(global-semantic-highlight-func-mode)
 ;(global-semantic-show-unmatched-syntax-mode)
 ; CC-mode
 ;(add-hook 'c-mode-common-hook '(lambda ()
