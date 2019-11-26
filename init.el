@@ -30,10 +30,10 @@
 ;(scroll-bar-mode 0)
 (setq-default indent-tabs-mode nil)
 ;(setq kill-whole-line t)
-(display-time-mode 1)
-(setq display-time-day-and-date 1)
-(defvar display-time-24hr-format)
-(setq display-time-24hr-format 1)
+;(display-time-mode 1)
+;(setq display-time-day-and-date 1)
+;(defvar display-time-24hr-format)
+;(setq display-time-24hr-format 1)
 
 ;built-in
 ;(require 'cc-mode)
