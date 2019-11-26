@@ -156,6 +156,12 @@
 ;;; auto-highlight-symbol
 (require 'auto-highlight-symbol)
 (global-auto-highlight-symbol-mode t)
+; golang was invented in 2009, and this package is write in 2010 :), no go-mode in ahs-modes !
+(add-hook 'go-mode-hook 'auto-highlight-symbol-mode)
+; no auto-highlight-symbol-mode in gnu gas asm-mode too, add it.
+(add-hook 'asm-mode-hook 'auto-highlight-symbol-mode)
+; cmake-mode too.
+(add-hook 'cmake-mode-hook 'auto-highlight-symbol-mode)
 
 ;;; helm-gtags
 (add-hook 'c-mode-hook 'helm-gtags-mode)
