@@ -225,6 +225,7 @@
 (add-hook 'c++-mode-hook 'hs-minor-mode)
 (add-hook 'cc-mode-hook 'hs-minor-mode)
 (add-hook 'js2-mode-hook 'hs-minor-mode)
+(add-hook 'go-mode-hook 'hs-minor-mode)
 (global-set-key (kbd "C-c h h") 'hs-hide-all)
 (global-set-key (kbd "C-c h a") 'hs-show-all)
 (global-set-key (kbd "C-c h t") 'hs-toggle-hiding)
