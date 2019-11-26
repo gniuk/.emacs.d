@@ -64,7 +64,8 @@ No more indentation adjustment after paste to the destination point."
   "Copy Above line at cursor position."
   (interactive)
   (forward-line -1)
-  (back-to-indentation)
+  ;(back-to-indentation)
+  (move-beginning-of-line 1)
   (setq p1 (point))
   (move-end-of-line 1)
   (setq p2 (point))
