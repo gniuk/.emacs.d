@@ -747,6 +747,10 @@
 (define-key window-numbering-keymap (kbd "M-8") nil)
 (global-set-key (kbd "M-8") 'mc/edit-lines)
 
+; override c-toggle-auto-newline in C and C++, using custom function
+(define-key c-mode-map (kbd "C-c C-a") nil)
+(define-key c++-mode-map (kbd "C-c C-a") nil)
+
 ;;; other config
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
