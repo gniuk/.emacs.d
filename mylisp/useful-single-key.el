@@ -81,6 +81,27 @@ No more indentation adjustment after paste to the destination point."
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
 (global-set-key (kbd "C-c C-k") 'gniuk/copyLine)
 
+;; overload highlight-symbol M-n and M-p, to quickly navigate pairs
+; pairs: (),[],{},<>
+(defun gniuk/goto-pair-forward ()
+  "goto pair forward"
+  (interactive)
+  (if (looking-at "(\\|\\[\\|{\\|<")
+      (forward-sexp)
+    (highlight-symbol-next)))
+(global-set-key (kbd "M-n") 'gniuk/goto-pair-forward)
+
+(defun gniuk/goto-pair-backward ()
+  "goto pair backward"
+  (interactive)
+  (backward-char)
+  (if (looking-at ")\\|\\]\\|}\\|>")
+      (progn (forward-char)
+             (backward-sexp))
+    (progn (forward-char)
+           (highlight-symbol-prev))))
+(global-set-key (kbd "M-p") 'gniuk/goto-pair-backward)
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
