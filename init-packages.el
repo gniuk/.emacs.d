@@ -738,6 +738,9 @@
 (require 'doom-modeline)
 (doom-modeline-mode 1)
 
+;;; evil
+(evil-mode 1)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.

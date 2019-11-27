@@ -118,6 +118,7 @@ There are two things you can do about this warning:
     flymd
     pandoc-mode
     doom-modeline
+    evil
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
