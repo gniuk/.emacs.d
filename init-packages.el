@@ -100,6 +100,7 @@
 
 ;;; goto-last-change
 (require 'goto-last-change)
+(global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
 
 ;;; Python
 ;(require 'python-mode)
