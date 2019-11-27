@@ -117,6 +117,7 @@ There are two things you can do about this warning:
     markdown-mode
     flymd
     pandoc-mode
+    doom-modeline
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
