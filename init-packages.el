@@ -759,6 +759,24 @@
 (define-key c-mode-map (kbd "C-c C-a") nil)
 (define-key c++-mode-map (kbd "C-c C-a") nil)
 
+; override evil key bindings
+; override C-e evil-scroll-line-down, make it original mwim-end-of-code-or-line
+(define-key evil-motion-state-map (kbd "C-e") nil)
+; rtags find definition or other jump to definition commands
+(define-key evil-normal-state-map (kbd "M-.") nil)
+(define-key evil-motion-state-map (kbd "M-.") nil)
+; i to evil-emacs-state, C-z to evil-normal-state
+(define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
+(define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
+; C-p previous-line, C-n next-line
+(define-key evil-normal-state-map (kbd "C-p") 'previous-line)
+(define-key evil-normal-state-map (kbd "C-n") 'next-line)
+; C-v not act as VISUAL MODE, but original emacs scroll-up-command, pair with M-v. Block editing with Emacs.
+(define-key evil-normal-state-map (kbd "C-v") 'scroll-up-command)
+; C-f, C-b act as in emacs. Use only C-v, M-v to scroll page.
+(define-key evil-normal-state-map (kbd "C-f") 'forward-char)
+(define-key evil-normal-state-map (kbd "C-b") 'backward-char)
+
 ;;; other config
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
