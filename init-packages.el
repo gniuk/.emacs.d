@@ -776,6 +776,8 @@
 ; C-f, C-b act as in emacs. Use only C-v, M-v to scroll page.
 (define-key evil-normal-state-map (kbd "C-f") 'forward-char)
 (define-key evil-normal-state-map (kbd "C-b") 'backward-char)
+; C-r isearch-backward, not undo-tree-redo
+(define-key evil-normal-state-map (kbd "C-r") 'isearch-backward)
 
 ;;; other config
 ; automatic delete trailing spaces when saving file
