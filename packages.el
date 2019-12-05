@@ -119,6 +119,10 @@ There are two things you can do about this warning:
     pandoc-mode
     doom-modeline
     evil
+    ; lsp-mode
+    ; company-lsp
+    ; helm-lsp
+    ; lsp-ui
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

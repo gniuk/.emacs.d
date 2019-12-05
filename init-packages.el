@@ -713,6 +713,15 @@
 (require 'go-playground)
 (custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
 
+;;; ----- lsp-mode, but the gopls language server is slow in a little big project. NOT NOW!
+;;; Use gocode and the counterparts instead
+;;; lsp-mode and lsp related. Mark them here, as well as the related packages in packages.el
+;(require 'lsp-mode)
+;(add-hook 'go-mode-hook #'lsp-deferred)
+;; company-lsp
+;(require 'company-lsp)
+;(push 'company-lsp company-backends)
+
 ;;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
