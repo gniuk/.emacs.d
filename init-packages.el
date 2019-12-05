@@ -709,6 +709,10 @@
 ;(require 'go-eldoc) ;; Don't need to require, if you install by package.el
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+;;; set go-playground basedir, default is ~/go/src/playground
+(require 'go-playground)
+(custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
+
 ;;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
