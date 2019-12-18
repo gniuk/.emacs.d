@@ -123,6 +123,7 @@ There are two things you can do about this warning:
     ; company-lsp
     ; helm-lsp
     ; lsp-ui
+    vterm
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
