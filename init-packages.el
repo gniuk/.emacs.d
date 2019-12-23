@@ -24,7 +24,7 @@
 (require 'helm-c-yasnippet)
 (setq helm-yas-space-match-any-greedy t)
 (global-set-key (kbd "C-c y") 'helm-yas-complete)
-(add-to-list 'load-path
+(add-to-list 'yas-snippet-dirs
              "~/.emacs.d/mysnippets")
 (yas-global-mode 1)
 ;(yas-load-directory "~/.emacs.d/snippets")
