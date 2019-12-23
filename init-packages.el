@@ -798,6 +798,10 @@
 ; C-r isearch-backward, not undo-tree-redo
 (define-key evil-normal-state-map (kbd "C-r") 'isearch-backward)
 
+; override M-a, set it as ace-pinyin-jump-char
+(global-unset-key (kbd "M-a"))
+(global-set-key (kbd "M-a") 'ace-pinyin-jump-char)
+
 ;;; other config
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
