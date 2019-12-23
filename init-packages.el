@@ -24,6 +24,8 @@
 (require 'helm-c-yasnippet)
 (setq helm-yas-space-match-any-greedy t)
 (global-set-key (kbd "C-c y") 'helm-yas-complete)
+(add-to-list 'load-path
+             "~/.emacs.d/mysnippets")
 (yas-global-mode 1)
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
