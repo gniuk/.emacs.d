@@ -759,6 +759,9 @@
 ;;; vterm
 (require 'vterm)
 
+;;; golden-ratio
+; manually call golden-ratio-mode or golden-ratio
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.

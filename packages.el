@@ -124,6 +124,7 @@ There are two things you can do about this warning:
     ; helm-lsp
     ; lsp-ui
     vterm
+    golden-ratio
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
