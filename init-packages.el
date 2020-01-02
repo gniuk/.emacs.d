@@ -69,7 +69,6 @@
 
 ;;; helm
 (require 'helm-config)
-(helm-mode 1)
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
 (global-set-key (kbd "M-i") 'helm-imenu)
@@ -82,8 +81,26 @@
     ;C-x C-f C-s to show files greping lines match regexp
     (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(setq helm-M-x-fuzzy-match t)
+(setq helm-M-x-fuzzy-match t
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t
+      helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match t
+      helm-locate-fuzzy-match t
+      helm-apropos-fuzzy-match t
+      helm-lisp-fuzzy-completion t)
     ;-------
+
+;http://tuhdo.github.io/helm-intro.html
+(setq helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
+      ;helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      ;helm-echo-input-in-header-line t
+      )
+
+(helm-mode 1)
 
 ;  C-M-f     Move forward over a balanced expression
 ;  C-M-b     Move backward over a balanced expression
