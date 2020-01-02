@@ -274,7 +274,7 @@
 
 ;;; projectile
 (projectile-global-mode)
-(global-set-key (kbd "C-x p f") 'helm-projectile)
+(global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-x p s") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag not present
 (which-function-mode t)
