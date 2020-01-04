@@ -644,14 +644,14 @@
 (setq which-key--god-mode-support-enabled t)
 
 ;;; diminish
-(diminish 'global-flycheck-mode)
-(diminish 'paredit-mode)
-(diminish 'global-undo-tree-mode)
-(diminish 'undo-tree-mode)
-(diminish 'helm-mode)
-(diminish 'projectile-mode)
-(diminish 'flycheck-mode)
-(diminish 'company-mode "CP")
+;(diminish 'global-flycheck-mode)
+;(diminish 'paredit-mode)
+;(diminish 'global-undo-tree-mode)
+;(diminish 'undo-tree-mode)
+;(diminish 'helm-mode)
+;(diminish 'projectile-mode)
+;(diminish 'flycheck-mode)
+;(diminish 'company-mode "CP")
 
 ;;; workgroups2
 (require 'workgroups2)

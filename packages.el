@@ -104,7 +104,7 @@ There are two things you can do about this warning:
     helm-ag
     god-mode
     which-key
-    diminish
+    ;diminish
     workgroups2
     ace-isearch
     highlight-symbol
