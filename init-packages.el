@@ -673,10 +673,15 @@
 (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 ;;; highlight-indent-guides, replace indent-guide.
+(require 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
 (setq highlight-indent-guides-character ?\|)
 (setq highlight-indent-guides-delay 0.5)
+
+; emacs -q: list-colors-display, /usr/share/X11/rgb.txt, or https://jonasjacek.github.io/colors/
+(setq highlight-indent-guides-auto-enabled nil)
+(set-face-foreground 'highlight-indent-guides-character-face "grey23")
 
 ;;; company-shell. $PATH bin, fish-shell-builtin, env
 (eval-after-load 'company
