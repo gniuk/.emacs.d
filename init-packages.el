@@ -781,6 +781,9 @@
 ;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
 
+;;; disaster
+(define-key c-mode-base-map (kbd "C-c c d") 'disaster)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.

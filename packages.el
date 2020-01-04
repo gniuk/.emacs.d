@@ -125,6 +125,7 @@ There are two things you can do about this warning:
     ; lsp-ui
     vterm
     golden-ratio
+    disaster
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
