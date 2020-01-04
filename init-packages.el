@@ -838,6 +838,11 @@
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+; disable linum-mode in vterm-mode
+(add-hook 'vterm-mode-hook
+          '(lambda ()
+             (linum-mode -1)))
+
 ;Turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
