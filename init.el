@@ -81,7 +81,8 @@
 
 (global-subword-mode)                   ;navigate camelCase word!
 ;(load-theme 'sanityinc-solarized-light t)
-(load-theme 'sanityinc-tomorrow-eighties t)
+;(load-theme 'sanityinc-tomorrow-eighties t)
+(load-theme 'spacemacs-dark t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;

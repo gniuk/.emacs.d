@@ -126,6 +126,7 @@ There are two things you can do about this warning:
     vterm
     golden-ratio
     disaster
+    spacemacs-theme
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
