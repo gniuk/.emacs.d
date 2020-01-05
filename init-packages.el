@@ -887,10 +887,13 @@
           '(lambda ()
              (linum-mode -1)))
 
-;Turn on documentation in elisp mode
+; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
 	     (turn-on-eldoc-mode)))
+
+; ediff not open it's command interface in an external window under gui
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
