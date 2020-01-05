@@ -820,7 +820,6 @@
 ;;  ("C-;" . pyim-delete-word-from-personal-buffer))
 (global-unset-key (kbd "C-j"))
 (global-set-key (kbd "C-j") 'pyim-convert-code-at-point)
-
 ;(define-key lisp-mode-map (kbd "C-j") 'pyim-convert-code-at-point)
 ;(define-key paredit-mode-map (kbd "C-j") 'pyim-convert-code-at-point)
 (add-hook 'paredit-mode-hook
