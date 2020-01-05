@@ -789,6 +789,45 @@
 ;;; disaster
 (define-key c-mode-base-map (kbd "C-c c d") 'disaster)
 
+;;; pyim
+(require 'pyim)
+(require 'pyim-basedict)
+(pyim-basedict-enable)
+(setq default-input-method "pyim")
+(setq pyim-default-scheme 'quanpin)
+
+;; 1. 光标只有在注释里面时，才可以输入中文。
+;; 2. 光标前是汉字字符时，才能输入中文。
+;; 3. 使用 C-j 快捷键，强制将光标前的拼音字符串转换为中文。
+(setq-default pyim-english-input-switch-functions
+              '(pyim-probe-dynamic-english
+                pyim-probe-isearch-mode
+                pyim-probe-program-mode
+                pyim-probe-org-structure-template))
+
+(setq-default pyim-punctuation-half-width-functions
+              '(pyim-probe-punctuation-line-beginning
+                pyim-probe-punctuation-after-punctuation))
+;; 使用 pupup-el 来绘制选词框
+(setq pyim-page-tooltip 'popup)
+;; 选词框显示9个候选词
+(setq pyim-page-length 9)
+;; 让 Emacs 启动时自动加载 pyim 词库
+(add-hook 'emacs-startup-hook
+          #'(lambda () (pyim-restart-1 t)))
+;; bind
+;; (("C-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
+;;  ("C-;" . pyim-delete-word-from-personal-buffer))
+(global-unset-key (kbd "C-j"))
+(global-set-key (kbd "C-j") 'pyim-convert-code-at-point)
+(define-key paredit-mode-map (kbd "C-j") 'paredit-newline)
+(global-set-key (kbd "C-\\") 'toggle-input-method)
+
+(setq pyim-dicts
+      '((:name "dict1" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
+(add-hook 'emacs-startup-hook
+          #'(lambda () (pyim-restart-1 t)))
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.

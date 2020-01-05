@@ -129,6 +129,7 @@ There are two things you can do about this warning:
     golden-ratio
     disaster
     spacemacs-theme
+    pyim
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
