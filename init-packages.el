@@ -833,6 +833,9 @@
 (add-hook 'emacs-startup-hook
           #'(lambda () (pyim-restart-1 t)))
 
+;;; magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
