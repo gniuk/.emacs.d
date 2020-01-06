@@ -876,6 +876,9 @@
 (define-key evil-normal-state-map (kbd "C-b") 'backward-char)
 ; C-r isearch-backward, not undo-tree-redo
 (define-key evil-normal-state-map (kbd "C-r") 'isearch-backward)
+; q quit, not evil-record-macro
+(define-key evil-normal-state-map (kbd "q") nil)
+
 
 ; override M-a, set it as ace-pinyin-jump-char
 (global-unset-key (kbd "M-a"))
