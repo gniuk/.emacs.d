@@ -103,14 +103,14 @@ No more indentation adjustment after paste to the destination point."
            (highlight-symbol-prev))))
 (global-set-key (kbd "M-p") 'gniuk/goto-pair-backward)
 
-;; make C-w like when it on bash command line
-(defun gniuk/backward-kill-word-or-region (&optional arg)
-  "Kill region when there is a region, otherwise kill word backward."
-  (interactive "p")
+;; make C-w a bit like when it is in bash command line
+(defun gniuk/kill-region-or-kill-backward-to-whitespace ()
+  "Kill region when there is a region marked, otherwise kill backward to whitespace."
+  (interactive)
   (if (region-active-p)
       (call-interactively #'kill-region)
-    (backward-kill-word arg)))
-(global-set-key (kbd "C-w") 'gniuk/backward-kill-word-or-region)
+    (zap-up-to-char -1 ?\s)))
+(global-set-key (kbd "C-w") 'gniuk/kill-region-or-kill-backward-to-whitespace)
 
 (provide 'useful-single-key)
 
