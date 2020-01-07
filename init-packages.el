@@ -809,7 +809,24 @@
 (require 'pyim-basedict)
 (pyim-basedict-enable)
 (setq default-input-method "pyim")
-(setq pyim-default-scheme 'quanpin)
+
+;; whether A. using librime, or B. using pinyin dicts
+; --- A. librime
+; use librime as input engine:
+; 1. install librime: 1) using package management system or 2) manually build it
+; 2. install rime-data: 1) using package management system or 2) manually build rime/plum
+; 3. install liberime, make liberime, cp build/liberime.so to ~/.emacs.d/pyim/rime/
+; resolve the dependencies via 3->2->1 sequence
+(push "~/.emacs.d/pyim/rime/" load-path)
+(require 'liberime)
+(setq rime-data-dir "/usr/share/rime-data")
+(liberime-start "/usr/share/rime-data" (file-truename "~/.emacs.d/pyim/rime/"))
+(liberime-get-schema-list)
+(liberime-select-schema "luna_pinyin_simp")
+;(setq pyim-default-scheme 'rime)
+;(setq pyim-default-scheme 'rime-quanpin)
+(setq pyim-default-scheme 'quanpin) ; !!! 积累自己的频繁字词 ~/.emacs.d/pyim/dcache !!!
+; --- A. librime
 
 ;; 1. 光标只有在注释里面时，才可以输入中文。
 ;; 2. 光标前是汉字字符时，才能输入中文。
@@ -827,24 +844,24 @@
 (setq pyim-page-tooltip 'popup)
 ;; 选词框显示9个候选词
 (setq pyim-page-length 9)
-;; 让 Emacs 启动时自动加载 pyim 词库
-(add-hook 'emacs-startup-hook
-          #'(lambda () (pyim-restart-1 t)))
+
 ;; bind
 ;; (("C-j" . pyim-convert-code-at-point) ;与 pyim-probe-dynamic-english 配合
 ;;  ("C-;" . pyim-delete-word-from-personal-buffer))
 (global-unset-key (kbd "C-j"))
-(global-set-key (kbd "C-j") 'pyim-convert-code-at-point)
-;(define-key lisp-mode-map (kbd "C-j") 'pyim-convert-code-at-point)
-;(define-key paredit-mode-map (kbd "C-j") 'pyim-convert-code-at-point)
+(global-set-key (kbd "C-j") 'pyim-convert-string-at-point)
 (add-hook 'paredit-mode-hook
           '(lambda ()
-             (define-key paredit-mode-map (kbd "C-j") 'pyim-convert-code-at-point)))
+             (define-key paredit-mode-map (kbd "C-j") 'pyim-convert-string-at-point)))
 
 (global-set-key (kbd "C-\\") 'toggle-input-method)
 
-(setq pyim-dicts
-      '((:name "dict1" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
+; --- B. pyim using dicts
+;; (setq pyim-dicts
+;;       '((:name "dict1" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
+; --- B. pyim using dicts
+
+;; 让 Emacs 启动时自动加载 pyim 词库
 (add-hook 'emacs-startup-hook
           #'(lambda () (pyim-restart-1 t)))
 
