@@ -187,13 +187,24 @@
 
 ;;; auto-highlight-symbol
 (require 'auto-highlight-symbol)
+;; Can not wrap ahs-forward or ahs-backward, don't know why, more elisp knowledge needed.
+;; May be try it again some days later. So now still use highlight-symbol to navigate.
+;; But highlight-symbol can navigate symbol in string, which ahs not able to.
+;; So use ahs to highlight and edit(with range control) symbol, hs to navigate.
+;; (spacemacs wraps the ahs functions successfully)
+(ahs-set-idle-interval 0.2)
+(setq ahs-default-range 'ahs-range-whole-buffer)
+(setq ahs-case-fold-search nil)
+(define-key auto-highlight-symbol-mode-map (kbd "C-c s s") 'ahs-change-range)
 (global-auto-highlight-symbol-mode t)
 ; golang was invented in 2009, and this package is write in 2010 :), no go-mode in ahs-modes !
-(add-hook 'go-mode-hook 'auto-highlight-symbol-mode)
-; no auto-highlight-symbol-mode in gnu gas asm-mode too, add it.
-(add-hook 'asm-mode-hook 'auto-highlight-symbol-mode)
-; cmake-mode too.
-(add-hook 'cmake-mode-hook 'auto-highlight-symbol-mode)
+;(add-hook 'go-mode-hook 'auto-highlight-symbol-mode)
+(pushnew 'go-mode ahs-modes)
+; other modes
+(pushnew 'org-mode ahs-modes)
+(pushnew 'cmake-mode ahs-modes)
+(pushnew 'asm-mode ahs-modes)
+(pushnew 'nasm-mode ahs-modes)
 
 ;;; helm-gtags
 (add-hook 'c-mode-hook 'helm-gtags-mode)
