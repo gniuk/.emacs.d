@@ -96,7 +96,7 @@ There are two things you can do about this warning:
     ace-pinyin
     company-auctex
     shell-pop
-    helm-company
+    ;helm-company
     popwin
     youdao-dictionary
     color-identifiers-mode
