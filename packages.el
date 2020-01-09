@@ -130,6 +130,7 @@ There are two things you can do about this warning:
     disaster
     spacemacs-theme
     pyim
+    company-statistics
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
