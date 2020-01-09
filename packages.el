@@ -51,7 +51,7 @@ There are two things you can do about this warning:
     rainbow-identifiers
     auto-highlight-symbol
     ;smartscan ; symbol_with_underscore not recognized. using highlight-symbol to navigate
-    ace-jump-mode
+    ;ace-jump-mode
     ;fill-column-indicator
     ;col-highlight ; not in melpa now, put it in nonmelpa
     ;company-ycmd
@@ -105,7 +105,7 @@ There are two things you can do about this warning:
     god-mode
     which-key
     ;diminish
-    workgroups2
+    ;workgroups2
     ace-isearch
     highlight-symbol
     highlight-indent-guides

@@ -660,10 +660,11 @@
 ;(diminish 'company-mode "CP")
 
 ;;; workgroups2
-(require 'workgroups2)
-(setq wg-prefix-key (kbd "C-c w"))      ; default is C-c z. c,v,A,k,C-s,C-f
-(setq wg-session-file "~/.emacs.d/.emacs_workgroups")
-(workgroups-mode 1)
+;; not that useful, because helm-mini containing recentf is there, and we can use registers to save window or frame configuration.
+;; (require 'workgroups2)
+;; (setq wg-prefix-key (kbd "C-c w"))      ; default is C-c z. c,v,A,k,C-s,C-f
+;; (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+;; (workgroups-mode 1)
 
 ;;; ace-isearch. ace-jump-mode, isearch, helm-swoop
 ; L = 1     : `ace-jump-mode' or `avy'
