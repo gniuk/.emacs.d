@@ -226,22 +226,22 @@
 ;(load "~/.emacs.d/global-set.el")
 
 ;;; ace-jump-mode
-(autoload
-  'ace-jump-mode
-  "ace-jump-mode"
-  "Emacs quick move minor mode"
-  t)
-;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-;(global-set-key (kbd "C-c j") 'ace-jump-mode)
-;(global-set-key (kbd "C-'") 'ace-jump-mode)
-(autoload
-  'ace-jump-mode-pop-mark
-  "ace-jump-mode"
-  "Ace jump back:-)"
-  t)
-(eval-after-load "ace-jump-mode"
-  '(ace-jump-mode-enable-mark-sync))
-;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+;; (autoload
+;;   'ace-jump-mode
+;;   "ace-jump-mode"
+;;   "Emacs quick move minor mode"
+;;   t)
+;; ;(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+;; ;(global-set-key (kbd "C-c j") 'ace-jump-mode)
+;; ;(global-set-key (kbd "C-'") 'ace-jump-mode)
+;; (autoload
+;;   'ace-jump-mode-pop-mark
+;;   "ace-jump-mode"
+;;   "Ace jump back:-)"
+;;   t)
+;; (eval-after-load "ace-jump-mode"
+;;   '(ace-jump-mode-enable-mark-sync))
+;; ;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
 ;;; fill-column-indicator
 ;(require 'fill-column-indicator)
@@ -514,15 +514,6 @@
 (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
 (global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
-;; override C-' in org-mode
-;; (eval-after-load 'org
-;;   '(define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char))
-;; (eval-after-load 'org
-;;   '(setq org-log-done t))
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map (kbd "C-'") 'ace-pinyin-jump-char)
-            (setq org-log-done t)))
 
 ;;; auctex
 ;(load "auctex.el" nil t t)
