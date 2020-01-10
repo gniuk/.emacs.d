@@ -417,6 +417,7 @@
 
 ;;; smooth-scrolling
 (require 'smooth-scrolling)
+(smooth-scrolling-mode)
 
 ;;; readline-complete [awesome!]
 (require 'readline-complete)
