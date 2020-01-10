@@ -879,9 +879,12 @@
           #'(lambda () (pyim-restart-1 t)))
 
 ;;; magit
-(global-set-key (kbd "C-x g") 'magit-status)
+(global-unset-key (kbd "C-x g"))
 (with-eval-after-load 'magit
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
+  (define-key magit-file-mode-map (kbd "C-x g") nil))
+(global-set-key (kbd "C-x g g") 'magit-status)
+(global-set-key (kbd "C-x g b") 'magit-blame)
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
