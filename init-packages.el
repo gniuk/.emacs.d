@@ -944,8 +944,12 @@
           '(lambda ()
 	     (turn-on-eldoc-mode)))
 
-; ediff not open it's command interface in an external window under gui
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+;; ediff
+; 1. make ediff not open it's command interface in an external frame(window) under gui
+; 2. make ediff split horizontally
+(with-eval-after-load 'ediff
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain
+        ediff-split-window-function 'split-window-horizontally))
 
 ; split horizontally preferred
 (setq-default split-height-threshold nil
