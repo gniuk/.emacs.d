@@ -880,6 +880,8 @@
 
 ;;; magit
 (global-set-key (kbd "C-x g") 'magit-status)
+(with-eval-after-load 'magit
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
@@ -945,6 +947,10 @@
 
 ; ediff not open it's command interface in an external window under gui
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+; split horizontally preferred
+(setq-default split-height-threshold nil
+              split-width-threshold 100)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
