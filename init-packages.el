@@ -955,5 +955,8 @@
 (setq-default split-height-threshold nil
               split-width-threshold 100)
 
+; keep session when restart
+(desktop-save-mode)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
