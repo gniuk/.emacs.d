@@ -930,10 +930,6 @@
 (define-key evil-normal-state-map (kbd "q") nil)
 
 
-; override M-a, set it as ace-pinyin-jump-char
-(global-unset-key (kbd "M-a"))
-(global-set-key (kbd "M-a") 'ace-pinyin-jump-char)
-
 ;;; other config
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
