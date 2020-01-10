@@ -813,6 +813,7 @@
 
 ;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
+(global-set-key (kbd "C-x g r") 'golden-ratio)
 
 ;;; disaster
 (define-key c-mode-base-map (kbd "C-c c d") 'disaster)
@@ -879,7 +880,6 @@
           #'(lambda () (pyim-restart-1 t)))
 
 ;;; magit
-(global-unset-key (kbd "C-x g"))
 (with-eval-after-load 'magit
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (define-key magit-file-mode-map (kbd "C-x g") nil))
