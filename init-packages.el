@@ -894,7 +894,7 @@
 ;(global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
 
 (define-key window-numbering-keymap (kbd "M-9") nil)
-(global-set-key (kbd "M-9") 'mc/mark-next-like-this-symbol)
+(global-set-key (kbd "M-9") 'mc/mark-next-like-this)
 (define-key window-numbering-keymap (kbd "M-0") nil)
 (global-set-key (kbd "M-0") 'er/expand-region)
 
