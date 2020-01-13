@@ -669,6 +669,7 @@
 
 ;;; which-key, replace guide-key
 (which-key-mode)
+(setq which-key-idle-secondary-delay 0.1)
 (setq which-key--god-mode-support-enabled t)
 
 ;;; diminish
