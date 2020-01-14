@@ -131,6 +131,7 @@ There are two things you can do about this warning:
     spacemacs-theme
     pyim
     company-statistics
+    x86-lookup
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

@@ -888,6 +888,12 @@
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
 
+;;; x86-lookup
+(setq x86-lookup-pdf "~/Books/OS/325383-sdm-vol-2abcd.pdf")
+(global-set-key (kbd "C-x c x") #'x86-lookup)
+(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
+;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
