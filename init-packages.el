@@ -202,8 +202,8 @@
 ;; But highlight-symbol can navigate symbol in string, which ahs not able to.
 ;; So use ahs to highlight and edit(with range control) symbol, hs to navigate.
 ;; (spacemacs wraps the ahs functions successfully)
-(ahs-set-idle-interval 0.2)
-(setq ahs-default-range 'ahs-range-whole-buffer)
+(ahs-set-idle-interval 1.2)
+(setq ahs-default-range 'ahs-range-display)
 (setq ahs-case-fold-search nil)
 (define-key auto-highlight-symbol-mode-map (kbd "C-c s s") 'ahs-change-range)
 (global-auto-highlight-symbol-mode t)
