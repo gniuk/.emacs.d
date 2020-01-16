@@ -15,7 +15,7 @@
 ;; (add-to-list 'default-frame-alist
 ;;              '(font . "LiberationMono-14"))
 (add-to-list 'default-frame-alist
-             '(font . "SourceCodePro-14"))
+             '(font . "SourceCodePro-17"))
 ;(set-frame-font "Monospace-14")
 ;(set-frame-font "Inconsolata-g-14")
 ;(set-frame-font "SourceCodePro-14")
