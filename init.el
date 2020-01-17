@@ -66,7 +66,7 @@
 ;))
 
 
-(load "~/.emacs.d/init-packages.el")
+(load "~/.emacs.d/init-packages-use-package.el")
 
 ;(setq gdb-many-windows t)
 ;(setq gdb-show-main t)
