@@ -48,7 +48,7 @@
                                         ;position, like vim dd
 
 ; Enable EDE (Project Management) features
-(global-ede-mode 1)
+;(global-ede-mode 1)
 ;(semantic-load-enable-excessive-code-helpers)      ; Enable prototype help and
                                         ;smart completion
 
@@ -67,8 +67,8 @@
 
 (load "~/.emacs.d/init-packages.el")
 
-(setq gdb-many-windows t)
-(setq gdb-show-main t)
+;(setq gdb-many-windows t)
+;(setq gdb-show-main t)
 ;(flyspell-mode 1)
 
 ;;; global set keys
