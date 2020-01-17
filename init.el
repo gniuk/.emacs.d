@@ -3,7 +3,7 @@
 ;; none
 
 ;;; Code:
-;(global-set-key (kbd "M-g") 'goto-line)
+(setq gc-cons-threshold (* 300 1024 1024))
 (global-linum-mode t)
 (column-number-mode t)
 ;;; remote use the following theme and color settings
@@ -84,6 +84,7 @@
 ;(load-theme 'sanityinc-tomorrow-eighties t)
 (load-theme 'spacemacs-dark t)
 
+(setq gc-cons-threshold (* 2 1024 1024))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;
 ;; paredit                                                                    ;;
