@@ -813,6 +813,11 @@
 
 ;;; vterm
 (require 'vterm)
+(global-set-key (kbd "<f6>") 'vterm)
+(add-hook 'vterm-mode-hook
+          '(lambda ()
+             (evil-emacs-state)
+             (linum-mode -1)))
 
 ;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
@@ -942,11 +947,6 @@
 ;;; other config
 ; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-; disable linum-mode in vterm-mode
-(add-hook 'vterm-mode-hook
-          '(lambda ()
-             (linum-mode -1)))
 
 ; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
