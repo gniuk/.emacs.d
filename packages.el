@@ -61,7 +61,7 @@ There are two things you can do about this warning:
     company-irony
     company-irony-c-headers
     irony-eldoc
-    company-rtags
+    ;company-rtags
     helm-rtags
     flycheck-irony
     projectile

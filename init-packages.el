@@ -355,14 +355,15 @@
 ;; rc -J .
 ;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
 ;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
-(require 'rtags)
+;; (require 'rtags)
 
-(require 'company-rtags)
-(setq rtags-completions-enabled t)
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends 'company-rtags))
-;(setq rtags-autostart-diagnostics t)
+; company-rtags backend has no return type for function, use only company-irony.
+;; (require 'company-rtags)
+;; (setq rtags-completions-enabled t)
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-rtags))
+;; ;(setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
 (require 'helm-rtags)
 (setq rtags-use-helm t)
