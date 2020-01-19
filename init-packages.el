@@ -39,7 +39,18 @@
   (require 'company-statistics)
   (add-hook 'after-init-hook 'company-statistics-mode))
 
-(global-set-key (kbd "TAB") 'company-complete)
+;(global-set-key (kbd "TAB") 'company-complete)
+(defun gniuk/boip ()
+  (let ((originalpos (point)))
+    (save-excursion
+      (back-to-indentation)
+      (= originalpos (point)))))
+(defun gniuk/indent-or-complete ()
+  (interactive)
+  (if (or (bolp) (gniuk/boip))
+      (indent-according-to-mode)
+    (company-complete)))
+(global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
 
 ;;; yasnippet
 (require 'yasnippet)
