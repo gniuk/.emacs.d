@@ -323,14 +323,28 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(eval-after-load 'company
+  '(add-to-list 'company-backends 'company-irony))
+
+;; (require 'company-irony-c-headers)
+;;    ;; Load with `irony-mode` as a grouped backend
 ;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
+;;   '(add-to-list
+;;     'company-backends '(company-irony-c-headers company-irony)))
 
 (require 'company-irony-c-headers)
-   ;; Load with `irony-mode` as a grouped backend
+; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
+; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
+; Use company-diag to see all the backends and the backend currently used.
 (eval-after-load 'company
   '(add-to-list
-    'company-backends '(company-irony-c-headers company-irony)))
+    'company-backends 'company-irony-c-headers))
+; redundance backends
+(eval-after-load 'company
+  '(progn
+     (setq company-backends (delete 'company-clang company-backends))
+     (setq company-backends (delete 'company-capf company-backends))))
+
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
@@ -371,11 +385,16 @@
 (setq rtags-use-helm t)
 (setq rtags-display-result-backend 'helm)
 
-(define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-(define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-(define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-(define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
+;(define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+;(define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+;(define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+;(define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
 ;(define-key irony-mode-map (kbd "M-i") 'rtags-imenu) ; use C-c r I. M-i used for helm-swoop!
+(add-hook 'irony-mode-hook '(lambda ()
+                              (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+                              (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+                              (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+                              (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
 
 ;;; shell-mode, comint-previous-input and comint-next-input
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
