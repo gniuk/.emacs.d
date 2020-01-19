@@ -170,10 +170,10 @@
 (setq python-indent-offset 4)
 
 ;;; C
-(eval-after-load "company"
- '(progn
-    (add-to-list 'company-backends 'company-c-headers)
-    (remove 'company-semantic company-backends)))
+;; (eval-after-load "company"
+;;  '(progn
+;;     (add-to-list 'company-backends 'company-c-headers)
+;;     (remove 'company-semantic company-backends)))
 ; delete should be in the eval-after-load ! yeah! (Symbol's value as variable is void: company-backends) GONE!
 ;(setq company-backends (delete 'company-semantic company-backends))
 ;(setq company-backends (remove 'company-semantic company-backends))
