@@ -60,6 +60,8 @@
 (add-to-list 'yas-snippet-dirs
              "~/.emacs.d/mysnippets")
 (yas-global-mode 1)
+(with-eval-after-load 'yasnippet
+  (add-to-list 'company-backends 'company-yasnippet -1))
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
 ;(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
