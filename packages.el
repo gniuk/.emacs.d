@@ -28,7 +28,7 @@ There are two things you can do about this warning:
 (defvar required-packages
   '(
     company
-    company-c-headers
+    ;company-c-headers
     company-web
     company-anaconda
     yasnippet
