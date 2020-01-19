@@ -459,11 +459,9 @@
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
 ;;; mwim
-(autoload 'mwim-beginning-of-code-or-line "mwim" nil t)
-(autoload 'mwim-beginning-of-line-or-code "mwim" nil t)
+(autoload 'mwim-beginning-of-code-or-line-or-comment "mwim" nil t)
 (autoload 'mwim-end-of-code-or-line "mwim" nil t)
-(autoload 'mwim-end-of-line-or-code "mwim" nil t)
-(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+(global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line-or-comment)
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
 
 ;;; helm-swoop
