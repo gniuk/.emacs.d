@@ -85,22 +85,24 @@ No more indentation adjustment after paste to the destination point."
 ;; overload highlight-symbol M-n and M-p, to quickly navigate pairs
 ; pairs: (),[],{},<>
 (defun gniuk/goto-pair-forward ()
-  "goto pair forward"
+  "Goto pair forward."
   (interactive)
   (if (looking-at "(\\|\\[\\|{\\|<")
       (forward-sexp)
-    (highlight-symbol-next)))
+    ;(highlight-symbol-next)))
+    (symbol-overlay-jump-next)))
 (global-set-key (kbd "M-n") 'gniuk/goto-pair-forward)
 
 (defun gniuk/goto-pair-backward ()
-  "goto pair backward"
+  "Goto pair backward."
   (interactive)
   (backward-char)
   (if (looking-at ")\\|\\]\\|}\\|>")
       (progn (forward-char)
              (backward-sexp))
     (progn (forward-char)
-           (highlight-symbol-prev))))
+           ;(highlight-symbol-prev))))
+           (symbol-overlay-jump-prev))))
 (global-set-key (kbd "M-p") 'gniuk/goto-pair-backward)
 
 ;; make C-w a bit like when it is in bash command line

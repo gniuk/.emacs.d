@@ -209,25 +209,25 @@
 ;(add-hook 'company-mode-hook 'rainbow-identifiers-mode)
 
 ;;; auto-highlight-symbol
-(require 'auto-highlight-symbol)
-;; Can not wrap ahs-forward or ahs-backward, don't know why, more elisp knowledge needed.
-;; May be try it again some days later. So now still use highlight-symbol to navigate.
-;; But highlight-symbol can navigate symbol in string, which ahs not able to.
-;; So use ahs to highlight and edit(with range control) symbol, hs to navigate.
-;; (spacemacs wraps the ahs functions successfully)
-(ahs-set-idle-interval 1.2)
-(setq ahs-default-range 'ahs-range-display)
-(setq ahs-case-fold-search nil)
-(define-key auto-highlight-symbol-mode-map (kbd "C-c s s") 'ahs-change-range)
-(global-auto-highlight-symbol-mode t)
-; golang was invented in 2009, and this package is write in 2010 :), no go-mode in ahs-modes !
-;(add-hook 'go-mode-hook 'auto-highlight-symbol-mode)
-(pushnew 'go-mode ahs-modes)
-; other modes
-(pushnew 'org-mode ahs-modes)
-(pushnew 'cmake-mode ahs-modes)
-(pushnew 'asm-mode ahs-modes)
-(pushnew 'nasm-mode ahs-modes)
+;; (require 'auto-highlight-symbol)
+;; ;; Can not wrap ahs-forward or ahs-backward, don't know why, more elisp knowledge needed.
+;; ;; May be try it again some days later. So now still use highlight-symbol to navigate.
+;; ;; But highlight-symbol can navigate symbol in string, which ahs not able to.
+;; ;; So use ahs to highlight and edit(with range control) symbol, hs to navigate.
+;; ;; (spacemacs wraps the ahs functions successfully)
+;; (ahs-set-idle-interval 1.2)
+;; (setq ahs-default-range 'ahs-range-display)
+;; (setq ahs-case-fold-search nil)
+;; (define-key auto-highlight-symbol-mode-map (kbd "C-c s s") 'ahs-change-range)
+;; (global-auto-highlight-symbol-mode t)
+;; ; golang was invented in 2009, and this package is write in 2010 :), no go-mode in ahs-modes !
+;; ;(add-hook 'go-mode-hook 'auto-highlight-symbol-mode)
+;; (pushnew 'go-mode ahs-modes)
+;; ; other modes
+;; (pushnew 'org-mode ahs-modes)
+;; (pushnew 'cmake-mode ahs-modes)
+;; (pushnew 'asm-mode ahs-modes)
+;; (pushnew 'nasm-mode ahs-modes)
 
 ;;; helm-gtags
 (add-hook 'c-mode-hook 'helm-gtags-mode)
@@ -730,9 +730,9 @@
 (setq ace-isearch-jump-delay 0.8)
 
 ;;; highlight-symbol, replace smart-scan using highlight-symbol
-(require 'highlight-symbol)
-(global-set-key (kbd "M-n") 'highlight-symbol-next)
-(global-set-key (kbd "M-p") 'highlight-symbol-prev)
+;; (require 'highlight-symbol)
+;; (global-set-key (kbd "M-n") 'highlight-symbol-next)
+;; (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 ;;; highlight-indent-guides, replace indent-guide.
 (require 'highlight-indent-guides)
@@ -933,6 +933,34 @@
 
 ;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
+
+;;; symbol-overlay
+(require 'symbol-overlay)
+(add-hook 'after-init-hook 'symbol-overlay-mode)
+(add-hook 'prog-mode-hook 'symbol-overlay-mode)
+;; (global-set-key (kbd "M-n") 'symbol-overlay-jump-next)
+;; (global-set-key (kbd "M-p") 'symbol-overlay-jump-prev)
+(global-set-key (kbd "C-c s i") 'symbol-overlay-put)
+(global-set-key (kbd "C-c i") 'symbol-overlay-put) ; frequent key stroke
+(global-set-key (kbd "C-c s r") 'symbol-overlay-remove-all)
+(global-set-key (kbd "C-c s t") 'symbol-overlay-toggle-in-scope)
+(global-set-key (kbd "C-c s m") 'symbol-overlay-mode)
+(let ((map (make-sparse-keymap)))
+    (define-key map (kbd "i") 'symbol-overlay-put)
+    (define-key map (kbd "C-h h") 'symbol-overlay-map-help)
+    (define-key map (kbd "p") 'symbol-overlay-jump-prev)
+    (define-key map (kbd "n") 'symbol-overlay-jump-next)
+    (define-key map (kbd "<") 'symbol-overlay-jump-first)
+    (define-key map (kbd ">") 'symbol-overlay-jump-last)
+    (define-key map (kbd "M-w") 'symbol-overlay-save-symbol)
+    (define-key map (kbd "t") 'symbol-overlay-toggle-in-scope)
+    ;(define-key map (kbd "e") 'symbol-overlay-echo-mark)
+    ;(define-key map (kbd "d") 'symbol-overlay-jump-to-definition)
+    ;(define-key map (kbd "s") 'symbol-overlay-isearch-literally)
+    ;(define-key map (kbd "q") 'symbol-overlay-query-replace)
+    (define-key map (kbd "r") 'symbol-overlay-rename)
+    (define-key map (kbd "a") 'symbol-overlay-remove-all)
+    (setq symbol-overlay-map map))
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next

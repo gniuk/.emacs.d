@@ -49,7 +49,7 @@ There are two things you can do about this warning:
     company-tern
     rainbow-delimiters
     rainbow-identifiers
-    auto-highlight-symbol
+    ;auto-highlight-symbol
     ;smartscan ; symbol_with_underscore not recognized. using highlight-symbol to navigate
     ;ace-jump-mode
     ;fill-column-indicator
@@ -107,7 +107,7 @@ There are two things you can do about this warning:
     ;diminish
     ;workgroups2
     ace-isearch
-    highlight-symbol
+    ;highlight-symbol
     highlight-indent-guides
     company-shell
     pcmpl-args
@@ -133,6 +133,7 @@ There are two things you can do about this warning:
     company-statistics
     x86-lookup
     org-bullets
+    symbol-overlay
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
