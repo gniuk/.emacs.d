@@ -964,6 +964,16 @@
     (define-key map (kbd "r") 'symbol-overlay-rename)
     (define-key map (kbd "a") 'symbol-overlay-remove-all)
     (setq symbol-overlay-map map))
+; http://ergoemacs.org/emacs/elisp_define_face.html
+; http://jonasjacek.github.io/colors/
+(face-spec-set
+ 'symbol-overlay-default-face
+ '((t :background "wheat" :foreground "black" :weight bold :underline t))
+   'face-defface-spec)
+(face-spec-set
+ 'symbol-overlay-face-4
+ '((t :background "blue violet" :foreground "black"))
+ 'face-defface-spec)
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
