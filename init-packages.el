@@ -667,31 +667,32 @@
 ; 第三个参数，自定义的输出美化函数
 ; 第四个参数，是否开启该词典
 
-;;; god-mode
-;;; My left hand holding a cup of water, my right can navigate without my left hand.
-;;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
-;;; with my flavor or the emacs environment, omit it.
-;;; Now I'm happy.
-;;; Most important, the navigation keys is my emacs key bindings without the
-;;; modify key while the original key bindings are still useful there.
-;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
-(require 'god-mode)
-(define-key god-local-mode-map (kbd "i") 'god-local-mode)
-;(global-set-key (kbd "<escape>") 'god-local-mode)
-;(global-set-key (kbd "C-c g") 'god-local-mode)
-; set "M-g g" to god-mode, now only "M-g M-g" binding to goto-line
-(global-set-key (kbd "M-g g") 'god-local-mode)
-; oh, somelike vim. OK, I now use both emacs and vim.
-; use xmodmap to map escape key to caps_lock.
-;(define-key god-local-mode-map (kbd ".") 'repeat)
-(define-key god-local-mode-map (kbd "z") 'repeat) ; bind z to repeat, . is for C-. in ace-pinyin-jump
-(defun my-update-cursor ()
-  (setq cursor-type (if (or god-local-mode buffer-read-only)
-                        'box
-                      'bar)))
+;; ;;; god-mode
+;; ;;; My left hand holding a cup of water, my right can navigate without my left hand.
+;; ;;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
+;; ;;; with my flavor or the emacs environment, omit it.
+;; ;;; Now I'm happy.
+;; ;;; Most important, the navigation keys is my emacs key bindings without the
+;; ;;; modify key while the original key bindings are still useful there.
+;; ;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
+;; (require 'god-mode)
+;; (define-key god-local-mode-map (kbd "i") 'god-local-mode)
+;; ;(global-set-key (kbd "<escape>") 'god-local-mode)
+;; ;(global-set-key (kbd "C-c g") 'god-local-mode)
+;; ; set "M-g g" to god-mode, now only "M-g M-g" binding to goto-line
+;; (global-set-key (kbd "M-g g") 'god-local-mode)
+;; ; oh, somelike vim. OK, I now use both emacs and vim.
+;; ; use xmodmap to map escape key to caps_lock.
+;; ;(define-key god-local-mode-map (kbd ".") 'repeat)
+;; (define-key god-local-mode-map (kbd "z") 'repeat) ; bind z to repeat, . is for C-. in ace-pinyin-jump
+;; (defun my-update-cursor ()
+;;   (setq cursor-type (if (or god-local-mode buffer-read-only)
+;;                         'box
+;;                       'bar)))
 
-(add-hook 'god-mode-enabled-hook 'my-update-cursor)
-(add-hook 'god-mode-disabled-hook 'my-update-cursor)
+;; (add-hook 'god-mode-enabled-hook 'my-update-cursor)
+;; (add-hook 'god-mode-disabled-hook 'my-update-cursor)
+
 (add-to-list 'auto-mode-alist '("\\.asm$" . nasm-mode))
 
 ;;; custom Emacs key set

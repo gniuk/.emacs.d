@@ -102,7 +102,7 @@ There are two things you can do about this warning:
     color-identifiers-mode
     chinese-yasdcv
     helm-ag
-    god-mode
+    ;god-mode
     which-key
     ;diminish
     ;workgroups2
