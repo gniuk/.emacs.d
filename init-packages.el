@@ -842,6 +842,8 @@
 
 ;;; evil
 (evil-mode 1)
+(setq evil-move-beyond-eol t)
+(setq evil-move-cursor-back nil)
 
 ;;; vterm
 (require 'vterm)
