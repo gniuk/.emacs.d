@@ -966,13 +966,15 @@
     (setq symbol-overlay-map map))
 ; http://ergoemacs.org/emacs/elisp_define_face.html
 ; http://jonasjacek.github.io/colors/
+; https://pdos.csail.mit.edu/~jinyang/rgb.html
 (face-spec-set
  'symbol-overlay-default-face
- '((t :background "wheat" :foreground "black" :weight bold :underline t))
+ '((t :background "LightGoldenrod" :foreground "black" :weight bold :underline t))
    'face-defface-spec)
 (face-spec-set
  'symbol-overlay-face-4
- '((t :background "blue violet" :foreground "black"))
+ ;'((t :background "blue violet" :foreground "black"))
+ '((t :background "dark orchid" :foreground "black"))
  'face-defface-spec)
 
 ;;; override keybinds
