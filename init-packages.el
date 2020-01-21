@@ -52,6 +52,23 @@
     (company-complete)))
 (global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
 
+(custom-set-faces
+ '(company-preview
+   ((t (:foreground "darkgray" :underline t))))
+ '(company-preview-common
+   ((t (:inherit company-preview))))
+ '(company-tooltip
+   ((t (:background "burlywood3" :foreground "black"))))
+ '(company-tooltip-selection
+   ((t (:background "lavender" :foreground "dodger blue"))))
+ '(company-tooltip-common
+   ((((type x)) (:inherit company-tooltip :weight bold))
+    (t (:inherit company-tooltip))))
+ '(company-tooltip-common-selection
+   ((((type x)) (:inherit company-tooltip-selection :weight bold))
+    (t (:inherit company-tooltip-selection)))))
+
+
 ;;; yasnippet
 (with-eval-after-load 'yasnippet
   '(progn
