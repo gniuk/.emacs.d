@@ -52,21 +52,26 @@
     (company-complete)))
 (global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
 
+
+; https://www.emacswiki.org/emacs/CompanyMode
+; https://github.com/SXGNH/emacs/blob/e0ad40c09dbe8ac6f59089f0010febdf9774d7a4/theme/steelblue-theme.el
 (custom-set-faces
- '(company-preview
-   ((t (:foreground "darkgray" :underline t))))
- '(company-preview-common
-   ((t (:inherit company-preview))))
  '(company-tooltip
-   ((t (:background "burlywood3" :foreground "black"))))
+   ((t (:background "wheat2" :foreground "gray28"))))
  '(company-tooltip-selection
-   ((t (:background "lavender" :foreground "dodger blue"))))
+   ((t (:background "SteelBlue1" :foreground "blue2"))))
+ '(company-tooltip-annotation
+   ((t (:foreground "red2"))))
+ '(company-tooltip-annotation-selection
+   ((t (:foreground "red2"))))
  '(company-tooltip-common
-   ((((type x)) (:inherit company-tooltip :weight bold))
-    (t (:inherit company-tooltip))))
+   ((t (:background "tan1" :foreground "black"))))
  '(company-tooltip-common-selection
-   ((((type x)) (:inherit company-tooltip-selection :weight bold))
-    (t (:inherit company-tooltip-selection)))))
+   ((t (:background "SteelBlue1" :foreground "blue2"))))
+  '(company-scrollbar-bg
+   ((t (:background "gray15" :foreground "red"))))
+ '(company-scrollbar-fg
+   ((t (:background "red" :foreground "gray15")))))
 
 
 ;;; yasnippet
