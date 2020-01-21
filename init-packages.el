@@ -9,7 +9,7 @@
 (load "~/.emacs.d/packages.el")
 
 ;;; company
-(require 'company)
+;(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 (with-eval-after-load 'company
@@ -36,7 +36,7 @@
   (define-key company-search-map (kbd "M-p") nil)
   (define-key company-search-map (kbd "C-n") #'company-select-next)
   (define-key company-search-map (kbd "C-p") #'company-select-previous)
-  (require 'company-statistics)
+  ;(require 'company-statistics)
   (add-hook 'after-init-hook 'company-statistics-mode))
 
 ;(global-set-key (kbd "TAB") 'company-complete)
@@ -53,13 +53,22 @@
 (global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
 
 ;;; yasnippet
-(require 'yasnippet)
-(require 'helm-c-yasnippet)
-(setq helm-yas-space-match-any-greedy t)
+(with-eval-after-load 'yasnippet
+  '(progn
+     (setq helm-yas-space-match-any-greedy t)
+     (add-to-list 'yas-snippet-dirs
+                  "~/.emacs.d/mysnippets")))
 (global-set-key (kbd "C-c y") 'helm-yas-complete)
-(add-to-list 'yas-snippet-dirs
-             "~/.emacs.d/mysnippets")
 (yas-global-mode 1)
+
+;;; yasnippet
+;; (require 'yasnippet)
+;; (require 'helm-c-yasnippet)
+;; (setq helm-yas-space-match-any-greedy t)
+;; (global-set-key (kbd "C-c y") 'helm-yas-complete)
+;; (add-to-list 'yas-snippet-dirs
+;;              "~/.emacs.d/mysnippets")
+;; (yas-global-mode 1)
 ;; (with-eval-after-load 'yasnippet
 ;;   (add-to-list 'company-backends 'company-yasnippet -1))
 ;(yas-load-directory "~/.emacs.d/snippets")
@@ -70,9 +79,11 @@
 
 
 ;;; autopair
-(require 'autopair)
+;(require 'autopair)
 (autopair-global-mode t)
-(setq autopair-autowrap t)
+(with-eval-after-load 'autopair
+  '(setq autopair-autowrap t))
+
 
 ;;; paredit
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
@@ -87,7 +98,7 @@
 (global-set-key (kbd "C-x o") 'switch-window)
 
 ;;; expand-region
-(require 'expand-region)
+;(require 'expand-region)
 ;(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
 ;(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
 ;(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
@@ -103,39 +114,65 @@
 ;(global-hl-line-mode t)
 
 ;;; helm
-(require 'helm-config)
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
 (global-set-key (kbd "M-i") 'helm-imenu)
 (global-set-key (kbd "M-x") 'helm-M-x)
-    ;-------2015-5-18
-    ;use Ctrl-J to goto next dir in helm Ctrl-X Ctrl-F, not Enter
-    ;Ctrl-x Ctrl-F Ctrl-? to see help
-    ;(global-set-key (kbd "M-x") 'helm-M-x); Great info!
-    (global-set-key (kbd "C-x C-f") 'helm-find-files)
-    ;C-x C-f C-s to show files greping lines match regexp
-    (global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(setq helm-M-x-fuzzy-match t
+(with-eval-after-load 'helm
+  '(setq helm-M-x-fuzzy-match t
       helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match t
       helm-semantic-fuzzy-match t
       helm-imenu-fuzzy-match t
       helm-locate-fuzzy-match t
       helm-apropos-fuzzy-match t
-      helm-lisp-fuzzy-completion t)
-    ;-------
-
-;http://tuhdo.github.io/helm-intro.html
-(setq helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
+      helm-lisp-fuzzy-completion t
+      ; http://tuhdo.github.io/helm-intro.html
+      helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
       ;helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      helm-ff-file-name-history-use-recentf t
       ;helm-echo-input-in-header-line t
-      )
-
+      helm-ff-file-name-history-use-recentf t))
 (helm-mode 1)
+
+;; ;;; helm
+;; (require 'helm-config)
+;; (helm-adaptive-mode 1)
+;; (helm-autoresize-mode 1)
+;; (global-set-key (kbd "M-i") 'helm-imenu)
+;; (global-set-key (kbd "M-x") 'helm-M-x)
+;;     ;-------2015-5-18
+;;     ;use Ctrl-J to goto next dir in helm Ctrl-X Ctrl-F, not Enter
+;;     ;Ctrl-x Ctrl-F Ctrl-? to see help
+;;     ;(global-set-key (kbd "M-x") 'helm-M-x); Great info!
+;;     (global-set-key (kbd "C-x C-f") 'helm-find-files)
+;;     ;C-x C-f C-s to show files greping lines match regexp
+;;     (global-set-key (kbd "C-x b") 'helm-mini)
+;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;; (setq helm-M-x-fuzzy-match t
+;;       helm-buffers-fuzzy-matching t
+;;       helm-recentf-fuzzy-match t
+;;       helm-semantic-fuzzy-match t
+;;       helm-imenu-fuzzy-match t
+;;       helm-locate-fuzzy-match t
+;;       helm-apropos-fuzzy-match t
+;;       helm-lisp-fuzzy-completion t)
+;;     ;-------
+
+;; ;http://tuhdo.github.io/helm-intro.html
+;; (setq helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
+;;       ;helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+;;       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+;;       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+;;       helm-ff-file-name-history-use-recentf t
+;;       ;helm-echo-input-in-header-line t
+;;       )
+
+;; (helm-mode 1)
 
 ;  C-M-f     Move forward over a balanced expression
 ;  C-M-b     Move backward over a balanced expression
@@ -242,7 +279,7 @@
 ;;  '(helm-gtags-ignore-case t)
 ;;  '(helm-gtags-auto-update t))
 
-(eval-after-load "helm-gtags"
+(with-eval-after-load "helm-gtags"
       '(progn
          (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
          (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
@@ -336,7 +373,7 @@
 ;;   '(add-to-list
 ;;     'company-backends '(company-irony-c-headers company-irony)))
 
-(require 'company-irony-c-headers)
+;(require 'company-irony-c-headers)
 ; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
 ; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
 ; Use company-diag to see all the backends and the backend currently used.
@@ -389,7 +426,7 @@
 ;;     'company-backends 'company-rtags))
 ;; ;(setq rtags-autostart-diagnostics t)
 (rtags-enable-standard-keybindings)
-(require 'helm-rtags)
+;(require 'helm-rtags)
 (setq rtags-use-helm t)
 (setq rtags-display-result-backend 'helm)
 
@@ -426,7 +463,7 @@
 ;; (color-theme-sanityinc-solarized--define-theme light)
 
 ;;; cmake-mode
-(require 'cmake-mode)
+;(require 'cmake-mode)
 
 ;;; guide-key ; replaced by which-key now
 ;; (require 'guide-key)
@@ -438,16 +475,16 @@
 ;(nyan-mode 1)
 
 ;;; multiple-cursors
-(require 'multiple-cursors)
+;(require 'multiple-cursors)
 (global-set-key (kbd "C-c m a") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-M-=") 'mc/mark-next-like-this)
 
 ;;; ace-jump-buffer
-(require 'ace-jump-buffer)
+;(require 'ace-jump-buffer)
 (global-set-key (kbd "C-x SPC") 'ace-jump-buffer)
 
 ;;; quickrun
-(require 'quickrun)
+;(require 'quickrun)
 (global-set-key (kbd "<f5>") 'quickrun)
 ; or use M-|, shell-command-on-region to execute on region
 
@@ -457,12 +494,12 @@
 (setq linum-highlight-in-all-buffersp t)
 
 ;;; smooth-scrolling
-(require 'smooth-scrolling)
+;(require 'smooth-scrolling)
 (setq smooth-scroll-margin 3)
 (smooth-scrolling-mode)
 
 ;;; readline-complete [awesome!]
-(require 'readline-complete)
+;(require 'readline-complete)
 (setq explicit-shell-file-name "bash")
 (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
 (setq comint-process-echoes t)
@@ -476,7 +513,7 @@
 
 
 ;;; neotree
-(require 'neotree)
+;(require 'neotree)
 (global-set-key (kbd "<f7>") 'neotree-toggle)
 
 ;;; indent-guide. replaced by highlight-indent-guides
@@ -493,7 +530,7 @@
 (global-anzu-mode 1)
 
 ;;; buffer-move
-(require 'buffer-move)
+;(require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
@@ -506,7 +543,7 @@
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
 
 ;;; helm-swoop
-(require 'helm)
+;(require 'helm)
 (require 'helm-swoop)
 ;; Change the keybinds to whatever you like :)
 (global-set-key (kbd "M-i") 'helm-swoop)
@@ -516,38 +553,77 @@
 
 ;; When doing isearch, hand the word over to helm-swoop
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-;; From helm-swoop to helm-multi-swoop-all
-(define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-;; When doing evil-search, hand the word over to helm-swoop
-;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
-;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
-;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+(with-eval-after-load 'helm-swoop
+  '(progn
+     ;; From helm-swoop to helm-multi-swoop-all
+     (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+     ;; When doing evil-search, hand the word over to helm-swoop
+     ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
-;; Move up and down like isearch
-(define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-(define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-(define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-(define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+     ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+     ;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
 
-;; Save buffer when helm-multi-swoop-edit complete
-(setq helm-multi-swoop-edit-save t)
+     ;; Move up and down like isearch
+     (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+     (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+     (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+     (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
 
-;; If this value is t, split window inside the current window
-(setq helm-swoop-split-with-multiple-windows nil)
+     ;; Save buffer when helm-multi-swoop-edit complete
+     (setq helm-multi-swoop-edit-save t)
 
-;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-(setq helm-swoop-split-direction 'split-window-vertically)
+     ;; If this value is t, split window inside the current window
+     (setq helm-swoop-split-with-multiple-windows nil)
 
-;; If nil, you can slightly boost invoke speed in exchange for text color
-(setq helm-swoop-speed-or-color nil)
+     ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+     (setq helm-swoop-split-direction 'split-window-vertically)
 
-;; ;; Go to the opposite side of line from the end or beginning of line
-(setq helm-swoop-move-to-line-cycle t)
+     ;; If nil, you can slightly boost invoke speed in exchange for text color
+     (setq helm-swoop-speed-or-color nil)
 
-;; Optional face for line numbers
-;; Face name is `helm-swoop-line-number-face`
-(setq helm-swoop-use-line-number-face t)
+     ;; ;; Go to the opposite side of line from the end or beginning of line
+     (setq helm-swoop-move-to-line-cycle t)
+
+     ;; Optional face for line numbers
+     ;; Face name is `helm-swoop-line-number-face`
+     (setq helm-swoop-use-line-number-face t)))
+
+
+;; ;; When doing isearch, hand the word over to helm-swoop
+;; (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+;; ;; From helm-swoop to helm-multi-swoop-all
+;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+;; ;; When doing evil-search, hand the word over to helm-swoop
+;; ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+
+;; ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+;; ;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+
+;; ;; Move up and down like isearch
+;; (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+;; (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+;; (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+;; (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+
+;; ;; Save buffer when helm-multi-swoop-edit complete
+;; (setq helm-multi-swoop-edit-save t)
+
+;; ;; If this value is t, split window inside the current window
+;; (setq helm-swoop-split-with-multiple-windows nil)
+
+;; ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+;; (setq helm-swoop-split-direction 'split-window-vertically)
+
+;; ;; If nil, you can slightly boost invoke speed in exchange for text color
+;; (setq helm-swoop-speed-or-color nil)
+
+;; ;; ;; Go to the opposite side of line from the end or beginning of line
+;; (setq helm-swoop-move-to-line-cycle t)
+
+;; ;; Optional face for line numbers
+;; ;; Face name is `helm-swoop-line-number-face`
+;; (setq helm-swoop-use-line-number-face t)
 
 ;; ;; Match/Search methods (Fuzzy matching, Migemo)
 ;; ;; If you do not preferr fuzzy, remove it from the list below
@@ -567,7 +643,7 @@
 (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 
 ;;; ace-pinyin
-(require 'ace-pinyin)
+;(require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
 (turn-on-ace-pinyin-mode)
@@ -582,11 +658,11 @@
 ;(load "preview-latex.el" nil t t)
 
 ;;; company-auctex
-(require 'company-auctex)
+;(require 'company-auctex)
 (company-auctex-init)
 
 ;;; shell-pop
-(require 'shell-pop)
+;(require 'shell-pop)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -815,7 +891,7 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 ;;; set go-playground basedir, default is ~/go/src/playground
-(require 'go-playground)
+;(require 'go-playground)
 (custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
 
 ;;; ----- lsp-mode, but the gopls language server is slow in a little big project. NOT NOW!
@@ -850,10 +926,10 @@
  '(livedown-open t)        ; automatically open the browser window
  '(livedown-port 1337)     ; port for livedown server
  '(livedown-browser nil))  ; browser to use
-(require 'livedown)
+;(require 'livedown)
 
 ;;; doom-modeline
-(require 'doom-modeline)
+;(require 'doom-modeline)
 (doom-modeline-mode 1)
 
 ;;; evil
@@ -862,7 +938,7 @@
 (setq evil-move-cursor-back nil)
 
 ;;; vterm
-(require 'vterm)
+;(require 'vterm)
 (global-set-key (kbd "<f6>") 'vterm)
 (add-hook 'vterm-mode-hook
           '(lambda ()
@@ -954,7 +1030,7 @@
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
 ;;; symbol-overlay
-(require 'symbol-overlay)
+;(require 'symbol-overlay)
 (add-hook 'after-init-hook 'symbol-overlay-mode)
 (add-hook 'prog-mode-hook 'symbol-overlay-mode)
 ;; (global-set-key (kbd "M-n") 'symbol-overlay-jump-next)
@@ -1011,8 +1087,11 @@
 (define-key c-mode-map (kbd "C-c C-a") nil)
 (define-key c++-mode-map (kbd "C-c C-a") nil)
 ; override go-import-add in go-mode, map "C-c C-a" to custom function
-(define-key go-mode-map (kbd "C-c C-a") nil)
-(define-key go-mode-map (kbd "C-c C-i") 'go-import-add) ; ie. C-c TAB
+(add-hook 'go-mode-hook (lambda ()
+                          (define-key go-mode-map (kbd "C-c C-a") nil)
+                          (define-key go-mode-map (kbd "C-c C-i") 'go-import-add)))
+;; (define-key go-mode-map (kbd "C-c C-a") nil)
+;; (define-key go-mode-map (kbd "C-c C-i") 'go-import-add) ; ie. C-c TAB
 
 ; override evil key bindings
 ; override C-e evil-scroll-line-down, make it original mwim-end-of-code-or-line
