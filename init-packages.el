@@ -60,8 +60,8 @@
 (add-to-list 'yas-snippet-dirs
              "~/.emacs.d/mysnippets")
 (yas-global-mode 1)
-(with-eval-after-load 'yasnippet
-  (add-to-list 'company-backends 'company-yasnippet -1))
+;; (with-eval-after-load 'yasnippet
+;;   (add-to-list 'company-backends 'company-yasnippet -1))
 ;(yas-load-directory "~/.emacs.d/snippets")
 ; here you may need to change the version number after upgrading yasnippet.
 ;(yas-load-directory "~/.emacs.d/elpa/yasnippet-20151126.518/snippets")
@@ -160,15 +160,17 @@
 ;(require 'python-mode)
 ;(add-to-list 'auto-mode-alist '("\.py\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-(eval-after-load "company"
- '(progn
-    (add-to-list 'company-backends 'company-anaconda)
-    ))
+;; (eval-after-load "company"
+;;  '(progn
+;;     (add-to-list 'company-backends 'company-anaconda)
+;;     ))
 (add-hook 'python-mode-hook 'anaconda-mode)
-(eval-after-load "anaconda-mode"
+(with-eval-after-load "anaconda-mode"
   '(progn
      ;(define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
      (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments)))
+(add-hook 'python-mode-hook (lambda ()
+                              (set (make-local-variable 'company-backends) '(company-anaconda company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
 (setq python-indent-offset 4)
 
 ;;; C
@@ -188,12 +190,13 @@
 ;; sudo npm install -g tern
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(eval-after-load "company"
- '(progn
-    (add-to-list 'company-backends 'company-tern)))
+;; (eval-after-load "company"
+;;  '(progn
+;;     (add-to-list 'company-backends 'company-tern)))
 ;(add-hook 'js2-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook
           (lambda ()
+            (set (make-local-variable 'company-backends) '(company-tern company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
             (tern-mode t)))
 
 ;; (add-hook 'javascript-mode 'js2-mode)
@@ -311,8 +314,9 @@
 
 ;;; irony-mode
 ;; M-x irony-install-server to install server
-(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-common-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'objc-mode-hook 'irony-mode)
 
 (defun my-irony-mode-hook ()
@@ -323,8 +327,8 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-(eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+;; (eval-after-load 'company
+;;   '(add-to-list 'company-backends 'company-irony))
 
 ;; (require 'company-irony-c-headers)
 ;;    ;; Load with `irony-mode` as a grouped backend
@@ -336,15 +340,19 @@
 ; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
 ; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
 ; Use company-diag to see all the backends and the backend currently used.
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends 'company-irony-c-headers))
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-irony-c-headers))
 ; redundance backends
-(eval-after-load 'company
-  '(progn
-     (setq company-backends (delete 'company-clang company-backends))
-     (setq company-backends (delete 'company-capf company-backends))))
+;; (eval-after-load 'company
+;;   '(progn
+;;      (setq company-backends (delete 'company-clang company-backends))
+;;      (setq company-backends (delete 'company-capf company-backends))))
 
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(company-irony-c-headers company-irony company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
@@ -461,7 +469,7 @@
 ;; (eval-after-load 'company
 ;;   '(add-to-list
 ;;     'company-backends 'company-readline))
-(push 'company-readline company-backends)
+;; (push 'company-readline company-backends)
 (add-hook 'rlc-no-readline-hook (lambda () (company-mode -1)))
 ; noting, color in shell(powered by $TERM=xterm,xterm-256color,screen. etc)
 ; conflicts to readline-complete in shell. Finally find it!
@@ -645,9 +653,9 @@
 (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
 
 ;;; cc-mode
-(add-hook 'c-mode-hook
-          (lambda ()
-            (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
+;; (add-hook 'c-mode-hook
+;;           (lambda ()
+;;             (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
 
 ;;; chinese-yasdcv
 ; 1. commandline tool "sdcv"(stardict command version) needed
@@ -747,22 +755,30 @@
 (set-face-foreground 'highlight-indent-guides-character-face "grey23")
 
 ;;; company-shell. $PATH bin, fish-shell-builtin, env
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends '(company-shell company-shell-env company-fish-shell)))
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends '(company-shell company-shell-env company-fish-shell)))
+
+; company-files not working in shell-mode, can't figure out yet
+(add-hook 'shell-mode-hook '(lambda ()
+                              (set (make-local-variable 'company-backends) '((company-shell company-shell-env company-fish-shell company-files) company-readline company-dabbrev))
+                              (evil-emacs-state)
+                              (linum-mode -1)))
 
 ;;; pcmpl-args
 (require 'pcmpl-args)
 
 ;;; company-go
-(eval-after-load "company"
- '(progn
-    (add-to-list 'company-backends 'company-go)))
-;(require 'company-go)
+;; (eval-after-load "company"
+;;  '(progn
+;;     (add-to-list 'company-backends 'company-go)))
+;; ;(require 'company-go)
 
+;; (add-hook 'go-mode-hook (lambda ()
+;;                           (set (make-local-variable 'company-backends) '(company-go))
+;;                           (company-mode)))
 (add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'company-backends) '(company-go))
-                          (company-mode)))
+                              (set (make-local-variable 'company-backends) '(company-go company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
 ;; customize company popup menu (actually it is global company). More comfortable in terminal!
 ;; set TERM=xterm-256color to fix the color theme problem in terminal!!
 ;; (custom-set-faces
