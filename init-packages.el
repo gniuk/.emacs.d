@@ -1088,7 +1088,8 @@
 ; https://pdos.csail.mit.edu/~jinyang/rgb.html
 (face-spec-set
  'symbol-overlay-default-face
- '((t :background "LightGoldenrod" :foreground "black" :weight bold :underline t))
+ ;'((t :background "LightGoldenrod" :foreground "black" :weight bold :underline t))
+ '((t :background "LightGoldenrod" :foreground "black"))
    'face-defface-spec)
 (face-spec-set
  'symbol-overlay-face-4
