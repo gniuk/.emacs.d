@@ -15,8 +15,18 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; (add-to-list 'default-frame-alist
 ;;              '(font . "LiberationMono-14"))
-(add-to-list 'default-frame-alist
-             '(font . "SourceCodePro-17"))
+;; (add-to-list 'default-frame-alist
+;;              '(font . "SourceCodePro-17"))
+(if (not (eq window-system nil))
+    (progn
+      (add-to-list 'default-frame-alist
+                   '(font . "SourceCodePro-17"))
+      ; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
+      ; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
+      ; 再来试试，可以了，这下好了，非常棒。
+      (set-fontset-font "fontset-default" 'han "NotoSansMonoCJKSC-17") ; for jiantihanzi, 简体中文
+      (set-fontset-font "fontset-default" 'cjk-misc "NotoSansMonoCJKSC-17") ; for punctuations, 标点符号
+      ))
 ;(set-frame-font "Monospace-14")
 ;(set-frame-font "Inconsolata-g-14")
 ;(set-frame-font "SourceCodePro-14")
