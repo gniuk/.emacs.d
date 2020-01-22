@@ -979,6 +979,10 @@
 ;;; disaster
 (define-key c-mode-base-map (kbd "C-c c d") 'disaster)
 
+;;; spacemacs
+(setq spacemacs-theme-comment-bg nil)
+(setq spacemacs-theme-comment-italic t)
+
 ;;; pyim
 (require 'pyim)
 (require 'pyim-basedict)
