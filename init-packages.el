@@ -426,6 +426,7 @@
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-x p s") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag not present
+(global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
 (which-function-mode t)
 
 ;;; rtags
