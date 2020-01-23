@@ -1123,6 +1123,22 @@
  '((t :background "dark orchid" :foreground "black"))
  'face-defface-spec)
 
+;;; vc-msg
+(eval-after-load 'vc-msg-git
+  '(progn
+     ;; show code of commit
+     (setq vc-msg-git-show-commit-function 'magit-show-commit)
+     ;; open file of certain revision
+     (push '("m"
+             "[m]agit-find-file"
+             (lambda ()
+               (let* ((info vc-msg-previous-commit-info)
+                      (git-dir (locate-dominating-file default-directory ".git")))
+                 (magit-find-file (plist-get info :id )
+                                  (concat git-dir (plist-get info :filename))))))
+           vc-msg-git-extra)))
+(global-set-key (kbd "C-x g s") 'vc-msg-show)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.

@@ -134,6 +134,7 @@ There are two things you can do about this warning:
     x86-lookup
     org-bullets
     symbol-overlay
+    vc-msg
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
