@@ -575,7 +575,8 @@
 (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
 (custom-set-faces
  '(helm-swoop-target-line-face
-   ((t (:background "wheat3" :foreground "firebrick3"))))
+   ;; ((t (:background "wheat3" :foreground "firebrick3"))))
+   ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
  )
 
 ;; When doing isearch, hand the word over to helm-swoop
@@ -957,6 +958,26 @@
 
 ;;; doom-modeline
 ;(require 'doom-modeline)
+(setq doom-modeline-bar-width 0)        ; left side little bar width
+
+; https://www.gonsie.com/blorg/modeline.html
+(if (eq window-system nil)
+    (progn
+      (set-face-attribute 'mode-line nil
+                          :background "#073642" ; solarized base02
+                          ;:foreground "white"
+                          :box '(:line-width 8 :color "#073642")
+                          :overline nil
+                          :underline nil)
+      (set-face-attribute 'mode-line-inactive nil
+                          :background "#505560"
+                          ;:foreground "#fdf6e3"
+                          :foreground "gray8"
+                          :box '(:line-width 8 :color "#505560")
+                          :overline nil
+                          :underline nil)
+      ))
+
 (doom-modeline-mode 1)
 
 ;;; evil
