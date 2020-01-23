@@ -964,16 +964,17 @@
 (if (eq window-system nil)
     (progn
       (set-face-attribute 'mode-line nil
-                          :background "#073642" ; solarized base02
-                          ;:foreground "white"
-                          :box '(:line-width 8 :color "#073642")
-                          :overline nil
-                          :underline nil)
+                          :background "black"
+                          ;; :foreground "white"
+                          ;; :box '(:line-width 8 :color "#505560")
+                          ;; :overline nil
+                          ;; :underline nil
+                          )
       (set-face-attribute 'mode-line-inactive nil
-                          :background "#505560"
-                          ;:foreground "#fdf6e3"
-                          :foreground "gray8"
-                          :box '(:line-width 8 :color "#505560")
+                          :background "gray9"
+                          ;; :foreground "#fdf6e3"
+                          :foreground "#a38650"
+                          :box '(:line-width 8 :color "gray9")
                           :overline nil
                           :underline nil)
       ))
