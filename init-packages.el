@@ -577,6 +577,10 @@
  '(helm-swoop-target-line-face
    ;; ((t (:background "wheat3" :foreground "firebrick3"))))
    ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
+ '(helm-swoop-target-line-block-face
+   ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+ '(helm-swoop-target-word-face
+   ((t (:background "dark orchid" :foreground "#fdf6e3"))))
  )
 
 ;; When doing isearch, hand the word over to helm-swoop
