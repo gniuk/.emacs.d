@@ -1115,7 +1115,8 @@
 (face-spec-set
  'symbol-overlay-default-face
  ;'((t :background "LightGoldenrod" :foreground "black" :weight bold :underline t))
- '((t :background "LightGoldenrod" :foreground "black"))
+ ;'((t :background "LightGoldenrod" :foreground "black"))
+ '((t :background "gray28"))
    'face-defface-spec)
 (face-spec-set
  'symbol-overlay-face-4
