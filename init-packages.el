@@ -1009,6 +1009,11 @@
 (setq spacemacs-theme-comment-bg nil)
 (setq spacemacs-theme-comment-italic t)
 
+(custom-set-faces
+ '(helm-selection
+   ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+ )
+
 ;;; pyim
 (require 'pyim)
 (require 'pyim-basedict)
