@@ -1182,11 +1182,13 @@
 ; i to evil-emacs-state, C-z to evil-normal-state
 (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
 (define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
+(define-key evil-insert-state-map (kbd "C-z") 'evil-normal-state)
 ; C-p previous-line, C-n next-line
 (define-key evil-normal-state-map (kbd "C-p") 'previous-line)
 (define-key evil-normal-state-map (kbd "C-n") 'next-line)
 ; C-v not act as VISUAL MODE, but original emacs scroll-up-command, pair with M-v. Block editing with Emacs.
 (define-key evil-normal-state-map (kbd "C-v") 'scroll-up-command)
+(define-key evil-motion-state-map (kbd "C-v") 'scroll-up-command)
 ; C-f, C-b act as in emacs. Use only C-v, M-v to scroll page.
 (define-key evil-normal-state-map (kbd "C-f") 'forward-char)
 (define-key evil-normal-state-map (kbd "C-b") 'backward-char)
