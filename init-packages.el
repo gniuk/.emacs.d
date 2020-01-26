@@ -41,11 +41,13 @@
 
 ;(global-set-key (kbd "TAB") 'company-complete)
 (defun gniuk/boip ()
+  "Beginning of indentation -> bool."
   (let ((originalpos (point)))
     (save-excursion
       (back-to-indentation)
       (= originalpos (point)))))
 (defun gniuk/indent-or-complete ()
+  "Indent when at beginning otherwise try to complete."
   (interactive)
   (if (or (bolp) (gniuk/boip))
       (indent-according-to-mode)
