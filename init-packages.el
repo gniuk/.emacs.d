@@ -965,6 +965,7 @@
 ;;; doom-modeline
 ;(require 'doom-modeline)
 (setq doom-modeline-bar-width 0)        ; left side little bar width
+(display-battery-mode)
 
 ; https://www.gonsie.com/blorg/modeline.html
 (if (eq window-system nil)
