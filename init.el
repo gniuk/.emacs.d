@@ -21,6 +21,7 @@
     (progn
       (add-to-list 'default-frame-alist
                    '(font . "SourceCodePro-17"))
+      (set-frame-font "SourceCodePro-17")
       ; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
       ; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
       ; 再来试试，可以了，这下好了，非常棒。
