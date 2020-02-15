@@ -103,20 +103,22 @@
 
 
 ;;; autopair
+;; using smartparens instead
 ;(require 'autopair)
-(autopair-global-mode t)
-(with-eval-after-load 'autopair
-  '(setq autopair-autowrap t))
+;; (autopair-global-mode t)
+;; (with-eval-after-load 'autopair
+;;   '(setq autopair-autowrap t))
 
 
 ;;; paredit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+;; using smartparens instead
+;; (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+;; (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+;; (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+;; (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+;; (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+;; (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
 ;;; switch-window
 (global-set-key (kbd "C-x o") 'switch-window)
@@ -1153,6 +1155,14 @@
                                   (concat git-dir (plist-get info :filename))))))
            vc-msg-git-extra)))
 (global-set-key (kbd "C-x g s") 'vc-msg-show)
+
+;;; smartparens
+(require 'smartparens-config)
+(add-hook 'prog-mode-hook #'smartparens-mode)
+(global-set-key (kbd "C-c s r") 'sp-rewrap-sexp)
+(global-set-key (kbd "C-c s d") 'sp-unwrap-sexp)
+(global-set-key (kbd "C-c s f") 'sp-down-sexp)
+(global-set-key (kbd "C-c s b") 'sp-backward-up-sexp)
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next

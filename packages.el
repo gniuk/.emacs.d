@@ -33,8 +33,8 @@ There are two things you can do about this warning:
     company-anaconda
     yasnippet
     yasnippet-snippets
-    autopair
-    paredit
+    ;autopair ; replaced by smartparens
+    ;paredit ; replaced by smartparens
     switch-window
     expand-region
     ;hl-line
@@ -135,6 +135,7 @@ There are two things you can do about this warning:
     org-bullets
     symbol-overlay
     vc-msg
+    smartparens
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
