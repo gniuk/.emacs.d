@@ -87,7 +87,7 @@ No more indentation adjustment after paste to the destination point."
 (defun gniuk/goto-pair-forward ()
   "Goto pair forward."
   (interactive)
-  (if (looking-at "(\\|\\[\\|{\\|<")
+  (if (looking-at "(\\|\\[\\|{\\|<\\|\"")
       (forward-sexp)
     ;(highlight-symbol-next)))
     (symbol-overlay-jump-next)))
@@ -97,7 +97,7 @@ No more indentation adjustment after paste to the destination point."
   "Goto pair backward."
   (interactive)
   (backward-char)
-  (if (looking-at ")\\|\\]\\|}\\|>")
+  (if (looking-at ")\\|\\]\\|}\\|>\\|\"")
       (progn (forward-char)
              (backward-sexp))
     (progn (forward-char)
