@@ -1102,9 +1102,11 @@
 ;; (global-set-key (kbd "M-p") 'symbol-overlay-jump-prev)
 (global-set-key (kbd "C-c s i") 'symbol-overlay-put)
 (global-set-key (kbd "C-c i") 'symbol-overlay-put) ; frequent key stroke
-(global-set-key (kbd "C-c s r") 'symbol-overlay-remove-all)
+(global-set-key (kbd "C-c s a") 'symbol-overlay-remove-all)
 (global-set-key (kbd "C-c s t") 'symbol-overlay-toggle-in-scope)
 (global-set-key (kbd "C-c s m") 'symbol-overlay-mode)
+(global-set-key (kbd "C-c s p") 'symbol-overlay-switch-backward)
+(global-set-key (kbd "C-c s n") 'symbol-overlay-switch-forward)
 (let ((map (make-sparse-keymap)))
     (define-key map (kbd "i") 'symbol-overlay-put)
     (define-key map (kbd "C-h h") 'symbol-overlay-map-help)
