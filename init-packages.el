@@ -684,8 +684,8 @@
 (ace-pinyin-global-mode +1)
 (turn-on-ace-pinyin-mode)
 ;(global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
-(global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
-(global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
+;; (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
+;; (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
 (global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
 
@@ -1180,6 +1180,16 @@
 
 ;;; eyebrowse
 (eyebrowse-mode t)
+
+;;; dumb-jump
+(setq dumb-jump-force-searcher 'ag)
+(global-set-key (kbd "C-c j .") 'dumb-jump-go)
+(global-set-key (kbd "C-c j ,") 'dumb-jump-back)
+(global-set-key (kbd "C-c j s") 'dumb-jump-go-prompt)
+(global-set-key (kbd "C-c j l") 'dumb-jump-quick-look)
+(global-set-key (kbd "C-c j o") 'dumb-jump-go-other-window)
+(global-set-key (kbd "C-c j x") 'dumb-jump-go-prefer-external)
+(global-set-key (kbd "C-c j z") 'dumb-jump-go-prefer-external-other-window)
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next

@@ -139,6 +139,7 @@ There are two things you can do about this warning:
     smartparens
     git-timemachine
     eyebrowse
+    dumb-jump
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
