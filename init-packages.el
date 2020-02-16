@@ -1097,6 +1097,11 @@
 (setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
 ;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
 
+;;; org
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "C-c SPC") nil)
+  (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field))
+
 ;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
 

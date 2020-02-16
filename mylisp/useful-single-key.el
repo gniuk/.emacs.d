@@ -56,7 +56,7 @@ No more indentation adjustment after paste to the destination point."
   (back-to-indentation)
   (kill-line)
   (delete-blank-lines))
-(global-set-key (kbd "C-c C-d") 'gniuk/dd)
+;(global-set-key (kbd "C-c C-d") 'gniuk/dd)
 
 (defvar p1 nil)                         ; assignment to free variable warning
 (defvar p2 nil)
