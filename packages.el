@@ -137,6 +137,7 @@ There are two things you can do about this warning:
     symbol-overlay
     vc-msg
     smartparens
+    git-timemachine
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)

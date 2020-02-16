@@ -1168,6 +1168,11 @@
 (global-set-key (kbd "C-c s f") 'sp-down-sexp)
 (global-set-key (kbd "C-c s b") 'sp-backward-up-sexp)
 
+;;; git-timemachine
+(global-set-key (kbd "C-x g t") 'git-timemachine)
+(add-hook 'git-timemachine-mode-hook '(lambda ()
+                                        (evil-emacs-state)))
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
