@@ -1173,6 +1173,9 @@
 (add-hook 'git-timemachine-mode-hook '(lambda ()
                                         (evil-emacs-state)))
 
+;;; eyebrowse
+(eyebrowse-mode t)
+
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
