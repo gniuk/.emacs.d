@@ -121,6 +121,7 @@ There are two things you can do about this warning:
     pandoc-mode
     doom-modeline
     evil
+    evil-matchit
     ; lsp-mode
     ; company-lsp
     ; helm-lsp

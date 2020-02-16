@@ -995,6 +995,10 @@
 (setq evil-move-beyond-eol t)
 (setq evil-move-cursor-back nil)
 
+;;; evil-matchit
+(setq evilmi-shortcut "n")
+(global-evil-matchit-mode 1)
+
 ;;; vterm
 ;(require 'vterm)
 (global-set-key (kbd "<f6>") 'vterm)
