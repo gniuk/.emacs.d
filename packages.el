@@ -140,6 +140,7 @@ There are two things you can do about this warning:
     git-timemachine
     eyebrowse
     dumb-jump
+    htmlize
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
