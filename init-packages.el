@@ -425,14 +425,24 @@
 ;; irony-eldoc
 (add-hook 'irony-mode-hook #'irony-eldoc)
 
-;;; projectile
+;;; projectile and helm-projectile
 (projectile-global-mode)
-;(setq helm-ag-insert-at-point (symbol-at-point 'symbol))
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(setq projectile-enable-caching t)
 (setq helm-ag-insert-at-point 'symbol)
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
-(global-set-key (kbd "C-x p s") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
-(global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag not present
+(global-set-key (kbd "C-x p .") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
 (global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
+(global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag not present
+;; (global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
+(global-set-key (kbd "C-x p b") 'helm-projectile-recentf)
+(global-set-key (kbd "C-x p s") 'helm-projectile-switch-project)
+(global-set-key (kbd "C-x p o") 'helm-projectile-find-other-file) ; switch between files with the same name but different extensions
+(global-set-key (kbd "C-x p d") 'helm-projectile-find-dir)
+(global-set-key (kbd "C-x p i") 'projectile-invalidate-cache)
+(add-to-list 'projectile-globally-ignored-files "projectile.cache")
+(add-to-list 'projectile-globally-ignored-files "company-statistics-cache.el")
 (which-function-mode t)
 
 ;;; rtags

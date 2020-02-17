@@ -64,7 +64,7 @@ There are two things you can do about this warning:
     ;company-rtags
     helm-rtags
     flycheck-irony
-    projectile
+    ;projectile ; as a requirement of helm-projectile
     helm-projectile
     ;rtags
     color-theme-sanityinc-solarized
