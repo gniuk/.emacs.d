@@ -296,24 +296,26 @@
 ;; (pushnew 'nasm-mode ahs-modes)
 
 ;;; helm-gtags
-(add-hook 'c-mode-hook 'helm-gtags-mode)
-(add-hook 'c++-mode-hook 'helm-gtags-mode)
-(add-hook 'asm-mode-hook 'helm-gtags-mode)
+;; ;; (add-hook 'c-mode-hook 'helm-gtags-mode)
+;; ;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
+;; ;; (add-hook 'asm-mode-hook 'helm-gtags-mode)
+;; (add-hook 'prog-mode-hook 'helm-gtags-mode)
 
-;; (custom-set-variables
-;;  '(helm-gtags-path-style 'relative)
-;;  '(helm-gtags-ignore-case t)
-;;  '(helm-gtags-auto-update t))
+;; ;; (custom-set-variables
+;; ;;  '(helm-gtags-path-style 'relative)
+;; ;;  '(helm-gtags-ignore-case t)
+;; ;;  '(helm-gtags-auto-update t))
 
-(with-eval-after-load "helm-gtags"
-      '(progn
-         (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
-         (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
-         (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
-         (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
-         (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-         (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-         (define-key helm-gtags-mode-map (kbd "C-c g ,") 'helm-gtags-pop-stack)))
+;; (eval-after-load "helm-gtags"
+;;   '(progn
+;;      (define-key helm-gtags-mode-map (kbd "C-c g .") 'helm-gtags-find-tag-from-here)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g ,") 'helm-gtags-pop-stack)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g t") 'helm-gtags-find-tag)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g r") 'helm-gtags-find-rtag)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g s") 'helm-gtags-find-symbol)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g p") 'helm-gtags-parse-file)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
+;;      (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history)))
 
 ;;;smartscan
 ;; ; smart scan replace text! M-' good!

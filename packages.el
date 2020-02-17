@@ -39,7 +39,7 @@ There are two things you can do about this warning:
     expand-region
     ;hl-line
     helm
-    helm-gtags
+    ;helm-gtags ; rarely used now but maybe useful in some bare place
     js2-mode
     graphviz-dot-mode
     goto-last-change
