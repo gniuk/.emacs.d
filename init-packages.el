@@ -1125,7 +1125,7 @@
 ;; (global-set-key (kbd "M-p") 'symbol-overlay-jump-prev)
 (global-set-key (kbd "C-c s i") 'symbol-overlay-put)
 (global-set-key (kbd "C-c i") 'symbol-overlay-put) ; frequent key stroke
-(global-set-key (kbd "C-c s a") 'symbol-overlay-remove-all)
+;(global-set-key (kbd "C-c s a") 'symbol-overlay-remove-all)
 (global-set-key (kbd "C-c s t") 'symbol-overlay-toggle-in-scope)
 (global-set-key (kbd "C-c s m") 'symbol-overlay-mode)
 (global-set-key (kbd "C-c s p") 'symbol-overlay-switch-backward)
@@ -1251,6 +1251,11 @@
 ; q quit, not evil-record-macro
 (define-key evil-normal-state-map (kbd "q") nil)
 
+;; keybindings for some C-M prefix commands
+(global-set-key (kbd "C-c s a") 'beginning-of-defun)
+(global-set-key (kbd "C-c s e") 'end-of-defun)
+(global-set-key (kbd "C-c s k") 'kill-sexp)
+(global-set-key (kbd "C-c s SPC") 'mark-sexp)
 
 ;;; other config
 ; automatic delete trailing spaces when saving file
