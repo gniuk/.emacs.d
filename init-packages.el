@@ -1192,6 +1192,10 @@
 
 ;;; eyebrowse
 (eyebrowse-mode t)
+(global-set-key (kbd "C-c 1") 'eyebrowse-switch-to-window-config-1)
+(global-set-key (kbd "C-c 2") 'eyebrowse-switch-to-window-config-2)
+(global-set-key (kbd "C-c 3") 'eyebrowse-switch-to-window-config-3)
+(global-set-key (kbd "C-c 4") 'eyebrowse-switch-to-window-config-4)
 
 ;;; dumb-jump
 (setq dumb-jump-force-searcher 'ag)
