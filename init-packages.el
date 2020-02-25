@@ -1153,7 +1153,8 @@
  'symbol-overlay-default-face
  ;'((t :background "LightGoldenrod" :foreground "black" :weight bold :underline t))
  ;'((t :background "LightGoldenrod" :foreground "black"))
- '((t :background "gray28"))
+ '((t :background "LightGoldenrod4" :foreground "black")) ; distinguish mark activated state from symbol-overlay state
+ ;'((t :background "gray28"))
    'face-defface-spec)
 (face-spec-set
  'symbol-overlay-face-4
