@@ -124,7 +124,7 @@
 (global-set-key (kbd "C-x o") 'switch-window)
 
 ;;; expand-region
-;(require 'expand-region)
+(require 'expand-region)
 ;(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
 ;(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
 ;(global-set-key (kbd "C-M-h") 'er/mark-defun) ; the key captured by fcitx to type english words, but we can use it in god-mode, good. 2017-07-27
