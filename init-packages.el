@@ -142,7 +142,9 @@
 ;;; helm
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
-(global-set-key (kbd "M-i") 'helm-imenu)
+;; (global-set-key (kbd "M-i") 'helm-imenu)
+(global-set-key (kbd "C-c m i") 'helm-imenu)
+(global-set-key (kbd "C-c m m") 'helm-man-woman)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-mini)
