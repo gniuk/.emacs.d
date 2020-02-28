@@ -432,12 +432,13 @@
 (setq projectile-enable-caching t)
 (setq helm-ag-insert-at-point 'symbol)
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
-(global-set-key (kbd "C-x p .") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
+;; (global-set-key (kbd "C-x p .") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
+(global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
 (global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
-(global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag not present
+(global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag or rg(ripgrep) not present
 ;; (global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
 (global-set-key (kbd "C-x p b") 'helm-projectile-recentf)
-(global-set-key (kbd "C-x p s") 'helm-projectile-switch-project)
+(global-set-key (kbd "C-x p w") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-x p o") 'helm-projectile-find-other-file) ; switch between files with the same name but different extensions
 (global-set-key (kbd "C-x p d") 'helm-projectile-find-dir)
 (global-set-key (kbd "C-x p i") 'projectile-invalidate-cache)
@@ -1199,7 +1200,11 @@
 (global-set-key (kbd "C-c 4") 'eyebrowse-switch-to-window-config-4)
 
 ;;; dumb-jump
-(setq dumb-jump-force-searcher 'ag)
+;; (require 'dumb-jump)
+;; (setq dumb-jump-force-searcher 'rg)  ; ripgrep is faster
+;; (setq dumb-jump-prefer-searcher 'rg)
+(with-eval-after-load 'dumb-jump
+  (setq dumb-jump-force-searcher 'rg))  ; ripgrep with pcre2 feature needed, cargo build --release --features 'pcre2'
 (global-set-key (kbd "C-c j .") 'dumb-jump-go)
 (global-set-key (kbd "C-c j ,") 'dumb-jump-back)
 (global-set-key (kbd "C-c j s") 'dumb-jump-go-prompt)
