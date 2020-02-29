@@ -1049,8 +1049,11 @@
 ; 3. install liberime, make liberime
 (push "~/.emacs.d/pyim/liberime/build/" load-path)
 (require 'liberime)
-(setq rime-data-dir "/usr/share/rime-data") ; if install rime-data via package manager, or as dependency of fcitx-rime or ibus-rime
+;; (setq rime-data-dir "/usr/share/rime-data") ; if install rime-data via package manager, or as dependency of fcitx-rime or ibus-rime
 ;; (setq rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime")) ; if install schema files via plum
+(if (file-exists-p "/usr/share/rime-data/default.yaml")
+    (setq rime-data-dir "/usr/share/rime-data")
+  (setq rime-data-dir (expand-file-name) "~/.emacs.d/pyim/rime"))
 (liberime-start rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime"))
 ;(liberime-get-schema-list)
 (setq pyim-default-scheme 'rime)
