@@ -1053,7 +1053,7 @@
 ;; (setq rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime")) ; if install schema files via plum
 (if (file-exists-p "/usr/share/rime-data/default.yaml")
     (setq rime-data-dir "/usr/share/rime-data")
-  (setq rime-data-dir (expand-file-name) "~/.emacs.d/pyim/rime"))
+  (setq rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime")))
 (liberime-start rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime"))
 ;(liberime-get-schema-list)
 (setq pyim-default-scheme 'rime)
