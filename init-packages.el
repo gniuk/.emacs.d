@@ -379,53 +379,53 @@
 ;; for python, sudo pip intall pylint
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;;; irony-mode
-;; M-x irony-install-server to install server
-(add-hook 'c-mode-common-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'objc-mode-hook 'irony-mode)
+;; ;;; irony-mode
+;; ;; M-x irony-install-server to install server
+;; (add-hook 'c-mode-common-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode)
+;; (add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'objc-mode-hook 'irony-mode)
 
-(defun my-irony-mode-hook ()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-;; (eval-after-load 'company
-;;   '(add-to-list 'company-backends 'company-irony))
+;; (defun my-irony-mode-hook ()
+;;   (define-key irony-mode-map [remap completion-at-point]
+;;     'irony-completion-at-point-async)
+;;   (define-key irony-mode-map [remap complete-symbol]
+;;     'irony-completion-at-point-async))
+;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; ;; (eval-after-load 'company
+;; ;;   '(add-to-list 'company-backends 'company-irony))
 
-;; (require 'company-irony-c-headers)
-;;    ;; Load with `irony-mode` as a grouped backend
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends '(company-irony-c-headers company-irony)))
+;; ;; (require 'company-irony-c-headers)
+;; ;;    ;; Load with `irony-mode` as a grouped backend
+;; ;; (eval-after-load 'company
+;; ;;   '(add-to-list
+;; ;;     'company-backends '(company-irony-c-headers company-irony)))
 
-;(require 'company-irony-c-headers)
-; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
-; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
-; Use company-diag to see all the backends and the backend currently used.
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends 'company-irony-c-headers))
-; redundance backends
-;; (eval-after-load 'company
-;;   '(progn
-;;      (setq company-backends (delete 'company-clang company-backends))
-;;      (setq company-backends (delete 'company-capf company-backends))))
+;; ;(require 'company-irony-c-headers)
+;; ; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
+;; ; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
+;; ; Use company-diag to see all the backends and the backend currently used.
+;; ;; (eval-after-load 'company
+;; ;;   '(add-to-list
+;; ;;     'company-backends 'company-irony-c-headers))
+;; ; redundance backends
+;; ;; (eval-after-load 'company
+;; ;;   '(progn
+;; ;;      (setq company-backends (delete 'company-clang company-backends))
+;; ;;      (setq company-backends (delete 'company-capf company-backends))))
 
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 '(company-irony-c-headers company-irony company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
+;; (add-hook 'c-mode-common-hook
+;;           (lambda ()
+;;             (set (make-local-variable 'company-backends)
+;;                  '(company-irony-c-headers company-irony company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
-;; irony-eldoc
-(add-hook 'irony-mode-hook #'irony-eldoc)
+;; ;; irony-eldoc
+;; (add-hook 'irony-mode-hook #'irony-eldoc)
 
 ;;; projectile and helm-projectile
 (projectile-global-mode)
@@ -448,40 +448,40 @@
 (add-to-list 'projectile-globally-ignored-files "company-statistics-cache.el")
 (which-function-mode t)
 
-;;; rtags
-;; install clang, llvm...
-;; https://github.com/Andersbakken/rtags, need to install rtags first
-;; cd rtags; mkdir build && cd build; cmake ..; make; sudo make install
-;; in project, cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 or use bear with other
-;; build system to generate clang compile-commands.json database.
-;; rdm &
-;; rc -J .
-;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
-;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
-;; (require 'rtags)
+;; ;;; rtags
+;; ;; install clang, llvm...
+;; ;; https://github.com/Andersbakken/rtags, need to install rtags first
+;; ;; cd rtags; mkdir build && cd build; cmake ..; make; sudo make install
+;; ;; in project, cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 or use bear with other
+;; ;; build system to generate clang compile-commands.json database.
+;; ;; rdm &
+;; ;; rc -J .
+;; ;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
+;; ;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
+;; ;; (require 'rtags)
 
-; company-rtags backend has no return type for function, use only company-irony.
-;; (require 'company-rtags)
-;; (setq rtags-completions-enabled t)
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends 'company-rtags))
-;; ;(setq rtags-autostart-diagnostics t)
-(rtags-enable-standard-keybindings)
-;(require 'helm-rtags)
-(setq rtags-use-helm t)
-(setq rtags-display-result-backend 'helm)
+;; ; company-rtags backend has no return type for function, use only company-irony.
+;; ;; (require 'company-rtags)
+;; ;; (setq rtags-completions-enabled t)
+;; ;; (eval-after-load 'company
+;; ;;   '(add-to-list
+;; ;;     'company-backends 'company-rtags))
+;; ;; ;(setq rtags-autostart-diagnostics t)
+;; (rtags-enable-standard-keybindings)
+;; ;(require 'helm-rtags)
+;; (setq rtags-use-helm t)
+;; (setq rtags-display-result-backend 'helm)
 
-;(define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-;(define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-;(define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-;(define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
-;(define-key irony-mode-map (kbd "M-i") 'rtags-imenu) ; use C-c r I. M-i used for helm-swoop!
-(add-hook 'irony-mode-hook '(lambda ()
-                              (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-                              (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-                              (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-                              (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
+;; ;(define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+;; ;(define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+;; ;(define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+;; ;(define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
+;; ;(define-key irony-mode-map (kbd "M-i") 'rtags-imenu) ; use C-c r I. M-i used for helm-swoop!
+;; (add-hook 'irony-mode-hook '(lambda ()
+;;                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+;;                               (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+;;                               (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+;;                               (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
 
 ;;; shell-mode, comint-previous-input and comint-next-input
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
@@ -1212,6 +1212,37 @@
 (global-set-key (kbd "C-c j o") 'dumb-jump-go-other-window)
 (global-set-key (kbd "C-c j x") 'dumb-jump-go-prefer-external)
 (global-set-key (kbd "C-c j z") 'dumb-jump-go-prefer-external-other-window)
+
+;;; helm-xref
+;; hijack the miserable raw xref
+(require 'helm-xref)
+
+;;; lsp, ccls, lsp-ui
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(company-lsp company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
+            (setq ccls-executable "/usr/bin/ccls")
+            (require 'ccls)
+            (require 'lsp-ui)
+            (lsp-ui-mode)
+            (lsp)
+            (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
+            (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
+            ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
+            (define-key lsp-mode-map (kbd "C-c r c") 'ccls-call-hierarchy)
+            (define-key lsp-mode-map (kbd "C-c r d") 'ccls-inheritance-hierarchy)
+            (define-key lsp-mode-map (kbd "C-c r m") 'ccls-member-hierarchy)
+            (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
+            (setq lsp-prefer-flymake nil)
+            (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+            (custom-set-faces
+             '(lsp-ui-peek-filename     ; use helm interface instead.
+               ((t (:background "dodger blue" :foreground "black"))))
+             '(lsp-ui-peek-peek
+               ((t (:background "#fdf6e3"))))
+             )))
+
 
 ;;; override keybinds
 ; expand-region and multiple-cursor mark next

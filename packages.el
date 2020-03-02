@@ -57,16 +57,14 @@ There are two things you can do about this warning:
     ;company-ycmd
     flycheck
     helm-flycheck
-    irony
-    company-irony
-    company-irony-c-headers
-    irony-eldoc
-    ;company-rtags
-    helm-rtags
-    flycheck-irony
+    ;; irony
+    ;; company-irony
+    ;; company-irony-c-headers
+    ;; irony-eldoc
+    ;; flycheck-irony
+    ;; helm-rtags
     ;projectile ; as a requirement of helm-projectile
     helm-projectile
-    ;rtags
     color-theme-sanityinc-solarized
     color-theme-sanityinc-tomorrow
     afternoon-theme
@@ -123,10 +121,6 @@ There are two things you can do about this warning:
     doom-modeline
     evil
     evil-matchit
-    ; lsp-mode
-    ; company-lsp
-    ; helm-lsp
-    ; lsp-ui
     vterm
     golden-ratio
     disaster
@@ -142,6 +136,11 @@ There are two things you can do about this warning:
     eyebrowse
     dumb-jump
     htmlize
+    ccls
+    company-lsp
+    helm-lsp
+    helm-xref
+    lsp-ui
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
