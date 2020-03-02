@@ -7,6 +7,9 @@
 ;;; Code:
 
 (load "~/.emacs.d/packages.el")
+;; ;;; benchmark-init
+;; (require 'benchmark-init)
+;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
 ;;; company
 ;(require 'company)

@@ -141,6 +141,7 @@ There are two things you can do about this warning:
     helm-lsp
     helm-xref
     lsp-ui
+    ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")
 
 (require 'cl)
