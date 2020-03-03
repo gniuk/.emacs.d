@@ -1030,7 +1030,10 @@
 (global-set-key (kbd "C-x g r") 'golden-ratio)
 
 ;;; disaster
-(define-key c-mode-base-map (kbd "C-c c d") 'disaster)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (define-key c-mode-map (kbd "C-x x d") 'disaster)
+            (define-key c++-mode-map (kbd "C-x x d") 'disaster)))
 
 ;;; spacemacs
 (setq spacemacs-theme-comment-bg nil)
@@ -1109,7 +1112,7 @@
 
 ;;; x86-lookup
 (setq x86-lookup-pdf "~/Books/OS/325383-sdm-vol-2abcd.pdf")
-(global-set-key (kbd "C-x c x") #'x86-lookup)
+(global-set-key (kbd "C-x x l") #'x86-lookup)
 (setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
 ;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
 
