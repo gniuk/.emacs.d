@@ -445,6 +445,7 @@
 (global-set-key (kbd "C-x p b") 'helm-projectile-recentf)
 (global-set-key (kbd "C-x p w") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-x p o") 'helm-projectile-find-other-file) ; switch between files with the same name but different extensions
+(global-set-key (kbd "C-x p O") 'projectile-find-other-file-other-window)
 (global-set-key (kbd "C-x p d") 'helm-projectile-find-dir)
 (global-set-key (kbd "C-x p i") 'projectile-invalidate-cache)
 (add-to-list 'projectile-globally-ignored-files "projectile.cache")
