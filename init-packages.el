@@ -1261,15 +1261,9 @@
 (define-key window-numbering-keymap (kbd "M-8") nil)
 (global-set-key (kbd "M-8") 'mc/edit-lines)
 
-; override c-toggle-auto-newline in C and C++, using custom function
-(define-key c-mode-map (kbd "C-c C-a") nil)
-(define-key c++-mode-map (kbd "C-c C-a") nil)
-; override go-import-add in go-mode, map "C-c C-a" to custom function
+; override go-import-add in go-mode
 (add-hook 'go-mode-hook (lambda ()
-                          (define-key go-mode-map (kbd "C-c C-a") nil)
                           (define-key go-mode-map (kbd "C-c C-i") 'go-import-add)))
-;; (define-key go-mode-map (kbd "C-c C-a") nil)
-;; (define-key go-mode-map (kbd "C-c C-i") 'go-import-add) ; ie. C-c TAB
 
 ; override evil key bindings
 ; override C-e evil-scroll-line-down, make it original mwim-end-of-code-or-line

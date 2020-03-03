@@ -61,7 +61,7 @@ No more indentation adjustment after paste to the destination point."
 (defvar p1 nil)                         ; assignment to free variable warning
 (defvar p2 nil)
 (defun gniuk/cpAboveLine ()
-  "Copy Above line at cursor position."
+  "Copy above line at cursor position."
   (interactive)
   (forward-line -1)
   ;(back-to-indentation)
@@ -72,7 +72,19 @@ No more indentation adjustment after paste to the destination point."
   (kill-ring-save p1 p2)
   (forward-line)
   (yank))
-(global-set-key (kbd "C-c C-a") 'gniuk/cpAboveLine)
+(defun gniuk/cpAndCommentOutAboveLine ()
+  "Copy above line at cursor position and comment out the previous one."
+  (interactive)
+  (forward-line -1)
+  (move-beginning-of-line 1)
+  (setq p1 (point))
+  (move-end-of-line 1)
+  (setq p2 (point))
+  (kill-ring-save p1 p2)
+  (comment-line 1)
+  (yank))
+(global-set-key (kbd "C-x x c") 'gniuk/cpAboveLine)
+(global-set-key (kbd "C-x x x") 'gniuk/cpAndCommentOutAboveLine)
 
 (defun gniuk/copyLine (arg)
   "Copy lines (as many as prefix ARG) in the kill ring."
