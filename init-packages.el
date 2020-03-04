@@ -1296,8 +1296,8 @@
 (define-key evil-normal-state-map (kbd "q") nil)
 
 ;; keybindings for some C-M prefix commands
-(global-set-key (kbd "C-c s a") 'beginning-of-defun)
-(global-set-key (kbd "C-c s e") 'end-of-defun)
+(global-set-key (kbd "C-c a") 'beginning-of-defun)
+(global-set-key (kbd "C-c e") 'end-of-defun)
 (global-set-key (kbd "C-c s k") 'kill-sexp)
 (global-set-key (kbd "C-c s SPC") 'mark-sexp)
 
@@ -1324,6 +1324,11 @@
 ;; keep session when restart
 ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
+
+;; comment current line without marking the line first
+(global-set-key (kbd "C-x M-;") 'comment-line)
+;; bind key to helm-resume
+(global-set-key (kbd "C-c m r") 'helm-resume)        ; helm-resume resume recent session
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
