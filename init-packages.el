@@ -1321,8 +1321,9 @@
 (setq-default split-height-threshold nil
               split-width-threshold 100)
 
-; keep session when restart
-(desktop-save-mode)
+;; keep session when restart
+;(desktop-save-mode)
+;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
