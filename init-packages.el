@@ -772,16 +772,16 @@
 ;;; color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
-(let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
-  (dolist (face faces)
-    (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
+;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
+;;   (dolist (face faces)
+;;     (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
 
-(set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
-(set-face-attribute 'font-lock-comment-face nil :slant 'italic)
-(set-face-attribute 'font-lock-doc-face nil :slant 'italic)
-(set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
-(set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
-(set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
+;; (set-face-attribute 'font-lock-comment-delimiter-face nil :slant 'italic)
+;; (set-face-attribute 'font-lock-comment-face nil :slant 'italic)
+;; (set-face-attribute 'font-lock-doc-face nil :slant 'italic)
+;; (set-face-attribute 'font-lock-keyword-face nil :weight 'bold)
+;; (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
+;; (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
 
 ;;; cc-mode
 ;; (add-hook 'c-mode-hook
@@ -1036,10 +1036,6 @@
             (define-key c-mode-map (kbd "C-x x d") 'disaster)
             (define-key c++-mode-map (kbd "C-x x d") 'disaster)))
 
-;;; spacemacs
-(setq spacemacs-theme-comment-bg nil)
-(setq spacemacs-theme-comment-italic t)
-
 (custom-set-faces
  '(helm-selection
    ((t (:background "#fdf6e3" :foreground "firebrick3"))))
@@ -1249,6 +1245,14 @@
              '(lsp-ui-peek-peek
                ((t (:background "#fdf6e3"))))
              )))
+
+;;; spacemacs theme and other themes
+;; (load-theme 'sanityinc-tomorrow-eighties t)
+;; (load-theme 'doom-vibrant t)
+(setq spacemacs-theme-comment-bg nil)
+(setq spacemacs-theme-comment-italic t)
+(load-theme 'spacemacs-dark t)
+(set-face-attribute 'font-lock-comment-face nil :foreground "#5d7878")
 
 
 ;;; override keybinds

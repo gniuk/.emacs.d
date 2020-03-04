@@ -7,9 +7,6 @@
 (setq gc-cons-percentage 0.6)
 (global-linum-mode t)
 (column-number-mode t)
-;;; remote use the following theme and color settings
-;(load-theme 'manoj-dark)
-;(set-background-color "gray25")
 (show-paren-mode t)
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -92,9 +89,6 @@
 (require 'useful-single-key)
 
 (global-subword-mode)                   ;navigate camelCase word!
-;(load-theme 'sanityinc-solarized-light t)
-;(load-theme 'sanityinc-tomorrow-eighties t)
-(load-theme 'spacemacs-dark t)
 
 (setq gc-cons-threshold (* 1 1024 1024))
 (setq gc-cons-percentage 0.1)

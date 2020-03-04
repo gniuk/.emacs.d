@@ -119,6 +119,7 @@ There are two things you can do about this warning:
     flymd
     pandoc-mode
     doom-modeline
+    ;; doom-themes
     evil
     evil-matchit
     vterm
