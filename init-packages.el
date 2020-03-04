@@ -145,7 +145,6 @@
 ;;; helm
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
-;; (global-set-key (kbd "M-i") 'helm-imenu)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
 (global-set-key (kbd "C-c m m") 'helm-man-woman)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -153,57 +152,30 @@
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (with-eval-after-load 'helm
-  '(setq helm-M-x-fuzzy-match t
-      helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match t
-      helm-semantic-fuzzy-match t
-      helm-imenu-fuzzy-match t
-      helm-locate-fuzzy-match t
-      helm-apropos-fuzzy-match t
-      helm-lisp-fuzzy-completion t
-      ; http://tuhdo.github.io/helm-intro.html
-      helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
-      ;helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-      ;helm-echo-input-in-header-line t
-      helm-ff-file-name-history-use-recentf t))
+  (setq helm-M-x-fuzzy-match t
+        helm-apropos-fuzzy-match t
+        helm-bookmark-show-location t
+        helm-buffers-fuzzy-matching t
+        helm-completion-in-region-fuzzy-match t
+        helm-ff-fuzzy-matching t
+        helm-file-cache-fuzzy-match t
+        helm-imenu-fuzzy-match t
+        helm-lisp-fuzzy-completion t
+        helm-locate-fuzzy-match t
+        helm-mode-fuzzy-match t
+        helm-projectile-fuzzy-match t
+        helm-recentf-fuzzy-match t
+        helm-semantic-fuzzy-match t
+        ;; http://tuhdo.github.io/helm-intro.html
+        helm-split-window-inside-p t ; open helm buffer inside current window, not occupy whole other window
+        ;; helm-move-to-line-cycle-in-source t ; move to end or beginning of source when reaching top or bottom of source.
+        helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
+        ;; helm-echo-input-in-header-line t
+        helm-ff-file-name-history-use-recentf t
+        helm-imenu-execute-action-at-once-if-one nil)
+  (custom-set-faces '(helm-selection ((t (:background "#fdf6e3" :foreground "firebrick3"))))))
 (helm-mode 1)
 
-;; ;;; helm
-;; (require 'helm-config)
-;; (helm-adaptive-mode 1)
-;; (helm-autoresize-mode 1)
-;; (global-set-key (kbd "M-i") 'helm-imenu)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
-;;     ;-------2015-5-18
-;;     ;use Ctrl-J to goto next dir in helm Ctrl-X Ctrl-F, not Enter
-;;     ;Ctrl-x Ctrl-F Ctrl-? to see help
-;;     ;(global-set-key (kbd "M-x") 'helm-M-x); Great info!
-;;     (global-set-key (kbd "C-x C-f") 'helm-find-files)
-;;     ;C-x C-f C-s to show files greping lines match regexp
-;;     (global-set-key (kbd "C-x b") 'helm-mini)
-;; (global-set-key (kbd "M-y") 'helm-show-kill-ring)
-;; (setq helm-M-x-fuzzy-match t
-;;       helm-buffers-fuzzy-matching t
-;;       helm-recentf-fuzzy-match t
-;;       helm-semantic-fuzzy-match t
-;;       helm-imenu-fuzzy-match t
-;;       helm-locate-fuzzy-match t
-;;       helm-apropos-fuzzy-match t
-;;       helm-lisp-fuzzy-completion t)
-;;     ;-------
-
-;; ;http://tuhdo.github.io/helm-intro.html
-;; (setq helm-split-window-inside-p            t ; open helm buffer inside current window, not occupy whole other window
-;;       ;helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
-;;       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
-;;       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
-;;       helm-ff-file-name-history-use-recentf t
-;;       ;helm-echo-input-in-header-line t
-;;       )
-
-;; (helm-mode 1)
 
 ;  C-M-f     Move forward over a balanced expression
 ;  C-M-b     Move backward over a balanced expression
@@ -589,110 +561,56 @@
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
 
 ;;; helm-swoop
-;(require 'helm)
 (require 'helm-swoop)
 ;; Change the keybinds to whatever you like :)
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
 (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-(custom-set-faces
- '(helm-swoop-target-line-face
-   ;; ((t (:background "wheat3" :foreground "firebrick3"))))
-   ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
- '(helm-swoop-target-line-block-face
-   ((t (:background "#fdf6e3" :foreground "firebrick3"))))
- '(helm-swoop-target-word-face
-   ((t (:background "dark orchid" :foreground "#fdf6e3"))))
- )
 
 ;; When doing isearch, hand the word over to helm-swoop
 (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
 
 (with-eval-after-load 'helm-swoop
-  '(progn
-     ;; From helm-swoop to helm-multi-swoop-all
-     (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-     ;; When doing evil-search, hand the word over to helm-swoop
-     ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
+  (setq
+   ;; Save buffer when helm-multi-swoop-edit complete
+   helm-multi-swoop-edit-save t
 
-     ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
-     ;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
+   ;; If this value is t, split window inside the current window
+   helm-swoop-split-with-multiple-windows nil
 
-     ;; Move up and down like isearch
-     (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-     (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-     (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-     (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+   ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
+   helm-swoop-split-direction 'split-window-vertically
 
-     ;; Save buffer when helm-multi-swoop-edit complete
-     (setq helm-multi-swoop-edit-save t)
+   ;; If nil, you can slightly boost invoke speed in exchange for text color
+   helm-swoop-speed-or-color nil
 
-     ;; If this value is t, split window inside the current window
-     (setq helm-swoop-split-with-multiple-windows nil)
+   ;; Go to the opposite side of line from the end or beginning of line
+   helm-swoop-move-to-line-cycle t
 
-     ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-     (setq helm-swoop-split-direction 'split-window-vertically)
+   ;; Optional face for line numbers
+   ;; Face name is `helm-swoop-line-number-face`
+   helm-swoop-use-line-number-face t)
 
-     ;; If nil, you can slightly boost invoke speed in exchange for text color
-     (setq helm-swoop-speed-or-color nil)
+  ;; From helm-swoop to helm-multi-swoop-all
+  (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
+  ;; When doing evil-search, hand the word over to helm-swoop
+  ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
 
-     ;; ;; Go to the opposite side of line from the end or beginning of line
-     (setq helm-swoop-move-to-line-cycle t)
+  ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
+  ;; (define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
 
-     ;; Optional face for line numbers
-     ;; Face name is `helm-swoop-line-number-face`
-     (setq helm-swoop-use-line-number-face t)))
+  ;; Move up and down like isearch
+  (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
+  (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
+  (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
+  (custom-set-faces
+   '(helm-swoop-target-line-face
+     ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
+   '(helm-swoop-target-line-block-face ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+   '(helm-swoop-target-word-face ((t (:background "dark orchid" :foreground "#fdf6e3"))))))
 
-
-;; ;; When doing isearch, hand the word over to helm-swoop
-;; (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
-;; ;; From helm-swoop to helm-multi-swoop-all
-;; (define-key helm-swoop-map (kbd "M-i") 'helm-multi-swoop-all-from-helm-swoop)
-;; ;; When doing evil-search, hand the word over to helm-swoop
-;; ;; (define-key evil-motion-state-map (kbd "M-i") 'helm-swoop-from-evil-search)
-
-;; ;; Instead of helm-multi-swoop-all, you can also use helm-multi-swoop-current-mode
-;; ;(define-key helm-swoop-map (kbd "M-m") 'helm-multi-swoop-current-mode-from-helm-swoop)
-
-;; ;; Move up and down like isearch
-;; (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-;; (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-;; (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-;; (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
-
-;; ;; Save buffer when helm-multi-swoop-edit complete
-;; (setq helm-multi-swoop-edit-save t)
-
-;; ;; If this value is t, split window inside the current window
-;; (setq helm-swoop-split-with-multiple-windows nil)
-
-;; ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
-;; (setq helm-swoop-split-direction 'split-window-vertically)
-
-;; ;; If nil, you can slightly boost invoke speed in exchange for text color
-;; (setq helm-swoop-speed-or-color nil)
-
-;; ;; ;; Go to the opposite side of line from the end or beginning of line
-;; (setq helm-swoop-move-to-line-cycle t)
-
-;; ;; Optional face for line numbers
-;; ;; Face name is `helm-swoop-line-number-face`
-;; (setq helm-swoop-use-line-number-face t)
-
-;; ;; Match/Search methods (Fuzzy matching, Migemo)
-;; ;; If you do not preferr fuzzy, remove it from the list below
-;; (defvar helm-c-source-swoop-match-functions
-;;   '(helm-mm-exact-match
-;;     helm-mm-match
-;;     helm-fuzzy-match
-;;     helm-mm-3-migemo-match))
-;; (setq helm-c-source-swoop-search-functions
-;;       '(helm-mm-exact-search
-;;         helm-mm-search
-;;         helm-candidates-in-buffer-search-default-fn
-;;         helm-fuzzy-search
-;;         helm-mm-3-migemo-search))
 
 ;;; ace-jump-zap-to-char
 (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
