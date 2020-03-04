@@ -934,7 +934,7 @@
 ;; go get -u github.com/rogpeppe/godef
 
 (defun my-go-mode-hook ()
-  ; Call Gofmt before saving
+  "Call Gofmt before saving."
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; Godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump)
