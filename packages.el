@@ -48,7 +48,7 @@ There are two things you can do about this warning:
     tern
     company-tern
     rainbow-delimiters
-    rainbow-identifiers
+    ;rainbow-identifiers ; use color-identifiers-mode instead
     ;auto-highlight-symbol
     ;smartscan ; symbol_with_underscore not recognized. using highlight-symbol to navigate
     ;ace-jump-mode
