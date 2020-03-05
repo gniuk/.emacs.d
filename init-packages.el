@@ -147,10 +147,13 @@
 (helm-autoresize-mode 1)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
 (global-set-key (kbd "C-c m m") 'helm-man-woman)
+(global-set-key (kbd "C-c m b") 'helm-resume)
+(global-set-key (kbd "C-c m h") 'helm-apropos) ; help apropos, cover C-h f,v,m,...
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
 (with-eval-after-load 'helm
   (setq helm-M-x-fuzzy-match t
         helm-apropos-fuzzy-match t
@@ -1249,8 +1252,6 @@
 
 ;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
-;; bind key to helm-resume
-(global-set-key (kbd "C-c m r") 'helm-resume)        ; helm-resume resume recent session
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
