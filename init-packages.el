@@ -1105,11 +1105,23 @@
 
 ;;; smartparens
 (require 'smartparens-config)
-(add-hook 'prog-mode-hook #'smartparens-mode)
+;; (add-hook 'prog-mode-hook #'smartparens-mode)
+(smartparens-global-mode)
 (global-set-key (kbd "C-c s r") 'sp-rewrap-sexp)
 (global-set-key (kbd "C-c s d") 'sp-unwrap-sexp)
 (global-set-key (kbd "C-c s f") 'sp-down-sexp)
 (global-set-key (kbd "C-c s b") 'sp-backward-up-sexp)
+
+(defun gniuk/smartparens-pair-newline-and-indent (id action context)
+  "Newline between newly-opened brace pairs open an extra indented line."
+  (when (eq action 'insert)
+    (newline)
+    (newline)
+    (indent-according-to-mode)
+    (previous-line)
+    (indent-according-to-mode)))
+(sp-local-pair 'c-mode "{" nil :post-handlers '(:add gniuk/smartparens-pair-newline-and-indent))
+
 
 ;;; git-timemachine
 (global-set-key (kbd "C-x g t") 'git-timemachine)
