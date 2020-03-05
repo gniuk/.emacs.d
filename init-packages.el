@@ -1121,6 +1121,7 @@
     (previous-line)
     (indent-according-to-mode)))
 (sp-local-pair 'c-mode "{" nil :post-handlers '(:add gniuk/smartparens-pair-newline-and-indent))
+(sp-local-pair 'c++-mode "{" nil :post-handlers '(:add gniuk/smartparens-pair-newline-and-indent))
 
 
 ;;; git-timemachine
