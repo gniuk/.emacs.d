@@ -10,10 +10,7 @@
 (show-paren-mode t)
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
-;; (add-to-list 'default-frame-alist
-;;              '(font . "LiberationMono-14"))
-;; (add-to-list 'default-frame-alist
-;;              '(font . "SourceCodePro-17"))
+
 (if (not (eq window-system nil))
     (progn
       (add-to-list 'default-frame-alist
@@ -25,65 +22,27 @@
       (set-fontset-font "fontset-default" 'han "NotoSansMonoCJKSC-17") ; for jiantihanzi, 简体中文
       (set-fontset-font "fontset-default" 'cjk-misc "NotoSansMonoCJKSC-17") ; for punctuations, 标点符号
       ))
-;(set-frame-font "Monospace-14")
-;(set-frame-font "Inconsolata-g-14")
-;(set-frame-font "SourceCodePro-14")
-;(set-frame-font "LiberationMono-14")
-;(set-default-font "Inconsolata-14")
-;(set-default-font "Monospace-14")
-;(tool-bar-mode 0)
+
+;; disable tool bar and scroll bar, in both GUI and TUI
 (if (functionp 'tool-bar-mode) (tool-bar-mode 0))
 (menu-bar-mode 0)
 (if (boundp 'x-toolkit-scroll-bars)
     (scroll-bar-mode 0))
-;(scroll-bar-mode 0)
+
+;; use space to indent by default
 (setq-default indent-tabs-mode nil)
-;(setq kill-whole-line t)
+;; set appearance of a tab that is represented by 4 spaces
+(setq-default tab-width 4)
 ;(display-time-mode 1)
 ;(setq display-time-day-and-date 1)
 ;(defvar display-time-24hr-format)
 ;(setq display-time-24hr-format 1)
-
-;built-in
-;(require 'cc-mode)
-;(require 'semantic)
-;(require 'semantic/db)
-;(global-semanticdb-minor-mode 1)
-;(global-semantic-idle-scheduler-mode 1)
-;(semantic-mode 1)
-
-;(global-set-key (kbd "C-c C-d") 'kill-whole-line)
-;(global-set-key (kbd "<C-backspace>") 'kill-whole-line) ;kill whole line at any
-                                        ;position, like vim dd
-
-; Enable EDE (Project Management) features
-;(global-ede-mode 1)
-;(semantic-load-enable-excessive-code-helpers)      ; Enable prototype help and
-                                        ;smart completion
-
-;;(global-srecode-minor-mode 1)            ; Enable template insertion menu
-;; Semantic
-;(global-semantic-idle-scheduler-mode)
-;(global-semantic-idle-completions-mode)
-;(global-semantic-decoration-mode)
-;(global-semantic-highlight-func-mode)
-;(global-semantic-show-unmatched-syntax-mode)
-; CC-mode
-;(add-hook 'c-mode-common-hook '(lambda ()
-;        (setq ac-sources (append '(ac-source-semantic) ac-sources))
-;))
-
 
 (load "~/.emacs.d/init-packages.el")
 
 ;(setq gdb-many-windows t)
 ;(setq gdb-show-main t)
 ;(flyspell-mode 1)
-
-;;; global set keys
-;(global-set-key (kbd "<C-backspace>") 'kill-whole-line) ;kill whole line at any
-;position, like vim dd
-;(global-set-key (kbd "M-g") 'goto-line)
 
 (push "~/.emacs.d/mylisp" load-path)
 (require 'useful-single-key)

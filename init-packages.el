@@ -477,12 +477,6 @@
      '(lambda () (toggle-truncate-lines 1)))
 ;(setq comint-prompt-read-only t)    ; When debugging in output, sometimes need select all(C-x h) to clear. readonly prevent this.
 
-;; ;;; theme
-;; (require 'color-theme-sanityinc-solarized)
-;; (load-theme 'sanityinc-solarized-light)
-
-;; (color-theme-sanityinc-solarized--define-theme light)
-
 ;;; cmake-mode
 ;(require 'cmake-mode)
 
@@ -704,11 +698,6 @@
 ;; (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
 ;; (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
 
-;;; cc-mode
-;; (add-hook 'c-mode-hook
-;;           (lambda ()
-;;             (define-key c-mode-map (kbd "C-c C-d") 'kill-whole-line)))
-
 ;;; chinese-yasdcv
 ; 1. commandline tool "sdcv"(stardict command version) needed
 ; 2. http://download.huzheng.org/ to download offline dicts, uncompress and put them in ~/.stardict/dic/ (see man sdcv)
@@ -765,16 +754,6 @@
 (setq which-key-idle-secondary-delay 0.1)
 (setq which-key--god-mode-support-enabled t)
 
-;;; diminish
-;(diminish 'global-flycheck-mode)
-;(diminish 'paredit-mode)
-;(diminish 'global-undo-tree-mode)
-;(diminish 'undo-tree-mode)
-;(diminish 'helm-mode)
-;(diminish 'projectile-mode)
-;(diminish 'flycheck-mode)
-;(diminish 'company-mode "CP")
-
 ;;; workgroups2
 ;; not that useful, because helm-mini containing recentf is there, and we can use registers to save window or frame configuration.
 ;; (require 'workgroups2)
@@ -821,33 +800,8 @@
 (require 'pcmpl-args)
 
 ;;; company-go
-;; (eval-after-load "company"
-;;  '(progn
-;;     (add-to-list 'company-backends 'company-go)))
-;; ;(require 'company-go)
-
-;; (add-hook 'go-mode-hook (lambda ()
-;;                           (set (make-local-variable 'company-backends) '(company-go))
-;;                           (company-mode)))
 (add-hook 'go-mode-hook (lambda ()
                               (set (make-local-variable 'company-backends) '(company-go company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
-;; customize company popup menu (actually it is global company). More comfortable in terminal!
-;; set TERM=xterm-256color to fix the color theme problem in terminal!!
-;; (custom-set-faces
-;;  '(company-preview
-;;    ((t (:foreground "darkgray" :underline t))))
-;;  '(company-preview-common
-;;    ((t (:inherit company-preview))))
-;;  '(company-tooltip
-;;    ((t (:background "lightgray" :foreground "black"))))
-;;  '(company-tooltip-selection
-;;    ((t (:background "steelblue" :foreground "white"))))
-;;  '(company-tooltip-common
-;;    ((((type x)) (:inherit company-tooltip :weight bold))
-;;     (t (:inherit company-tooltip))))
-;;  '(company-tooltip-common-selection
-;;    ((((type x)) (:inherit company-tooltip-selection :weight bold))
-;;     (t (:inherit company-tooltip-selection)))))
 
 ;;; go mode
 
@@ -1112,17 +1066,21 @@
 (global-set-key (kbd "C-c s f") 'sp-down-sexp)
 (global-set-key (kbd "C-c s b") 'sp-backward-up-sexp)
 
-(defun gniuk/smartparens-pair-newline-and-indent (id action context)
-  "Newline between newly-opened brace pairs open an extra indented line."
-  (when (eq action 'insert)
-    (newline)
-    (newline)
-    (indent-according-to-mode)
-    (previous-line)
-    (indent-according-to-mode)))
-(sp-local-pair 'c-mode "{" nil :post-handlers '(:add gniuk/smartparens-pair-newline-and-indent))
-(sp-local-pair 'c++-mode "{" nil :post-handlers '(:add gniuk/smartparens-pair-newline-and-indent))
+;; (defun gniuk/create-newline-and-enter-sexp (&rest _ignored)
+;;   "Open a new brace or bracket expression, with relevant newlines and indent."
+;;   (newline)
+;;   (indent-according-to-mode)
+;;   (forward-line -1)
+;;   (indent-according-to-mode))
+;; (sp-local-pair 'c-mode "{" nil :post-handlers '((gniuk/create-newline-and-enter-sexp "RET")))
+;; (sp-local-pair 'c++-mode "{" nil :post-handlers '((gniuk/create-newline-and-enter-sexp "RET")))
 
+;; when you press RET, the curly braces automatically
+;; add another newline
+(sp-with-modes '(c-mode c++-mode)
+  (sp-local-pair "{" nil :post-handlers '(("||\n[i]" "RET")))
+  (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
+                                            ("* ||\n[i]" "RET"))))
 
 ;;; git-timemachine
 (global-set-key (kbd "C-x g t") 'git-timemachine)
@@ -1179,6 +1137,12 @@
              '(lsp-ui-peek-peek
                ((t (:background "#fdf6e3"))))
              )))
+
+;;; dtrt-indent
+;; guess file indentation
+(require 'dtrt-indent)
+(setq dtrt-indent-max-lines 2000)
+(dtrt-indent-global-mode 1)
 
 ;;; spacemacs theme and other themes
 ;; (load-theme 'sanityinc-tomorrow-eighties t)
@@ -1265,6 +1229,11 @@
 
 ;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
+
+;; c,c++-mode tuning
+;; let dtrt-indent guess the indentation of existing file, otherwise use bsd style.
+(setq c-default-style "bsd")
+(setq-default c-basic-offset 4)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here

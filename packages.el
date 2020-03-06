@@ -103,7 +103,6 @@ There are two things you can do about this warning:
     helm-rg
     ;god-mode
     which-key
-    ;diminish
     ;workgroups2
     ace-isearch
     ;highlight-symbol
@@ -142,6 +141,7 @@ There are two things you can do about this warning:
     helm-lsp
     helm-xref
     lsp-ui
+    dtrt-indent
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")
 
