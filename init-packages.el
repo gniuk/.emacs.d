@@ -1093,6 +1093,7 @@
 (global-set-key (kbd "C-c 2") 'eyebrowse-switch-to-window-config-2)
 (global-set-key (kbd "C-c 3") 'eyebrowse-switch-to-window-config-3)
 (global-set-key (kbd "C-c 4") 'eyebrowse-switch-to-window-config-4)
+(global-set-key (kbd "C-c 5") 'eyebrowse-switch-to-window-config-5)
 
 ;;; dumb-jump
 ;; (require 'dumb-jump)
