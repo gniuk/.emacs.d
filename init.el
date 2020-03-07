@@ -3,7 +3,7 @@
 ;; none
 
 ;;; Code:
-(setq gc-cons-threshold (* 300 1024 1024))
+(setq gc-cons-threshold (* 500 1024 1024))
 (setq gc-cons-percentage 0.6)
 (global-linum-mode t)
 (column-number-mode t)
@@ -49,7 +49,7 @@
 
 (global-subword-mode)                   ;navigate camelCase word!
 
-(setq gc-cons-threshold (* 1 1024 1024))
+(setq gc-cons-threshold (* 4 1024 1024))
 (setq gc-cons-percentage 0.1)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;
