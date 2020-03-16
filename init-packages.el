@@ -604,8 +604,9 @@
   (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
   (custom-set-faces
    '(helm-swoop-target-line-face
-     ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
-   '(helm-swoop-target-line-block-face ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+     ;; ((t (:background "#fdf6e3" :foreground "firebrick3")))) ; https://github.com/altercation/solarized/tree/master/emacs-colors-solarized
+     ((t (:foreground "orange red" :inverse-video t))))
+   ;; '(helm-swoop-target-line-block-face ((t (:background "#fdf6e3" :foreground "firebrick3"))))
    '(helm-swoop-target-word-face ((t (:background "dark orchid" :foreground "#fdf6e3"))))))
 
 
@@ -911,10 +912,6 @@
             (define-key c-mode-map (kbd "C-x x d") 'disaster)
             (define-key c++-mode-map (kbd "C-x x d") 'disaster)))
 
-(custom-set-faces
- '(helm-selection
-   ((t (:background "#fdf6e3" :foreground "firebrick3"))))
- )
 
 ;;; pyim
 (require 'pyim)
