@@ -176,7 +176,8 @@
         ;; helm-echo-input-in-header-line t
         helm-ff-file-name-history-use-recentf t
         helm-imenu-execute-action-at-once-if-one nil)
-  (custom-set-faces '(helm-selection ((t (:background "#fdf6e3" :foreground "firebrick3"))))))
+  (custom-set-faces '(helm-selection ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+                    '(helm-selection-line ((t (:background "green" :foreground "black"))))))
 (helm-mode 1)
 
 
