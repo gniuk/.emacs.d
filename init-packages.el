@@ -1144,6 +1144,19 @@
 (setq dtrt-indent-max-lines 2000)
 (dtrt-indent-global-mode 1)
 
+;; ;;; org-brain
+;; (require 'org-brain)
+;; (setq org-brain-visualize-default-choices 'all
+;;       org-brain-title-max-length 24
+;;       org-brain-include-file-entries nil
+;;       org-brain-file-entries-use-title nil)
+;; (with-eval-after-load 'org-capture
+;;   (push '("b" "Brain" plain (function org-brain-goto-end)
+;;           "* %i%?" :empty-lines 1)
+;;         org-capture-templates))
+;; (with-eval-after-load 'evil
+;;   (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
+
 ;;; spacemacs theme and other themes
 ;; (load-theme 'sanityinc-tomorrow-eighties t)
 ;; (load-theme 'doom-vibrant t)

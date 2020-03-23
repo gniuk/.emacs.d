@@ -142,6 +142,7 @@ There are two things you can do about this warning:
     helm-xref
     lsp-ui
     dtrt-indent
+    ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")
 
