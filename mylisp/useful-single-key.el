@@ -127,6 +127,15 @@ No more indentation adjustment after paste to the destination point."
     (zap-up-to-char -1 ?\s)))
 (global-set-key (kbd "C-w") 'gniuk/kill-region-or-kill-backward-to-whitespace)
 
+
+(defun gniuk/hide-ctrl-M ()
+  "Hides the disturbing '^M' showing up in files containing mixed UNIX and DOS line endings."
+  (interactive)
+  (setq buffer-display-table (make-display-table))
+  (aset buffer-display-table ?\^M []))
+(global-set-key (kbd "C-c h r") 'gniuk/hide-ctrl-M)
+
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
