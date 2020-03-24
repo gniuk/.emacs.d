@@ -1124,10 +1124,8 @@
             (lsp)
             (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
             (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
+            (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
             ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
-            (define-key lsp-mode-map (kbd "C-c r c") 'ccls-call-hierarchy)
-            (define-key lsp-mode-map (kbd "C-c r d") 'ccls-inheritance-hierarchy)
-            (define-key lsp-mode-map (kbd "C-c r m") 'ccls-member-hierarchy)
             (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
             (setq lsp-prefer-flymake nil)
             (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
@@ -1137,6 +1135,9 @@
              '(lsp-ui-peek-peek
                ((t (:background "#fdf6e3"))))
              )))
+(push "~/.emacs.d/mylisp" load-path)
+(require 'ccls-extras)
+
 
 ;;; dtrt-indent
 ;; guess file indentation
