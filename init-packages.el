@@ -1145,6 +1145,15 @@
 (setq dtrt-indent-max-lines 2000)
 (dtrt-indent-global-mode 1)
 
+;;; realgud
+(require 'realgud)
+;; use it: M-x realgud:gdb
+(add-hook 'realgud-track-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "M-r") 'comint-history-isearch-backward-regexp)
+             (company-mode -1)
+             (evil-emacs-state)))
+
 ;; ;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
