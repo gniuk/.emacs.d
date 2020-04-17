@@ -1219,6 +1219,8 @@
 (define-key evil-normal-state-map (kbd "C-r") 'isearch-backward)
 ; q quit, not evil-record-macro
 (define-key evil-normal-state-map (kbd "q") nil)
+; TAB fall through to emacs
+(define-key evil-normal-state-map (kbd "TAB") nil)
 
 ;; keybindings for some C-M prefix commands
 (global-set-key (kbd "C-c a") 'beginning-of-defun)
