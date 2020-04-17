@@ -1221,6 +1221,7 @@
 (define-key evil-normal-state-map (kbd "q") nil)
 ; TAB fall through to emacs
 (define-key evil-normal-state-map (kbd "TAB") nil)
+(define-key evil-motion-state-map (kbd "TAB") nil)
 
 ;; keybindings for some C-M prefix commands
 (global-set-key (kbd "C-c a") 'beginning-of-defun)
