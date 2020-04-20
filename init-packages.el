@@ -781,7 +781,7 @@
 (require 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
-(setq highlight-indent-guides-character ?\|)
+;; (setq highlight-indent-guides-character ?\|) default is │,?\x2502, C-x 8 RET BOX DRAWINGS LIGHT VERTICAL
 (setq highlight-indent-guides-delay 0.5)
 
 ; emacs -q: list-colors-display, /usr/share/X11/rgb.txt, or https://jonasjacek.github.io/colors/
