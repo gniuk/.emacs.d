@@ -1261,5 +1261,8 @@
 (setq c-default-style "bsd")
 (setq-default c-basic-offset 4)
 
+;; recentf
+(setq recentf-max-saved-items 100)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
