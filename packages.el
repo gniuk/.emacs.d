@@ -143,6 +143,7 @@ There are two things you can do about this warning:
     lsp-ui
     dtrt-indent
     realgud
+    cheat-sh
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")

@@ -1155,6 +1155,9 @@
              (company-mode -1)
              (evil-emacs-state)))
 
+;;; cheat-sh
+(require 'cheat-sh)
+
 ;; ;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
