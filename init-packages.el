@@ -62,17 +62,17 @@
 ; https://github.com/SXGNH/emacs/blob/e0ad40c09dbe8ac6f59089f0010febdf9774d7a4/theme/steelblue-theme.el
 (custom-set-faces
  '(company-tooltip
-   ((t (:background "wheat2" :foreground "gray28"))))
+   ((t (:background "#353539" :foreground "#d0c6b7")))) ; old wheat2 + gray28
  '(company-tooltip-selection
-   ((t (:background "SteelBlue1" :foreground "blue2"))))
+   ((t (:background "#5fb7ff" :foreground "black")))) ; old SteelBlue1 + Blue2
  '(company-tooltip-annotation
-   ((t (:foreground "red2"))))
+   ((t (:foreground "red"))))
  '(company-tooltip-annotation-selection
-   ((t (:foreground "red2"))))
+   ((t (:foreground "red"))))
  '(company-tooltip-common
    ((t (:background "tan1" :foreground "black"))))
  '(company-tooltip-common-selection
-   ((t (:background "SteelBlue1" :foreground "blue2"))))
+   ((t (:background "#5fb7ff" :foreground "black"))))
   '(company-scrollbar-bg
    ((t (:background "gray15" :foreground "red"))))
  '(company-scrollbar-fg
