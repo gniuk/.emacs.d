@@ -1268,5 +1268,8 @@
 ;; recentf
 (setq recentf-max-saved-items 100)
 
+;; just type whatever new text to delete selected region, without firstly delete-region or C-w
+(delete-selection-mode 1)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
