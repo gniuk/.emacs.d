@@ -142,6 +142,11 @@
 ;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
 ;(global-hl-line-mode t)
 
+;;; helm-treemacs-icons
+(push "~/.emacs.d/nonmelpa/helm-treemacs-icons" load-path)
+(require 'helm-treemacs-icons)
+(helm-treemacs-icons-enable)
+
 ;;; helm
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
