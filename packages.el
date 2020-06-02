@@ -81,7 +81,7 @@ There are two things you can do about this warning:
     smooth-scrolling
     readline-complete
     ;dired+ ; no more dired+ in melpa, use plain builtin dired, or just neotree is enough
-    neotree
+    ;neotree ; replaced by treemacs
     ;indent-guide ; interfere company popup window, use highlight-indent-guides instead
     window-numbering
     anzu
@@ -144,6 +144,7 @@ There are two things you can do about this warning:
     dtrt-indent
     realgud
     cheat-sh
+    treemacs ; replace neotree
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")

@@ -529,9 +529,9 @@
 ; conflicts to readline-complete in shell. Finally find it!
 
 
-;;; neotree
-;(require 'neotree)
-(global-set-key (kbd "<f7>") 'neotree-toggle)
+;; ;;; neotree
+;; ;(require 'neotree)
+;; (global-set-key (kbd "<f7>") 'neotree-toggle)
 
 ;;; indent-guide. replaced by highlight-indent-guides
 ;; (indent-guide-global-mode t)
@@ -1157,6 +1157,9 @@
 
 ;;; cheat-sh
 (require 'cheat-sh)
+
+;;; treemacs
+(global-set-key (kbd "<f7>") 'treemacs)
 
 ;; ;;; org-brain
 ;; (require 'org-brain)
