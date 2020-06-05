@@ -62,7 +62,7 @@ There are two things you can do about this warning:
     ;; company-irony-c-headers
     ;; irony-eldoc
     ;; flycheck-irony
-    ;; helm-rtags
+    helm-rtags
     ;projectile ; as a requirement of helm-projectile
     helm-projectile
     color-theme-sanityinc-solarized

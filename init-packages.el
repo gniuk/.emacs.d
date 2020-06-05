@@ -372,6 +372,7 @@
 ;; (add-hook 'objc-mode-hook 'irony-mode)
 
 ;; (defun my-irony-mode-hook ()
+;;   "Remap standard completion to irony completion when in irony mode."
 ;;   (define-key irony-mode-map [remap completion-at-point]
 ;;     'irony-completion-at-point-async)
 ;;   (define-key irony-mode-map [remap complete-symbol]
@@ -379,28 +380,8 @@
 ;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 ;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 ;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-;; ;; (eval-after-load 'company
-;; ;;   '(add-to-list 'company-backends 'company-irony))
 
-;; ;; (require 'company-irony-c-headers)
-;; ;;    ;; Load with `irony-mode` as a grouped backend
-;; ;; (eval-after-load 'company
-;; ;;   '(add-to-list
-;; ;;     'company-backends '(company-irony-c-headers company-irony)))
-
-;; ;(require 'company-irony-c-headers)
-;; ; Decouple company-irony-c-headers and company-irony, since company-irony also has header completions,
-;; ; and it is bad. Let company-irony-c-headers take precedence over company-irony when complete header files.
-;; ; Use company-diag to see all the backends and the backend currently used.
-;; ;; (eval-after-load 'company
-;; ;;   '(add-to-list
-;; ;;     'company-backends 'company-irony-c-headers))
-;; ; redundance backends
-;; ;; (eval-after-load 'company
-;; ;;   '(progn
-;; ;;      (setq company-backends (delete 'company-clang company-backends))
-;; ;;      (setq company-backends (delete 'company-capf company-backends))))
-
+;; ;; Use company-diag to see all the backends and the backend currently used.
 ;; (add-hook 'c-mode-common-hook
 ;;           (lambda ()
 ;;             (set (make-local-variable 'company-backends)
@@ -411,6 +392,7 @@
 
 ;; ;; irony-eldoc
 ;; (add-hook 'irony-mode-hook #'irony-eldoc)
+
 
 ;;; projectile and helm-projectile
 (projectile-global-mode)
@@ -434,40 +416,54 @@
 (add-to-list 'projectile-globally-ignored-files "company-statistics-cache.el")
 (which-function-mode t)
 
-;; ;;; rtags
-;; ;; install clang, llvm...
-;; ;; https://github.com/Andersbakken/rtags, need to install rtags first
-;; ;; cd rtags; mkdir build && cd build; cmake ..; make; sudo make install
-;; ;; in project, cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 or use bear with other
-;; ;; build system to generate clang compile-commands.json database.
-;; ;; rdm &
-;; ;; rc -J .
-;; ;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
-;; ;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
-;; ;; (require 'rtags)
+;;; rtags
+;; install clang, llvm...
+;; https://github.com/Andersbakken/rtags, need to install rtags first
+;; cd rtags; mkdir build && cd build; cmake ..; make; sudo make install
+;; in project, cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 or use bear with other
+;; build system to generate clang compile-commands.json database.
+;; rdm &
+;; rc -J .
+;(push "/usr/local/share/emacs/site-lisp/rtags" load-path) ; emacs won't find rtags.el in /usr/local/share/emacs/site-lisp/
+;(push "/usr/share/emacs/site-lisp/rtags" load-path) ; emacs will find rtags.el in /usr/share/emacs/site-lisp/, rtags cmake -DCMAKE_INSTALL_PREFIX=/usr .., using rtags-2.22
+;; (require 'rtags)
 
-;; ; company-rtags backend has no return type for function, use only company-irony.
-;; ;; (require 'company-rtags)
-;; ;; (setq rtags-completions-enabled t)
-;; ;; (eval-after-load 'company
-;; ;;   '(add-to-list
-;; ;;     'company-backends 'company-rtags))
-;; ;; ;(setq rtags-autostart-diagnostics t)
-;; (rtags-enable-standard-keybindings)
-;; ;(require 'helm-rtags)
-;; (setq rtags-use-helm t)
-;; (setq rtags-display-result-backend 'helm)
+; company-rtags backend has no return type for function, use only company-irony.
+;; (require 'company-rtags)
+;; (setq rtags-completions-enabled t)
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends 'company-rtags))
+;; ;(setq rtags-autostart-diagnostics t)
+(rtags-enable-standard-keybindings)
+;(require 'helm-rtags)
+(setq rtags-use-helm t)
+(setq rtags-display-result-backend 'helm)
+(setq rtags-use-bookmarks nil)
 
-;; ;(define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-;; ;(define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-;; ;(define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-;; ;(define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)
-;; ;(define-key irony-mode-map (kbd "M-i") 'rtags-imenu) ; use C-c r I. M-i used for helm-swoop!
-;; (add-hook 'irony-mode-hook '(lambda ()
-;;                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-;;                               (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-;;                               (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-;;                               (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
+;; if we use irony to auto complete, then use rtags to navigate. irony 🧡rtags
+(add-hook 'irony-mode-hook '(lambda ()
+                              (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+                              (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+                              (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+                              (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
+(defun use-rtags ()
+  "Bind M-.  and M-, to rtags funcitons."
+  (interactive)
+  (define-key c-mode-base-map (kbd "M-.") 'rtags-find-symbol-at-point)
+  (define-key c-mode-base-map (kbd "M-,") 'rtags-location-stack-back)
+  (define-key c-mode-base-map (kbd "M-r") 'rtags-find-references-at-point)
+  (define-key c-mode-base-map (kbd "C-x i") 'rtags-imenu))
+(defun unuse-rtags ()
+  "Unbind M-.  and M-, to rtags funcitons."
+  (interactive)
+  (define-key c-mode-base-map (kbd "M-.") 'xref-find-definitions)
+  (define-key c-mode-base-map (kbd "M-,") 'xref-pop-marker-stack)
+  (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
+  (define-key c-mode-base-map (kbd "C-x i") 'helm-imenu))
+(global-set-key (kbd "C-c r r") 'use-rtags)
+(global-set-key (kbd "C-c r u") 'unuse-rtags)
+
 
 ;;; shell-mode, comint-previous-input and comint-next-input
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
@@ -1134,6 +1130,7 @@
             ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
             (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
             (setq lsp-prefer-flymake nil)
+            (setq lsp-file-watch-threshold nil) ; don't bother me
             (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
             (custom-set-faces
              '(lsp-ui-peek-filename     ; use helm interface instead.
