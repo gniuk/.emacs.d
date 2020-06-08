@@ -483,6 +483,9 @@
 ;;; cmake-mode
 ;(require 'cmake-mode)
 
+;;; eldoc-cmake
+(add-hook 'cmake-mode-hook (lambda () (eldoc-cmake-enable)))
+
 ;;; guide-key ; replaced by which-key now
 ;; (require 'guide-key)
 ;; (setq guide-key/guide-key-sequence t)

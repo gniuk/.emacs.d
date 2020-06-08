@@ -70,6 +70,7 @@ There are two things you can do about this warning:
     afternoon-theme
     magit
     cmake-mode
+    eldoc-cmake
     ;web-mode  ;; not yet needed
     ;guide-key ; replaced by which-key
     nyan-mode
