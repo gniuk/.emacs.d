@@ -1115,30 +1115,8 @@
 (require 'helm-xref)
 
 ;;; lsp, ccls, lsp-ui
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 '(company-lsp company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
-            (setq ccls-executable "/usr/bin/ccls")
-            (require 'ccls)
-            (require 'lsp-ui)
-            (lsp-ui-mode)
-            (lsp)
-            (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
-            (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
-            (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
-            ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
-            (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
-            (setq lsp-prefer-flymake nil)
-            (setq lsp-file-watch-threshold nil) ; don't bother me
-            (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
-            (custom-set-faces
-             '(lsp-ui-peek-filename     ; use helm interface instead.
-               ((t (:background "dodger blue" :foreground "black"))))
-             '(lsp-ui-peek-peek
-               ((t (:background "#fdf6e3"))))
-             )))
 (push "~/.emacs.d/mylisp" load-path)
+(require 'lsp-c-cpp-setup) ; lsp is enabled in C/C++ by default, disable it using gniuk/disable-lsp-c-cpp
 (require 'ccls-extras)
 
 
