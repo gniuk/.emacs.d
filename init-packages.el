@@ -161,8 +161,7 @@
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 (with-eval-after-load 'helm
-  (setq helm-M-x-fuzzy-match t
-        helm-apropos-fuzzy-match t
+  (setq helm-apropos-fuzzy-match t
         helm-bookmark-show-location t
         helm-buffers-fuzzy-matching t
         helm-completion-in-region-fuzzy-match t
@@ -181,8 +180,9 @@
         helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
         ;; helm-echo-input-in-header-line t
         helm-ff-file-name-history-use-recentf t
-        helm-imenu-execute-action-at-once-if-one nil)
-  (custom-set-faces '(helm-selection ((t (:background "#fdf6e3" :foreground "firebrick3"))))
+        helm-imenu-execute-action-at-once-if-one nil
+        completion-styles `(basic partial-completion emacs22 initials ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
+  (custom-set-faces '(helm-selection ((t (:background "#008080" :foreground "#fdf6e3")))) ; old e4dbbf+firebrick3
                     '(helm-selection-line ((t (:background "green" :foreground "black"))))))
 (helm-mode 1)
 
