@@ -1257,5 +1257,12 @@
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
 (delete-selection-mode 1)
 
+;;; ediff quit without prompt
+(defun disable-y-or-n-p (orig-fun &rest args)
+  "Disable asking yes or no when quit ediff."
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
+    (apply orig-fun args)))
+(advice-add 'ediff-quit :around #'disable-y-or-n-p)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
