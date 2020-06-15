@@ -5,6 +5,7 @@
 ;;; Code:
 (setq gc-cons-threshold (* 500 1024 1024))
 (setq gc-cons-percentage 0.6)
+(setq linum-delay t)
 (global-linum-mode t)
 (column-number-mode t)
 (show-paren-mode t)
