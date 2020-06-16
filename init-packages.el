@@ -928,19 +928,26 @@
 ; use librime as input engine:
 ; 1. install librime: 1) using package management system or 2) manually build it
 ; 2. install rime-data: 1) using package management system or 2) manually install via plum
-; 3. install liberime, make liberime
-(push "~/.emacs.d/pyim/liberime/build/" load-path)
-(require 'liberime)
+; 3. install liberime, just following the README and Makefile to make
+(push "~/.emacs.d/pyim/liberime" load-path)
+(require 'liberime nil t)
 ;; (setq rime-data-dir "/usr/share/rime-data") ; if install rime-data via package manager, or as dependency of fcitx-rime or ibus-rime
 ;; (setq rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime")) ; if install schema files via plum
+
 (if (file-exists-p "/usr/share/rime-data/default.yaml")
-    (setq rime-data-dir "/usr/share/rime-data")
-  (setq rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime")))
-(liberime-start rime-data-dir (expand-file-name "~/.emacs.d/pyim/rime"))
-;(liberime-get-schema-list)
+    (setq liberime-shared-data-dir "/usr/share/rime-data")
+  (setq liberime-shared-data-dir (expand-file-name "~/.emacs.d/pyim/rime")))
+
+; The default.custom.yaml file in "~/.emacs.d/pyim/rime/" should be copied to
+; liberime's default custom dir("~/.emacs.d/rime/"), this dir will be created by liberime automatically.
+; Also, as in my case, I use double_pinyin_flypy, so the double_pinyin_flypy.custom.yaml should also be copied.
+; (liberime-get-schema-list) evaluates to (("luna_pinyin_simp" "朙月拼音·简化字") ("double_pinyin_flypy" "小鶴雙拼")) in my case,
+; due to my custom settings in default.custom.yaml and double_pinyin_flypy.custom.yaml
+
 (setq pyim-default-scheme 'rime)
 ;; (liberime-select-schema "luna_pinyin_simp") ; 使用全拼
-(liberime-select-schema "double_pinyin_flypy") ; 使用小鹤双拼
+;; (liberime-select-schema "double_pinyin_flypy") ; 使用小鹤双拼
+(liberime-try-select-schema "double_pinyin_flypy")
 ;; ========== rime as first choice ==========
 
 ;; ;; ========== pyim as second choice ==========
