@@ -1271,5 +1271,11 @@
     (apply orig-fun args)))
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
 
+;;; builtin dired
+;; n acts as dired-next-line
+(add-hook 'dired-mode-hook
+          '(lambda ()
+             (evil-matchit-mode -1)))
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
