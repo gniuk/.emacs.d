@@ -16,18 +16,18 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 (with-eval-after-load 'company
-  (setq company-minimum-prefix-length 1)
-  (setq company-show-numbers t)
-  (setq company-sort-by-occurrence 1)
-  (setq company-tooltip-limit 20)                      ; bigger popup window
-  (setq company-idle-delay 0.2)                        ; decrease delay before autocompletion popup shows
-  (setq company-echo-delay 0)                          ; remove annoying blinking
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
-  (setq company-selection-wrap-around t)                    ; make previous/next selection cycle style
-  (setq company-dabbrev-downcase nil)
-  (setq company-dabbrev-ignore-case nil)
-  (setq company-require-match nil)
-  ;(setq company-tooltip-align-annotations t)
+  (setq-default company-minimum-prefix-length 1)
+  (setq-default company-show-numbers t)
+  (setq-default company-sort-by-occurrence 1)
+  (setq-default company-tooltip-limit 20)                      ; bigger popup window
+  (setq-default company-idle-delay 0.2)                        ; decrease delay before autocompletion popup shows
+  (setq-default company-echo-delay 0)                          ; remove annoying blinking
+  (setq-default company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  (setq-default company-selection-wrap-around t)               ; make previous/next selection cycle style
+  (setq-default company-dabbrev-downcase nil)
+  (setq-default company-dabbrev-ignore-case nil)
+  (setq-default company-require-match nil)
+  ;(setq-default company-tooltip-align-annotations t)
   (define-key company-active-map (kbd "M-n") #'company-other-backend)
   (define-key company-active-map (kbd "M-p") nil)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
