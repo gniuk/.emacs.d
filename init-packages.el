@@ -1150,6 +1150,7 @@
 
 ;;; treemacs
 (global-set-key (kbd "<f7>") 'treemacs)
+(custom-set-default 'treemacs-width 28)
 
 ;; ;;; org-brain
 ;; (require 'org-brain)
