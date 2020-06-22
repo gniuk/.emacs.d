@@ -413,7 +413,11 @@
 (global-set-key (kbd "C-x p d") 'helm-projectile-find-dir)
 (global-set-key (kbd "C-x p i") 'projectile-invalidate-cache)
 (add-to-list 'projectile-globally-ignored-files "projectile.cache")
+(add-to-list 'projectile-globally-ignored-files ".projectile")
 (add-to-list 'projectile-globally-ignored-files "company-statistics-cache.el")
+(add-to-list 'projectile-globally-ignored-files ".ccls")
+(add-to-list 'projectile-globally-ignored-files "compile_commands.json")
+(add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
 (which-function-mode t)
 
 ;;; rtags
