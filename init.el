@@ -45,7 +45,7 @@
 ;(setq gdb-show-main t)
 ;(flyspell-mode 1)
 
-(push "~/.emacs.d/mylisp" load-path)
+(cl-pushnew "~/.emacs.d/mylisp" load-path :test #'string=)
 (require 'useful-single-key)
 
 (global-subword-mode)                   ;navigate camelCase word!

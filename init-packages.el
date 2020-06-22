@@ -1129,7 +1129,7 @@
 (require 'helm-xref)
 
 ;;; lsp, ccls, lsp-ui
-(push "~/.emacs.d/mylisp" load-path)
+(cl-pushnew "~/.emacs.d/mylisp" load-path :test #'string=)
 (require 'lsp-c-cpp-setup) ; lsp is enabled in C/C++ by default, disable it using gniuk/disable-lsp-c-cpp
 (require 'ccls-extras)
 
