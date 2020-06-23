@@ -1282,5 +1282,12 @@
           '(lambda ()
              (evil-matchit-mode -1)))
 
+;; window resize
+;; Though we already have golden-ratio, we can subtlely tune window size as needed.
+(global-set-key (kbd "M-<up>") 'enlarge-window)
+(global-set-key (kbd "M-<down>") 'shrink-window)
+(global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
