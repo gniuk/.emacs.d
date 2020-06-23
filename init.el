@@ -33,8 +33,8 @@
         ((member "Sarasa Term SC" (font-family-list)) "SarasaMonoSC-17")
         ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17")))
       ;; for unicode emojies and symbols
-      (set-fontset-font t 'symbol "Symbola" nil 'prepend)
       (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend)
+      (set-fontset-font t 'symbol "Symbola" nil 'append)
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
