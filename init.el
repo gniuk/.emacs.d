@@ -20,8 +20,21 @@
       ; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
       ; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
       ; 再来试试，可以了，这下好了，非常棒。
-      (set-fontset-font "fontset-default" 'han "NotoSansMonoCJKSC-17") ; for jiantihanzi, 简体中文
-      (set-fontset-font "fontset-default" 'cjk-misc "NotoSansMonoCJKSC-17") ; for punctuations, 标点符号
+      (set-fontset-font                 ; for jiantihanzi, 简体中文。Noto Sans CJK has no Italic
+       "fontset-default"                ; t means "fontset-default", see C-h f set-fontset-font
+       'han
+       (cond
+        ((member "Sarasa Term SC" (font-family-list)) "Sarasa Mono SC-17") ; don't know why the name "Sarasa Mono SC" not detected.
+        ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17")))
+      (set-fontset-font                 ; for punctuations, 标点符号。
+       "fontset-default"
+       'cjk-misc
+       (cond
+        ((member "Sarasa Term SC" (font-family-list)) "SarasaMonoSC-17")
+        ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17")))
+      ;; for unicode emojies and symbols
+      (set-fontset-font t 'symbol "Symbola" nil 'prepend)
+      (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend)
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
