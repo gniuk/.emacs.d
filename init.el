@@ -12,29 +12,34 @@
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
+;; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
+;; use fc-list to find the available fonts in the system.
+;; 再来试试，可以了，这下好了，非常棒。
 (if (not (eq window-system nil))
     (progn
+      (defun get-preferable-coding-font ()
+        (cond
+         ((member "Source Code Pro" (font-family-list)) "SourceCodePro-17")
+         ((member "Liberation Mono" (font-family-list)) "LiberationMono-17")
+         ((member "DejaVu Sans Mono" (font-family-list)) "DejaVuSansMono-17")))
+      (defun get-preferable-cjk-sc-font ()
+        (cond
+         ((member "Sarasa Term SC" (font-family-list)) "Sarasa Mono SC-17") ; don't know why the name "Sarasa Mono SC" not detected.
+         ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17"))) ; Noto Sans CJK has no italic style
       (add-to-list 'default-frame-alist
-                   '(font . "SourceCodePro-17"))
-      (set-frame-font "SourceCodePro-17")
-      ; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
-      ; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
-      ; 再来试试，可以了，这下好了，非常棒。
-      (set-fontset-font                 ; for jiantihanzi, 简体中文。Noto Sans CJK has no Italic
+                   `(font . ,(get-preferable-coding-font)))
+      (set-frame-font (get-preferable-coding-font))
+      (set-fontset-font                 ; for SimplifiedChinese, jiantihanzi, 简体中文。
        "fontset-default"                ; t means "fontset-default", see C-h f set-fontset-font
-       'han
-       (cond
-        ((member "Sarasa Term SC" (font-family-list)) "Sarasa Mono SC-17") ; don't know why the name "Sarasa Mono SC" not detected.
-        ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17")))
-      (set-fontset-font                 ; for punctuations, 标点符号。
-       "fontset-default"
-       'cjk-misc
-       (cond
-        ((member "Sarasa Term SC" (font-family-list)) "SarasaMonoSC-17")
-        ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17")))
+       'han                             ; describe-char to find the script name corresponding to SC
+       (get-preferable-cjk-sc-font))
+      (set-fontset-font t 'cjk-misc (get-preferable-cjk-sc-font)) ; for punctuations, 标点符号。
       ;; for unicode emojies and symbols
-      (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend)
-      (set-fontset-font t 'symbol "Symbola" nil 'append)
+      (if (member "Noto Color Emoji" (font-family-list))
+          (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend))
+      (if (member "Symbola" (font-family-list))
+          (set-fontset-font t 'symbol "Symbola" nil 'append))
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
