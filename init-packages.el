@@ -520,7 +520,7 @@
 
 ;;; smooth-scrolling
 ;(require 'smooth-scrolling)
-(setq smooth-scroll-margin 3)
+(setq smooth-scroll-margin 2)
 (smooth-scrolling-mode)
 
 ;;; readline-complete [awesome!]
