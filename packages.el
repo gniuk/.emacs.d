@@ -154,6 +154,7 @@ There are two things you can do about this warning:
     realgud
     cheat-sh
     treemacs ; replace neotree
+    avy
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")

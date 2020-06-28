@@ -999,7 +999,7 @@
 
 ;;; x86-lookup
 (setq x86-lookup-pdf "~/Books/OS/325383-sdm-vol-2abcd.pdf")
-(global-set-key (kbd "C-x x l") #'x86-lookup)
+(global-set-key (kbd "C-x x 8") #'x86-lookup)
 (setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
 ;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
 
@@ -1155,6 +1155,12 @@
 ;;; treemacs
 (global-set-key (kbd "<f7>") 'treemacs)
 (custom-set-default 'treemacs-width 28)
+
+;;; avy
+;; together with gniuk/cpAboveLine gniuk/cpAndCommentOutAboveLine, now we have:
+;; C-x x [c,l,r,x] to copy line or region, and the ability to comment out duplicate stuff conveniently.
+(global-set-key (kbd "C-x x l") 'avy-copy-line)
+(global-set-key (kbd "C-x x r") 'avy-copy-region) ; cooperate with M-h M-; to copy and comment out paragraph
 
 ;; ;;; org-brain
 ;; (require 'org-brain)
