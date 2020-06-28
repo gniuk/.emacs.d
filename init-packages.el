@@ -207,49 +207,33 @@
 (global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
 
 ;;; Python
-;(require 'python-mode)
-;(add-to-list 'auto-mode-alist '("\.py\'" . python-mode))
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-;; (eval-after-load "company"
-;;  '(progn
-;;     (add-to-list 'company-backends 'company-anaconda)
-;;     ))
 (add-hook 'python-mode-hook 'anaconda-mode)
 (with-eval-after-load "anaconda-mode"
-  '(progn
-     ;(define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
-     (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments)))
+  ;; (define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
+  (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments))
 (add-hook 'python-mode-hook (lambda ()
-                              (set (make-local-variable 'company-backends) '(company-anaconda company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
-(setq python-indent-offset 4)
-
-;;; C
-;; (eval-after-load "company"
-;;  '(progn
-;;     (add-to-list 'company-backends 'company-c-headers)
-;;     (remove 'company-semantic company-backends)))
-; delete should be in the eval-after-load ! yeah! (Symbol's value as variable is void: company-backends) GONE!
-;(setq company-backends (delete 'company-semantic company-backends))
-;(setq company-backends (remove 'company-semantic company-backends))
-
-; we have to delete company-semantic, otherwise company-complete will use company-semantic instead of company-clang
-
-
+                              (set (make-local-variable 'company-backends)
+                                   '(company-anaconda
+                                     company-files
+                                     company-yasnippet
+                                     (company-dabbrev-code company-gtags company-etags company-keywords)
+                                     company-dabbrev))
+                              (setq python-indent-offset 4)))
 
 ;;; nodejs
 ;; sudo npm install -g tern
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;; (eval-after-load "company"
-;;  '(progn
-;;     (add-to-list 'company-backends 'company-tern)))
-;(add-hook 'js2-mode-hook 'tern-mode)
 (add-hook 'js2-mode-hook
           (lambda ()
-            (set (make-local-variable 'company-backends) '(company-tern company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
+            (set (make-local-variable 'company-backends)
+                 '(company-tern
+                   company-files
+                   company-yasnippet
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-dabbrev))
             (tern-mode t)))
-
-;; (add-hook 'javascript-mode 'js2-mode)
 
 ;;; undo-tree
 (global-undo-tree-mode 1)
@@ -804,7 +788,10 @@
 
 ; company-files not working in shell-mode, can't figure out yet
 (add-hook 'shell-mode-hook '(lambda ()
-                              (set (make-local-variable 'company-backends) '((company-shell company-shell-env company-fish-shell company-files) company-readline company-dabbrev))
+                              (set (make-local-variable 'company-backends)
+                                   '((company-shell company-shell-env company-fish-shell company-files)
+                                     company-readline
+                                     company-dabbrev))
                               (evil-emacs-state)
                               (linum-mode -1)))
 
@@ -813,7 +800,12 @@
 
 ;;; company-go
 (add-hook 'go-mode-hook (lambda ()
-                              (set (make-local-variable 'company-backends) '(company-go company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
+                          (set (make-local-variable 'company-backends)
+                               '(company-go
+                                 company-files
+                                 company-yasnippet
+                                 (company-dabbrev-code company-gtags company-etags company-keywords)
+                                 company-dabbrev))))
 
 ;;; go mode
 
