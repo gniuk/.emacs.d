@@ -1249,6 +1249,13 @@
 (setq-default split-height-threshold nil
               split-width-threshold 100)
 
+; ediff quit without prompt
+(defun disable-y-or-n-p (orig-fun &rest args)
+  "Disable asking yes or no when quit ediff via automatically prompting yes to (ORIG-FUN ARGS)."
+  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
+    (apply orig-fun args)))
+(advice-add 'ediff-quit :around #'disable-y-or-n-p)
+
 ;; keep session when restart
 ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
@@ -1267,14 +1274,7 @@
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
 (delete-selection-mode 1)
 
-;;; ediff quit without prompt
-(defun disable-y-or-n-p (orig-fun &rest args)
-  "Disable asking yes or no when quit ediff."
-  (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
-    (apply orig-fun args)))
-(advice-add 'ediff-quit :around #'disable-y-or-n-p)
-
-;;; builtin dired
+;; builtin dired
 ;; n acts as dired-next-line
 (add-hook 'dired-mode-hook
           '(lambda ()
