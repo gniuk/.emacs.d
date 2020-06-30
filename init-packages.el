@@ -922,11 +922,12 @@
 (require 'pyim)
 (setq default-input-method "pyim")
 
-;; ========== rime as first choice ==========
+;; ========== pyim with rime as first choice ==========
 ; use librime as input engine:
 ; 1. install librime: 1) using package management system or 2) manually build it
 ; 2. install rime-data: 1) using package management system or 2) manually install via plum
 ; 3. install liberime, just following the README and Makefile to make
+(if (file-exists-p "~/.emacs.d/pyim/liberime/src/liberime-core.so") (progn
 (push "~/.emacs.d/pyim/liberime" load-path)
 (require 'liberime nil t)
 ;; (setq rime-data-dir "/usr/share/rime-data") ; if install rime-data via package manager, or as dependency of fcitx-rime or ibus-rime
@@ -946,21 +947,24 @@
 ;; (liberime-select-schema "luna_pinyin_simp") ; 使用全拼
 ;; (liberime-select-schema "double_pinyin_flypy") ; 使用小鹤双拼
 (liberime-try-select-schema "double_pinyin_flypy")
-;; ========== rime as first choice ==========
-
-;; ;; ========== pyim as second choice ==========
-;; (require 'pyim-basedict)
-;; (pyim-basedict-enable)
-;; ;; (setq pyim-default-scheme 'quanpin) ; !!! 积累自己的频繁字词 ~/.emacs.d/pyim/dcache !!!
-;; (setq pyim-default-scheme 'xiaohe-shuangpin)
-;; ; --- pyim using dicts
-;; ; http://tumashu.github.io/pyim-bigdict/pyim-bigdict.pyim.gz
-;; (setq pyim-dicts
-;;       '((:name "default_big_dict" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
-;; ;; 让 Emacs 启动时自动加载 pyim 词库
-;; (add-hook 'emacs-startup-hook
-;;           #'(lambda () (pyim-restart-1 t)))
-;; ;; ========== pyim as second choice ==========
+;; ========== pyim with rime as first choice ==========
+) (progn
+;; ========== bare pyim as second choice ==========
+(message "[pyim] You may want rime, checkout the instructions in the configuration file.")
+(require 'pyim-basedict)
+(pyim-basedict-enable)
+;; (setq pyim-default-scheme 'quanpin) ; !!! 积累自己的频繁字词 ~/.emacs.d/pyim/dcache !!!
+(setq pyim-default-scheme 'xiaohe-shuangpin)
+; --- pyim using dicts
+; http://tumashu.github.io/pyim-bigdict/pyim-bigdict.pyim.gz
+(cond ((file-exists-p "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")
+(setq pyim-dicts
+      '((:name "default_big_dict" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
+;; 让 Emacs 启动时自动加载 pyim 词库
+(add-hook 'emacs-startup-hook
+          #'(lambda () (pyim-restart-1 t)))
+;; ========== bare pyim as second choice ==========
+))))
 
 ;; 1. 光标只有在注释里面时，才可以输入中文。
 ;; 2. 光标前是汉字字符时，才能输入中文。
