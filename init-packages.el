@@ -775,11 +775,13 @@
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
 ;; (setq highlight-indent-guides-character ?\|) default is │,?\x2502, C-x 8 RET BOX DRAWINGS LIGHT VERTICAL
+;; default is │,?\x2502. C-x 8 RET BOX DRAWINGS LIGHT QUADRUPLE DASH VERTICAL, or insert-char #x250a
+(setq highlight-indent-guides-character ?\x250a)
 (setq highlight-indent-guides-delay 0.5)
 
 ; emacs -q: list-colors-display, /usr/share/X11/rgb.txt, or https://jonasjacek.github.io/colors/
 (setq highlight-indent-guides-auto-enabled nil)
-(set-face-foreground 'highlight-indent-guides-character-face "grey23")
+(set-face-foreground 'highlight-indent-guides-character-face "grey27")
 
 ;;; company-shell. $PATH bin, fish-shell-builtin, env
 ;; (eval-after-load 'company
