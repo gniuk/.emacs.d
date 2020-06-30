@@ -20,7 +20,8 @@
     (progn
       (defun guess-preferable-font-size ()
         (cond
-         ((and (>= (display-pixel-height) 1080) (>= (display-mm-height) 285)) 11) ; 1920x1080 with >=22? inches physical monitor
+         ((and (= (display-pixel-height) 1080) (>= (display-mm-height) 285)) 11) ; 1920x1080 with >=22? inches physical monitor
+         ((and (= (display-pixel-height) 1440) (>= (display-mm-height) 381)) 15) ; 2560x1440 with >=23.8? inches physical monitor
          (17)                           ; my 2560x1440 laptop with 14 inches physical monitor
          ))
       (defun get-properly-sized-font (fontname)
