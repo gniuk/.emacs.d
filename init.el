@@ -18,15 +18,23 @@
 ;; 再来试试，可以了，这下好了，非常棒。
 (if (not (eq window-system nil))
     (progn
+      (defun guess-preferable-font-size ()
+        (cond
+         ((and (>= (display-pixel-height) 1080) (>= (display-mm-height) 285)) 11) ; 1920x1080 with >=22? inches physical monitor
+         (17)                           ; my 2560x1440 laptop with 14 inches physical monitor
+         ))
+      (defun get-properly-sized-font (fontname)
+        (concat fontname "-" (number-to-string (guess-preferable-font-size))))
       (defun get-preferable-coding-font ()
         (cond
-         ((member "Source Code Pro" (font-family-list)) "SourceCodePro-17")
-         ((member "Liberation Mono" (font-family-list)) "LiberationMono-17")
-         ((member "DejaVu Sans Mono" (font-family-list)) "DejaVuSansMono-17")))
+         ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "SourceCodePro"))
+         ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))
+         ((member "DejaVu Sans Mono" (font-family-list)) (get-properly-sized-font "DejaVuSansMono"))))
       (defun get-preferable-cjk-sc-font ()
         (cond
-         ((member "Sarasa Term SC" (font-family-list)) "Sarasa Mono SC-17") ; don't know why the name "Sarasa Mono SC" not detected.
-         ((member "Noto Sans Mono CJK SC" (font-family-list)) "NotoSansMonoCJKSC-17"))) ; Noto Sans CJK has no italic style
+         ((member "Sarasa Term SC" (font-family-list)) (get-properly-sized-font "Sarasa Mono SC")) ; don't know why the name "Sarasa Mono SC" not detected.
+         ((member "Noto Sans Mono CJK SC" (font-family-list)) (get-properly-sized-font "NotoSansMonoCJKSC")))) ; Noto Sans CJK has no italic style
+
       (add-to-list 'default-frame-alist
                    `(font . ,(get-preferable-coding-font)))
       (set-frame-font (get-preferable-coding-font))
