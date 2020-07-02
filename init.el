@@ -15,6 +15,8 @@
 ;; M-x describe-char on a 汉字 or 标点，find the script, e.g. han or cjk-misc.
 ;; use the font setting menu of terminal(e.g. lxterminal) to find the right name of the font needed.
 ;; use fc-list to find the available fonts in the system.
+;; fc-cache -v [-f] fontdir to cache new font
+;; fc-list ":charset=HexCodePoint[-codepoint2]" to find which font can display this/these character[s]
 ;; 再来试试，可以了，这下好了，非常棒。
 (if (not (eq window-system nil))
     (progn
@@ -29,8 +31,8 @@
       (defun get-preferable-coding-font ()
         (cond
          ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "SourceCodePro"))
-         ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))
-         ((member "DejaVu Sans Mono" (font-family-list)) (get-properly-sized-font "DejaVuSansMono"))))
+         ((member "DejaVu Sans Mono" (font-family-list)) (get-properly-sized-font "DejaVuSansMono"))
+         ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))))
       (defun get-preferable-cjk-sc-font ()
         (cond
          ((member "Sarasa Term SC" (font-family-list)) (get-properly-sized-font "Sarasa Mono SC")) ; don't know why the name "Sarasa Mono SC" not detected.
@@ -49,6 +51,8 @@
           (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend))
       (if (member "Symbola" (font-family-list))
           (set-fontset-font t 'symbol "Symbola" nil 'append))
+      (if (member "PMingLiU-ExtB" (font-family-list))
+          (set-fontset-font t 'han "PMingLiU-ExtB" nil 'append)) ; 新細明體 mingliub.ttc for some Traditional Chinese characters
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
