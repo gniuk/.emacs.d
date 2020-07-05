@@ -126,6 +126,15 @@ No more indentation adjustment after paste to the destination point."
     (zap-up-to-char -1 ?\s)))
 (global-set-key (kbd "C-w") 'gniuk/kill-region-or-kill-backward-to-whitespace)
 
+;; make C-backspace kill back to indentation, same as d^ in vim.
+(defun gniuk/kill-back-to-indentation ()
+  "Kill from point back to the first non-whitespace character on the line.  A bit like vim d^."
+  (interactive)
+  (let ((prev-pos (point)))
+    (back-to-indentation)
+    (kill-region (point) prev-pos)))
+(global-set-key (kbd "C-<backspace>") 'gniuk/kill-back-to-indentation)
+
 
 (defun gniuk/hide-ctrl-M ()
   "Hides the disturbing '^M' showing up in files containing mixed UNIX and DOS line endings."
