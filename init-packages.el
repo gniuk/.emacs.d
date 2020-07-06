@@ -796,7 +796,7 @@
                                    '((company-shell company-shell-env company-fish-shell company-files)
                                      company-readline
                                      company-dabbrev))
-                              (evil-emacs-state)
+                              (evil-set-initial-state 'shell-mode 'emacs)
                               (linum-mode -1)))
 
 ;;; pcmpl-args
