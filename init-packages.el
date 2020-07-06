@@ -606,7 +606,8 @@
 
 
 ;;; ace-jump-zap-to-char
-(global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
+;; (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
+(global-set-key (kbd "M-g z") 'ace-jump-zap-to-char)
 
 ;;; ace-pinyin
 ;(require 'ace-pinyin)
@@ -617,7 +618,8 @@
 ;; (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
 ;; (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
 (global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
-(global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
+;; (global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
+(global-set-key (kbd "M-z") 'ace-pinyin-jump-char)
 
 ;;; auctex
 ;(load "auctex.el" nil t t)
