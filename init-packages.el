@@ -1162,6 +1162,9 @@
 (global-set-key (kbd "C-x x l") 'avy-copy-line)
 (global-set-key (kbd "C-x x r") 'avy-copy-region) ; cooperate with M-h M-; to copy and comment out paragraph
 
+;;; ascii-table
+;; use M-x ascii-table, b,o,d,x
+
 ;; ;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
