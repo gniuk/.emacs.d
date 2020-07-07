@@ -896,6 +896,9 @@
 (evil-mode 1)
 (setq evil-move-beyond-eol t)
 (setq evil-move-cursor-back nil)
+(evil-set-initial-state 'treemacs-mode 'emacs)
+(evil-set-initial-state 'git-commit-mode 'emacs)
+(evil-set-initial-state 'dired-mode 'emacs)
 
 ;;; evil-matchit
 (setq evilmi-shortcut "n")
