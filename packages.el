@@ -156,6 +156,7 @@ There are two things you can do about this warning:
     treemacs ; replace neotree
     avy
     ascii-table
+    nov
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")

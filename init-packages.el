@@ -1169,6 +1169,9 @@
 ;;; ascii-table
 ;; use M-x ascii-table, b,o,d,x
 
+;;; nov, evince not support epub
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
 ;; ;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
