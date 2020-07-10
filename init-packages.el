@@ -893,6 +893,7 @@
 (doom-modeline-mode 1)
 
 ;;; evil
+(setq-default evil-disable-insert-state-keybindings t)
 (evil-mode 1)
 (setq evil-move-beyond-eol t)
 (setq evil-move-cursor-back nil)
@@ -1236,6 +1237,17 @@
 ; TAB fall through to emacs
 (define-key evil-normal-state-map (kbd "TAB") nil)
 (define-key evil-motion-state-map (kbd "TAB") nil)
+; reserve C-d and C-t in evil-insert. replace C-n and C-p. Use M-/ instead.
+; C-x C-n and C-x C-p is good, bind it to C-x M-/, use hydra to make it more convenient.
+(define-key evil-insert-state-map (kbd "C-n") 'next-line)
+(define-key evil-insert-state-map (kbd "C-p") 'previous-line)
+(define-key evil-insert-state-map (kbd "C-a") nil)
+(define-key evil-insert-state-map (kbd "C-e") nil)
+(define-key evil-insert-state-map (kbd "C-o") nil)
+(define-key evil-insert-state-map (kbd "C-k") nil)
+(defhydra hydra-evil-complete-line (global-map "C-x")
+  "complete whole line"
+  ("M-/" evil-complete-previous-line))
 
 ;; keybindings for some C-M prefix commands
 (global-set-key (kbd "C-c a") 'beginning-of-defun)
