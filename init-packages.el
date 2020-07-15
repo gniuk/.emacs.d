@@ -1011,6 +1011,12 @@
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c SPC") nil)
   (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field))
+(defhydra hydra-org-goto-heading (org-mode-map "C-c")
+  "goto heading"
+  ("p" org-previous-visible-heading)
+  ("n" org-next-visible-heading)
+  ("M-p" org-backward-heading-same-level)
+  ("M-n" org-forward-heading-same-level))
 
 ;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
@@ -1253,10 +1259,14 @@
   ("M-/" evil-complete-previous-line))
 
 ;; keybindings for some C-M prefix commands
-(global-set-key (kbd "C-c a") 'beginning-of-defun)
-(global-set-key (kbd "C-c e") 'end-of-defun)
+;; (global-set-key (kbd "C-c a") 'beginning-of-defun)
+;; (global-set-key (kbd "C-c e") 'end-of-defun)
 (global-set-key (kbd "C-c s k") 'kill-sexp)
 (global-set-key (kbd "C-c s SPC") 'mark-sexp)
+(defhydra hydra-defun-navigation (global-map "C-c")
+  "goto beginning or end of function"
+  ("a" beginning-of-defun)
+  ("e" end-of-defun))
 
 ;;; other config
 ; automatic delete trailing spaces when saving file
