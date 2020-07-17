@@ -31,6 +31,7 @@
       (defun get-preferable-coding-font ()
         (cond
          ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "SourceCodePro"))
+         ((member "Ubuntu Mono" (font-family-list)) (get-properly-sized-font "UbuntuMono"))
          ((member "DejaVu Sans Mono" (font-family-list)) (get-properly-sized-font "DejaVuSansMono"))
          ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))))
       (defun get-preferable-cjk-sc-font ()
