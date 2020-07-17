@@ -568,7 +568,7 @@
    helm-multi-swoop-edit-save t
 
    ;; If this value is t, split window inside the current window
-   helm-swoop-split-with-multiple-windows nil
+   helm-swoop-split-with-multiple-windows t
 
    ;; Split direcion. 'split-window-vertically or 'split-window-horizontally
    helm-swoop-split-direction 'split-window-vertically
