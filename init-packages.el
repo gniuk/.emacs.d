@@ -763,9 +763,9 @@
 ; L = 1     : `ace-jump-mode' or `avy'
 ; 1 < L < 6 : `isearch'
 ; L >= 6    : `helm-swoop' or `swiper'
-(require 'ace-isearch)
-(global-ace-isearch-mode +1)
-(setq ace-isearch-jump-delay 0.8)
+;; (require 'ace-isearch)
+;; (global-ace-isearch-mode +1)
+;; (setq ace-isearch-jump-delay 0.8)
 
 ;;; highlight-symbol, replace smart-scan using highlight-symbol
 ;; (require 'highlight-symbol)

@@ -113,7 +113,7 @@ There are two things you can do about this warning:
     ;god-mode
     which-key
     ;workgroups2
-    ace-isearch
+    ;ace-isearch
     ;highlight-symbol
     highlight-indent-guides
     company-shell
