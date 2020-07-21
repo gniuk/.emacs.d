@@ -13,6 +13,7 @@
 ;; (package-initialize)
 
 (require 'package)
+(setq-default package-check-signature nil) ; failed to verify signature auctex
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (proto (if no-ssl "http" "https")))
