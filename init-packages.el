@@ -1228,6 +1228,7 @@
 (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
 (define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-z") 'evil-normal-state)
+(define-key evil-replace-state-map (kbd "C-z") 'evil-normal-state)
 ; C-p previous-line, C-n next-line
 (define-key evil-normal-state-map (kbd "C-p") 'previous-line)
 (define-key evil-normal-state-map (kbd "C-n") 'next-line)
