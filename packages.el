@@ -38,7 +38,6 @@ There are two things you can do about this warning:
   '(
     company
     ;company-c-headers
-    company-web
     company-anaconda
     yasnippet
     yasnippet-snippets
@@ -80,9 +79,15 @@ There are two things you can do about this warning:
     magit
     cmake-mode
     eldoc-cmake
-    ;web-mode  ;; not yet needed
+    web-mode
+    company-web
+    web-beautify
+    helm-css-scss
+    css-eldoc
+    emmet-mode
+    helm-emmet
     ;guide-key ; replaced by which-key
-    nyan-mode
+    ;nyan-mode ; actually no need
     helm-c-yasnippet
     multiple-cursors
     ace-jump-buffer

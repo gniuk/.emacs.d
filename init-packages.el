@@ -480,6 +480,39 @@
 ;; (setq guide-key/idle-delay 1)
 ;; (guide-key-mode 1)
 
+;;; web-mode
+(add-to-list 'auto-mode-alist '("\\.[px]?html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.\\(?:tpl\\|blade\\)\\(?:\\.php\\)?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.l?eex\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.twig\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jinja2?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("wp-content/themes/.+/.+\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("templates/.+\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(setq web-mode-enable-auto-closing t)   ; </ to automatically close tag. C-c C-e / to manually close tag
+
+;;; company-web
+(add-hook 'web-mode-hook
+          (lambda ()
+            (set (make-local-variable 'company-backends)
+                 '(company-css
+                   company-web-html
+                   company-files
+                   company-yasnippet
+                   (company-dabbrev-code company-gtags company-etags company-keywords)
+                   company-dabbrev))))
+
+;;; emmet-mode
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'html-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)
+
 ;;; nyan-mode
 ;(nyan-mode 1)
 
