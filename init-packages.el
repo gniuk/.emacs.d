@@ -3,15 +3,15 @@
 ;;; Commentary:
 ;; none
 
-;;;;;======================= packages' configuration =======================;;;;;
+;;;;;;;;;; ======================= packages' configuration ======================= ;;;;;;;;;;
 ;;; Code:
 
 (load "~/.emacs.d/packages.el")
-;; ;;; benchmark-init
+;; ;;;;; benchmark-init
 ;; (require 'benchmark-init)
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
-;;; company
+;;;;; company
 ;(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
@@ -79,7 +79,7 @@
    ((t (:background "red" :foreground "gray15")))))
 
 
-;;; yasnippet
+;;;;; yasnippet
 (with-eval-after-load 'yasnippet
   '(progn
      (setq helm-yas-space-match-any-greedy t)
@@ -88,7 +88,7 @@
 (global-set-key (kbd "C-c y") 'helm-yas-complete)
 (yas-global-mode 1)
 
-;;; yasnippet
+;;;;; yasnippet
 ;; (require 'yasnippet)
 ;; (require 'helm-c-yasnippet)
 ;; (setq helm-yas-space-match-any-greedy t)
@@ -105,7 +105,7 @@
 ;; yasnippet will automatically find yasnippet-snippets-whatever.xxxxxx
 
 
-;;; autopair
+;;;;; autopair
 ;; using smartparens instead
 ;(require 'autopair)
 ;; (autopair-global-mode t)
@@ -113,7 +113,7 @@
 ;;   '(setq autopair-autowrap t))
 
 
-;;; paredit
+;;;;; paredit
 ;; using smartparens instead
 ;; (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 ;; (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
@@ -123,10 +123,10 @@
 ;; (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 ;; (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
-;;; switch-window
+;;;;; switch-window
 (global-set-key (kbd "C-x o") 'switch-window)
 
-;;; expand-region
+;;;;; expand-region
 (require 'expand-region)
 ;(global-set-key (kbd "C-=") 'er/expand-region) ; use it in god-mode, so efficient. 2017-07-27
 ;(global-set-key (kbd "M-+") 'er/expand-region) ; the Ctrl key not functioning well with some keys on remote server via ssh, change to Meta(Alt) key
@@ -139,15 +139,15 @@
 (global-set-key (kbd "C-c m q") 'er/mark-inside-quotes)
 (global-set-key (kbd "C-c m u") 'er/mark-url)
 
-;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
+;;;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
 ;(global-hl-line-mode t)
 
-;;; helm-treemacs-icons
+;;;;; helm-treemacs-icons
 (push "~/.emacs.d/nonmelpa/helm-treemacs-icons" load-path)
 (require 'helm-treemacs-icons)
 (helm-treemacs-icons-enable)
 
-;;; helm
+;;;;; helm
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
@@ -202,11 +202,11 @@
 ;C-M-a runs beginning-of-defun, which moves point to beginning of a function
 ;C-M-e runs end-of-defun, which moves point to end of a function
 
-;;; goto-last-change
+;;;;; goto-last-change
 (require 'goto-last-change)
 (global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
 
-;;; Python
+;;;;; Python
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-hook 'python-mode-hook 'anaconda-mode)
 (with-eval-after-load "anaconda-mode"
@@ -221,7 +221,7 @@
                                      company-dabbrev))
                               (setq python-indent-offset 4)))
 
-;;; nodejs
+;;;;; nodejs
 ;; sudo npm install -g tern
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -235,17 +235,17 @@
                    company-dabbrev))
             (tern-mode t)))
 
-;;; undo-tree
+;;;;; undo-tree
 (global-undo-tree-mode 1)
 (global-set-key (kbd "C-c z") 'undo)
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-c Z") 'redo)
 
-;;; rainbow
+;;;;; rainbow
 (add-hook 'company-mode-hook 'rainbow-delimiters-mode)
 ;(add-hook 'company-mode-hook 'rainbow-identifiers-mode)
 
-;;; auto-highlight-symbol
+;;;;; auto-highlight-symbol
 ;; (require 'auto-highlight-symbol)
 ;; ;; Can not wrap ahs-forward or ahs-backward, don't know why, more elisp knowledge needed.
 ;; ;; May be try it again some days later. So now still use highlight-symbol to navigate.
@@ -266,7 +266,7 @@
 ;; (pushnew 'asm-mode ahs-modes)
 ;; (pushnew 'nasm-mode ahs-modes)
 
-;;; helm-gtags
+;;;;; helm-gtags
 ;; ;; (add-hook 'c-mode-hook 'helm-gtags-mode)
 ;; ;; (add-hook 'c++-mode-hook 'helm-gtags-mode)
 ;; ;; (add-hook 'asm-mode-hook 'helm-gtags-mode)
@@ -288,17 +288,15 @@
 ;;      (define-key helm-gtags-mode-map (kbd "C-c g <") 'helm-gtags-previous-history)
 ;;      (define-key helm-gtags-mode-map (kbd "C-c g >") 'helm-gtags-next-history)))
 
-;;;smartscan
+;;;;; smartscan
 ;; ; smart scan replace text! M-' good!
 ;; (global-smartscan-mode 1)
 ;; (add-hook 'company-mode-hook 'global-smartscan-mode)
 ;; (global-set-key (kbd "M-S-n") 'smartscan-symbol-go-forward)
 ;; (global-set-key (kbd "M-S-p") 'smartscan-symbol-go-backward)
-; bug, symbol_with_underscore-minus not recognized. replace text maybe use highlight-symbol replace.
-;;; load global-set.el
-;(load "~/.emacs.d/global-set.el")
+;; ; bug, symbol_with_underscore-minus not recognized. highlight-symbol maybe used to replace text.
 
-;;; ace-jump-mode
+;;;;; ace-jump-mode
 ;; (autoload
 ;;   'ace-jump-mode
 ;;   "ace-jump-mode"
@@ -316,21 +314,21 @@
 ;;   '(ace-jump-mode-enable-mark-sync))
 ;; ;(define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
 
-;;; fill-column-indicator
+;;;;; fill-column-indicator
 ;(require 'fill-column-indicator)
 
-;;; col-highlight
+;;;;; col-highlight
 (push "~/.emacs.d/nonmelpa/col-highlight" load-path)
 (require 'col-highlight)
 (setq col-highlight-period 2)
 (global-set-key (kbd "<f8>") 'flash-column-highlight) ; manually flash current column when necessary
 
-;;; ycmd
+;;;;; ycmd
 ;; (require 'ycmd)
 ;; (add-hook 'after-init-hook #'global-ycmd-mode)
 ;; (require 'company-ycmd)
 
-;;; built-in hs-minor-mode
+;;;;; built-in hs-minor-mode
 (add-hook 'python-mode-hook 'hs-minor-mode)
 (add-hook 'c-mode-hook 'hs-minor-mode)
 (add-hook 'c++-mode-hook 'hs-minor-mode)
@@ -344,11 +342,11 @@
 (global-set-key (kbd "C-c h s") 'hs-show-block)
 (global-set-key (kbd "C-c h t") 'hs-toggle-hiding)
 
-;;; flycheck
+;;;;; flycheck
 ;; for python, sudo pip intall pylint
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-;; ;;; irony-mode
+;; ;;;;; irony-mode
 ;; ;; M-x irony-install-server to install server
 ;; (add-hook 'c-mode-common-hook 'irony-mode)
 ;; (add-hook 'c-mode-hook 'irony-mode)
@@ -378,7 +376,7 @@
 ;; (add-hook 'irony-mode-hook #'irony-eldoc)
 
 
-;;; projectile and helm-projectile
+;;;;; projectile and helm-projectile
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
@@ -404,7 +402,7 @@
 (add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
 (which-function-mode t)
 
-;;; rtags
+;;;;; rtags
 ;; install clang, llvm...
 ;; https://github.com/Andersbakken/rtags, need to install rtags first
 ;; cd rtags; mkdir build && cd build; cmake ..; make; sudo make install
@@ -429,7 +427,7 @@
 (setq rtags-display-result-backend 'helm)
 (setq rtags-use-bookmarks nil)
 
-;; if we use irony to auto complete, then use rtags to navigate. irony 🧡rtags
+;; if we use irony to auto complete, then use rtags to navigate. irony🧡rtags
 (add-hook 'irony-mode-hook '(lambda ()
                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
                               (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
@@ -453,7 +451,7 @@
 (global-set-key (kbd "C-c r u") 'unuse-rtags)
 
 
-;;; shell-mode, comint-previous-input and comint-next-input
+;;;;; shell-mode, comint-previous-input and comint-next-input
 ;; use <C-up>, <C-down> to step find history, (M-p and M-n are override by
 ;; smartscan). Or, M-r to start search, and then C-r to find history.
 ;; C-c C-p goto last shell prompt
@@ -468,19 +466,19 @@
      '(lambda () (toggle-truncate-lines 1)))
 ;(setq comint-prompt-read-only t)    ; When debugging in output, sometimes need select all(C-x h) to clear. readonly prevent this.
 
-;;; cmake-mode
+;;;;; cmake-mode
 ;(require 'cmake-mode)
 
-;;; eldoc-cmake
+;;;;; eldoc-cmake
 (add-hook 'cmake-mode-hook (lambda () (eldoc-cmake-enable)))
 
-;;; guide-key ; replaced by which-key now
+;;;;; guide-key ; replaced by which-key now
 ;; (require 'guide-key)
 ;; (setq guide-key/guide-key-sequence t)
 ;; (setq guide-key/idle-delay 1)
 ;; (guide-key-mode 1)
 
-;;; web-mode
+;;;;; web-mode
 (add-to-list 'auto-mode-alist '("\\.[px]?html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(?:tpl\\|blade\\)\\(?:\\.php\\)?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
@@ -497,7 +495,7 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (setq web-mode-enable-auto-closing t)   ; </ to automatically close tag. C-c C-e / to manually close tag
 
-;;; company-web
+;;;;; company-web
 (add-hook 'web-mode-hook
           (lambda ()
             (set (make-local-variable 'company-backends)
@@ -508,7 +506,7 @@
                    (company-dabbrev-code company-gtags company-etags company-keywords)
                    company-dabbrev))))
 
-;;; emmet-mode
+;;;;; emmet-mode
 (add-hook 'sgml-mode-hook 'emmet-mode)
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
@@ -517,34 +515,34 @@
           (lambda ()
             (define-key web-mode-map (kbd "C-c e") 'emmet-expand-line)))
 
-;;; nyan-mode
+;;;;; nyan-mode
 ;(nyan-mode 1)
 
-;;; multiple-cursors
+;;;;; multiple-cursors
 ;(require 'multiple-cursors)
 (global-set-key (kbd "C-c m a") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-M-=") 'mc/mark-next-like-this)
 
-;;; ace-jump-buffer
+;;;;; ace-jump-buffer
 ;(require 'ace-jump-buffer)
 (global-set-key (kbd "C-x SPC") 'ace-jump-buffer)
 
-;;; quickrun
+;;;;; quickrun
 ;(require 'quickrun)
 (global-set-key (kbd "<f5>") 'quickrun)
 ; or use M-|, shell-command-on-region to execute on region
 
-;;; hlinum
+;;;;; hlinum
 (require 'hlinum)
 (hlinum-activate)
 (setq linum-highlight-in-all-buffersp t)
 
-;;; smooth-scrolling
+;;;;; smooth-scrolling
 ;(require 'smooth-scrolling)
 (setq smooth-scroll-margin 2)
 (smooth-scrolling-mode)
 
-;;; readline-complete [awesome!]
+;;;;; readline-complete [awesome!]
 ;(require 'readline-complete)
 (setq explicit-shell-file-name "bash")
 (setq explicit-bash-args '("-c" "export EMACS=; stty echo; bash"))
@@ -558,39 +556,39 @@
 ; conflicts to readline-complete in shell. Finally find it!
 
 
-;; ;;; neotree
+;; ;;;;; neotree
 ;; ;(require 'neotree)
 ;; (global-set-key (kbd "<f7>") 'neotree-toggle)
 
-;;; indent-guide. replaced by highlight-indent-guides
+;;;;; indent-guide. replaced by highlight-indent-guides
 ;; (indent-guide-global-mode t)
 ;; ;(set-face-background 'indent-guide-face "dimgray")
 ;; (setq indent-guide-delay 0.1)
 ;; (setq indent-guide-recursive t)
 ;; (setq indent-guide-char "|")
 
-;;; window-numbering
+;;;;; window-numbering
 (window-numbering-mode t)
 
-;;; anzu
+;;;;; anzu
 (global-anzu-mode 1)
 
-;;; buffer-move
+;;;;; buffer-move
 ;(require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
 
-;;; mwim
+;;;;; mwim
 (autoload 'mwim-beginning-of-code-or-line-or-comment "mwim" nil t)
 (autoload 'mwim-end-of-code-or-line "mwim" nil t)
 (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line-or-comment)
 (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)
 
-;;; helm-swoop
+;;;;; helm-swoop
 (require 'helm-swoop)
-;; Change the keybinds to whatever you like :)
+;; Change the keybinds to whatever you like
 (global-set-key (kbd "M-i") 'helm-swoop)
 (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
 (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
@@ -642,11 +640,11 @@
    '(helm-swoop-target-word-face ((t (:background "dark orchid" :foreground "#fdf6e3"))))))
 
 
-;;; ace-jump-zap-to-char
+;;;;; ace-jump-zap-to-char
 ;; (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 (global-set-key (kbd "M-g z") 'ace-jump-zap-to-char)
 
-;;; ace-pinyin
+;;;;; ace-pinyin
 ;(require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
@@ -658,15 +656,15 @@
 ;; (global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
 (global-set-key (kbd "M-z") 'ace-pinyin-jump-char)
 
-;;; auctex
+;;;;; auctex
 ;(load "auctex.el" nil t t)
 ;(load "preview-latex.el" nil t t)
 
-;;; company-auctex
+;;;;; company-auctex
 ;(require 'company-auctex)
 (company-auctex-init)
 
-;;; shell-pop
+;;;;; shell-pop
 ;(require 'shell-pop)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -681,7 +679,7 @@
  '(shell-pop-full-span t)
  '(shell-pop-window-position "right"))
 
-;;; dot in org-mode
+;;;;; dot in org-mode
 ; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
 ; #+END_SRC
 ; C-c C-c to run src code
@@ -690,20 +688,20 @@
  'org-babel-load-languages
  '((dot . t)))
 
-;;; proced
+;;;;; proced
 (global-set-key (kbd "C-x p p") 'proced)
 
-;;; helm-company
+;;;;; helm-company
 ;; (eval-after-load 'company
 ;;   '(progn
 ;;      (define-key company-mode-map (kbd "C-:") 'helm-company)
 ;;      (define-key company-active-map (kbd "C-:") 'helm-company)))
 
-;;; popwin
+;;;;; popwin
 (require 'popwin)
 (popwin-mode 1)
 
-;;; youdao-dictionary
+;;;;; youdao-dictionary
 ; sudo pacman -S ydcv
 ; sudo npm install fanyi -g
 ; ydcv, fanyi not required, just tools used in console
@@ -719,7 +717,7 @@
 ;; Set file path for saving search history
 (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao")
 
-;;; color-identifiers-mode
+;;;;; color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
 ;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
@@ -733,7 +731,7 @@
 ;; (set-face-attribute 'font-lock-builtin-face nil :weight 'bold)
 ;; (set-face-attribute 'font-lock-preprocessor-face nil :weight 'bold)
 
-;;; chinese-yasdcv
+;;;;; chinese-yasdcv
 ; 1. commandline tool "sdcv"(stardict command version) needed
 ; 2. http://download.huzheng.org/ to download offline dicts, uncompress and put them in ~/.stardict/dic/ (see man sdcv)
 ; C-h v to see the variables
@@ -751,14 +749,14 @@
 ; 第三个参数，自定义的输出美化函数
 ; 第四个参数，是否开启该词典
 
-;; ;;; god-mode
-;; ;;; My left hand holding a cup of water, my right can navigate without my left hand.
-;; ;;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
-;; ;;; with my flavor or the emacs environment, omit it.
-;; ;;; Now I'm happy.
-;; ;;; Most important, the navigation keys is my emacs key bindings without the
-;; ;;; modify key while the original key bindings are still useful there.
-;; ;;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
+;; ;;;;; god-mode
+;; ;; My left hand holding a cup of water, my right can navigate without my left hand.
+;; ;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
+;; ;; with my flavor or the emacs environment, omit it.
+;; ;; Now I'm happy.
+;; ;; Most important, the navigation keys is my emacs key bindings without the
+;; ;; modify key while the original key bindings are still useful there.
+;; ;; And C-x C-q can be used to enter readonly mode in order to avoid mistyping. Greate!
 ;; (require 'god-mode)
 ;; (define-key god-local-mode-map (kbd "i") 'god-local-mode)
 ;; ;(global-set-key (kbd "<escape>") 'god-local-mode)
@@ -779,24 +777,24 @@
 
 (add-to-list 'auto-mode-alist '("\\.asm$" . nasm-mode))
 
-;;; custom Emacs key set
+;;;;; custom Emacs key set
 (global-unset-key (kbd "C-z")) ; C-z is suspend-frame, in case of typing it by mistake, disable it
 (global-unset-key (kbd "C-x C-b"))      ; it is for list-buffers, no need
 (global-set-key (kbd "C-x C-b") 'helm-mini) ; rebind it to helm-mini, then use it in god-mode, then use xb to switch buffer quickly.
 
-;;; which-key, replace guide-key
+;;;;; which-key, replace guide-key
 (which-key-mode)
 (setq which-key-idle-secondary-delay 0.1)
 (setq which-key--god-mode-support-enabled t)
 
-;;; workgroups2
+;;;;; workgroups2
 ;; not that useful, because helm-mini containing recentf is there, and we can use registers to save window or frame configuration.
 ;; (require 'workgroups2)
 ;; (setq wg-prefix-key (kbd "C-c w"))      ; default is C-c z. c,v,A,k,C-s,C-f
 ;; (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
 ;; (workgroups-mode 1)
 
-;;; ace-isearch. ace-jump-mode, isearch, helm-swoop
+;;;;; ace-isearch. ace-jump-mode, isearch, helm-swoop
 ; L = 1     : `ace-jump-mode' or `avy'
 ; 1 < L < 6 : `isearch'
 ; L >= 6    : `helm-swoop' or `swiper'
@@ -804,12 +802,12 @@
 ;; (global-ace-isearch-mode +1)
 ;; (setq ace-isearch-jump-delay 0.8)
 
-;;; highlight-symbol, replace smart-scan using highlight-symbol
+;;;;; highlight-symbol, replace smart-scan using highlight-symbol
 ;; (require 'highlight-symbol)
 ;; (global-set-key (kbd "M-n") 'highlight-symbol-next)
 ;; (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
-;;; highlight-indent-guides, replace indent-guide.
+;;;;; highlight-indent-guides, replace indent-guide.
 (require 'highlight-indent-guides)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
@@ -822,7 +820,7 @@
 (setq highlight-indent-guides-auto-enabled nil)
 (set-face-foreground 'highlight-indent-guides-character-face "grey27")
 
-;;; company-shell. $PATH bin, fish-shell-builtin, env
+;;;;; company-shell. $PATH bin, fish-shell-builtin, env
 ;; (eval-after-load 'company
 ;;   '(add-to-list
 ;;     'company-backends '(company-shell company-shell-env company-fish-shell)))
@@ -836,10 +834,10 @@
                               (evil-set-initial-state 'shell-mode 'emacs)
                               (linum-mode -1)))
 
-;;; pcmpl-args
+;;;;; pcmpl-args
 (require 'pcmpl-args)
 
-;;; company-go
+;;;;; company-go
 (add-hook 'go-mode-hook (lambda ()
                           (set (make-local-variable 'company-backends)
                                '(company-go
@@ -848,7 +846,7 @@
                                  (company-dabbrev-code company-gtags company-etags company-keywords)
                                  company-dabbrev))))
 
-;;; go mode
+;;;;; go mode
 
 ;; go get -u github.com/nsf/gocode
 ;; go get -u github.com/rogpeppe/godef
@@ -861,24 +859,24 @@
   (local-set-key (kbd "M-,") 'pop-tag-mark))
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-;;; go-eldoc
+;;;;; go-eldoc
 ;(require 'go-eldoc) ;; Don't need to require, if you install by package.el
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
-;;; set go-playground basedir, default is ~/go/src/playground
+;;;;; set go-playground basedir, default is ~/go/src/playground
 ;(require 'go-playground)
 (custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
 
-;;; ----- lsp-mode, but the gopls language server is slow in a little big project. NOT NOW!
-;;; Use gocode and the counterparts instead
-;;; lsp-mode and lsp related. Mark them here, as well as the related packages in packages.el
+;; ----- lsp-mode, but the gopls language server is slow in a little big project. NOT NOW!
+;; Use gocode and the counterparts instead
+;; lsp-mode and lsp related. Mark them here, as well as the related packages in packages.el
 ;(require 'lsp-mode)
 ;(add-hook 'go-mode-hook #'lsp-deferred)
 ;; company-lsp
 ;(require 'company-lsp)
 ;(push 'company-lsp company-backends)
 
-;;; markdown-mode
+;;;;; markdown-mode
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
@@ -887,14 +885,14 @@
    "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
-;;; flymd
+;;;;; flymd
 ;(require 'flymd)
 
-;;; pandoc-mode
+;;;;; pandoc-mode
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 ;(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
-;;; emacs-livedown
+;;;;; emacs-livedown
 (push "~/.emacs.d/nonmelpa/emacs-livedown/" load-path)
 (custom-set-variables
  '(livedown-autostart nil) ; automatically open preview when opening markdown files
@@ -903,7 +901,7 @@
  '(livedown-browser nil))  ; browser to use
 ;(require 'livedown)
 
-;;; doom-modeline
+;;;;; doom-modeline
 ;(require 'doom-modeline)
 (setq doom-modeline-bar-width 0)        ; left side little bar width
 (display-battery-mode)
@@ -929,7 +927,7 @@
 
 (doom-modeline-mode 1)
 
-;;; evil
+;;;;; evil
 (setq-default evil-disable-insert-state-keybindings t)
 (evil-mode 1)
 (setq evil-move-beyond-eol t)
@@ -938,11 +936,11 @@
 (evil-set-initial-state 'git-commit-mode 'emacs)
 (evil-set-initial-state 'dired-mode 'emacs)
 
-;;; evil-matchit
+;;;;; evil-matchit
 (setq evilmi-shortcut "n")
 (global-evil-matchit-mode 1)
 
-;;; vterm
+;;;;; vterm
 ;(require 'vterm)
 (global-set-key (kbd "<f6>") 'vterm)
 (add-hook 'vterm-mode-hook
@@ -950,18 +948,18 @@
              (evil-emacs-state)
              (linum-mode -1)))
 
-;;; golden-ratio
+;;;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
 (global-set-key (kbd "C-x g r") 'golden-ratio)
 
-;;; disaster
+;;;;; disaster
 (add-hook 'c-mode-common-hook
           (lambda ()
             (define-key c-mode-map (kbd "C-x x d") 'disaster)
             (define-key c++-mode-map (kbd "C-x x d") 'disaster)))
 
 
-;;; pyim
+;;;;; pyim
 (require 'pyim)
 (setq default-input-method "pyim")
 
@@ -1031,20 +1029,20 @@
 (global-set-key (kbd "C-\\") 'toggle-input-method)
 
 
-;;; magit
+;;;;; magit
 (with-eval-after-load 'magit
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (define-key magit-file-mode-map (kbd "C-x g") nil))
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
 
-;;; x86-lookup
+;;;;; x86-lookup
 (setq x86-lookup-pdf "~/Books/OS/325383-sdm-vol-2abcd.pdf")
 (global-set-key (kbd "C-x x 8") #'x86-lookup)
 (setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
 ;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
 
-;;; org
+;;;;; org
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "C-c SPC") nil)
   (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field))
@@ -1055,10 +1053,10 @@
   ("M-p" org-backward-heading-same-level)
   ("M-n" org-forward-heading-same-level))
 
-;;; org-bullets
+;;;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
 
-;;; symbol-overlay
+;;;;; symbol-overlay
 ;(require 'symbol-overlay)
 (add-hook 'after-init-hook 'symbol-overlay-mode)
 (add-hook 'prog-mode-hook 'symbol-overlay-mode)
@@ -1103,7 +1101,7 @@
  '((t :background "dark orchid" :foreground "black"))
  'face-defface-spec)
 
-;;; vc-msg
+;;;;; vc-msg
 (eval-after-load 'vc-msg-git
   '(progn
      ;; show code of commit
@@ -1119,7 +1117,7 @@
            vc-msg-git-extra)))
 (global-set-key (kbd "C-x g s") 'vc-msg-show)
 
-;;; smartparens
+;;;;; smartparens
 (require 'smartparens-config)
 ;; (add-hook 'prog-mode-hook #'smartparens-mode)
 (smartparens-global-mode)
@@ -1144,12 +1142,12 @@
   (sp-local-pair "/*" "*/" :post-handlers '((" | " "SPC")
                                             ("* ||\n[i]" "RET"))))
 
-;;; git-timemachine
+;;;;; git-timemachine
 (global-set-key (kbd "C-x g t") 'git-timemachine)
 (add-hook 'git-timemachine-mode-hook '(lambda ()
                                         (evil-emacs-state)))
 
-;;; eyebrowse
+;;;;; eyebrowse
 (eyebrowse-mode t)
 (global-set-key (kbd "C-c 1") 'eyebrowse-switch-to-window-config-1)
 (global-set-key (kbd "C-c 2") 'eyebrowse-switch-to-window-config-2)
@@ -1157,7 +1155,7 @@
 (global-set-key (kbd "C-c 4") 'eyebrowse-switch-to-window-config-4)
 (global-set-key (kbd "C-c 5") 'eyebrowse-switch-to-window-config-5)
 
-;;; dumb-jump
+;;;;; dumb-jump
 ;; (require 'dumb-jump)
 ;; (setq dumb-jump-force-searcher 'rg)  ; ripgrep is faster
 ;; (setq dumb-jump-prefer-searcher 'rg)
@@ -1171,23 +1169,23 @@
 (global-set-key (kbd "C-c j x") 'dumb-jump-go-prefer-external)
 (global-set-key (kbd "C-c j z") 'dumb-jump-go-prefer-external-other-window)
 
-;;; helm-xref
+;;;;; helm-xref
 ;; hijack the miserable raw xref
 (require 'helm-xref)
 
-;;; lsp, ccls, lsp-ui
+;;;;; lsp, ccls, lsp-ui
 (cl-pushnew "~/.emacs.d/mylisp" load-path :test #'string=)
 (require 'lsp-c-cpp-setup) ; lsp is enabled in C/C++ by default, disable it using gniuk/disable-lsp-c-cpp
 (require 'ccls-extras)
 
 
-;;; dtrt-indent
+;;;;; dtrt-indent
 ;; guess file indentation
 (require 'dtrt-indent)
 (setq dtrt-indent-max-lines 2000)
 (dtrt-indent-global-mode 1)
 
-;;; realgud
+;;;;; realgud
 (require 'realgud)
 ;; use it: M-x realgud:gdb
 (add-hook 'realgud-track-mode-hook
@@ -1196,26 +1194,26 @@
              (company-mode -1)
              (evil-emacs-state)))
 
-;;; cheat-sh
+;;;;; cheat-sh
 (require 'cheat-sh)
 
-;;; treemacs
+;;;;; treemacs
 (global-set-key (kbd "<f7>") 'treemacs)
 (custom-set-default 'treemacs-width 28)
 
-;;; avy
+;;;;; avy
 ;; together with gniuk/cpAboveLine gniuk/cpAndCommentOutAboveLine, now we have:
 ;; C-x x [c,l,r,x] to copy line or region, and the ability to comment out duplicate stuff conveniently.
 (global-set-key (kbd "C-x x l") 'avy-copy-line)
 (global-set-key (kbd "C-x x r") 'avy-copy-region) ; cooperate with M-h M-; to copy and comment out paragraph
 
-;;; ascii-table
+;;;;; ascii-table
 ;; use M-x ascii-table, b,o,d,x
 
-;;; nov, evince not support epub
+;;;;; nov, evince not support epub
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-;; ;;; org-brain
+;; ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
 ;;       org-brain-title-max-length 24
@@ -1228,7 +1226,7 @@
 ;; (with-eval-after-load 'evil
 ;;   (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
 
-;;; spacemacs theme and other themes
+;;;;; spacemacs theme and other themes
 ;; (load-theme 'sanityinc-tomorrow-eighties t)
 ;; (load-theme 'doom-vibrant t)
 (setq spacemacs-theme-comment-bg nil)
@@ -1237,7 +1235,7 @@
 (set-face-attribute 'font-lock-comment-face nil :foreground "#5d7878")
 
 
-;;; override keybinds
+;;;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
 ;(global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
@@ -1306,58 +1304,59 @@
   ("a" beginning-of-defun)
   ("e" end-of-defun))
 
-;;; other config
-; automatic delete trailing spaces when saving file
+;;;;; other config
+;;; automatic delete trailing spaces when saving file
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-; turn on documentation in elisp mode
+;;; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
 	     (turn-on-eldoc-mode)))
 
-;; ediff
-; 1. make ediff not open it's command interface in an external frame(window) under gui
-; 2. make ediff split horizontally
+;;; ediff
+;; 1. make ediff not open it's command interface in an external frame(window) under gui
+;; 2. make ediff split horizontally
 (with-eval-after-load 'ediff
   (setq ediff-window-setup-function 'ediff-setup-windows-plain
         ediff-split-window-function 'split-window-horizontally))
 
-; split horizontally preferred
+;; split horizontally preferred
 (setq-default split-height-threshold nil
               split-width-threshold 100)
 
-; ediff quit without prompt
+;; ediff quit without prompt
 (defun disable-y-or-n-p (orig-fun &rest args)
   "Disable asking yes or no when quit ediff via automatically prompting yes to (ORIG-FUN ARGS)."
   (cl-letf (((symbol-function 'y-or-n-p) (lambda (prompt) t)))
     (apply orig-fun args)))
 (advice-add 'ediff-quit :around #'disable-y-or-n-p)
 
-;; keep session when restart
-;(desktop-save-mode)
+;;; keep session when restart
+;; ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
 
-;; comment current line without marking the line first
+;;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
 
-;; c,c++-mode tuning
+;;; c,c++-mode tuning
 ;; let dtrt-indent guess the indentation of existing file, otherwise use bsd style.
 (setq c-default-style "bsd")
 (setq-default c-basic-offset 4)
 
-;; recentf
+;;; recentf
 (setq recentf-max-saved-items 100)
 
+;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
 (delete-selection-mode 1)
 
-;; builtin dired
+;;; builtin dired
 ;; n acts as dired-next-line
 (add-hook 'dired-mode-hook
           '(lambda ()
              (evil-matchit-mode -1)))
 
-;; window resize
+;;; window resize
 ;; Though we already have golden-ratio, we can subtlely tune window size as needed.
 (global-set-key (kbd "M-<up>") 'enlarge-window)
 (global-set-key (kbd "M-<down>") 'shrink-window)
