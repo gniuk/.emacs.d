@@ -513,6 +513,10 @@
 (add-hook 'html-mode-hook 'emmet-mode)
 (add-hook 'css-mode-hook  'emmet-mode)
 
+(add-hook 'web-mode-hook
+          (lambda ()
+            (define-key web-mode-map (kbd "C-c e") 'emmet-expand-line)))
+
 ;;; nyan-mode
 ;(nyan-mode 1)
 
