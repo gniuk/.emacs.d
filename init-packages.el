@@ -382,6 +382,7 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 (setq projectile-enable-caching t)
+(setq projectile-indexing-method 'native)
 (setq helm-ag-insert-at-point 'symbol)
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 ;; (global-set-key (kbd "C-x p .") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
