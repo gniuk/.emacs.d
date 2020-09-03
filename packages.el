@@ -152,7 +152,7 @@ There are two things you can do about this warning:
     dumb-jump
     htmlize
     ccls
-    company-lsp
+    ;company-lsp ; use company-capf instead
     helm-lsp
     helm-xref
     lsp-ui

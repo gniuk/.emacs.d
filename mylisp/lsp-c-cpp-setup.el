@@ -18,7 +18,7 @@
           (lambda ()
             (unless (not gniuk-lsp-c-cpp--enabled)
               (set (make-local-variable 'company-backends)
-                   '(company-lsp company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
+                   '(company-capf company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
               (setq ccls-executable "/usr/bin/ccls")
               (require 'ccls)
               (require 'lsp-ui)
