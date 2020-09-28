@@ -163,6 +163,7 @@ There are two things you can do about this warning:
     avy
     ascii-table
     nov
+    tiny
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")

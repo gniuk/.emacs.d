@@ -1215,6 +1215,9 @@
 ;;;;; nov, evince not support epub
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+;;;;; tiny
+(global-set-key (kbd "C-c t t") #'tiny-expand)
+
 ;; ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
