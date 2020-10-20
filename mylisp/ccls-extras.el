@@ -54,6 +54,8 @@
           (lambda ()
             (unless (not gniuk-lsp-c-cpp--enabled)
               (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
+              (define-key c-mode-base-map (kbd "C-c M-.") 'lsp-find-type-definition)
+              (define-key c-mode-base-map (kbd "C-c c s") 'lsp-ui-find-workspace-symbol)
               (define-key c-mode-base-map (kbd "C-c c a") 'ccls/references-address)
               (define-key c-mode-base-map (kbd "C-c c c") 'ccls/caller)
               (define-key c-mode-base-map (kbd "C-c c C") 'ccls/callee)
