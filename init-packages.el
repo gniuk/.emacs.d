@@ -136,7 +136,9 @@
 ; 2019-11-24, set key bindings for the er/mark function group
 (global-set-key (kbd "C-c m f") 'er/mark-defun)
 (global-set-key (kbd "C-c m p") 'er/mark-inside-pairs)
+(global-set-key (kbd "C-c m P") 'er/mark-outside-pairs)
 (global-set-key (kbd "C-c m q") 'er/mark-inside-quotes)
+(global-set-key (kbd "C-c m Q") 'er/mark-outside-quotes)
 (global-set-key (kbd "C-c m u") 'er/mark-url)
 
 ;;;;; hl-line, highlight current line. Replaced by hlinum 2015-11-11, double 11, yeah.
