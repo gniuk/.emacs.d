@@ -386,8 +386,18 @@
 (setq projectile-enable-caching t)
 (setq projectile-indexing-method 'native)
 (setq helm-ag-insert-at-point 'symbol)
+
+;; ;; Use ripgrep rg instead of silversearcher ag, with a simple wrapper
+;; ;; Helm-ag is more powerful when editing the search result.
+;; ;; We still use colorful helm-rg in simple search case.
+;; ;; Rg does not obey projectile settings, put the nonhidden files or dirs in .ignore or .rgignore under the project root dir.
+;; ;; But the problem with rg is that when it is used with helm-ag, the C-u Prefix can't pass options to rg, tha's really bad.
+;; ;; So helm-ag with ag itself is still currently the right choice! Use helm-rg(helm-projectile-rg) in simple search case!
+;; (custom-set-variables
+;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case"))
+
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
-;; (global-set-key (kbd "C-x p .") 'helm-projectile-ag) ; silversearcher-ag needed, use distribution package manager to install it
+(global-set-key (kbd "C-x p a") 'helm-projectile-ag) ; silversearcher-ag needed, use your package manager to install it
 (global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
 (global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag or rg(ripgrep) not present
@@ -403,6 +413,10 @@
 (add-to-list 'projectile-globally-ignored-files "company-statistics-cache.el")
 (add-to-list 'projectile-globally-ignored-files ".ccls")
 (add-to-list 'projectile-globally-ignored-files "compile_commands.json")
+(add-to-list 'projectile-globally-ignored-files ".ignore") ; rg ignores files and dirs in it
+(add-to-list 'projectile-globally-ignored-files ".agignore") ; ag ignores files and dirs in it
+(add-to-list 'projectile-globally-ignored-files ".rgignore") ; rg ignores files and dirs in it
+(add-to-list 'projectile-globally-ignored-files ".dir-locals.el") ; local setup, like project read only
 (add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
 (which-function-mode t)
 
