@@ -556,9 +556,14 @@
 (setq linum-highlight-in-all-buffersp t)
 
 ;;;;; smooth-scrolling
-;(require 'smooth-scrolling)
-(setq smooth-scroll-margin 2)
-(smooth-scrolling-mode)
+;; smooth-scrolling-mode makes scrolling continually laggy, disable it
+;; (custom-set-default smooth-scroll-margin 2)
+;; (smooth-scrolling-mode)
+
+;; builtin scroll tuning, don't recenter, this is the smooth I want.
+(setq scroll-conservatively 101)
+(setq mouse-wheel-scroll-amount '(1))
+(setq mouse-wheel-progressive-speed nil)
 
 ;;;;; readline-complete [awesome!]
 ;(require 'readline-complete)

@@ -93,7 +93,7 @@ There are two things you can do about this warning:
     ace-jump-buffer
     quickrun
     hlinum  ;; replace hl-line
-    smooth-scrolling
+    ;smooth-scrolling ;; makes emacs laggy, just tuning the builtin scroll settings
     readline-complete
     ;dired+ ; no more dired+ in melpa, use plain builtin dired, or just neotree is enough
     ;neotree ; replaced by treemacs
