@@ -3,10 +3,40 @@
 ;; none
 
 ;;; Code:
-(setq gc-cons-threshold (* 500 1024 1024))
-(setq gc-cons-percentage 0.6)
-(setq-default linum-delay t)
-(global-linum-mode t)
+;; (setq gc-cons-threshold (* 500 1024 1024))
+(setq gc-cons-threshold most-positive-fixnum)
+;; (setq gc-cons-percentage 0.6)
+
+;; (setq-default linum-delay t)
+;; (global-linum-mode t)
+
+(if (version<= "26.0.50" emacs-version)
+    (progn
+      (defcustom display-line-numbers-exempt-modes '(vterm-mode eshell-mode shell-mode term-mode ansi-term-mode)
+        "Major modes on which to disable the linum mode, exempts them from global requirement"
+        :group 'display-line-numbers
+        :type 'list
+        :version "green")
+
+      (defun display-line-numbers--turn-on ()
+        "turn on line numbers but excempting certain majore modes defined in `display-line-numbers-exempt-modes'"
+        (if (and
+             (not (member major-mode display-line-numbers-exempt-modes))
+             (not (minibufferp)))
+            (display-line-numbers-mode)))
+
+      (global-display-line-numbers-mode)
+      (set-face-attribute 'line-number-current-line nil
+                          :background "grey" :foreground "black"))
+  (global-linum-mode))
+;; make display-line-numbers-mode same looking as linum-mode
+;; src/xdisp.c:
+;; pint2str (lnum_buf, it->lnum_width + 1, lnum_to_display); -->
+;; pint2str (lnum_buf, it->lnum_width, lnum_to_display);
+;; strcat (lnum_buf, " "); -->
+;; // strcat (lnum_buf, " ");
+
+(line-number-mode -1)
 (column-number-mode t)
 (show-paren-mode t)
 (setq make-backup-files nil)
@@ -82,8 +112,18 @@
 
 (global-subword-mode)                   ;navigate camelCase word!
 
-(setq gc-cons-threshold (* 4 1024 1024))
-(setq gc-cons-percentage 0.1)
+;; (setq gc-cons-threshold (* 64 1024 1024))
+;; (setq gc-cons-percentage 0.1)
+;; maybe this is the right way to make emacs a little fluent
+(defun my-minibuffer-setup-hook ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun my-minibuffer-exit-hook ()
+  (setq gc-cons-threshold (* 64 1024 1024)))
+
+(add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
+(add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;
 ;; paredit                                                                    ;;

@@ -551,9 +551,10 @@
 ; or use M-|, shell-command-on-region to execute on region
 
 ;;;;; hlinum
-(require 'hlinum)
-(hlinum-activate)
-(setq linum-highlight-in-all-buffersp t)
+(if (version< emacs-version "26.0.50")
+    (progn
+      (hlinum-activate)
+      (setq linum-highlight-in-all-buffersp t)))
 
 ;;;;; smooth-scrolling
 ;; smooth-scrolling-mode makes scrolling continually laggy, disable it
@@ -1054,8 +1055,8 @@
 
 ;;;;; magit
 (with-eval-after-load 'magit
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (define-key magit-file-mode-map (kbd "C-x g") nil))
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+  ;(define-key magit-file-mode-map (kbd "C-x g") nil))
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
 
