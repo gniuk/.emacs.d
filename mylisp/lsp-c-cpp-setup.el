@@ -31,6 +31,9 @@
               (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
               (setq lsp-prefer-flymake nil)
               (setq lsp-file-watch-threshold nil) ; don't bother me
+              (setq read-process-output-max (* 4 1024 1024)) ;; 4mb
+              (setq lsp-idle-delay 0.500)
+              ;(setq lsp-completion-provider :capf)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
               (custom-set-faces
                '(lsp-ui-peek-filename     ; use helm interface instead.
