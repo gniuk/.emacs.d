@@ -5,10 +5,15 @@
 ;;; Code:
 ;; (setq gc-cons-threshold (* 500 1024 1024))
 (setq gc-cons-threshold most-positive-fixnum)
-;; (setq gc-cons-percentage 0.6)
 
-;; (setq-default linum-delay t)
-;; (global-linum-mode t)
+(defvar original/file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+
+(defun revert-file-name-handler-alist ()
+  "Revert `file-name-handler-alist to original value."
+  (setq file-name-handler-alist original/file-name-handler-alist))
+
+(add-hook 'emacs-startup-hook 'revert-file-name-handler-alist)
 
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
