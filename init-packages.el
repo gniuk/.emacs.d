@@ -206,8 +206,9 @@
 ;C-M-e runs end-of-defun, which moves point to end of a function
 
 ;;;;; goto-last-change
-(require 'goto-last-change)
-(global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
+;; use "g;" in evil-normal-state-map
+;; (require 'goto-last-change)
+;; (global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
 
 ;;;;; Python
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
