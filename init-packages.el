@@ -1242,7 +1242,10 @@
 ;;;;; tiny
 (global-set-key (kbd "C-c t t") #'tiny-expand)
 
-;; ;;;;; org-brain
+;;;;; restclient
+(add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
+
+;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
 ;;       org-brain-title-max-length 24

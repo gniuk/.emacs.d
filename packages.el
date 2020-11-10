@@ -164,6 +164,9 @@ There are two things you can do about this warning:
     ascii-table
     nov
     tiny
+    restclient
+    restclient-helm
+    ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
     ) "A list of packages to ensure are installed at launch.")
