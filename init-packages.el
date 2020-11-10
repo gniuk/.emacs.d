@@ -1213,7 +1213,7 @@
 (dtrt-indent-global-mode 1)
 
 ;;;;; realgud
-(require 'realgud)
+;; (require 'realgud)
 ;; use it: M-x realgud:gdb
 (add-hook 'realgud-track-mode-hook
           '(lambda ()
@@ -1222,7 +1222,7 @@
              (evil-emacs-state)))
 
 ;;;;; cheat-sh
-(require 'cheat-sh)
+;; (require 'cheat-sh)
 
 ;;;;; treemacs
 (global-set-key (kbd "<f7>") 'treemacs)
