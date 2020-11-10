@@ -166,6 +166,7 @@ There are two things you can do about this warning:
     tiny
     restclient
     restclient-helm
+    iasm-mode
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init

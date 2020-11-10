@@ -1246,6 +1246,16 @@
 ;;;;; restclient
 (add-to-list 'auto-mode-alist '("\\.http\\'" . restclient-mode))
 
+;;;;; iasm-mode
+(require 'iasm-mode)
+(global-set-key (kbd "C-x x i d") 'iasm-disasm)
+(global-set-key (kbd "C-c x i l") 'iasm-ldd)
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (local-set-key (kbd "C-x x i 1") 'iasm-goto-disasm-buffer)
+            (local-set-key (kbd "C-x x i 2") 'iasm-disasm-link-buffer)))
+
 ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
