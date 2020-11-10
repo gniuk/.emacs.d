@@ -856,7 +856,8 @@
                                      company-readline
                                      company-dabbrev))
                               (evil-set-initial-state 'shell-mode 'emacs)
-                              (linum-mode -1)))
+                              (linum-mode -1)
+                              (display-line-numbers-mode -1)))
 
 ;;;;; pcmpl-args
 (require 'pcmpl-args)
@@ -970,7 +971,8 @@
 (add-hook 'vterm-mode-hook
           '(lambda ()
              (evil-emacs-state)
-             (linum-mode -1)))
+             (linum-mode -1)
+             (display-line-numbers-mode -1)))
 
 ;;;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
