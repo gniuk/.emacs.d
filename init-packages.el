@@ -689,7 +689,7 @@
 
 ;;;;; company-auctex
 ;(require 'company-auctex)
-(company-auctex-init)
+;; (company-auctex-init)
 
 ;;;;; shell-pop
 ;(require 'shell-pop)
