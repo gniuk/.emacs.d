@@ -774,7 +774,9 @@
 ; 第三个参数，自定义的输出美化函数
 ; 第四个参数，是否开启该词典
 
-;; ;;;;; god-mode
+(push "*Stardict Output*" popwin:special-display-config)
+
+;;;;; god-mode
 ;; ;; My left hand holding a cup of water, my right can navigate without my left hand.
 ;; ;; Sometimes I feel nervous when I'm not able to do that. Evil is not consistent
 ;; ;; with my flavor or the emacs environment, omit it.
