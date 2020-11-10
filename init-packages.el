@@ -1334,8 +1334,16 @@
   ("e" end-of-defun))
 
 ;;;;; other config
-;;; automatic delete trailing spaces when saving file
+;;; trailing spaces and newline
+;; automatic delete trailing spaces when saving file
+;; ensure a newline(\n) in the end
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq require-final-newline t)
+
+;;; fill column
+;; use M-q to format paragraph according to fill-column
+;; use C-x f to interactively set-fill-column
+(setq-default fill-column 100) ;; default 70 is ancient
 
 ;;; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
