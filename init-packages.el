@@ -1429,10 +1429,17 @@
 
 ;;; window resize
 ;; Though we already have golden-ratio, we can subtlely tune window size as needed.
-(global-set-key (kbd "M-<up>") 'enlarge-window)
-(global-set-key (kbd "M-<down>") 'shrink-window)
-(global-set-key (kbd "M-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "<M-up>") 'enlarge-window)
+(global-set-key (kbd "<M-down>") 'shrink-window)
+(global-set-key (kbd "<M-left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<M-right>") 'enlarge-window-horizontally)
+
+;; <M-arrows> are screwed, some bad package converts the key sequence maybe
+(global-set-key (kbd "<f27>") 'enlarge-window)              ;; C-<f3>
+(global-set-key (kbd "<f28>") 'shrink-window)               ;; C-<f4>
+(global-set-key (kbd "<f26>") 'shrink-window-horizontally)  ;; C-<f2>
+(global-set-key (kbd "<f25>") 'enlarge-window-horizontally) ;; C-<f1>
+
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
