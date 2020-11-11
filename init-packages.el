@@ -1272,13 +1272,33 @@
 
 ;;;;; evil-escape
 (setq-default evil-escape-key-sequence "jk")
-(setq-default evil-escape-delay 0.1)
+(setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-unordered-key-sequence t) ; jk or kj, press jk simultaneously
 (evil-escape-mode)
 
 ;;;;; evil-vimish-fold
-(add-hook 'text-mode-hook 'evil-vimish-fold-mode)
-(global-evil-vimish-fold-mode)
+;; evil-vimish-fold overrides evil's default fold, so we use raw vimish-fold.
+;; (add-hook 'text-mode-hook 'evil-vimish-fold-mode)
+;; (define-key evil-normal-state-map (kbd "z v") 'vimish-fold-avy)
+;; (global-evil-vimish-fold-mode)
+
+;;;;; vimish-fold
+(add-hook 'prog-mode-hook 'vimish-fold-mode)
+(add-hook 'text-mode-hook 'vimish-fold-mode)
+(defun gniuk/fold-region-or-avy ()
+  "Fold region when region active, otherwise use avy."
+  (interactive)
+  (if (region-active-p)
+      (call-interactively #'vimish-fold)
+    (call-interactively #'vimish-fold-avy)))
+
+(define-key evil-normal-state-map (kbd "z f") 'gniuk/fold-region-or-avy)
+(define-key evil-normal-state-map (kbd "z v") 'vimish-fold-toggle)
+(define-key evil-normal-state-map (kbd "z V") 'vimish-fold-toggle-all)
+(define-key evil-normal-state-map (kbd "z d") 'vimish-fold-delete) ; real delete
+(define-key evil-normal-state-map (kbd "z D") 'vimish-fold-delete-all)
+(define-key evil-normal-state-map (kbd "z j") 'vimish-fold-next-fold)
+(define-key evil-normal-state-map (kbd "z k") 'vimish-fold-previous-fold)
 
 ;;;;; org-brain
 ;; (require 'org-brain)

@@ -169,7 +169,8 @@ There are two things you can do about this warning:
     iasm-mode
     rfc-mode
     evil-escape
-    evil-vimish-fold
+    ;evil-vimish-fold ; overrides evil default fold, not good
+    vimish-fold
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
