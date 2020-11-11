@@ -169,6 +169,7 @@ There are two things you can do about this warning:
     iasm-mode
     rfc-mode
     evil-escape
+    evil-vimish-fold
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init

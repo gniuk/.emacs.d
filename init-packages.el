@@ -1276,6 +1276,10 @@
 (setq-default evil-escape-unordered-key-sequence t) ; jk or kj, press jk simultaneously
 (evil-escape-mode)
 
+;;;;; evil-vimish-fold
+(add-hook 'text-mode-hook 'evil-vimish-fold-mode)
+(global-evil-vimish-fold-mode)
+
 ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
