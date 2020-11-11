@@ -1260,6 +1260,16 @@
             (local-set-key (kbd "C-x x i 1") 'iasm-goto-disasm-buffer)
             (local-set-key (kbd "C-x x i 2") 'iasm-disasm-link-buffer)))
 
+;;;;; rfc-mode
+(setq rfc-mode-directory (expand-file-name "~/rfc-all/"))
+(add-to-list 'evil-emacs-state-modes 'rfc-mode) ; so this is the rightway to set initial evil state
+(add-hook 'rfc-mode-hook
+          (lambda ()
+            (local-set-key (kbd "h") 'backward-char)
+            (local-set-key (kbd "j") 'next-line)
+            (local-set-key (kbd "k") 'previous-line)
+            (local-set-key (kbd "l") 'forward-char)))
+
 ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all
