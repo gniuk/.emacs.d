@@ -112,6 +112,9 @@
 ;; pint2str (lnum_buf, it->lnum_width, lnum_to_display);
 ;; strcat (lnum_buf, " "); -->
 ;; // strcat (lnum_buf, " ");
+;; ===
+;; more performance tuning, 0.5s ↓ in my case
+;; src/lread.c getc -> getc_unlocked (thread safe)
 
 (line-number-mode -1) ;; don't show duplicate line number in modeline
 (column-number-mode t) ;; show column number in modeline
