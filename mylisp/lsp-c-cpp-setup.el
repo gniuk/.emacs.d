@@ -33,6 +33,7 @@
               (setq lsp-file-watch-threshold nil) ; don't bother me
               (setq read-process-output-max (* 4 1024 1024)) ;; 4mb
               (setq lsp-idle-delay 0.500)
+              (setq lsp-imenu-detailed-outline nil) ; no need for prototype in imenu
               ;(setq lsp-completion-provider :capf)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
               (custom-set-faces
