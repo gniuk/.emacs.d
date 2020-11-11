@@ -1272,7 +1272,8 @@
 
 ;;;;; evil-escape
 (setq-default evil-escape-key-sequence "jk")
-(setq-default evil-escape-delay 1)
+(setq-default evil-escape-delay 0.1)
+(setq-default evil-escape-unordered-key-sequence t) ; jk or kj, press jk simultaneously
 (evil-escape-mode)
 
 ;;;;; org-brain
