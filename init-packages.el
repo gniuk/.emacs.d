@@ -1270,6 +1270,11 @@
             (local-set-key (kbd "k") 'previous-line)
             (local-set-key (kbd "l") 'forward-char)))
 
+;;;;; evil-escape
+(setq-default evil-escape-key-sequence "jk")
+(setq-default evil-escape-delay 1)
+(evil-escape-mode)
+
 ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all

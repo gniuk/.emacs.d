@@ -168,6 +168,7 @@ There are two things you can do about this warning:
     restclient-helm
     iasm-mode
     rfc-mode
+    evil-escape
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
