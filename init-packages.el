@@ -21,7 +21,7 @@
   (setq-default company-sort-by-occurrence 1)
   (setq-default company-tooltip-limit 20)                      ; bigger popup window
   ;(setq-default company-idle-delay 0.2)                        ; decrease delay before autocompletion popup shows
-  (setq-default company-idle-delay 86400)                      ; autocompletion popup actually block my typing, manually M-/ or TAB
+  (setq-default company-idle-delay 0.6)                        ; autocompletion popup actually block my typing, manually M-/ or TAB
   (setq-default company-echo-delay 0)                          ; remove annoying blinking
   (setq-default company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
   (setq-default company-selection-wrap-around t)               ; make previous/next selection cycle style
