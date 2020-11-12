@@ -117,13 +117,28 @@ No more indentation adjustment after paste to the destination point."
            (symbol-overlay-jump-prev))))
 (global-set-key (kbd "M-p") 'gniuk/goto-pair-backward)
 
+
+(defun gniuk/backward-kill-Word ()
+  "Kill space splitted WORD backward."
+  (interactive)
+  (let ((cur (progn
+               (if (eq (point) (point-at-bol))
+                   (backward-char))
+               (delete-horizontal-space 1) (point)))
+        (bol (point-at-bol))
+        (spc (search-backward " " nil t 1)))
+    (goto-char cur)
+    (if (or (eq spc nil) (<= spc bol))
+        (gniuk/kill-back-to-indentation)
+      (zap-up-to-char -1 ?\s))))
 ;; make C-w a bit like when it is in bash command line
 (defun gniuk/kill-region-or-kill-backward-to-whitespace ()
   "Kill region when there is a region marked, otherwise kill backward to whitespace."
   (interactive)
   (if (region-active-p)
       (call-interactively #'kill-region)
-    (zap-up-to-char -1 ?\s)))
+    ;(zap-up-to-char -1 ?\s)))
+    (gniuk/backward-kill-Word)))
 (global-set-key (kbd "C-w") 'gniuk/kill-region-or-kill-backward-to-whitespace)
 
 ;; make C-backspace kill back to indentation, same as d^ in vim.
