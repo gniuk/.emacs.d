@@ -1483,8 +1483,9 @@
 (global-set-key (kbd "<f27>") 'enlarge-window)              ;; C-<f3>
 (global-set-key (kbd "<f28>") 'shrink-window)               ;; C-<f4>
 (global-set-key (kbd "<f26>") 'shrink-window-horizontally)  ;; C-<f2>
-(global-set-key (kbd "<f25>") 'enlarge-window-horizontally) ;; C-<f1>
+(global-set-key (kbd "<f25>") 'enlarge-window-horizontally) ;; C-<f1> some keyboard
 
-
+;; narrow
+(put 'narrow-to-region 'disabled nil) ;; don't bother me
 (provide 'init-packages)
 ;;; init-packages.el ends here
