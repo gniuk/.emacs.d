@@ -1271,10 +1271,10 @@
             (local-set-key (kbd "l") 'forward-char)))
 
 ;;;;; evil-escape
-(setq-default evil-escape-key-sequence "jk")
-(setq-default evil-escape-delay 0.2)
-(setq-default evil-escape-unordered-key-sequence t) ; jk or kj, press jk simultaneously
-(evil-escape-mode)
+;; (setq-default evil-escape-key-sequence "jk")
+;; (setq-default evil-escape-delay 0.2)
+;; (setq-default evil-escape-unordered-key-sequence t) ; jk or kj, press jk simultaneously
+;; (evil-escape-mode)
 
 ;;;;; evil-vimish-fold
 ;; evil-vimish-fold overrides evil's default fold, so we use raw vimish-fold.
@@ -1301,25 +1301,25 @@
 (define-key evil-normal-state-map (kbd "z k") 'vimish-fold-previous-fold)
 
 ;;;;; vdiff-magit
-(with-eval-after-load 'magit
-  (define-key magit-mode-map "," 'vdiff-magit-dwim) ; don't override e and E
-  (define-key magit-mode-map "." 'vdiff-magit))
-(with-eval-after-load 'vdiff
-  (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map)
-  (setq vdiff-diff-algorithm 'git-diff-patience)
-  (setq vdiff-auto-refine t)
-  (setq vdiff-subtraction-fill-char ?/)                    ; don't take me for vimdiff🤣.
-  (set-face-background 'vdiff-addition-face "#293235")     ; custom-light-green spacemacs-common.el
-  (set-face-foreground 'vdiff-addition-face "#67b11d")     ; custom-dark-green
-  (set-face-background 'vdiff-change-face "#3c2a2c")       ; custom-light-red
-  (set-face-foreground 'vdiff-change-face "#f2241f")       ; custom-dark-red
-  (set-face-foreground 'vdiff-subtraction-face "purple")   ; the color of fill char
-  ;(set-face-foreground 'vdiff-subtraction-fringe-face "red") ; we have shown subtraction areas
-  (set-face-background 'vdiff-refine-changed "#f2241f")
-  (set-face-foreground 'vdiff-refine-changed "black")
-  (set-face-background 'vdiff-refine-added "#67b11d")
-  (set-face-foreground 'vdiff-refine-added "black")
-  )
+;; (with-eval-after-load 'magit
+;;   (define-key magit-mode-map "," 'vdiff-magit-dwim) ; don't override e and E
+;;   (define-key magit-mode-map "." 'vdiff-magit))
+;; (with-eval-after-load 'vdiff
+;;   (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map)
+;;   (setq vdiff-diff-algorithm 'git-diff-patience)
+;;   (setq vdiff-auto-refine t)
+;;   (setq vdiff-subtraction-fill-char ?/)                    ; don't take me for vimdiff🤣.
+;;   (set-face-background 'vdiff-addition-face "#293235")     ; custom-light-green spacemacs-common.el
+;;   (set-face-foreground 'vdiff-addition-face "#67b11d")     ; custom-dark-green
+;;   (set-face-background 'vdiff-change-face "#3c2a2c")       ; custom-light-red
+;;   (set-face-foreground 'vdiff-change-face "#f2241f")       ; custom-dark-red
+;;   (set-face-foreground 'vdiff-subtraction-face "purple")   ; the color of fill char
+;;   ;(set-face-foreground 'vdiff-subtraction-fringe-face "red") ; we have shown subtraction areas
+;;   (set-face-background 'vdiff-refine-changed "#f2241f")
+;;   (set-face-foreground 'vdiff-refine-changed "black")
+;;   (set-face-background 'vdiff-refine-added "#67b11d")
+;;   (set-face-foreground 'vdiff-refine-added "black")
+;;   )
 
 ;;;;; org-brain
 ;; (require 'org-brain)

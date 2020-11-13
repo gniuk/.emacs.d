@@ -168,10 +168,10 @@ There are two things you can do about this warning:
     restclient-helm
     iasm-mode
     rfc-mode
-    evil-escape
+    ;evil-escape ; my Ctrl key is convenient :)
     ;evil-vimish-fold ; overrides evil default fold, not good
     vimish-fold
-    vdiff-magit
+    ;vdiff-magit ; patience is not good as expected, ediff is enough, beyond compare is the goal
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
