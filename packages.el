@@ -171,6 +171,7 @@ There are two things you can do about this warning:
     evil-escape
     ;evil-vimish-fold ; overrides evil default fold, not good
     vimish-fold
+    vdiff-magit
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
