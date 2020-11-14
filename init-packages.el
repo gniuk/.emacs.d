@@ -228,17 +228,18 @@
 
 ;;;;; nodejs
 ;; sudo npm install -g tern
+
 (add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-hook 'js2-mode-hook
-          (lambda ()
-            (set (make-local-variable 'company-backends)
-                 '(company-tern
-                   company-files
-                   company-yasnippet
-                   (company-dabbrev-code company-gtags company-etags company-keywords)
-                   company-dabbrev))
-            (tern-mode t)))
+;; (add-hook 'js2-mode-hook
+;;           (lambda ()
+;;             (set (make-local-variable 'company-backends)
+;;                  '(company-tern
+;;                    company-files
+;;                    company-yasnippet
+;;                    (company-dabbrev-code company-gtags company-etags company-keywords)
+;;                    company-dabbrev))
+;;             (tern-mode t)))
 
 ;;;;; undo-tree
 (global-undo-tree-mode 1)

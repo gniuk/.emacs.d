@@ -53,8 +53,8 @@ There are two things you can do about this warning:
     goto-last-change
     nasm-mode
     undo-tree
-    tern
-    company-tern
+    ;tern
+    ;company-tern
     rainbow-delimiters
     ;rainbow-identifiers ; use color-identifiers-mode instead
     ;auto-highlight-symbol
