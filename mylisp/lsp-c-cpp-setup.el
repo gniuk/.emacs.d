@@ -39,8 +39,20 @@
               (custom-set-faces
                '(lsp-ui-peek-filename     ; use helm interface instead.
                  ((t (:background "dodger blue" :foreground "black"))))
-               '(lsp-ui-peek-peek
-                 ((t (:background "#fdf6e3"))))
+               ;; '(lsp-ui-peek-peek         ; left side panel
+               ;;   ((t (:background "#fdf6e3"))))
+               ;; '(lsp-ui-peek-list      ; right side panel
+               ;;   ((t (:background "orange"))))
+               '(lsp-ui-peek-highlight    ; the symbol
+                 ((t (:background "#293235" :foreground "#67b11d"))))
+               '(lsp-ui-peek-line-number
+                 ((t (:foreground "red"))))
+               '(lsp-ui-peek-header
+                 ((t (:background "#293235" :foreground "red"))))
+               '(lsp-ui-peek-footer
+                 ((t (:background "#293235"))))
+               '(lsp-ui-peek-selection
+                 ((t (:background "#551ab8"))))
                ))))
 
 (provide 'lsp-c-cpp-setup)
