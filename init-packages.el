@@ -1487,7 +1487,13 @@
 (global-set-key (kbd "<f26>") 'shrink-window-horizontally)  ;; C-<f2>
 (global-set-key (kbd "<f25>") 'enlarge-window-horizontally) ;; C-<f1> some keyboard
 
-;; narrow
+;;; narrow
 (put 'narrow-to-region 'disabled nil) ;; don't bother me
+
+;;; align-regexp settings
+;; https://gniuk.github.io/posts/20201118_emacs_align-regexp_explained_in_detail/
+(setq align-to-tab-stop nil)
+(defalias 'ar 'align-regexp)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
