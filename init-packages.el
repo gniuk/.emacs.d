@@ -1462,7 +1462,8 @@
 
 ;;; recentf
 (setq recentf-max-saved-items 100)
-(add-to-list 'recentf-exclude "/tmp/.*")
+(with-eval-after-load 'recentf
+  (add-to-list 'recentf-exclude "/tmp/.*"))
 
 ;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
