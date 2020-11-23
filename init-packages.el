@@ -173,7 +173,7 @@
         helm-imenu-fuzzy-match t
         helm-lisp-fuzzy-completion t
         helm-locate-fuzzy-match t
-        helm-completion-style 'helm-fuzzy
+        helm-completion-style 'emacs
         helm-projectile-fuzzy-match t
         helm-recentf-fuzzy-match t
         helm-semantic-fuzzy-match t
