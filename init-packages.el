@@ -466,6 +466,11 @@
   (interactive)
   (define-key c-mode-base-map (kbd "M-.") 'xref-find-definitions)
   (define-key c-mode-base-map (kbd "M-,") 'xref-pop-marker-stack)
+  (setq xref-prompt-for-identifier '(not xref-find-definitions
+                                         xref-find-definitions-other-window
+                                         xref-find-definitions-other-frame
+                                         xref-find-references))
+  ;; (define-key c-mode-base-map (kbd "M-r") 'xref-find-references)
   (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
   (define-key c-mode-base-map (kbd "C-x i") 'helm-imenu))
 (global-set-key (kbd "C-c r r") 'use-rtags)

@@ -53,6 +53,11 @@
 (add-hook 'lsp-mode-hook
           (lambda ()
             (unless (not gniuk-lsp-c-cpp--enabled)
+              (setq xref-prompt-for-identifier '(not xref-find-definitions
+                                                     xref-find-definitions-other-window
+                                                     xref-find-definitions-other-frame
+                                                     xref-find-references))
+              ;; (define-key c-mode-base-map (kbd "M-r") 'xref-find-references)
               (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
               (define-key c-mode-base-map (kbd "C-c M-.") 'lsp-find-type-definition)
               (define-key c-mode-base-map (kbd "C-c c s") 'lsp-ui-find-workspace-symbol)
