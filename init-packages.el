@@ -1501,5 +1501,8 @@
 (setq align-to-tab-stop nil)
 (defalias 'ar 'align-regexp)
 
+;;; recenter causes flicking in tty
+(setq recenter-redisplay nil)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
