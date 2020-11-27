@@ -21,6 +21,8 @@
                    '(company-capf company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
               (setq ccls-executable "/usr/bin/ccls")
               (require 'ccls)
+              (define-key ccls-tree-mode-map (kbd "n") #'next-line)
+              (define-key ccls-tree-mode-map (kbd "p") #'previous-line)
               (require 'lsp-ui)
               (lsp-ui-mode)
               (lsp)

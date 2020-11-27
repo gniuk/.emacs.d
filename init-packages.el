@@ -971,6 +971,7 @@
 (evil-set-initial-state 'treemacs-mode 'emacs)
 (evil-set-initial-state 'git-commit-mode 'emacs)
 (evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'ccls-tree-mode 'emacs)
 
 ;;;;; evil-matchit
 (setq evilmi-shortcut "n")
