@@ -1327,6 +1327,10 @@
 ;;   (set-face-foreground 'vdiff-refine-added "black")
 ;;   )
 
+;;;;; rg, a more powerful tool than helm-rg
+;; ;(rg-enable-menu)
+;; (rg-enable-default-bindings)
+
 ;;;;; org-brain
 ;; (require 'org-brain)
 ;; (setq org-brain-visualize-default-choices 'all

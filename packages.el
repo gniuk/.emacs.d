@@ -172,6 +172,7 @@ There are two things you can do about this warning:
     ;evil-vimish-fold ; overrides evil default fold, not good
     vimish-fold
     ;vdiff-magit ; patience is not good as expected, ediff is enough, beyond compare is the goal
+    ;; rg ; helm-ag is good enough
     ;; company-restclient ; mark
     ;; org-brain ; mark
     ;; benchmark-init
