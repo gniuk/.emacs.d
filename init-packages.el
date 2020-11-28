@@ -1509,5 +1509,9 @@
 ;;; recenter causes flicking in tty
 (setq recenter-redisplay nil)
 
+;;; man pages
+;; make stdman pages from cppreference.com more readable
+(setq Man-width-max 100)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
