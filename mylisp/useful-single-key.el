@@ -159,6 +159,24 @@ No more indentation adjustment after paste to the destination point."
 (global-set-key (kbd "C-c h r") 'gniuk/hide-ctrl-M)
 
 
+;; what if I need these functions to unfill paragraphs and regions
+;; Source:
+;;        http://ergoemacs.org/emacs/emacs_unfill-paragraph.html
+(defun gniuk/unfill-paragraph ()
+    "Replace newline chars in current paragraph by single spaces.
+This command does the reverse of `fill-paragraph'."
+    (interactive)
+    (let ((fill-column most-positive-fixnum))
+      (fill-paragraph)))
+
+(defun gniuk/unfill-region (start end)
+    "Replace newline chars in region by single spaces.
+This command does the reverse of `fill-region'."
+    (interactive "r")
+    (let ((fill-column most-positive-fixnum))
+      (fill-region start end)))
+
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
