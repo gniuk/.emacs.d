@@ -1513,5 +1513,8 @@
 ;; make stdman pages from cppreference.com more readable
 (setq Man-width-max 100)
 
+;;; one whitespace after period makes a sentence.
+(setq sentence-end-double-space nil)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
