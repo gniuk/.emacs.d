@@ -92,7 +92,7 @@ No more indentation adjustment after paste to the destination point."
   (kill-ring-save (line-beginning-position)
                   (line-beginning-position (+ 1 arg)))
   (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-(global-set-key (kbd "C-c C-k") 'gniuk/copyLine)
+(global-set-key (kbd "C-x x L") 'gniuk/copyLine)
 
 ;; overload highlight-symbol M-n and M-p, to quickly navigate pairs
 ; pairs: (),[],{},<>
