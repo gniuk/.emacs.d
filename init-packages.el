@@ -1517,5 +1517,8 @@
 ;;; one whitespace after period makes a sentence.
 (setq sentence-end-double-space nil)
 
+;;; file register for quickly opening this file no matter where we are
+(set-register 106 '(file . "~/.emacs.d/init-packages.el")) ; 101 is just ?j
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
