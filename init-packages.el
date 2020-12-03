@@ -248,7 +248,7 @@
 (global-set-key (kbd "C-c Z") 'redo)
 
 ;;;;; rainbow
-(add-hook 'company-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;(add-hook 'company-mode-hook 'rainbow-identifiers-mode)
 
 ;;;;; auto-highlight-symbol
