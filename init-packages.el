@@ -442,12 +442,13 @@
 ;;   '(add-to-list
 ;;     'company-backends 'company-rtags))
 ;; ;(setq rtags-autostart-diagnostics t)
-(rtags-enable-standard-keybindings)
-;(require 'helm-rtags)
-(setq rtags-use-helm t)
-(setq rtags-display-result-backend 'helm)
-(setq rtags-use-bookmarks nil)
-
+(with-eval-after-load 'rtags
+  (rtags-enable-standard-keybindings)
+  ;; (require 'helm-rtags)
+  (setq rtags-use-helm t)
+  (setq rtags-display-result-backend 'helm)
+  (setq rtags-use-bookmarks nil)
+)
 ;; if we use irony to auto complete, then use rtags to navigate. irony🧡rtags
 (add-hook 'irony-mode-hook '(lambda ()
                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)

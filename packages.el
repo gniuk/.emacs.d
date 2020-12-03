@@ -70,12 +70,12 @@ There are two things you can do about this warning:
     ;; company-irony-c-headers
     ;; irony-eldoc
     ;; flycheck-irony
-    helm-rtags
+    ;; helm-rtags ; Long time not used, mark irony+rtags as a stand-by. Uncomment and call use-rtags to use them.
     ;projectile ; as a requirement of helm-projectile
     helm-projectile
-    color-theme-sanityinc-solarized
-    color-theme-sanityinc-tomorrow
-    afternoon-theme
+    ;; color-theme-sanityinc-solarized
+    ;; color-theme-sanityinc-tomorrow
+    ;; afternoon-theme ; mark the ex color theme
     magit
     cmake-mode
     eldoc-cmake
