@@ -176,6 +176,11 @@ This command does the reverse of `fill-region'."
     (let ((fill-column most-positive-fixnum))
       (fill-region start end)))
 
+(defun gniuk/restore-window-layout-config ()
+  "Restore the frequently used window config. A bit like zoom-the-active-pane in tmux when restore the panes."
+  (interactive)
+  (jump-to-register ?z))
+(global-set-key (kbd "C-c z") 'gniuk/restore-window-layout-config)
 
 (provide 'useful-single-key)
 
