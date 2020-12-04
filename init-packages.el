@@ -1434,8 +1434,21 @@
 ;;; trailing spaces and newline
 ;; automatic delete trailing spaces when saving file
 ;; ensure a newline(\n) in the end
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq require-final-newline t)
+
+(defcustom gniuk-local-delete-trailing-whitespace t
+  "Set in local dirs where trailing whitespace should not deleted. Default t."
+  :type 'boolean)
+(custom-set-variables
+ '(safe-local-variable-values
+   '((gniuk-local-delete-trailing-whitespace . nil)
+     (gniuk-local-delete-trailing-whitespace . t))))
+(defun gniuk/delete-trailing-whitespace ()
+  "Take local dir settings into account for different project."
+  (if gniuk-local-delete-trailing-whitespace
+      (delete-trailing-whitespace)))
+(add-hook 'before-save-hook #'gniuk/delete-trailing-whitespace)
 
 ;;; fill column
 ;; use M-q to format paragraph according to fill-column
