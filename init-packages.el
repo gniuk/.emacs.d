@@ -186,8 +186,9 @@
         helm-imenu-execute-action-at-once-if-one nil
         completion-styles `(basic partial-completion emacs22 initials ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
   (custom-set-faces ;'(helm-selection ((t (:background "#008080" :foreground "#fdf6e3")))) ; old e4dbbf+firebrick3
-                    '(helm-selection ((t (:background "#551ab8"))))
-                    '(helm-selection-line ((t (:background "green" :foreground "black"))))))
+                    '(helm-selection      ((t (:background "#551ab8"))))
+                    '(helm-selection-line ((t (:background "green" :foreground "black"))))
+                    '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b"))))))
 (helm-mode 1)
 
 
