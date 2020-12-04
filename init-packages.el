@@ -39,9 +39,9 @@
   (define-key company-search-map (kbd "M-n") nil)
   (define-key company-search-map (kbd "M-p") nil)
   (define-key company-search-map (kbd "C-n") #'company-select-next)
-  (define-key company-search-map (kbd "C-p") #'company-select-previous)
+  (define-key company-search-map (kbd "C-p") #'company-select-previous))
   ;(require 'company-statistics)
-  (add-hook 'after-init-hook 'company-statistics-mode))
+  ;(add-hook 'after-init-hook 'company-statistics-mode))
 
 ;(global-set-key (kbd "TAB") 'company-complete)
 (defun gniuk/boip ()
@@ -61,23 +61,24 @@
 
 ; https://www.emacswiki.org/emacs/CompanyMode
 ; https://github.com/SXGNH/emacs/blob/e0ad40c09dbe8ac6f59089f0010febdf9774d7a4/theme/steelblue-theme.el
-(custom-set-faces
- '(company-tooltip
-   ((t (:background "#353539" :foreground "#d0c6b7")))) ; old wheat2 + gray28
- '(company-tooltip-selection
-   ((t (:background "#5fb7ff" :foreground "black")))) ; old SteelBlue1 + Blue2
- '(company-tooltip-annotation
-   ((t (:foreground "red"))))
- '(company-tooltip-annotation-selection
-   ((t (:foreground "red"))))
- '(company-tooltip-common
-   ((t (:background "tan1" :foreground "black"))))
- '(company-tooltip-common-selection
-   ((t (:background "#5fb7ff" :foreground "black"))))
-  '(company-scrollbar-bg
-   ((t (:background "gray15" :foreground "red"))))
- '(company-scrollbar-fg
-   ((t (:background "red" :foreground "gray15")))))
+(with-eval-after-load 'company
+  (custom-set-faces
+   '(company-tooltip
+     ((t (:background "#353539" :foreground "#d0c6b7")))) ; old wheat2 + gray28
+   '(company-tooltip-selection
+     ((t (:background "#5fb7ff" :foreground "black")))) ; old SteelBlue1 + Blue2
+   '(company-tooltip-annotation
+     ((t (:foreground "red"))))
+   '(company-tooltip-annotation-selection
+     ((t (:foreground "red"))))
+   '(company-tooltip-common
+     ((t (:background "tan1" :foreground "black"))))
+   '(company-tooltip-common-selection
+     ((t (:background "#5fb7ff" :foreground "black"))))
+   '(company-scrollbar-bg
+     ((t (:background "gray15" :foreground "red"))))
+   '(company-scrollbar-fg
+     ((t (:background "red" :foreground "gray15"))))))
 
 
 ;;;;; yasnippet
