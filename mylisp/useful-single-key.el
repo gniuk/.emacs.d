@@ -179,7 +179,7 @@ This command does the reverse of `fill-region'."
 (defun gniuk/restore-window-layout-config ()
   "Restore the frequently used window config. A bit like zoom-the-active-pane in tmux when restore the panes."
   (interactive)
-  (jump-to-register ?z))
+  (jump-to-register ?w))
 (global-set-key (kbd "C-c z") 'gniuk/restore-window-layout-config)
 
 (provide 'useful-single-key)
