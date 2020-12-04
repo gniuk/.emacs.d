@@ -400,6 +400,11 @@
 ;; (custom-set-variables
 ;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case"))
 
+;; M-b is for navigation. Change the behavior of M-b is not wise, use C-c b instead.
+(with-eval-after-load 'helm-rg
+  (define-key helm-rg-map (kbd "M-b") nil)
+  (define-key helm-rg-map (kbd "C-c b") 'helm-rg--bounce))
+
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-x p a") 'helm-projectile-ag) ; silversearcher-ag needed, use your package manager to install it
 (global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
