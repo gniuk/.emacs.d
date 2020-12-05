@@ -903,8 +903,9 @@
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 ;;;;; set go-playground basedir, default is ~/go/src/playground
-;(require 'go-playground)
-(custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
+;; (custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
+(with-eval-after-load 'go-playground
+  (setq go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
 
 ;; ----- lsp-mode, but the gopls language server is slow in a little big project. NOT NOW!
 ;; Use gocode and the counterparts instead
