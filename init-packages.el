@@ -1441,10 +1441,11 @@
 (defcustom gniuk-local-delete-trailing-whitespace t
   "Set in local dirs where trailing whitespace should not deleted. Default t."
   :type 'boolean)
-(custom-set-variables
- '(safe-local-variable-values
-   '((gniuk-local-delete-trailing-whitespace . nil)
-     (gniuk-local-delete-trailing-whitespace . t))))
+(add-to-list 'safe-local-variable-values
+             '(gniuk-local-delete-trailing-whitespace . nil))
+(add-to-list 'safe-local-variable-values
+             '(gniuk-local-delete-trailing-whitespace . t))
+
 (defun gniuk/delete-trailing-whitespace ()
   "Take local dir settings into account for different project."
   (if gniuk-local-delete-trailing-whitespace
