@@ -189,7 +189,7 @@
   (custom-set-faces ;'(helm-selection ((t (:background "#008080" :foreground "#fdf6e3")))) ; old e4dbbf+firebrick3
                     '(helm-selection      ((t (:background "#551ab8"))))
                     '(helm-selection-line ((t (:background "green" :foreground "black"))))
-                    '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b"))))))
+                    '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b" :weight bold :height 1.1 :family "Dejavu Serif" :slant italic))))))
 (helm-mode 1)
 
 
