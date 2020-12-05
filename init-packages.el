@@ -1491,7 +1491,10 @@
 ;;; recentf
 (setq recentf-max-saved-items 100)
 (with-eval-after-load 'recentf
-  (add-to-list 'recentf-exclude "/tmp/.*"))
+  (add-to-list 'recentf-exclude "/tmp/.*")
+  (add-to-list 'recentf-exclude "/usr/share/emacs/.*")
+  (add-to-list 'recentf-exclude "treemacs-persist")
+  (add-to-list 'recentf-exclude "helm-adaptive-history"))
 
 ;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
