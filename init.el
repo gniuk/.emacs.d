@@ -15,6 +15,9 @@
 
 (add-hook 'emacs-startup-hook 'revert-file-name-handler-alist)
 
+;; The custom set variables are put here. We check it and load it at the last.
+(setq custom-file "~/.emacs.d/.emacs-custom-vars.el")
+
 (setq make-backup-files nil)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -136,6 +139,10 @@
 
 (add-hook 'minibuffer-setup-hook #'my-minibuffer-setup-hook)
 (add-hook 'minibuffer-exit-hook #'my-minibuffer-exit-hook)
+
+;; Check the previously set custom variables file
+(if (file-exists-p custom-file)
+    (load custom-file))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; some skills                                                               ;;
