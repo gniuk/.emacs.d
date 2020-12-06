@@ -412,6 +412,7 @@
   (define-key helm-rg-map (kbd "C-c b") 'helm-rg--bounce))
 
 ;; Wrappers for search pop stack
+(setq bookmark-history nil) ;; in case bookmark not loaded
 (defun gniuk/helm-projectile-rg ()
   "Save current point before calling helm-projectile-rg."
   (interactive)
@@ -1518,7 +1519,9 @@
   (add-to-list 'recentf-exclude "/tmp/.*")
   (add-to-list 'recentf-exclude "/usr/share/emacs/.*")
   (add-to-list 'recentf-exclude "treemacs-persist")
-  (add-to-list 'recentf-exclude "helm-adaptive-history"))
+  (add-to-list 'recentf-exclude "helm-adaptive-history")
+  (add-to-list 'recentf-exclude ".emacs.d/bookmarks")
+  (add-to-list 'recentf-exclude ".emacs.d/elpa/.*"))
 
 ;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
