@@ -399,17 +399,41 @@
 ;; ;; But the problem with rg is that when it is used with helm-ag, the C-u Prefix can't pass options to rg, tha's really bad.
 ;; ;; So helm-ag with ag itself is still currently the right choice! Use helm-rg(helm-projectile-rg) in simple search case!
 ;; (custom-set-variables
-;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case"))
+;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case")
+;;  `(helm-ag-success-exit-status '(0 2)))
+;; (custom-set-faces
+;;  '(helm-moccur-buffer ((t (:foreground "cyan2"   :underline t))))
+;;  '(helm-grep-lineno   ((t (:foreground "orange"  :underline t))))
+;;  '(helm-match         ((t (:foreground "#f2241f" :weight bold)))))
 
 ;; M-b is for navigation. Change the behavior of M-b is not wise, use C-c b instead.
 (with-eval-after-load 'helm-rg
   (define-key helm-rg-map (kbd "M-b") nil)
   (define-key helm-rg-map (kbd "C-c b") 'helm-rg--bounce))
 
+;; Wrappers for search pop stack
+(defun gniuk/helm-projectile-rg ()
+  "Save current point before calling helm-projectile-rg."
+  (interactive)
+  (setq gniuk-save-bookmark-history bookmark-history)
+  (bookmark-set "projectile-rg-point")
+  (call-interactively #'helm-projectile-rg))
+(defun gniuk/helm-search-pop-stack ()
+  "Pop stack using bookmark for rg otherwise call helm-ag-pop-stack."
+  (interactive)
+  (if (bookmark-get-bookmark "projectile-rg-point" t)
+      (progn
+        (bookmark-jump "projectile-rg-point")
+        (bookmark-delete "projectile-rg-point")
+        (setq bookmark-history gniuk-save-bookmark-history))
+    (helm-ag-pop-stack)))
+
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-x p a") 'helm-projectile-ag) ; silversearcher-ag needed, use your package manager to install it
-(global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
-(global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
+;; (global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
+(global-set-key (kbd "C-x p s") 'gniuk/helm-projectile-rg) ; wrap rg, save current search point in bookmark for pop back.
+;; (global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
+(global-set-key (kbd "C-x p ,") 'gniuk/helm-search-pop-stack) ; go back to where we do search using "C-x p s"
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag or rg(ripgrep) not present
 ;; (global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
 (global-set-key (kbd "C-x p b") 'helm-projectile-recentf)
