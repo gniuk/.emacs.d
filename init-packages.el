@@ -1573,6 +1573,8 @@
 
 ;;; recenter causes flicking in tty
 (setq recenter-redisplay nil)
+(add-hook 'xref-after-jump-hook 'recenter)
+(add-hook 'xref-after-return-hook 'recenter)
 
 ;;; man pages
 ;; make stdman pages from cppreference.com more readable
