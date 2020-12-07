@@ -1468,6 +1468,12 @@
 (define-key evil-insert-state-map (kbd "C-e") nil)
 (define-key evil-insert-state-map (kbd "C-o") nil)
 (define-key evil-insert-state-map (kbd "C-k") nil)
+
+;; I get pinky hurts in just one week due to intensive use of ' to jump across marks!
+;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
+(define-key evil-normal-state-map (kbd "'") 'evil-set-marker)
+(define-key evil-normal-state-map (kbd "m") 'evil-goto-mark)
+
 (defhydra hydra-evil-complete-line (global-map "C-x")
   "complete whole line"
   ("M-/" evil-complete-previous-line))
