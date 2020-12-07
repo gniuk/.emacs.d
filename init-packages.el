@@ -1352,6 +1352,7 @@
  '(git-gutter:hide-gutter t)
  '(git-gutter:ask-p nil)
  '(git-gutter:disabled-modes '(image-mode)))
+(set-face-attribute 'git-gutter:added nil :foreground "SpringGreen")
 
 ;;;;; vdiff-magit
 ;; (with-eval-after-load 'magit
