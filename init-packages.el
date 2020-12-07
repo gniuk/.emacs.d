@@ -416,7 +416,7 @@
 (defun gniuk/helm-projectile-rg ()
   "Save current point before calling helm-projectile-rg."
   (interactive)
-  (setq gniuk-save-bookmark-history bookmark-history)
+  (setq gniuk-saved-bookmark-history bookmark-history)
   (bookmark-set "projectile-rg-point")
   (call-interactively #'helm-projectile-rg))
 (defun gniuk/helm-search-pop-stack ()
@@ -425,15 +425,14 @@
   (if (bookmark-get-bookmark "projectile-rg-point" t)
       (progn
         (bookmark-jump "projectile-rg-point")
-        (bookmark-delete "projectile-rg-point")
-        (setq bookmark-history gniuk-save-bookmark-history))
-    (helm-ag-pop-stack)))
+        (setq bookmark-history
+              (remove-duplicates gniuk-saved-bookmark-history :test 'string=)))))
 
 (global-set-key (kbd "C-x p f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-x p a") 'helm-projectile-ag) ; silversearcher-ag needed, use your package manager to install it
+(global-set-key (kbd "C-x p A") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p a"
 ;; (global-set-key (kbd "C-x p s") 'helm-projectile-rg) ; ripgrep is faster. s means search
 (global-set-key (kbd "C-x p s") 'gniuk/helm-projectile-rg) ; wrap rg, save current search point in bookmark for pop back.
-;; (global-set-key (kbd "C-x p ,") 'helm-ag-pop-stack) ; go back to where we do search using "C-x p s"
 (global-set-key (kbd "C-x p ,") 'gniuk/helm-search-pop-stack) ; go back to where we do search using "C-x p s"
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag or rg(ripgrep) not present
 ;; (global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
