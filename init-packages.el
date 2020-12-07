@@ -1374,6 +1374,18 @@
 ;;   (set-face-foreground 'vdiff-refine-added "black")
 ;;   )
 
+;;;;; ranger and dired
+(global-unset-key (kbd "C-x d"))
+(global-set-key (kbd "C-x d d") 'dired) ; original is C-x d
+(global-set-key (kbd "C-x d r") 'ranger)
+(setq ranger-show-hidden t)
+(setq ranger-preview-file nil) ; use i to toggle
+(setq ranger-excluded-extensions '("mkv" "iso" "mp4"))
+(setq ranger-dont-show-binary t)
+(setq ranger-max-preview-size 2)
+(setq ranger-width-parents 0.15)
+(setq ranger-max-parent-width 0.38)
+
 ;;;;; rg, a more powerful tool than helm-rg
 ;; ;(rg-enable-menu)
 ;; (rg-enable-default-bindings)
