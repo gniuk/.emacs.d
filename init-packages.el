@@ -1335,6 +1335,24 @@
 (define-key evil-normal-state-map (kbd "z j") 'vimish-fold-next-fold)
 (define-key evil-normal-state-map (kbd "z k") 'vimish-fold-previous-fold)
 
+;;;;; git-gutter
+(global-git-gutter-mode t)
+(define-key evil-normal-state-map (kbd "zgg") 'git-gutter)
+(define-key evil-normal-state-map (kbd "zgj") 'git-gutter:next-hunk)
+(define-key evil-normal-state-map (kbd "zgk") 'git-gutter:previous-hunk)
+(define-key evil-normal-state-map (kbd "zgn") 'git-gutter:next-hunk)
+(define-key evil-normal-state-map (kbd "zgp") 'git-gutter:previous-hunk)
+(define-key evil-normal-state-map (kbd "zge") 'git-gutter:end-of-hunk) ; end of current hunk
+(define-key evil-normal-state-map (kbd "zgm") 'git-gutter:mark-hunk)
+(define-key evil-normal-state-map (kbd "zgs") 'git-gutter:stage-hunk)
+(define-key evil-normal-state-map (kbd "zgP") 'git-gutter:popup-hunk) ; what can be done in the popup?
+(define-key evil-normal-state-map (kbd "zgr") 'git-gutter:revert-hunk)
+(define-key evil-normal-state-map (kbd "zgU") 'git-gutter:update-all-windows)
+(custom-set-variables
+ '(git-gutter:hide-gutter t)
+ '(git-gutter:ask-p nil)
+ '(git-gutter:disabled-modes '(image-mode)))
+
 ;;;;; vdiff-magit
 ;; (with-eval-after-load 'magit
 ;;   (define-key magit-mode-map "," 'vdiff-magit-dwim) ; don't override e and E
