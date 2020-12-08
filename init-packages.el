@@ -1443,13 +1443,13 @@
 ;;;;; override keybinds
 ; expand-region and multiple-cursor mark next
 ;(define-key window-numbering-keymap (kbd "M-8") nil) ; we have no eight windows in one small screen. use the precious and convenient keybinding.
-;(global-set-key (kbd "M-8") 'mc/mark-next-like-this-symbol) ; M-8 and M-= can be a pair to select arbitrary symbol pattern.
-;(global-set-key (kbd "M-=") 'er/expand-region) ; M-= is for emacs count-words, not used frequently, bind to expand-region. use M-x to count-words.
 
-(define-key window-numbering-keymap (kbd "M-9") nil)
-(global-set-key (kbd "M-9") 'mc/mark-next-like-this)
 (define-key window-numbering-keymap (kbd "M-0") nil)
 (global-set-key (kbd "M-0") 'er/expand-region)
+(define-key window-numbering-keymap (kbd "M-9") nil)
+(global-set-key (kbd "M-9") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-c SPC p") 'mc/unmark-previous-like-this)
+(global-set-key (kbd "C-c SPC n") 'mc/unmark-next-like-this)
 (custom-set-variables
  '(expand-region-contract-fast-key ",")
  '(expand-region-reset-fast-key "."))
