@@ -27,4 +27,5 @@
 -/tramp
 -/tutorial
 -/url
+-/eln-cache
 *.elc

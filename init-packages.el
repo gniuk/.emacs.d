@@ -970,27 +970,36 @@
 (evil-set-initial-state 'ccls-tree-mode 'emacs)
 
 ;; (evil-set-leader 'normal (kbd "SPC")) ; necessary to use leader?
-(define-key evil-normal-state-map (kbd "SPC s") 'gniuk/helm-projectile-rg)
-(define-key evil-normal-state-map (kbd "SPC ,") 'gniuk/helm-search-pop-stack)
-(define-key evil-normal-state-map (kbd "SPC a") 'helm-projectile-ag)
-(define-key evil-normal-state-map (kbd "SPC A") 'helm-ag-pop-stack)
-(define-key evil-normal-state-map (kbd "SPC b") 'helm-resume)
-(define-key evil-normal-state-map (kbd "SPC f") 'er/mark-defun)
-(define-key evil-normal-state-map (kbd "SPC p") 'er/mark-inside-pairs)
-(define-key evil-normal-state-map (kbd "SPC P") 'er/mark-outside-pairs)
-(define-key evil-normal-state-map (kbd "SPC q") 'er/mark-inside-quotes)
-(define-key evil-normal-state-map (kbd "SPC Q") 'er/mark-outside-quotes)
-(define-key evil-normal-state-map (kbd "SPC m") 'helm-man-woman)
-(define-key evil-normal-state-map (kbd "SPC d") 'sp-unwrap-sexp)
-(define-key evil-normal-state-map (kbd "SPC r") 'sp-rewrap-sexp)
-(define-key evil-normal-state-map (kbd "SPC SPC") 'er/expand-region) ; type SPC continuously to expand, "," to contract(back), "." to reset.
+(define-key evil-normal-state-map (kbd "SPC s")   'gniuk/helm-projectile-rg) ; Space dual role: (Ctrl-s) isearch, (SPC s) rg, (M-s .) isearch at point, (M-i) swoop
+(define-key evil-normal-state-map (kbd "SPC ,")   'gniuk/helm-search-pop-stack)
+(define-key evil-normal-state-map (kbd "SPC a")   'helm-projectile-ag)
+(define-key evil-normal-state-map (kbd "SPC A")   'helm-ag-pop-stack)
+(define-key evil-normal-state-map (kbd "SPC b")   'helm-resume)
+(define-key evil-normal-state-map (kbd "SPC d")   'er/mark-defun) ; like (C-x n d) defun
+(define-key evil-normal-state-map (kbd "SPC f")   'helm-projectile-find-file-dwim)
+(define-key evil-normal-state-map (kbd "SPC F")   'projectile-find-file-dwim-other-window)
+(define-key evil-normal-state-map (kbd "SPC M")   'helm-man-woman)
+(define-key evil-normal-state-map (kbd "SPC n")   'symbol-overlay-switch-forward)
+(define-key evil-normal-state-map (kbd "SPC N")   'symbol-overlay-switch-backward)
+(define-key evil-normal-state-map (kbd "SPC p")   'er/mark-inside-pairs) ; [vi,va]PAIR[QUOTE], general in raw vim but different pairs maybe annoying and not convenient to type
+(define-key evil-normal-state-map (kbd "SPC P")   'er/mark-outside-pairs)
+(define-key evil-normal-state-map (kbd "SPC q")   'er/mark-inside-quotes)
+(define-key evil-normal-state-map (kbd "SPC Q")   'er/mark-outside-quotes)
+(define-key evil-normal-state-map (kbd "SPC D")   'sp-unwrap-sexp)
+(define-key evil-normal-state-map (kbd "SPC r")   'sp-rewrap-sexp)
+(define-key evil-normal-state-map (kbd "SPC w")   'helm-projectile-switch-project)
+(define-key evil-normal-state-map (kbd "SPC o")   'helm-projectile-find-other-file)
+(define-key evil-normal-state-map (kbd "SPC O")   'projectile-find-other-file-other-window)
+(define-key evil-normal-state-map (kbd "SPC SPC") 'er/expand-region) ; type SPC continuously to expand, "," to contract(back), "." to reset(just for convenience).
 (define-key evil-visual-state-map (kbd "SPC SPC") 'er/expand-region)
-(define-key evil-normal-state-map (kbd "SPC w") '(lambda () (interactive) (window-configuration-to-register ?w)))
-(define-key evil-normal-state-map (kbd "SPC z") 'gniuk/restore-window-layout-config)
-(define-key evil-normal-state-map (kbd "SPC 0") '(lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
-(define-key evil-normal-state-map (kbd "SPC j") 'git-gutter:next-hunk)
-(define-key evil-normal-state-map (kbd "SPC k") 'git-gutter:previous-hunk)
-(define-key evil-normal-state-map (kbd "SPC e") 'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
+(define-key evil-normal-state-map (kbd "SPC W")   '(lambda () (interactive) (window-configuration-to-register ?w))) ; save window is not frequent as open project.
+(define-key evil-normal-state-map (kbd "SPC z")   'gniuk/restore-window-layout-config)
+(define-key evil-normal-state-map (kbd "SPC 0")   '(lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
+(define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
+(define-key evil-normal-state-map (kbd "SPC J")   'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
+(define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
+(define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition)
+(define-key evil-normal-state-map (kbd "SPC i")   'helm-swoop-back-to-last-point) ; (M-i) swoop, (M-I) and (SPC i) back
 
 ;;;;; evil-matchit
 (setq evilmi-shortcut "n")
