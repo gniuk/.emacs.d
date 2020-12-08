@@ -189,7 +189,11 @@
   (custom-set-faces ;'(helm-selection ((t (:background "#008080" :foreground "#fdf6e3")))) ; old e4dbbf+firebrick3
                     '(helm-selection      ((t (:background "#551ab8"))))
                     '(helm-selection-line ((t (:background "green" :foreground "black"))))
-                    '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b" :weight bold :height 1.1 :family "Dejavu Serif" :slant italic))))))
+                    '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b" :weight bold :height 1.1 :family "Dejavu Serif" :slant italic))))
+                    '(helm-moccur-buffer ((t (:foreground "cyan2"   :underline t)))) ; spacemacs original too dim blue.
+                    '(helm-grep-lineno   ((t (:foreground "orange"  :underline t)))) ; spacemacs original same to language Type color, that doesn't make sense
+                    '(helm-match         ((t (:foreground "#f2241f" :weight bold)))) ; change and extend spacemacs original settings
+                    ))
 (helm-mode 1)
 
 
