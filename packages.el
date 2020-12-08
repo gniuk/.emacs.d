@@ -87,7 +87,6 @@ There are two things you can do about this warning:
     emmet-mode
     helm-emmet
     ;guide-key ; replaced by which-key
-    ;nyan-mode ; actually no need
     helm-c-yasnippet
     multiple-cursors
     ace-jump-buffer

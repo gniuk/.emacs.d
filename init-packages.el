@@ -40,8 +40,6 @@
   (define-key company-search-map (kbd "M-p") nil)
   (define-key company-search-map (kbd "C-n") #'company-select-next)
   (define-key company-search-map (kbd "C-p") #'company-select-previous))
-  ;(require 'company-statistics)
-  ;(add-hook 'after-init-hook 'company-statistics-mode))
 
 ;(global-set-key (kbd "TAB") 'company-complete)
 (defun gniuk/boip ()
@@ -249,7 +247,6 @@
 
 ;;;;; undo-tree
 (global-undo-tree-mode 1)
-(global-set-key (kbd "C-c z") 'undo)
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-c Z") 'redo)
 
@@ -334,11 +331,6 @@
 (require 'col-highlight)
 (setq col-highlight-period 2)
 (global-set-key (kbd "<f8>") 'flash-column-highlight) ; manually flash current column when necessary
-
-;;;;; ycmd
-;; (require 'ycmd)
-;; (add-hook 'after-init-hook #'global-ycmd-mode)
-;; (require 'company-ycmd)
 
 ;;;;; built-in hs-minor-mode
 (add-hook 'python-mode-hook 'hs-minor-mode)
@@ -479,7 +471,6 @@
 ;; ;(setq rtags-autostart-diagnostics t)
 (with-eval-after-load 'rtags
   (rtags-enable-standard-keybindings)
-  ;; (require 'helm-rtags)
   (setq rtags-use-helm t)
   (setq rtags-display-result-backend 'helm)
   (setq rtags-use-bookmarks nil)
@@ -534,12 +525,6 @@
 ;;;;; eldoc-cmake
 (add-hook 'cmake-mode-hook (lambda () (eldoc-cmake-enable)))
 
-;;;;; guide-key ; replaced by which-key now
-;; (require 'guide-key)
-;; (setq guide-key/guide-key-sequence t)
-;; (setq guide-key/idle-delay 1)
-;; (guide-key-mode 1)
-
 ;;;;; web-mode
 (add-to-list 'auto-mode-alist '("\\.[px]?html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.\\(?:tpl\\|blade\\)\\(?:\\.php\\)?\\'" . web-mode))
@@ -577,20 +562,14 @@
           (lambda ()
             (define-key web-mode-map (kbd "C-c e") 'emmet-expand-line)))
 
-;;;;; nyan-mode
-;(nyan-mode 1)
-
 ;;;;; multiple-cursors
-;(require 'multiple-cursors)
 (global-set-key (kbd "C-c m a") 'mc/mark-all-in-region)
 (global-set-key (kbd "C-M-=") 'mc/mark-next-like-this)
 
 ;;;;; ace-jump-buffer
-;(require 'ace-jump-buffer)
 (global-set-key (kbd "C-x SPC") 'ace-jump-buffer)
 
 ;;;;; quickrun
-;(require 'quickrun)
 (global-set-key (kbd "<f5>") 'quickrun)
 ; or use M-|, shell-command-on-region to execute on region
 
@@ -628,13 +607,6 @@
 ;; ;(require 'neotree)
 ;; (global-set-key (kbd "<f7>") 'neotree-toggle)
 
-;;;;; indent-guide. replaced by highlight-indent-guides
-;; (indent-guide-global-mode t)
-;; ;(set-face-background 'indent-guide-face "dimgray")
-;; (setq indent-guide-delay 0.1)
-;; (setq indent-guide-recursive t)
-;; (setq indent-guide-char "|")
-
 ;;;;; window-numbering
 (window-numbering-mode t)
 
@@ -642,7 +614,6 @@
 (global-anzu-mode 1)
 
 ;;;;; buffer-move
-;(require 'buffer-move)
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
@@ -710,19 +681,12 @@
 
 
 ;;;;; ace-jump-zap-to-char
-;; (global-set-key (kbd "M-z") 'ace-jump-zap-to-char)
 (global-set-key (kbd "M-g z") 'ace-jump-zap-to-char)
 
 ;;;;; ace-pinyin
-;(require 'ace-pinyin)
 (setq ace-pinyin-use-avy nil)
 (ace-pinyin-global-mode +1)
 (turn-on-ace-pinyin-mode)
-;(global-set-key (kbd "C-'") 'ace-pinyin-jump-char)
-;; (global-set-key (kbd "C-c j") 'ace-pinyin-jump-char)
-;; (global-set-key (kbd "C-.") 'ace-pinyin-jump-char)
-(global-set-key (kbd "C-c SPC") 'ace-pinyin-jump-char)
-;; (global-set-key (kbd "M-g a") 'ace-pinyin-jump-char)
 (global-set-key (kbd "M-z") 'ace-pinyin-jump-char)
 
 ;;;;; auctex
@@ -1592,12 +1556,6 @@
 ;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
 (delete-selection-mode 1)
-
-;;; builtin dired
-;; n acts as dired-next-line
-(add-hook 'dired-mode-hook
-          '(lambda ()
-             (evil-matchit-mode -1)))
 
 ;;; window resize
 ;; Though we already have golden-ratio, we can subtlely tune window size as needed.
