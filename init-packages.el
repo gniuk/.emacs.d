@@ -1005,6 +1005,29 @@
 (evil-set-initial-state 'dired-mode 'emacs)
 (evil-set-initial-state 'ccls-tree-mode 'emacs)
 
+;; (evil-set-leader 'normal (kbd "SPC")) ; necessary to use leader?
+(define-key evil-normal-state-map (kbd "SPC s") 'gniuk/helm-projectile-rg)
+(define-key evil-normal-state-map (kbd "SPC ,") 'gniuk/helm-search-pop-stack)
+(define-key evil-normal-state-map (kbd "SPC a") 'helm-projectile-ag)
+(define-key evil-normal-state-map (kbd "SPC A") 'helm-ag-pop-stack)
+(define-key evil-normal-state-map (kbd "SPC b") 'helm-resume)
+(define-key evil-normal-state-map (kbd "SPC f") 'er/mark-defun)
+(define-key evil-normal-state-map (kbd "SPC p") 'er/mark-inside-pairs)
+(define-key evil-normal-state-map (kbd "SPC P") 'er/mark-outside-pairs)
+(define-key evil-normal-state-map (kbd "SPC q") 'er/mark-inside-quotes)
+(define-key evil-normal-state-map (kbd "SPC Q") 'er/mark-outside-quotes)
+(define-key evil-normal-state-map (kbd "SPC m") 'helm-man-woman)
+(define-key evil-normal-state-map (kbd "SPC d") 'sp-unwrap-sexp)
+(define-key evil-normal-state-map (kbd "SPC r") 'sp-rewrap-sexp)
+(define-key evil-normal-state-map (kbd "SPC SPC") 'er/expand-region) ; type SPC continuously to expand, "," to contract(back), "." to reset.
+(define-key evil-visual-state-map (kbd "SPC SPC") 'er/expand-region)
+(define-key evil-normal-state-map (kbd "SPC w") '(lambda () (interactive) (window-configuration-to-register ?w)))
+(define-key evil-normal-state-map (kbd "SPC z") 'gniuk/restore-window-layout-config)
+(define-key evil-normal-state-map (kbd "SPC 0") '(lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
+(define-key evil-normal-state-map (kbd "SPC j") 'git-gutter:next-hunk)
+(define-key evil-normal-state-map (kbd "SPC k") 'git-gutter:previous-hunk)
+(define-key evil-normal-state-map (kbd "SPC e") 'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
+
 ;;;;; evil-matchit
 (setq evilmi-shortcut "n")
 (global-evil-matchit-mode 1)
@@ -1427,6 +1450,9 @@
 (global-set-key (kbd "M-9") 'mc/mark-next-like-this)
 (define-key window-numbering-keymap (kbd "M-0") nil)
 (global-set-key (kbd "M-0") 'er/expand-region)
+(custom-set-variables
+ '(expand-region-contract-fast-key ",")
+ '(expand-region-reset-fast-key "."))
 
 (define-key window-numbering-keymap (kbd "M-8") nil)
 (global-set-key (kbd "M-8") 'mc/edit-lines)
@@ -1607,7 +1633,8 @@
 (setq sentence-end-double-space nil)
 
 ;;; file register for quickly opening this file no matter where we are
-(set-register 106 '(file . "~/.emacs.d/init-packages.el")) ; 101 is just ?j
+(set-register 106 '(file . "~/.emacs.d/init-packages.el")) ; 106 is just ?j, C-x r j j
+(set-register 0 '(file . "~/.emacs.d/init-packages.el")) ; non typable register, in case we overwrite ?j. Used in SPC 0
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
