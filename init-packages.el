@@ -61,17 +61,17 @@
 (with-eval-after-load 'company
   (custom-set-faces
    '(company-tooltip
-     ((t (:background "#353539" :foreground "#d0c6b7")))) ; old wheat2 + gray28
+     ((t (:background "#353539" :foreground "#d0c6b7"))))
    '(company-tooltip-selection
-     ((t (:background "#5fb7ff" :foreground "black")))) ; old SteelBlue1 + Blue2
+     ((t (:background "#27404b"))))
    '(company-tooltip-annotation
-     ((t (:foreground "red"))))
+     ((t (:foreground "#00cdcd"))))
    '(company-tooltip-annotation-selection
-     ((t (:foreground "red"))))
+     ((t (:foreground "#00cdcd"))))
    '(company-tooltip-common
-     ((t (:background "tan1" :foreground "black"))))
+     ((t (:foreground "gold"))))
    '(company-tooltip-common-selection
-     ((t (:background "#5fb7ff" :foreground "black"))))
+     ((t (:foreground "gold"))))
    '(company-scrollbar-bg
      ((t (:background "gray15" :foreground "red"))))
    '(company-scrollbar-fg
