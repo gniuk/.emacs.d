@@ -41,21 +41,20 @@
   (define-key company-search-map (kbd "C-n") #'company-select-next)
   (define-key company-search-map (kbd "C-p") #'company-select-previous))
 
-;(global-set-key (kbd "TAB") 'company-complete)
-(defun gniuk/boip ()
-  "Beginning of indentation -> bool."
-  (let ((originalpos (point)))
-    (save-excursion
-      (back-to-indentation)
-      (= originalpos (point)))))
-(defun gniuk/indent-or-complete ()
-  "Indent when at beginning otherwise try to complete."
-  (interactive)
-  (if (or (bolp) (gniuk/boip))
-      (indent-according-to-mode)
-    (company-complete)))
-(global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
-
+(global-set-key (kbd "TAB") 'company-indent-or-complete-common)
+;; (defun gniuk/boip ()
+;;   "Beginning of indentation -> bool."
+;;   (let ((originalpos (point)))
+;;     (save-excursion
+;;       (back-to-indentation)
+;;       (= originalpos (point)))))
+;; (defun gniuk/indent-or-complete ()
+;;   "Indent when at beginning otherwise try to complete."
+;;   (interactive)
+;;   (if (or (bolp) (gniuk/boip))
+;;       (indent-according-to-mode)
+;;     (company-complete)))
+;; (global-set-key (kbd "TAB") 'gniuk/indent-or-complete)
 
 ; https://www.emacswiki.org/emacs/CompanyMode
 ; https://github.com/SXGNH/emacs/blob/e0ad40c09dbe8ac6f59089f0010febdf9774d7a4/theme/steelblue-theme.el
