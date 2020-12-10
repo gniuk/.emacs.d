@@ -568,6 +568,14 @@
 
 ;;;;; ace-jump-buffer
 (global-set-key (kbd "C-x SPC") 'ace-jump-buffer)
+;; ace-jump-projectile-no-third-buffers
+(make-ace-jump-buffer-function "projectile-no-third"
+  (let ((project-root (projectile-project-root)))
+    (with-current-buffer buffer
+      (or (not (projectile-project-buffer-p buffer project-root))
+          (string-match "helm" (buffer-name buffer))
+          (string-match "lsp-log" (buffer-name buffer))
+          (string-match "ccls" (buffer-name buffer))))))
 
 ;;;;; quickrun
 (global-set-key (kbd "<f5>") 'quickrun)
@@ -990,9 +998,9 @@
 (define-key evil-normal-state-map (kbd "SPC w")   'helm-projectile-switch-project)
 (define-key evil-normal-state-map (kbd "SPC o")   'helm-projectile-find-other-file)
 (define-key evil-normal-state-map (kbd "SPC O")   'projectile-find-other-file-other-window)
-(define-key evil-normal-state-map (kbd "SPC SPC") 'er/expand-region) ; type SPC continuously to expand, "," to contract(back), "." to reset(just for convenience).
-(define-key evil-visual-state-map (kbd "SPC SPC") 'er/expand-region)
-(define-key evil-normal-state-map (kbd "SPC W")   '(lambda () (interactive) (window-configuration-to-register ?w))) ; save window is not frequent as open project.
+(define-key evil-normal-state-map (kbd "SPC e")   'er/expand-region) ; type e continuously to expand, "," to contract(back), "." to reset(just for convenience).
+(define-key evil-visual-state-map (kbd "SPC e")   'er/expand-region)
+(define-key evil-normal-state-map (kbd "SPC 9")   '(lambda () (interactive) (window-configuration-to-register 1))) ; quick save (SPC 9) and restore (SPC z)
 (define-key evil-normal-state-map (kbd "SPC z")   'gniuk/restore-window-layout-config)
 (define-key evil-normal-state-map (kbd "SPC 0")   '(lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
 (define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
@@ -1000,6 +1008,7 @@
 (define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
 (define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition)
 (define-key evil-normal-state-map (kbd "SPC i")   'helm-swoop-back-to-last-point) ; (M-i) swoop, (M-I) and (SPC i) back
+(define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
 
 ;;;;; evil-matchit
 (setq evilmi-shortcut "n")
