@@ -129,6 +129,8 @@
 ;; (setq gc-cons-threshold (* 64 1024 1024))
 ;; (setq gc-cons-percentage 0.1)
 ;; maybe this is the right way to make emacs a little fluent
+(run-with-idle-timer 5 t #'garbage-collect)
+
 (defun my-minibuffer-setup-hook ()
   "Prohibit garbage collection in minibuffer."
   (setq gc-cons-threshold most-positive-fixnum))
