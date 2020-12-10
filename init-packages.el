@@ -1621,5 +1621,11 @@
 (set-register 106 '(file . "~/.emacs.d/init-packages.el")) ; 106 is just ?j, C-x r j j
 (set-register 0 '(file . "~/.emacs.d/init-packages.el")) ; non typable register, in case we overwrite ?j. Used in SPC 0
 
+;;; manually indent via C-x TAB. Using the left and right arrows is terrible
+(define-key indent-rigidly-map (kbd "h") 'indent-rigidly-left)
+(define-key indent-rigidly-map (kbd "l") 'indent-rigidly-right)
+(define-key indent-rigidly-map (kbd "H") 'indent-rigidly-left-to-tab-stop)
+(define-key indent-rigidly-map (kbd "L") 'indent-rigidly-right-to-tab-stop)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
