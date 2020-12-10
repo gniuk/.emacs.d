@@ -1543,6 +1543,15 @@
 ;;; keep session when restart
 ;; ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
+;; reopen desktop save mode for evil markers, 2020-12-10
+(setq desktop-auto-save-timeout 300)
+(setq desktop-restore-eager 6)
+(desktop-save-mode)
+(setq desktop-globals-to-save
+      '(desktop-missing-file-warning
+        register-alist
+        (file-name-history . 15)))
+(add-to-list 'desktop-locals-to-save 'evil-markers-alist)
 
 ;;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
@@ -1560,7 +1569,8 @@
   (add-to-list 'recentf-exclude "treemacs-persist")
   (add-to-list 'recentf-exclude "helm-adaptive-history")
   (add-to-list 'recentf-exclude ".emacs.d/bookmarks")
-  (add-to-list 'recentf-exclude ".emacs.d/elpa/.*"))
+  (add-to-list 'recentf-exclude ".emacs.d/elpa/.*")
+  (add-to-list 'recentf-exclude ".emacs.desktop.*"))
 
 ;;; delete selected region in a intuitive way
 ;; just type whatever new text to delete selected region, without firstly delete-region or C-w
