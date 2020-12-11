@@ -153,6 +153,7 @@
 (helm-autoresize-mode 1)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
 (global-set-key (kbd "C-x i") 'helm-imenu) ; helm-imenu heavily used. insert-file rarely used.
+(global-set-key (kbd "C-x I") 'helm-imenu-in-all-buffers)
 (global-set-key (kbd "C-c m m") 'helm-man-woman)
 (global-set-key (kbd "C-c m b") 'helm-resume)
 (global-set-key (kbd "C-c m h") 'helm-apropos) ; help apropos, cover C-h f,v,m,...
@@ -430,7 +431,7 @@
 (global-set-key (kbd "C-x p s") 'gniuk/helm-projectile-rg) ; wrap rg, save current search point in bookmark for pop back.
 (global-set-key (kbd "C-x p ,") 'gniuk/helm-search-pop-stack) ; go back to where we do search using "C-x p s"
 (global-set-key (kbd "C-x p g") 'helm-projectile-grep) ; use grep if silversearcher-ag or rg(ripgrep) not present
-;; (global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
+(global-set-key (kbd "C-x C-b") 'helm-projectile-recentf)
 (global-set-key (kbd "C-x p b") 'helm-projectile-recentf)
 (global-set-key (kbd "C-x p w") 'helm-projectile-switch-project)
 (global-set-key (kbd "C-x p o") 'helm-projectile-find-other-file) ; switch between files with the same name but different extensions
@@ -812,12 +813,9 @@
 ;; (add-hook 'god-mode-enabled-hook 'my-update-cursor)
 ;; (add-hook 'god-mode-disabled-hook 'my-update-cursor)
 
+;;;;; nasm-mode
 (add-to-list 'auto-mode-alist '("\\.asm$" . nasm-mode))
 
-;;;;; custom Emacs key set
-(global-unset-key (kbd "C-z")) ; C-z is suspend-frame, in case of typing it by mistake, disable it
-(global-unset-key (kbd "C-x C-b"))      ; it is for list-buffers, no need
-(global-set-key (kbd "C-x C-b") 'helm-mini) ; rebind it to helm-mini, then use it in god-mode, then use xb to switch buffer quickly.
 
 ;;;;; which-key, replace guide-key
 (which-key-mode)
@@ -1453,6 +1451,7 @@
 (define-key evil-motion-state-map (kbd "M-.") nil)
 ; i to evil-emacs-state, C-z to evil-normal-state
 (define-key evil-normal-state-map (kbd "i") 'evil-emacs-state)
+(global-unset-key (kbd "C-z")) ; C-z is suspend-frame originally.
 (define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-replace-state-map (kbd "C-z") 'evil-normal-state)
