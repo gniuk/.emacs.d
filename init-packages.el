@@ -820,7 +820,6 @@
 ;;;;; which-key, replace guide-key
 (which-key-mode)
 (setq which-key-idle-secondary-delay 0.1)
-(setq which-key--god-mode-support-enabled t)
 
 ;;;;; workgroups2
 ;; not that useful, because helm-mini containing recentf is there, and we can use registers to save window or frame configuration.
