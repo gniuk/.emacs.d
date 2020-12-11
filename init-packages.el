@@ -1487,6 +1487,7 @@
 ;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
 (define-key evil-normal-state-map (kbd "'") 'evil-set-marker)
 (define-key evil-normal-state-map (kbd "m") 'evil-goto-mark)
+(advice-add 'evil-goto-mark :after #'(lambda (&rest arg) (recenter)))
 
 (defhydra hydra-evil-complete-line (global-map "C-x")
   "complete whole line"
