@@ -1005,6 +1005,8 @@
 ;; (define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition) ; just use (C-c M-.)
 (define-key evil-normal-state-map (kbd "SPC i")   'helm-swoop-back-to-last-point) ; (M-i) swoop, (M-I) and (SPC i) back
 (define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
+(define-key evil-normal-state-map (kbd "SPC B")   'bookmark-set)
+(define-key evil-normal-state-map (kbd "SPC m")   'bookmark-jump)
 
 (advice-add 'git-gutter:next-hunk :after #'(lambda (&rest arg) (recenter)))
 
