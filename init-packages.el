@@ -1002,7 +1002,7 @@
 (define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "SPC J")   'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
 (define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
-(define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition)
+;; (define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition) ; just use (C-c M-.)
 (define-key evil-normal-state-map (kbd "SPC i")   'helm-swoop-back-to-last-point) ; (M-i) swoop, (M-I) and (SPC i) back
 (define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
 
