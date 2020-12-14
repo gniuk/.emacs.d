@@ -1106,7 +1106,8 @@
 ;;;;; magit
 (with-eval-after-load 'magit
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (define-key magit-status-mode-map (kbd "..") 'magit-section-up))
+  (define-key magit-status-mode-map (kbd "..") 'magit-section-up)
+  (define-key magit-revision-mode-map (kbd "..") 'magit-section-up))
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
 
