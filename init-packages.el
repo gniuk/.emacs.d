@@ -491,7 +491,7 @@
 (defun unuse-rtags ()
   "Unbind M-.  and M-, to rtags funcitons."
   (interactive)
-  (define-key c-mode-base-map (kbd "M-.") 'xref-find-definitions)
+  (define-key c-mode-base-map (kbd "M-.") 'lsp-find-definitions) ; xref not able to find operater override
   (define-key c-mode-base-map (kbd "M-,") 'xref-pop-marker-stack)
   (setq xref-prompt-for-identifier '(not xref-find-definitions
                                          xref-find-definitions-other-window

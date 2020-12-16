@@ -58,6 +58,7 @@
                                                      xref-find-definitions-other-frame
                                                      xref-find-references))
               ;; (define-key c-mode-base-map (kbd "M-r") 'xref-find-references)
+              (define-key c-mode-base-map (kbd "M-.") 'lsp-find-definition)
               (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
               (define-key c-mode-base-map (kbd "C-c M-.") 'lsp-find-type-definition)
               (define-key c-mode-base-map (kbd "C-c c s") 'lsp-ui-find-workspace-symbol)
