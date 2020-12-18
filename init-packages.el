@@ -1562,13 +1562,14 @@
 ;; ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
 ;; reopen desktop save mode for evil markers, 2020-12-10
+(setq history-length 12)
 (setq desktop-auto-save-timeout 300)
-(setq desktop-restore-eager 6)
+(setq desktop-restore-eager 3)
 (desktop-save-mode)
 (setq desktop-globals-to-save
       '(desktop-missing-file-warning
         register-alist
-        (file-name-history . 15)))
+        (file-name-history . 12)))
 (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
 
 ;;; comment current line without marking the line first
