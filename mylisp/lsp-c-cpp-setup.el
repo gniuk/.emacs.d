@@ -46,7 +46,8 @@
                ;; '(lsp-ui-peek-list      ; right side panel
                ;;   ((t (:background "orange"))))
                '(lsp-ui-peek-highlight    ; the symbol
-                 ((t (:background "#293235" :foreground "#67b11d"))))
+                 ;; ((t (:background "#293235" :foreground "#67b11d"))))
+                 ((t (:background "sienna4" :foreground "white"))))
                '(lsp-ui-peek-line-number
                  ((t (:foreground "red"))))
                '(lsp-ui-peek-header
