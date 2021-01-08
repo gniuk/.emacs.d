@@ -1571,6 +1571,7 @@
         register-alist
         (file-name-history . 12)))
 (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
+(add-hook 'desktop-save-hook 'clean-buffer-list)
 
 ;;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
