@@ -1639,5 +1639,9 @@
 (define-key indent-rigidly-map (kbd "H") 'indent-rigidly-left-to-tab-stop)
 (define-key indent-rigidly-map (kbd "L") 'indent-rigidly-right-to-tab-stop)
 
+;;; maybe a big productivity improvement? need a keyboard with big Alt key right aside the left thumb!
+(global-set-key (kbd "M-l") 'dabbrev-expand)
+(global-set-key (kbd "M-L") 'downcase-dwim)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
