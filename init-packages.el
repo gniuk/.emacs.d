@@ -1196,7 +1196,6 @@
 
 ;;;;; smartparens
 (require 'smartparens-config)
-;; (add-hook 'prog-mode-hook #'smartparens-mode)
 (smartparens-global-mode)
 (global-set-key (kbd "C-c s r") 'sp-rewrap-sexp)
 (global-set-key (kbd "C-c s d") 'sp-unwrap-sexp)
@@ -1427,7 +1426,8 @@
 (setq spacemacs-theme-comment-italic t)
 (load-theme 'spacemacs-dark t)
 (set-face-attribute 'font-lock-comment-face nil :foreground "#5d7878")
-
+(set-face-background 'show-paren-match "dodgerblue2")
+(set-face-foreground 'show-paren-match "white")
 
 ;;;;; override keybinds
 ; expand-region and multiple-cursor mark next
