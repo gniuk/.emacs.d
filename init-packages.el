@@ -1272,6 +1272,8 @@
 (add-hook 'realgud-track-mode-hook
           '(lambda ()
              (local-set-key (kbd "M-r") 'comint-history-isearch-backward-regexp)
+             (local-set-key (kbd "M-p") 'comint-previous-input)
+             (local-set-key (kbd "M-n") 'comint-next-input)
              (company-mode -1)
              (evil-emacs-state)))
 
