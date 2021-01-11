@@ -1276,6 +1276,7 @@
              (local-set-key (kbd "M-r") 'comint-history-isearch-backward-regexp)
              (local-set-key (kbd "M-p") 'comint-previous-input)
              (local-set-key (kbd "M-n") 'comint-next-input)
+             (setq realgud-window-split-orientation 'horizontal)
              (company-mode -1)
              (evil-emacs-state)))
 
