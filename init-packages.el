@@ -1277,6 +1277,8 @@
              (local-set-key (kbd "M-p") 'comint-previous-input)
              (local-set-key (kbd "M-n") 'comint-next-input)
              (setq realgud-window-split-orientation 'horizontal)
+             (setq-local comint-input-ring-file-name "./.gdb_history")
+             (comint-read-input-ring t)
              (company-mode -1)
              (evil-emacs-state)))
 
