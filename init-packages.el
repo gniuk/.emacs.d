@@ -152,8 +152,9 @@
 (helm-adaptive-mode 1)
 (helm-autoresize-mode 1)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
+(global-set-key (kbd "C-c m I") 'helm-imenu-in-all-buffers)
 (global-set-key (kbd "C-x i") 'helm-imenu) ; helm-imenu heavily used. insert-file rarely used.
-(global-set-key (kbd "C-x I") 'helm-imenu-in-all-buffers)
+(global-set-key (kbd "C-x I") 'helm-lsp-workspace-symbol) ; for convenient
 (global-set-key (kbd "C-c m m") 'helm-man-woman)
 (global-set-key (kbd "C-c m b") 'helm-resume)
 (global-set-key (kbd "C-c m h") 'helm-apropos) ; help apropos, cover C-h f,v,m,...
