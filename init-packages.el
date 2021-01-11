@@ -1230,11 +1230,13 @@
 (global-set-key (kbd "C-c 3") 'eyebrowse-switch-to-window-config-3)
 (global-set-key (kbd "C-c 4") 'eyebrowse-switch-to-window-config-4)
 (global-set-key (kbd "C-c 5") 'eyebrowse-switch-to-window-config-5)
+(global-set-key (kbd "C-c 6") 'eyebrowse-switch-to-window-config-6)
 (define-key evil-normal-state-map (kbd "SPC 1") 'eyebrowse-switch-to-window-config-1)
 (define-key evil-normal-state-map (kbd "SPC 2") 'eyebrowse-switch-to-window-config-2)
 (define-key evil-normal-state-map (kbd "SPC 3") 'eyebrowse-switch-to-window-config-3)
 (define-key evil-normal-state-map (kbd "SPC 4") 'eyebrowse-switch-to-window-config-4)
 (define-key evil-normal-state-map (kbd "SPC 5") 'eyebrowse-switch-to-window-config-5)
+(define-key evil-normal-state-map (kbd "SPC 6") 'eyebrowse-switch-to-window-config-6)
 
 ;;;;; dumb-jump
 ;; (require 'dumb-jump)
