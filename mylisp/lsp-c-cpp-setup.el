@@ -25,6 +25,7 @@
               (define-key ccls-tree-mode-map (kbd "p") #'previous-line)
               (require 'lsp-ui)
               (lsp-ui-mode)
+              (setq lsp-headerline-breadcrumb-enable nil) ; default changed to t. no need, there is which-function-mode globally.
               (lsp)
               (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
               (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
