@@ -389,15 +389,18 @@
 (setq projectile-indexing-method 'native)
 (setq helm-ag-insert-at-point 'symbol)
 
-;; ;; Use ripgrep rg instead of silversearcher ag, with a simple wrapper
-;; ;; Helm-ag is more powerful when editing the search result.
-;; ;; We still use colorful helm-rg in simple search case.
-;; ;; Rg does not obey projectile settings, put the nonhidden files or dirs in .ignore or .rgignore under the project root dir.
-;; ;; But the problem with rg is that when it is used with helm-ag, the C-u Prefix can't pass options to rg, tha's really bad.
-;; ;; So helm-ag with ag itself is still currently the right choice! Use helm-rg(helm-projectile-rg) in simple search case!
-;; (custom-set-variables
-;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case")
-;;  `(helm-ag-success-exit-status '(0 2)))
+;; Use ripgrep rg instead of silversearcher ag, with a simple wrapper
+;; Helm-ag is more powerful when editing the search result.
+;; We still use colorful helm-rg in simple search case.
+;; Rg does not obey projectile settings, put the nonhidden files or dirs in .ignore or .rgignore under the project root dir.
+;; But the problem with rg is that when it is used with helm-ag, the C-u Prefix can't pass options to rg, tha's really bad.
+;; So helm-ag with ag itself is still currently the right choice! Use helm-rg(helm-projectile-rg) in simple search case!
+
+;; helm-rg sometimes displays wrong results!!! use helm-ag with rg via my wrapper script
+;; tips: C-u to set extra options to rg. rg --type-list. -tc -tcpp -tasm; -tall; -g*.c -g*.h; -g.*[chS];
+(custom-set-variables
+ '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case")
+ `(helm-ag-success-exit-status '(0 2)))
 ;; (custom-set-faces
 ;;  '(helm-moccur-buffer ((t (:foreground "cyan2"   :underline t))))
 ;;  '(helm-grep-lineno   ((t (:foreground "orange"  :underline t))))
@@ -415,7 +418,7 @@
   (interactive)
   (setq gniuk-saved-bookmark-history bookmark-history)
   (bookmark-set "projectile-rg-point")
-  (call-interactively #'helm-projectile-rg))
+  (call-interactively #'helm-projectile-ag))
 (defun gniuk/helm-search-pop-stack ()
   "Pop stack using bookmark for rg otherwise call helm-ag-pop-stack."
   (interactive)
