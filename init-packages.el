@@ -1570,16 +1570,17 @@
 ;; ;(desktop-save-mode)
 ;; desktop-save-mode is time consuming, use bookmark and the helm interface instead
 ;; reopen desktop save mode for evil markers, 2020-12-10
-(setq history-length 12)
-(setq desktop-auto-save-timeout 300)
-(setq desktop-restore-eager 3)
-(desktop-save-mode)
-(setq desktop-globals-to-save
-      '(desktop-missing-file-warning
-        register-alist
-        (file-name-history . 12)))
-(add-to-list 'desktop-locals-to-save 'evil-markers-alist)
-(add-hook 'desktop-save-hook 'clean-buffer-list)
+
+;; (setq history-length 12)
+;; (setq desktop-auto-save-timeout 300)
+;; (setq desktop-restore-eager 3)
+;; (desktop-save-mode)
+;; (setq desktop-globals-to-save
+;;       '(desktop-missing-file-warning
+;;         register-alist
+;;         (file-name-history . 12)))
+;; (add-to-list 'desktop-locals-to-save 'evil-markers-alist)
+;; (add-hook 'desktop-save-hook 'clean-buffer-list)
 
 ;;; comment current line without marking the line first
 (global-set-key (kbd "C-x M-;") 'comment-line)
