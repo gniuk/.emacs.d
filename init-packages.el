@@ -398,9 +398,45 @@
 
 ;; helm-rg sometimes displays wrong results!!! use helm-ag with rg via my wrapper script
 ;; tips: C-u to set extra options to rg. rg --type-list. -tc -tcpp -tasm; -tall; -g*.c -g*.h; -g.*[chS];
-(custom-set-variables
- '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case")
- `(helm-ag-success-exit-status '(0 2)))
+;; (custom-set-variables
+;;  '(helm-ag-base-command "~/.emacs.d/scripts/rg-wrapper --color=never --no-heading --smart-case")
+;;  `(helm-ag-success-exit-status '(0 2)))
+
+(defun gniuk/helm-projectile-arg (&optional options)
+  "Use ripgrep with helm-projectile-ag. Prefix OPTIONS to pass extra rg opts."
+  (interactive (if current-prefix-arg (list (helm-read-string "option: " "" 'helm-ag--extra-options-history))))
+  (if (require 'helm-ag nil t)
+      (if (projectile-project-p)
+          (let* ((helm-ag-base-command "rg --color=never --no-heading --smart-case")
+		         (helm-ag-base-command (concat helm-ag-base-command " " options))
+                 (current-prefix-arg nil))
+            (helm-do-ag (projectile-project-root) (car (projectile-parse-dirconfig-file))))
+        (error "You're not in a project"))
+    (when (yes-or-no-p "`helm-ag' is not installed. Install? ")
+      (condition-case nil
+          (progn
+            (package-install 'helm-ag)
+            (helm-projectile-arg options))
+        (error (error "`helm-ag' is not available.  Is MELPA in your `package-archives'?"))))))
+
+(defun gniuk/helm-projectile-arg--set-options-and-restart ()
+  "Set the -tTYPE or -g*.T FILE-TYPE-OR-GLOB string used to invoke ripgrep, then search again."
+  (interactive)
+  (setq enable-recursive-minibuffers t)
+  (helm-run-after-exit
+   (lambda ()
+     (let* ((helm-ag-base-command "rg --color=never --no-heading --smart-case")
+            (helm-ag-base-command (concat helm-ag-base-command " "
+                                          (read-string "extra options for rg: ")
+                                          "")))
+       (helm-do-ag (projectile-project-root) (car (projectile-parse-dirconfig-file)) helm-ag--last-query))))
+  (setq enable-recursive-minibuffers nil))
+
+(with-eval-after-load 'helm-ag
+  (define-key helm-ag-map (kbd "M-.") 'helm-ag--next-file)
+  (define-key helm-ag-map (kbd "M-,") 'helm-ag--previous-file)
+  (define-key helm-ag-map (kbd "M-g") #'gniuk/helm-projectile-arg--set-options-and-restart))
+
 ;; (custom-set-faces
 ;;  '(helm-moccur-buffer ((t (:foreground "cyan2"   :underline t))))
 ;;  '(helm-grep-lineno   ((t (:foreground "orange"  :underline t))))
@@ -418,7 +454,7 @@
   (interactive)
   (setq gniuk-saved-bookmark-history bookmark-history)
   (bookmark-set "projectile-rg-point")
-  (call-interactively #'helm-projectile-ag))
+  (call-interactively #'gniuk/helm-projectile-arg))
 (defun gniuk/helm-search-pop-stack ()
   "Pop stack using bookmark for rg otherwise call helm-ag-pop-stack."
   (interactive)
