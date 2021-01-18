@@ -20,7 +20,6 @@
   (setq-default company-show-numbers t)
   (setq-default company-sort-by-occurrence 1)
   (setq-default company-tooltip-limit 20)                      ; bigger popup window
-  ;(setq-default company-idle-delay 0.2)                        ; decrease delay before autocompletion popup shows
   (setq-default company-idle-delay 0.6)                        ; autocompletion popup actually block my typing, manually M-/ or TAB
   (setq-default company-echo-delay 0)                          ; remove annoying blinking
   (setq-default company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
@@ -1025,7 +1024,8 @@
 (define-key evil-normal-state-map (kbd "SPC M")   'helm-man-woman)
 (define-key evil-normal-state-map (kbd "SPC n")   'symbol-overlay-switch-forward)
 (define-key evil-normal-state-map (kbd "SPC N")   'symbol-overlay-switch-backward)
-(define-key evil-normal-state-map (kbd "SPC p")   'er/mark-inside-pairs) ; [vi,va]PAIR[QUOTE], general in raw vim but different pairs maybe annoying and not convenient to type
+;; (define-key evil-normal-state-map (kbd "SPC p")   'er/mark-inside-pairs) ; [vi,va]PAIR[QUOTE], general in raw vim but different pairs maybe annoying and not convenient to type. But C-c m [p,P] is enough! Not frequently used.
+(define-key evil-normal-state-map (kbd "SPC p")   'symbol-overlay-switch-backward) ; pair with SPC n
 (define-key evil-normal-state-map (kbd "SPC P")   'er/mark-outside-pairs)
 (define-key evil-normal-state-map (kbd "SPC q")   'er/mark-inside-quotes)
 (define-key evil-normal-state-map (kbd "SPC Q")   'er/mark-outside-quotes)
