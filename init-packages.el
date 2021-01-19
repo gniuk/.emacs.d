@@ -659,6 +659,7 @@
 
 ;;;;; anzu
 (global-anzu-mode 1)
+(global-set-key (kbd "C-c ! !") 'anzu-query-replace-regexp) ; I didn't find anzu replace!
 
 ;;;;; buffer-move
 (global-set-key (kbd "<C-S-up>")     'buf-move-up)
