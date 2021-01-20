@@ -662,10 +662,19 @@
 (global-set-key (kbd "C-c ! !") 'anzu-query-replace-regexp) ; I didn't find anzu replace!
 
 ;;;;; buffer-move
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-right>")  'buf-move-right)
+(global-set-key (kbd "C-S-<up>")     'buf-move-up)
+(global-set-key (kbd "C-S-<down>")   'buf-move-down)
+(global-set-key (kbd "C-S-<left>")   'buf-move-left)
+(global-set-key (kbd "C-S-<right>")  'buf-move-right)
+;; not functioning well in some terminal emulators
+;; bind the char sequence to corresponding emacs key sequence
+;; http://ergoemacs.org/emacs/keystroke_rep.html
+;; https://emacs.stackexchange.com/questions/977/shiftup-isnt-recognized-by-emacs-in-a-terminal
+;; C-h l, to see whether a key arrived
+(define-key input-decode-map "\e[1;6A" (kbd "C-S-<up>"))
+(define-key input-decode-map "\e[1;6B" (kbd "C-S-<down>"))
+(define-key input-decode-map "\e[1;6D" (kbd "C-S-<left>"))
+(define-key input-decode-map "\e[1;6C" (kbd "C-S-<right>"))
 
 ;;;;; mwim
 (autoload 'mwim-beginning-of-code-or-line-or-comment "mwim" nil t)
@@ -1647,16 +1656,21 @@
 
 ;;; window resize
 ;; Though we already have golden-ratio, we can subtlely tune window size as needed.
-(global-set-key (kbd "<M-up>") 'enlarge-window)
-(global-set-key (kbd "<M-down>") 'shrink-window)
-(global-set-key (kbd "<M-left>") 'shrink-window-horizontally)
-(global-set-key (kbd "<M-right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "M-<up>")    'enlarge-window)
+(global-set-key (kbd "M-<down>")  'shrink-window)
+(global-set-key (kbd "M-<left>")  'shrink-window-horizontally)
+(global-set-key (kbd "M-<right>") 'enlarge-window-horizontally)
 
 ;; <M-arrows> are screwed, some bad package converts the key sequence maybe
 (global-set-key (kbd "<f27>") 'enlarge-window)              ;; C-<f3>
 (global-set-key (kbd "<f28>") 'shrink-window)               ;; C-<f4>
 (global-set-key (kbd "<f26>") 'shrink-window-horizontally)  ;; C-<f2>
 (global-set-key (kbd "<f25>") 'enlarge-window-horizontally) ;; C-<f1> some keyboard
+;; fix terminal issue. see buffer-move section
+(define-key input-decode-map "\e[1;3A" (kbd "M-<up>"))
+(define-key input-decode-map "\e[1;3B" (kbd "M-<down>"))
+(define-key input-decode-map "\e[1;3D" (kbd "M-<left>"))
+(define-key input-decode-map "\e[1;3C" (kbd "M-<right>"))
 
 ;;; narrow
 (put 'narrow-to-region 'disabled nil) ;; don't bother me
