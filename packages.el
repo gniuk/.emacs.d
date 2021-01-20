@@ -114,7 +114,7 @@ There are two things you can do about this warning:
     color-identifiers-mode
     chinese-yasdcv
     helm-ag
-    helm-rg
+    ;; helm-rg ; now use rg with helm-ag, helm-rg seems no need.
     ;god-mode
     which-key
     ;workgroups2
