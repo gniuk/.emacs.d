@@ -1557,14 +1557,30 @@
   ("M-/" evil-complete-previous-line))
 
 ;; keybindings for some C-M prefix commands
-;; (global-set-key (kbd "C-c a") 'beginning-of-defun)
-;; (global-set-key (kbd "C-c e") 'end-of-defun)
 (global-set-key (kbd "C-c s k") 'kill-sexp)
 (global-set-key (kbd "C-c s SPC") 'mark-sexp)
+
+;; we need a beginning-of-defun that put point on the function name
+(defvar gniuk/point-in-fun (point-min))
+(defun gniuk/beginning-of-defun ()
+  "Go to beginning of defun, and go forward to the function name."
+  (interactive)
+  (setq gniuk/point-in-fun (point))
+  (beginning-of-line)
+  (beginning-of-defun)
+  (mwim-end-of-code-or-line)
+  (evil-find-char-backward 1 40)
+  (backward-word))
+(defun gniuk/back-to-point-in-fun ()
+  "Back to the point where we call \"gniuk/beginning-of-defun\"."
+  (interactive)
+  (goto-char gniuk/point-in-fun))
 (defhydra hydra-defun-navigation (global-map "C-c")
   "goto beginning or end of function"
-  ("a" beginning-of-defun)
-  ("e" end-of-defun))
+  ("a" gniuk/beginning-of-defun)
+  ("e" end-of-defun)
+  (";" gniuk/back-to-point-in-fun))
+(setq hydra-is-helpful nil) ; don't hint in the echo area, eldoc is there.
 
 ;;;;; other config
 ;;; trailing spaces and newline
