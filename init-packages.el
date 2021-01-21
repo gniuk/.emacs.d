@@ -662,19 +662,19 @@
 (global-set-key (kbd "C-c ! !") 'anzu-query-replace-regexp) ; I didn't find anzu replace!
 
 ;;;;; buffer-move
-(global-set-key (kbd "C-S-<up>")     'buf-move-up)
-(global-set-key (kbd "C-S-<down>")   'buf-move-down)
-(global-set-key (kbd "C-S-<left>")   'buf-move-left)
-(global-set-key (kbd "C-S-<right>")  'buf-move-right)
+(global-set-key (kbd "M-S-<up>")     'buf-move-up)
+(global-set-key (kbd "M-S-<down>")   'buf-move-down)
+(global-set-key (kbd "M-S-<left>")   'buf-move-left)
+(global-set-key (kbd "M-S-<right>")  'buf-move-right)
 ;; not functioning well in some terminal emulators
 ;; bind the char sequence to corresponding emacs key sequence
 ;; http://ergoemacs.org/emacs/keystroke_rep.html
 ;; https://emacs.stackexchange.com/questions/977/shiftup-isnt-recognized-by-emacs-in-a-terminal
 ;; C-h l, to see whether a key arrived
-(define-key input-decode-map "\e[1;6A" (kbd "C-S-<up>"))
-(define-key input-decode-map "\e[1;6B" (kbd "C-S-<down>"))
-(define-key input-decode-map "\e[1;6D" (kbd "C-S-<left>"))
-(define-key input-decode-map "\e[1;6C" (kbd "C-S-<right>"))
+(define-key input-decode-map "\e[1;4A" (kbd "M-S-<up>"))
+(define-key input-decode-map "\e[1;4B" (kbd "M-S-<down>"))
+(define-key input-decode-map "\e[1;4D" (kbd "M-S-<left>"))
+(define-key input-decode-map "\e[1;4C" (kbd "M-S-<right>"))
 
 ;;;;; mwim
 (autoload 'mwim-beginning-of-code-or-line-or-comment "mwim" nil t)
@@ -1595,7 +1595,7 @@
 ;;; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
           '(lambda ()
-	     (turn-on-eldoc-mode)))
+	         (turn-on-eldoc-mode)))
 
 ;;; ediff
 ;; 1. make ediff not open it's command interface in an external frame(window) under gui
