@@ -1251,6 +1251,7 @@
 (global-set-key (kbd "C-c s d") 'sp-unwrap-sexp)
 (global-set-key (kbd "C-c s f") 'sp-down-sexp)
 (global-set-key (kbd "C-c s b") 'sp-backward-up-sexp)
+(global-set-key (kbd "C-c S")   'smartparens-mode) ; toggle, when pasting big json we may need to disable it first
 
 ;; (defun gniuk/create-newline-and-enter-sexp (&rest _ignored)
 ;;   "Open a new brace or bracket expression, with relevant newlines and indent."
