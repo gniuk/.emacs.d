@@ -20,7 +20,7 @@
   (setq-default company-show-numbers t)
   (setq-default company-sort-by-occurrence 1)
   (setq-default company-tooltip-limit 20)                      ; bigger popup window
-  (setq-default company-idle-delay 0.6)                        ; autocompletion popup actually block my typing, manually M-/ or TAB
+  (setq-default company-idle-delay 0.6)                        ; autocompletion popup actually block my typing, manually M-/ (also M-l) or TAB
   (setq-default company-echo-delay 0)                          ; remove annoying blinking
   (setq-default company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
   (setq-default company-selection-wrap-around t)               ; make previous/next selection cycle style
@@ -1554,7 +1554,8 @@
 
 (defhydra hydra-evil-complete-line (global-map "C-x")
   "complete whole line"
-  ("M-/" evil-complete-previous-line))
+  ("M-/" evil-complete-previous-line)
+  ("M-l" evil-complete-previous-line))
 
 ;; keybindings for some C-M prefix commands
 (global-set-key (kbd "C-c s k") 'kill-sexp)
