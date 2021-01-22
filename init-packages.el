@@ -132,7 +132,7 @@
 ; see the override keybinds. 2019-11-24
 
 ; 2019-11-24, set key bindings for the er/mark function group
-(global-set-key (kbd "C-c m f") 'er/mark-defun)
+(global-set-key (kbd "C-c m d") 'er/mark-defun)
 (global-set-key (kbd "C-c m p") 'er/mark-inside-pairs)
 (global-set-key (kbd "C-c m P") 'er/mark-outside-pairs)
 (global-set-key (kbd "C-c m q") 'er/mark-inside-quotes)
