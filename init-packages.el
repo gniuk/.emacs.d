@@ -1593,6 +1593,20 @@
   (";" gniuk/back-to-point-in-fun))
 (setq hydra-is-helpful nil) ; don't hint in the echo area, eldoc is there.
 
+(defvar gniuk/point-in-pair (point-min))
+(defun gniuk/goto-current-block-pair ()
+  "Goto the first pair containing code block where current point is in."
+  (interactive)
+  (setq gniuk/point-in-pair (point))
+  (er/mark-outside-pairs)
+  (deactivate-mark))
+(defun gniuk/back-to-point-in-pair ()
+  "Back to the point where we call \"gniuk/goto-current-block-pair\"."
+  (interactive)
+  (goto-char gniuk/point-in-pair))
+(define-key evil-normal-state-map (kbd "SPC [") 'gniuk/goto-current-block-pair)
+(define-key evil-normal-state-map (kbd "SPC ;") 'gniuk/back-to-point-in-pair)
+
 ;;;;; other config
 ;;; trailing spaces and newline
 ;; automatic delete trailing spaces when saving file
