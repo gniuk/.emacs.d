@@ -1564,6 +1564,14 @@
 
 ;; we need a beginning-of-defun that put point on the function name
 (defvar gniuk/point-in-fun (point-min))
+(defun gniuk/beginning-of-symbol ()
+  "Goto the beginning of symbol around or in front of point."
+  (interactive)
+  (let ((symbol-regexp "\\s_\\|\\sw"))
+    (when (or (looking-at symbol-regexp)
+              (er/looking-back-on-line symbol-regexp))
+      (skip-syntax-forward "_w")
+      (skip-syntax-backward "_w"))))
 (defun gniuk/beginning-of-defun ()
   "Go to beginning of defun, and go forward to the function name."
   (interactive)
@@ -1572,7 +1580,8 @@
   (beginning-of-defun)
   (mwim-end-of-code-or-line)
   (evil-find-char-backward 1 40)
-  (backward-word))
+  (backward-word 1)
+  (gniuk/beginning-of-symbol))
 (defun gniuk/back-to-point-in-fun ()
   "Back to the point where we call \"gniuk/beginning-of-defun\"."
   (interactive)
