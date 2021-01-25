@@ -1460,6 +1460,17 @@
 (setq ranger-width-parents 0.15)
 (setq ranger-max-parent-width 0.38)
 
+;;;;; ztree
+;; M-x ztree-diff. intuitive interface than ediff-directories
+(with-eval-after-load 'ztree-view
+  (define-key ztree-mode-map (kbd "n") 'ztree-next-line)
+  (define-key ztree-mode-map (kbd "p") 'ztree-previous-line))
+(with-eval-after-load 'ztree-diff
+  (set-face-foreground 'ztreep-diff-model-normal-face "#dddddd")
+  (set-face-foreground 'ztreep-diff-model-ignored-face "#6f6f6f")
+  (set-face-foreground 'ztreep-diff-model-add-face "dodgerblue"))
+(global-set-key (kbd "C-x d z") 'ztree-diff)
+
 ;;;;; rg, a more powerful tool than helm-rg
 ;; ;(rg-enable-menu)
 ;; (rg-enable-default-bindings)
