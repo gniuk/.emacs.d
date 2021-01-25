@@ -1471,6 +1471,18 @@
   (set-face-foreground 'ztreep-diff-model-add-face "dodgerblue"))
 (global-set-key (kbd "C-x d z") 'ztree-diff)
 
+;;;;; zygospore
+;; C-x 1 toggle window layout. Actually what I need is not totally restore to previous
+;; window config but keep current full-window buffer point. So we need to override.
+;; My custom "SPC 9" to save first then "SPC z" to restore may still be usefull.
+(with-eval-after-load 'zygospore
+  (defun zygospore-restore-other-windows ()
+    "Restore the window configuration to prior to full-window."
+    (let ((full-window-point (point)))
+      (jump-to-register zygospore-spore-formation-register-name)
+      (goto-char full-window-point))))
+(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
 ;;;;; rg, a more powerful tool than helm-rg
 ;; ;(rg-enable-menu)
 ;; (rg-enable-default-bindings)

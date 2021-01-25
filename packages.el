@@ -174,6 +174,7 @@ There are two things you can do about this warning:
     ;vdiff-magit ; patience is not good as expected, ediff is enough, beyond compare is the goal
     ranger
     ztree
+    zygospore
     ;; rg ; helm-ag is good enough
     ;; company-restclient ; mark
     ;; org-brain ; mark
