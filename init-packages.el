@@ -987,7 +987,39 @@
 ;(require 'livedown)
 
 ;;;;; doom-modeline
-;(require 'doom-modeline)
+;; the workspace-name is same as window-number, that does not make sense, redefine it.
+(with-eval-after-load 'doom-modeline-core
+  (defface doom-modeline-workspace-name-face
+    '((t (:foreground "purple"
+          :inherit (mode-line-emphasis bold))))
+    "Face used for the workspace-name segment in the mode-line."
+    :group 'doom-modeline-faces))
+(with-eval-after-load 'doom-modeline-segments
+  (doom-modeline-def-segment workspace-name
+    "The current workspace name or number.
+Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
+    (when doom-modeline-workspace-name
+      (when-let
+          ((name (cond
+                  ((and (bound-and-true-p eyebrowse-mode)
+                        (< 1 (length (eyebrowse--get 'window-configs))))
+                   (assq-delete-all 'eyebrowse-mode mode-line-misc-info)
+                   (when-let*
+                       ((num (eyebrowse--get 'current-slot))
+                        (tag (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
+                     (if (< 0 (length tag)) tag (int-to-string num))))
+                  ((bound-and-true-p tab-bar-mode)
+                   (let* ((current-tab (tab-bar--current-tab))
+                          (tab-index (tab-bar--current-tab-index))
+                          (explicit-name (alist-get 'explicit-name current-tab))
+                          (tab-name (alist-get 'name current-tab)))
+                     (if explicit-name tab-name (+ 1 tab-index)))))))
+        (propertize (format " %s " name) 'face
+                    (if (doom-modeline--active)
+                        ;; 'doom-modeline-buffer-major-mode
+                        'doom-modeline-workspace-name-face
+                      'mode-line-inactive))))))
+
 (setq doom-modeline-bar-width 0)        ; left side little bar width
 (display-battery-mode)
 
