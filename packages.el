@@ -36,6 +36,7 @@ There are two things you can do about this warning:
 
 (defvar required-packages
   '(
+    paradox
     company
     ;company-c-headers
     company-anaconda
