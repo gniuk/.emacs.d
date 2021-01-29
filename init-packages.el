@@ -11,6 +11,9 @@
 ;; (require 'benchmark-init)
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
+;;;;; paradox
+(defalias 'plp 'paradox-list-packages)
+
 ;;;;; company
 ;(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
