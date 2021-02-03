@@ -1068,6 +1068,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC d")   'er/mark-defun) ; like (C-x n d) defun
 (define-key evil-normal-state-map (kbd "SPC f")   'helm-projectile-find-file-dwim)
 (define-key evil-normal-state-map (kbd "SPC F")   'projectile-find-file-dwim-other-window)
+(define-key evil-normal-state-map (kbd "SPC C-f") 'helm-fzf-project-root)
+(define-key evil-normal-state-map (kbd "SPC M-f") 'helm-fzf)
 (define-key evil-normal-state-map (kbd "SPC M")   'helm-man-woman)
 (define-key evil-normal-state-map (kbd "SPC n")   'symbol-overlay-switch-forward)
 (define-key evil-normal-state-map (kbd "SPC N")   'symbol-overlay-switch-backward)
@@ -1519,6 +1521,11 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
       (jump-to-register zygospore-spore-formation-register-name)
       (goto-char full-window-point))))
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
+
+
+;;;;; helm-fzf
+(push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
+(require 'helm-fzf)
 
 ;;;;; rg, a more powerful tool than helm-rg
 ;; ;(rg-enable-menu)
