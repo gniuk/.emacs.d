@@ -617,7 +617,9 @@
       (or (not (projectile-project-buffer-p buffer project-root))
           (string-match "helm" (buffer-name buffer))
           (string-match "lsp-log" (buffer-name buffer))
-          (string-match "ccls" (buffer-name buffer))))))
+          (string-match "ccls" (buffer-name buffer))
+          (string-match "Async-native-compile-log" (buffer-name buffer))
+          (string-match "Warnings" (buffer-name buffer))))))
 
 ;;;;; quickrun
 (global-set-key (kbd "<f5>") 'quickrun)
