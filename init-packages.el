@@ -336,18 +336,16 @@
 (global-set-key (kbd "<f8>") 'flash-column-highlight) ; manually flash current column when necessary
 
 ;;;;; built-in hs-minor-mode
-(add-hook 'python-mode-hook 'hs-minor-mode)
-(add-hook 'c-mode-hook 'hs-minor-mode)
-(add-hook 'c++-mode-hook 'hs-minor-mode)
-(add-hook 'cc-mode-hook 'hs-minor-mode)
-(add-hook 'js2-mode-hook 'hs-minor-mode)
-(add-hook 'go-mode-hook 'hs-minor-mode)
-(global-set-key (kbd "C-c h h") 'hs-hide-all)
-(global-set-key (kbd "C-c h b") 'hs-hide-block)
-(global-set-key (kbd "C-c h l") 'hs-hide-level)
-(global-set-key (kbd "C-c h a") 'hs-show-all)
-(global-set-key (kbd "C-c h s") 'hs-show-block)
-(global-set-key (kbd "C-c h t") 'hs-toggle-hiding)
+;; better using evil fold and vimish fold
+(add-hook 'prog-mode-hook 'hs-minor-mode)
+(with-eval-after-load 'hideshow
+  (define-key hs-minor-mode-map (kbd "C-c h h") 'hs-hide-all)
+  (define-key hs-minor-mode-map (kbd "C-c h b") 'hs-hide-block)
+  (define-key hs-minor-mode-map (kbd "C-c h l") 'hs-hide-level)
+  (define-key hs-minor-mode-map (kbd "C-c h a") 'hs-show-all)
+  (define-key hs-minor-mode-map (kbd "C-c h s") 'hs-show-block)
+  (define-key hs-minor-mode-map (kbd "C-c h t") 'hs-toggle-hiding))
+
 
 ;;;;; flycheck
 ;; for python, sudo pip intall pylint
