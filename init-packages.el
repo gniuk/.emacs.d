@@ -1656,6 +1656,12 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
   ("a" gniuk/beginning-of-defun)
   ("e" end-of-defun)
   (";" gniuk/back-to-point-in-fun))
+(with-eval-after-load 'rst
+  (defhydra hydra-defun-navigation (rst-mode-map "C-c")
+    "goto beginning or end of section"
+    ("a" rst-backward-section)
+    ("e" rst-forward-section)
+    ("h" rst-mark-section)))
 (setq hydra-is-helpful nil) ; don't hint in the echo area, eldoc is there.
 
 (defvar gniuk/point-in-pair (point-min))
