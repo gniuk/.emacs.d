@@ -195,6 +195,13 @@
                     '(helm-grep-lineno   ((t (:foreground "orange"  :underline t)))) ; spacemacs original same to language Type color, that doesn't make sense
                     '(helm-match         ((t (:foreground "#f2241f" :weight bold)))) ; change and extend spacemacs original settings
                     ))
+;; The unicode symbol can not be previewed in emacs-28.0.50 with helm due to some changes in emacs.
+;; The symbol is put at the head of each unicode string. In version <= 27.1, the symbols are at the end.
+;; Can't figure out how helm deals with these candidates. So use the raw insert-char command to preview symbols.
+;; Hope helm will fix it or I have time to figure out.
+(with-eval-after-load 'helm-mode
+  (add-to-list 'helm-completing-read-handlers-alist
+               '(insert-char . nil)))
 (helm-mode 1)
 
 
