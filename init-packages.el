@@ -1533,6 +1533,11 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
       (goto-char full-window-point))))
 (global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
+;;;;; rainbow-mode
+;; list-colors-display and helm-colors do not display the right color range(only 8 colors).
+;; But the color range in emacs -q is ok, also ok when no .el is byte compiled, that's very strange.
+;; Can't figure out the cause. We need rainbow-mode to help us with colors.
+;; Just M-x rainbow-mode manually when we need it.
 
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)

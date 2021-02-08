@@ -176,6 +176,7 @@ There are two things you can do about this warning:
     ranger
     ztree
     zygospore
+    rainbow-mode
     ;; rg ; helm-ag is good enough
     ;; company-restclient ; mark
     ;; org-brain ; mark
