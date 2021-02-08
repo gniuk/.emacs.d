@@ -1222,6 +1222,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
+(with-eval-after-load 'org-bullets
+  (setq org-bullets-bullet-list
+        '("◉" "○" "✸" "✿" "✤" "✜" "◆" "▶")))
 
 ;;;;; symbol-overlay
 ;(require 'symbol-overlay)
