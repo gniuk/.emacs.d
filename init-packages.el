@@ -379,7 +379,9 @@
 ;; (add-hook 'c-mode-common-hook
 ;;           (lambda ()
 ;;             (set (make-local-variable 'company-backends)
-;;                  '(company-irony-c-headers company-irony company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))))
+;;                  '(company-irony-c-headers company-irony company-files company-yasnippet
+;;                    (company-dabbrev-code company-gtags company-etags company-keywords)
+;;                    company-dabbrev))))
 
 ;; (eval-after-load 'flycheck
 ;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
@@ -815,7 +817,10 @@
 ;;;;; color-identifiers-mode
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
-;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face font-lock-type-face font-lock-function-name-face font-lock-variable-name-face font-lock-keyword-face font-lock-string-face font-lock-builtin-face font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
+;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face
+;;                font-lock-type-face font-lock-function-name-face font-lock-variable-name-face
+;;                font-lock-keyword-face font-lock-string-face font-lock-builtin-face
+;;                font-lock-preprocessor-face font-lock-warning-face font-lock-doc-face)))
 ;;   (dolist (face faces)
 ;;     (set-face-attribute face nil :foreground nil :weight 'normal :slant 'normal)))
 
