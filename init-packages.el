@@ -1065,7 +1065,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; evil
 (setq-default evil-disable-insert-state-keybindings t)
 (evil-mode 1)
-(setq evil-move-beyond-eol t)
+;; (setq evil-move-beyond-eol t)
 (setq evil-move-cursor-back nil)
 (evil-set-initial-state 'treemacs-mode 'emacs)
 (evil-set-initial-state 'git-commit-mode 'emacs)
