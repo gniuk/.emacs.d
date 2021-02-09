@@ -31,17 +31,17 @@
   (setq-default company-dabbrev-ignore-case nil)
   (setq-default company-require-match nil)
   ;(setq-default company-tooltip-align-annotations t)
-  (define-key company-active-map (kbd "M-n") #'company-other-backend)
-  (define-key company-active-map (kbd "M-p") nil)
-  (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous)
-  (define-key company-active-map (kbd "TAB") #'company-complete-common-or-cycle)
-  (define-key company-active-map (kbd "S-TAB") #'company-select-previous)
+  (define-key company-active-map (kbd "M-n")       #'company-other-backend)
+  (define-key company-active-map (kbd "M-p")       nil)
+  (define-key company-active-map (kbd "C-n")       #'company-select-next)
+  (define-key company-active-map (kbd "C-p")       #'company-select-previous)
+  (define-key company-active-map (kbd "TAB")       #'company-complete-common-or-cycle)
+  (define-key company-active-map (kbd "S-TAB")     #'company-select-previous)
   (define-key company-active-map (kbd "<backtab>") #'company-select-previous)
-  (define-key company-search-map (kbd "M-n") nil)
-  (define-key company-search-map (kbd "M-p") nil)
-  (define-key company-search-map (kbd "C-n") #'company-select-next)
-  (define-key company-search-map (kbd "C-p") #'company-select-previous))
+  (define-key company-search-map (kbd "M-n")       nil)
+  (define-key company-search-map (kbd "M-p")       nil)
+  (define-key company-search-map (kbd "C-n")       #'company-select-next)
+  (define-key company-search-map (kbd "C-p")       #'company-select-previous))
 
 (global-set-key (kbd "TAB") 'company-indent-or-complete-common)
 ;; (defun gniuk/boip ()
@@ -155,15 +155,15 @@
 (helm-autoresize-mode 1)
 (global-set-key (kbd "C-c m i") 'helm-imenu)
 (global-set-key (kbd "C-c m I") 'helm-imenu-in-all-buffers)
-(global-set-key (kbd "C-x i") 'helm-imenu) ; helm-imenu heavily used. insert-file rarely used.
-(global-set-key (kbd "C-x I") 'helm-lsp-workspace-symbol) ; for convenient
+(global-set-key (kbd "C-x i")   'helm-imenu) ; helm-imenu heavily used. insert-file rarely used.
+(global-set-key (kbd "C-x I")   'helm-lsp-workspace-symbol) ; for convenient
 (global-set-key (kbd "C-c m m") 'helm-man-woman)
 (global-set-key (kbd "C-c m b") 'helm-resume)
 (global-set-key (kbd "C-c m h") 'helm-apropos) ; help apropos, cover C-h f,v,m,...
-(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "M-x")     'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
-(global-set-key (kbd "C-x b") 'helm-mini)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x b")   'helm-mini)
+(global-set-key (kbd "M-y")     'helm-show-kill-ring)
 
 (with-eval-after-load 'helm
   (setq helm-apropos-fuzzy-match t
@@ -189,11 +189,11 @@
         completion-styles `(basic partial-completion emacs22 initials ,(if (version<= emacs-version "27.0") 'helm-flex 'flex)))
   (custom-set-faces ;'(helm-selection ((t (:background "#008080" :foreground "#fdf6e3")))) ; old e4dbbf+firebrick3
                     '(helm-selection      ((t (:background "#551ab8"))))
-                    '(helm-selection-line ((t (:background "green" :foreground "black"))))
+                    '(helm-selection-line ((t (:background "green"  :foreground "black"))))
                     '(helm-source-header  ((t (:background "gray19" :foreground "#b8860b" :weight bold :height 1.1 :family "Dejavu Serif" :slant italic))))
-                    '(helm-moccur-buffer ((t (:foreground "cyan2"   :underline t)))) ; spacemacs original too dim blue.
-                    '(helm-grep-lineno   ((t (:foreground "orange"  :underline t)))) ; spacemacs original same to language Type color, that doesn't make sense
-                    '(helm-match         ((t (:foreground "#f2241f" :weight bold)))) ; change and extend spacemacs original settings
+                    '(helm-moccur-buffer  ((t (:foreground "cyan2"   :underline t)))) ; spacemacs original too dim blue.
+                    '(helm-grep-lineno    ((t (:foreground "orange"  :underline t)))) ; spacemacs original same to language Type color, that doesn't make sense
+                    '(helm-match          ((t (:foreground "#f2241f" :weight bold)))) ; change and extend spacemacs original settings
                     ))
 ;; The unicode symbol can not be previewed in emacs-28.0.50 with helm due to some changes in emacs.
 ;; The symbol is put at the head of each unicode string. In version <= 27.1, the symbols are at the end.
@@ -1205,7 +1205,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; magit
 (with-eval-after-load 'magit
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
-  (define-key magit-status-mode-map (kbd "..") 'magit-section-up)
+  (define-key magit-status-mode-map   (kbd "..") 'magit-section-up)
   (define-key magit-revision-mode-map (kbd "..") 'magit-section-up))
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
