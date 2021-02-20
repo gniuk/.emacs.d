@@ -7,6 +7,10 @@
 ;;; Code:
 
 (load "~/.emacs.d/packages.el")
+;;; uncomment the followings and comment out the above after we have already installed the packages to startup faster
+;; (require 'package)
+;; (package-initialize)
+
 ;; ;;;;; benchmark-init
 ;; (require 'benchmark-init)
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
