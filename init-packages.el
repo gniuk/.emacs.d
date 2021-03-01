@@ -1166,6 +1166,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ; (liberime-get-schema-list) evaluates to (("luna_pinyin_simp" "朙月拼音·简化字") ("double_pinyin_flypy" "小鶴雙拼")) in my case,
 ; due to my custom settings in default.custom.yaml and double_pinyin_flypy.custom.yaml
 
+(require 'pyim-liberime)
 (setq pyim-default-scheme 'rime)
 ;; (liberime-select-schema "luna_pinyin_simp") ; 使用全拼
 ;; (liberime-select-schema "double_pinyin_flypy") ; 使用小鹤双拼
