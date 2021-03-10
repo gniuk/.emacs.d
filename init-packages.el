@@ -529,11 +529,11 @@
   (setq rtags-use-bookmarks nil)
 )
 ;; if we use irony to auto complete, then use rtags to navigate. irony🧡rtags
-(add-hook 'irony-mode-hook '(lambda ()
-                              (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-                              (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-                              (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-                              (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
+(add-hook 'irony-mode-hook #'(lambda ()
+                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+                               (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+                               (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+                               (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
 (defun use-rtags ()
   "Bind M-.  and M-, to rtags funcitons."
   (interactive)
@@ -569,7 +569,7 @@
             (define-key comint-mode-map (kbd "ESC <down>") 'comint-next-input)))
 
 (add-hook 'shell-mode-hook
-     '(lambda () (toggle-truncate-lines 1)))
+          (lambda () (toggle-truncate-lines 1)))
 ;(setq comint-prompt-read-only t)    ; When debugging in output, sometimes need select all(C-x h) to clear. readonly prevent this.
 
 ;;;;; cmake-mode
@@ -928,7 +928,7 @@
 ;;     'company-backends '(company-shell company-shell-env company-fish-shell)))
 
 ; company-files not working in shell-mode, can't figure out yet
-(add-hook 'shell-mode-hook '(lambda ()
+(add-hook 'shell-mode-hook (lambda ()
                               (set (make-local-variable 'company-backends)
                                    '((company-shell company-shell-env company-fish-shell company-files)
                                      company-readline
@@ -1102,9 +1102,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC O")   'projectile-find-other-file-other-window)
 (define-key evil-normal-state-map (kbd "SPC e")   'er/expand-region) ; type e continuously to expand, "," to contract(back), "." to reset(just for convenience).
 (define-key evil-visual-state-map (kbd "SPC e")   'er/expand-region)
-(define-key evil-normal-state-map (kbd "SPC 9")   '(lambda () (interactive) (window-configuration-to-register 1))) ; quick save (SPC 9) and restore (SPC z)
+(define-key evil-normal-state-map (kbd "SPC 9")   (lambda () (interactive) (window-configuration-to-register 1))) ; quick save (SPC 9) and restore (SPC z)
 (define-key evil-normal-state-map (kbd "SPC z")   'gniuk/restore-window-layout-config)
-(define-key evil-normal-state-map (kbd "SPC 0")   '(lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
+(define-key evil-normal-state-map (kbd "SPC 0")   (lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
 (define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "SPC J")   'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
 (define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
@@ -1125,7 +1125,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;(require 'vterm)
 (global-set-key (kbd "<f6>") 'vterm)
 (add-hook 'vterm-mode-hook
-          '(lambda ()
+          (lambda ()
              (evil-emacs-state)
              (linum-mode -1)
              (display-line-numbers-mode -1)))
@@ -1331,8 +1331,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;;;; git-timemachine
 (global-set-key (kbd "C-x g t") 'git-timemachine)
-(add-hook 'git-timemachine-mode-hook '(lambda ()
-                                        (evil-emacs-state)))
+(add-hook 'git-timemachine-mode-hook (lambda ()
+                                       (evil-emacs-state)))
 
 ;;;;; eyebrowse
 (eyebrowse-mode t)
@@ -1383,7 +1383,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; (require 'realgud)
 ;; use it: M-x realgud:gdb
 (add-hook 'realgud-track-mode-hook
-          '(lambda ()
+          (lambda ()
              (local-set-key (kbd "M-r") 'comint-history-isearch-backward-regexp)
              (local-set-key (kbd "M-p") 'comint-previous-input)
              (local-set-key (kbd "M-n") 'comint-next-input)
@@ -1734,8 +1734,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;; turn on documentation in elisp mode
 (add-hook 'emacs-lisp-mode-hook
-          '(lambda ()
-	         (turn-on-eldoc-mode)))
+          (lambda ()
+	        (turn-on-eldoc-mode)))
 
 ;;; ediff
 ;; 1. make ediff not open it's command interface in an external frame(window) under gui
