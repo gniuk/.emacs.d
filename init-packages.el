@@ -1846,5 +1846,15 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-set-key (kbd "M-l") 'dabbrev-expand)
 (global-set-key (kbd "M-L") 'downcase-dwim)
 
+;;; for list-colors-display changes in emacs-dev 28.0.50
+(defun lcd ()
+  "For `'list-colors-display."
+  (interactive)
+  (if (functionp 'list-colors-display)
+      (list-colors-display)
+    (progn
+      (require 'facemenu)
+      (list-colors-display))))
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
