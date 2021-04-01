@@ -529,11 +529,11 @@
   (setq rtags-use-bookmarks nil)
 )
 ;; if we use irony to auto complete, then use rtags to navigate. irony🧡rtags
-(add-hook 'irony-mode-hook #'(lambda ()
-                               (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
-                               (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
-                               (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
-                               (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
+(add-hook 'irony-mode-hook (lambda ()
+                             (define-key irony-mode-map (kbd "M-.") 'rtags-find-symbol-at-point)
+                             (define-key irony-mode-map (kbd "M-,") 'rtags-location-stack-back)
+                             (define-key irony-mode-map (kbd "M-r") 'rtags-find-references-at-point)
+                             (define-key irony-mode-map (kbd "C-<") 'rtags-find-virtuals-at-point)))
 (defun use-rtags ()
   "Bind M-.  and M-, to rtags funcitons."
   (interactive)
@@ -1114,7 +1114,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC B")   'bookmark-set)
 (define-key evil-normal-state-map (kbd "SPC m")   'bookmark-jump)
 
-(advice-add 'git-gutter:next-hunk :after #'(lambda (&rest arg) (recenter)))
+(advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
 
 ;;;;; evil-matchit
@@ -1186,7 +1186,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
       '((:name "default_big_dict" :file "~/.emacs.d/pyim/dicts/pyim-bigdict.pyim")))
 ;; 让 Emacs 启动时自动加载 pyim 词库
 (add-hook 'emacs-startup-hook
-          #'(lambda () (pyim-restart-1 t)))
+          (lambda () (pyim-restart-1 t)))
 ;; ========== bare pyim as second choice ==========
 ))))
 
@@ -1644,7 +1644,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
 (define-key evil-normal-state-map (kbd "'") 'evil-set-marker)
 (define-key evil-normal-state-map (kbd "m") 'evil-goto-mark)
-(advice-add 'evil-goto-mark :after #'(lambda (&rest arg) (recenter)))
+(advice-add 'evil-goto-mark :after (lambda (&rest arg) (recenter)))
 
 (defhydra hydra-evil-complete-line (global-map "C-x")
   "complete whole line"
