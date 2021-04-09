@@ -34,7 +34,9 @@
   (setq-default company-dabbrev-downcase nil)
   (setq-default company-dabbrev-ignore-case nil)
   (setq-default company-require-match nil)
-  ;(setq-default company-tooltip-align-annotations t)
+  ;; (if (not (eq window-system nil))
+  ;;     (setq-default company-format-margin-function #'company-detect-icons-margin)) ; Oh fancy, but I need consistent looking in TUI&GUI
+  ;; (setq-default company-tooltip-align-annotations t)
   (define-key company-active-map (kbd "M-n")       #'company-other-backend)
   (define-key company-active-map (kbd "M-p")       nil)
   (define-key company-active-map (kbd "C-n")       #'company-select-next)
