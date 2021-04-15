@@ -66,6 +66,20 @@
           (set-fontset-font t 'symbol "Symbola" nil 'append))
       (if (member "JoyPixels" (font-family-list))
           (set-fontset-font t 'symbol "JoyPixels" nil 'append))
+      ;; linear-a
+      (if (member "Noto Sans Linear A" (font-family-list))
+          (set-fontset-font t 'linear-a "NotoSansLinearA" nil 'prepend))
+      ;; linear-b
+      (if (member "Noto Sans Linear B" (font-family-list))
+          (set-fontset-font t 'linear-b "NotoSansLinearB" nil 'prepend))
+      ;; gothic
+      (if (member "Noto Sans Gothic" (font-family-list))
+          (set-fontset-font t 'gothic "NotoSansGothic" nil 'prepend))
+      (if (member "Symbola" (font-family-list))
+          (set-fontset-font t 'gothic "Symbola" nil 'append))
+      ;; sutton-sign-writing
+      (if (member "Noto Sans SignWriting" (font-family-list))
+          (set-fontset-font t 'sutton-sign-writing "NotoSansSignWriting" nil 'prepend))
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
