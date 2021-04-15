@@ -56,13 +56,16 @@
        'han                             ; describe-char to find the script name corresponding to SC
        (get-preferable-cjk-sc-font))
       (set-fontset-font t 'cjk-misc (get-preferable-cjk-sc-font)) ; for punctuations, 标点符号。
+      ;; some infrequent [traditional] chinese characters can be found in 新細明體 mingliub.ttc
+      (if (member "PMingLiU-ExtB" (font-family-list))
+          (set-fontset-font t 'han "PMingLiU-ExtB" nil 'append))
       ;; for unicode emojies and symbols
       (if (member "Noto Color Emoji" (font-family-list))
           (set-fontset-font t 'symbol "NotoColorEmoji" nil 'prepend))
       (if (member "Symbola" (font-family-list))
           (set-fontset-font t 'symbol "Symbola" nil 'append))
-      (if (member "PMingLiU-ExtB" (font-family-list))
-          (set-fontset-font t 'han "PMingLiU-ExtB" nil 'append)) ; 新細明體 mingliub.ttc for some Traditional Chinese characters
+      (if (member "JoyPixels" (font-family-list))
+          (set-fontset-font t 'symbol "JoyPixels" nil 'append))
       ))
 
 ;; disable tool bar and scroll bar, in both GUI and TUI
