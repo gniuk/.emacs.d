@@ -175,6 +175,7 @@ There are two things you can do about this warning:
     ztree
     zygospore
     rainbow-mode
+    counsel ; insert-char of emacs-28.0.50 is not working with helm, thus give counsel a try
     ;; rg ; helm-ag is good enough
     ;; company-restclient ; mark
     ;; org-brain ; mark

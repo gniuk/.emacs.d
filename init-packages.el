@@ -1551,6 +1551,13 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; Can't figure out the cause. We need rainbow-mode to help us with colors.
 ;; Just M-x rainbow-mode manually when we need it.
 
+;;;;; counsel, [ivy, swiper]
+;; insert-char of emacs-28.0.50 is not working well with helm, thus give counsel a try
+(with-eval-after-load 'ivy
+  (add-to-list 'ivy-completing-read-handlers-alist
+               '(insert-char . nil)))
+(global-set-key (kbd "C-x 9 RET") 'counsel-unicode-char)
+
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
 (require 'helm-fzf)
