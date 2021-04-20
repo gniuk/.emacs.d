@@ -122,7 +122,8 @@
              (not (minibufferp)))
             (display-line-numbers-mode)))
 
-      (setq display-line-numbers-grow-only t) ; do not shrink line number width, because it cause misalign of code
+      (setq-default display-line-numbers-grow-only t) ; do not shrink line number width, because it cause misalign of code
+      ; (setq-default display-line-numbers-width-start t) ; set the minimum biggest line number width needed at the beginning
       (global-display-line-numbers-mode)
       (set-face-attribute 'line-number-current-line nil
                           :background "grey" :foreground "black"))
