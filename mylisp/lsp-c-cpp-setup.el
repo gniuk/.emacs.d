@@ -39,6 +39,10 @@
               (setq lsp-imenu-detailed-outline nil) ; no need for prototype in imenu
               ;(setq lsp-completion-provider :capf)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
+              (setq lsp-enable-folding nil)
+              (setq lsp-enable-snippet nil)
+              (setq lsp-diagnostics-provider :none) ; no real time syntax check, do we need it?
+              (setq lsp-enable-links nil) ; what's this used for?
               (custom-set-faces
                '(lsp-ui-peek-filename     ; use helm interface instead.
                  ((t (:background "dodger blue" :foreground "black"))))
