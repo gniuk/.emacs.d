@@ -1236,6 +1236,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
   "goto heading"
   ("p" org-previous-visible-heading)
   ("n" org-next-visible-heading)
+  ("u" outline-up-heading)
   ("M-p" org-backward-heading-same-level)
   ("M-n" org-forward-heading-same-level))
 
