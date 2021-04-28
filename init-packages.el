@@ -1240,6 +1240,12 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
   ("M-p" org-backward-heading-same-level)
   ("M-n" org-forward-heading-same-level))
 
+;;; org-table align for cjk and latin characters by using the same mono font
+(when (not (eq window-system nil))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (set-face-font 'org-table (get-preferable-cjk-sc-font)))))
+
 ;;;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (with-eval-after-load 'org-bullets
