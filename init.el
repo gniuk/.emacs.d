@@ -31,12 +31,12 @@
     (progn
       (defun guess-preferable-font-size ()
         (cond
-         ((and (= (display-pixel-height) 1080) (>= (display-mm-height) 285)) 11) ; 1920x1080 with >=22? inches physical monitor
-         ((and (= (display-pixel-height) 1440) (>= (display-mm-height) 300)) 13) ; 2560x1440 with >=23.8? inches physical monitor
-         (17)                           ; my 2560x1440 laptop with 14 inches physical monitor
+         ((and (= (display-pixel-height) 1080) (>= (display-mm-height) 285)) 14) ; 1920x1080 with >=22? inches physical monitor
+         ((and (= (display-pixel-height) 1440) (>= (display-mm-height) 300)) 18) ; 2560x1440 with >=23.8? inches physical monitor
+         (22)                           ; my 2560x1440 laptop with 14 inches physical monitor
          ))
       (defun get-properly-sized-font (fontname)
-        (concat fontname "-" (number-to-string (guess-preferable-font-size))))
+        (concat fontname ":pixelsize=" (number-to-string (guess-preferable-font-size)))) ; FONTNAME-size is not accurate in pixel
       (defun get-preferable-coding-font ()
         (cond
          ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "SourceCodePro"))
