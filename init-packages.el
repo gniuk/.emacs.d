@@ -1177,8 +1177,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ) (progn
 ;; ========== bare pyim as second choice ==========
 (message "[pyim] You may want rime, checkout the instructions in the configuration file.")
-(require 'pyim-basedict)
-(pyim-basedict-enable)
+; Small basic dict. Use bare pyim without it or use 3rd party big dicts
+(when (package-installed-p 'pyim-basedict)
+  (require 'pyim-basedict)
+  (pyim-basedict-enable))
 ;; (setq pyim-default-scheme 'quanpin) ; !!! 积累自己的频繁字词 ~/.emacs.d/pyim/dcache !!!
 (setq pyim-default-scheme 'xiaohe-shuangpin)
 ; --- pyim using dicts
