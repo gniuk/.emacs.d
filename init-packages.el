@@ -232,6 +232,10 @@
 ;; (global-set-key (kbd "C-c l l") 'goto-last-change-with-auto-marks)
 
 ;;;;; Python
+;; if anaconda-mode cann't install jedi itself, check the error log in *anaconda-mode* buffer, and then manually install something like:
+;; python3 -m pip install jedi --target ~/.emacs.d/anaconda-mode/0.1.14-py3/ --trusted-host mirrors.aliyun.com
+;; python3 -m pip install service_factory --target ~/.emacs.d/anaconda-mode/0.1.14-py3/ --trusted-host mirrors.aliyun.com
+
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
 (add-hook 'python-mode-hook 'anaconda-mode)
 (with-eval-after-load "anaconda-mode"
