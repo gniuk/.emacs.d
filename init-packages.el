@@ -1878,5 +1878,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
       (require 'facemenu)
       (list-colors-display))))
 
+;;; for bookmark changes in emacs-dev 28.1
+(setq bookmark-fontify nil)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
