@@ -39,14 +39,16 @@
         (concat fontname ":pixelsize=" (number-to-string (guess-preferable-font-size)))) ; FONTNAME-size is not accurate in pixel
       (defun get-preferable-coding-font ()
         (cond
-         ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "SourceCodePro"))
+         ((member "Source Code Pro" (font-family-list)) (get-properly-sized-font "Source Code Pro"))
          ((member "Ubuntu Mono" (font-family-list)) (get-properly-sized-font "UbuntuMono"))
          ((member "DejaVu Sans Mono" (font-family-list)) (get-properly-sized-font "DejaVuSansMono"))
-         ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))))
+         ((member "Liberation Mono" (font-family-list)) (get-properly-sized-font "LiberationMono"))
+	     ((member "Consolas" (font-family-list)) (get-properly-sized-font "Consolas"))))
       (defun get-preferable-cjk-sc-font ()
         (cond
          ((member "Sarasa Term SC" (font-family-list)) (get-properly-sized-font "Sarasa Mono SC")) ; don't know why the name "Sarasa Mono SC" not detected.
-         ((member "Noto Sans Mono CJK SC" (font-family-list)) (get-properly-sized-font "NotoSansMonoCJKSC")))) ; Noto Sans CJK has no italic style
+         ((member "Noto Sans Mono CJK SC" (font-family-list)) (get-properly-sized-font "NotoSansMonoCJKSC")) ; Noto Sans CJK has no italic style
+         ((member "等距更纱黑体 SC" (font-family-list)) (get-properly-sized-font "等距更纱黑体 SC")))) ; for Windows NT using Sarasa
 
       (add-to-list 'default-frame-alist
                    `(font . ,(get-preferable-coding-font)))
@@ -66,6 +68,10 @@
           (set-fontset-font t 'symbol "Symbola" nil 'append))
       (if (member "JoyPixels" (font-family-list))
           (set-fontset-font t 'symbol "JoyPixels" nil 'append))
+      (if (member "Segoe UI Emoji" (font-family-list))
+          (set-fontset-font t 'symbol "Segoe UI Emoji" nil 'append))
+      (if (member "Segoe UI Symbol" (font-family-list))
+          (set-fontset-font t 'symbol "Segoe UI Symbol" nil 'append))
       ;; linear-a
       (if (member "Noto Sans Linear A" (font-family-list))
           (set-fontset-font t 'linear-a "NotoSansLinearA" nil 'prepend))
