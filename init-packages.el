@@ -1571,6 +1571,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
                '(insert-char . nil)))
 (global-set-key (kbd "C-x 9 RET") 'counsel-unicode-char)
 
+;;;;; fanyi
+(global-set-key (kbd "C-c F") 'fanyi-dwim)
+
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
 (require 'helm-fzf)
