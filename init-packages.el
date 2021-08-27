@@ -1119,6 +1119,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
 (define-key evil-normal-state-map (kbd "SPC B")   'bookmark-set)
 (define-key evil-normal-state-map (kbd "SPC m")   'bookmark-jump)
+(define-key evil-normal-state-map (kbd "s")       'scroll-up-command) ; Never used evil-substitute, use it as scroll-up-command. One-key navigation principle.
+                                                                      ; But what about scroll-down-command, that's a pity, goto the very begin and scroll down.
 
 (advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
