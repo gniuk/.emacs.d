@@ -1576,6 +1576,14 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; fanyi
 (global-set-key (kbd "C-c F") 'fanyi-dwim)
 
+;;;;; dogears
+(global-set-key (kbd "M-g d") 'dogears-go)
+(global-set-key (kbd "M-g r") 'dogears-remember)
+(global-set-key (kbd "M-g M-d") 'dogears-list)
+;; (global-set-key (kbd "M-g C-d") 'dogears-list-delete) ;; just k in dogears list or sidebar to clean item.
+;; (global-set-key (kbd "M-g M-D") 'dogears-sidebar) ;; what's different between dogears-list and dogears-sidebar?
+(add-hook 'prog-mode-hook 'dogears-mode)
+
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
 (require 'helm-fzf)
