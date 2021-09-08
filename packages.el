@@ -173,7 +173,7 @@ There are two things you can do about this warning:
     ;vdiff-magit ; patience is not good as expected, ediff is enough, beyond compare is the goal
     ranger
     ztree
-    zygospore
+    ;zygospore ; not that useful
     rainbow-mode
     counsel ; insert-char of emacs-28.0.50 is not working with helm, thus give counsel a try
     fanyi
