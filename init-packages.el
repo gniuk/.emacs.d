@@ -1121,6 +1121,11 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC m")   'bookmark-jump)
 (define-key evil-normal-state-map (kbd "s")       'scroll-up-command) ; Never used evil-substitute, use it as scroll-up-command. One-key navigation principle.
                                                                       ; But what about scroll-down-command, that's a pity, goto the very begin and scroll down.
+(define-key evil-normal-state-map (kbd "u")       'scroll-down-command) ; After a thorough thinking, finally decided to use 'u' as scroll-down-command.
+                                                                        ; 'u' was originally evil-undo, and in the less cmd, it is half page down. In emacs, it is better
+                                                                        ; to use C-/ or C-x u (undo-tree-visualize) to undo in a consistent way, it works both
+                                                                        ; in evil-normal-state and evil-insert-state, unlike 'u', actually 'u' can't undo in insert state.
+                                                                        ; A pity is that I can't use 'd' to scroll-up-command as in less and surfing-keys.
 
 (advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
