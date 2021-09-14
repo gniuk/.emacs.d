@@ -825,6 +825,8 @@
 (setq youdao-dictionary-search-history-file "~/.emacs.d/.youdao")
 
 ;;;;; color-identifiers-mode
+(with-eval-after-load 'color-identifiers-mode
+  (setq color-identifiers:timer (run-with-idle-timer 3.5 t 'color-identifiers:refresh)))
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 
 ;; (let ((faces '(font-lock-comment-face font-lock-comment-delimiter-face font-lock-constant-face
@@ -1589,6 +1591,31 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; (global-set-key (kbd "M-g M-D") 'dogears-sidebar) ;; what's different between dogears-list and dogears-sidebar?
 (add-hook 'prog-mode-hook 'dogears-mode)
 
+;;;;; fast-scroll. profiler-start and profiler-report to find the bottle neck
+;;; fase-scroll.el modified: previous-line and next-line added, change to barebone mode-line commented out.
+;; (add-hook 'fast-scroll-start-hook (lambda () (flycheck-mode -1)))
+;; (add-hook 'fast-scroll-end-hook (lambda () (flycheck-mode 1)))
+;;; symbol-overlay-post-command
+(add-hook 'fast-scroll-start-hook (lambda () (symbol-overlay-mode -1)))
+(add-hook 'fast-scroll-end-hook (lambda () (symbol-overlay-mode 1)))
+(add-hook 'fast-scroll-start-hook (lambda () (font-lock-mode -1)))
+(add-hook 'fast-scroll-end-hook (lambda () (font-lock-mode 1)))
+(add-hook 'fast-scroll-start-hook (lambda () (highlight-indent-guides-mode -1)))
+(add-hook 'fast-scroll-end-hook (lambda () (highlight-indent-guides-mode 1)))
+;;; lsp-ui-doc--make-request
+(add-hook 'fast-scroll-start-hook (lambda ()
+                                    (when (or (eq major-mode 'c-mode)
+                                              (eq major-mode 'c++-mode))
+                                      (lsp-ui-doc-mode -1))))
+(add-hook 'fast-scroll-end-hook (lambda ()
+                                    (when (or (eq major-mode 'c-mode)
+                                              (eq major-mode 'c++-mode))
+                                      (lsp-ui-doc-mode 1))))
+;;; set system repeat rate faster than this, makes font-lock more responsive after scroll
+(setq fast-scroll-throttle 0.08)
+(fast-scroll-config)
+(fast-scroll-mode 1)
+
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
 (require 'helm-fzf)
@@ -1679,6 +1706,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-insert-state-map (kbd "C-e") nil)
 (define-key evil-insert-state-map (kbd "C-o") nil)
 (define-key evil-insert-state-map (kbd "C-k") nil)
+;;; fast-scroll abnormal while evil-previous-line and evil-next-line
+(define-key evil-normal-state-map (kbd "j") 'next-line)
+(define-key evil-normal-state-map (kbd "k") 'previous-line)
 
 ;; I get pinky hurts in just one week due to intensive use of ' to jump across marks!
 ;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
