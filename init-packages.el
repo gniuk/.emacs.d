@@ -1598,6 +1598,19 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;; symbol-overlay-post-command
 (add-hook 'fast-scroll-start-hook (lambda () (symbol-overlay-mode -1)))
 (add-hook 'fast-scroll-end-hook (lambda () (symbol-overlay-mode 1)))
+
+(defun gniuk/scroll-previous-line (&optional arg)
+  "Wrap `previous-line', use it in fast-scroll advice, pass ARG to builtin command."
+  (interactive)
+  (or arg (setq arg 1))
+  (previous-line arg))
+
+(defun gniuk/scroll-next-line (&optional arg)
+  "Wrap `next-line', use it in fast-scroll advice, pass ARG to builtin command."
+  (interactive)
+  (or arg (setq arg 1))
+  (next-line arg))
+
 (add-hook 'fast-scroll-start-hook (lambda () (font-lock-mode -1)))
 (add-hook 'fast-scroll-end-hook (lambda () (font-lock-mode 1)))
 (add-hook 'fast-scroll-start-hook (lambda () (highlight-indent-guides-mode -1)))
@@ -1680,9 +1693,6 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-replace-state-map (kbd "C-z") 'evil-normal-state)
-; C-p previous-line, C-n next-line
-(define-key evil-normal-state-map (kbd "C-p") 'previous-line)
-(define-key evil-normal-state-map (kbd "C-n") 'next-line)
 ; C-v not act as VISUAL MODE, but original emacs scroll-up-command, pair with M-v. Block editing with Emacs.
 (define-key evil-normal-state-map (kbd "C-v") 'scroll-up-command)
 (define-key evil-motion-state-map (kbd "C-v") 'scroll-up-command)
@@ -1706,9 +1716,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-insert-state-map (kbd "C-e") nil)
 (define-key evil-insert-state-map (kbd "C-o") nil)
 (define-key evil-insert-state-map (kbd "C-k") nil)
-;;; fast-scroll abnormal while evil-previous-line and evil-next-line
-(define-key evil-normal-state-map (kbd "j") 'next-line)
-(define-key evil-normal-state-map (kbd "k") 'previous-line)
+;;; use C-n, C-p to speedup scroll; j,k to scroll short distance. see fast-scroll above.
+(define-key evil-normal-state-map (kbd "C-p") 'gniuk/scroll-previous-line)
+(define-key evil-normal-state-map (kbd "C-n") 'gniuk/scroll-next-line)
 
 ;; I get pinky hurts in just one week due to intensive use of ' to jump across marks!
 ;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
