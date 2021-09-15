@@ -1121,14 +1121,15 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
 (define-key evil-normal-state-map (kbd "SPC B")   'bookmark-set)
 (define-key evil-normal-state-map (kbd "SPC m")   'bookmark-jump)
-(define-key evil-normal-state-map (kbd "s")       'scroll-up-command) ; Never used evil-substitute, use it as scroll-up-command. One-key navigation principle.
+(define-key evil-normal-state-map (kbd "d")       'scroll-up-command) ; Never used evil-substitute, use it as scroll-up-command. One-key navigation principle.
                                                                       ; But what about scroll-down-command, that's a pity, goto the very begin and scroll down.
+                                                                      ; Finally I made a decision to use 'd' as scroll-up-command, and let 's' do evil-delete.
 (define-key evil-normal-state-map (kbd "u")       'scroll-down-command) ; After a thorough thinking, finally decided to use 'u' as scroll-down-command.
                                                                         ; 'u' was originally evil-undo, and in the less cmd, it is half page down. In emacs, it is better
                                                                         ; to use C-/ or C-x u (undo-tree-visualize) to undo in a consistent way, it works both
                                                                         ; in evil-normal-state and evil-insert-state, unlike 'u', actually 'u' can't undo in insert state.
                                                                         ; A pity is that I can't use 'd' to scroll-up-command as in less and surfing-keys.
-
+(define-key evil-normal-state-map (kbd "s")       'evil-delete) ; Use u d to up and down, consistent with less and surfingkeys. 's' used as delete, not bad. Just more practice.
 (advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
 
