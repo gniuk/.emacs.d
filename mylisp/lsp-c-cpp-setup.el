@@ -30,6 +30,7 @@
               (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
               (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
               (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
+              (setq lsp-ui-doc-delay 0.6)
               ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
               (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
               (setq lsp-prefer-flymake nil)
