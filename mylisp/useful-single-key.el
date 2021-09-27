@@ -171,7 +171,7 @@ This command does the reverse of `fill-paragraph'."
       (fill-paragraph)))
 
 (defun gniuk/unfill-region (start end)
-    "Replace newline chars in region by single spaces.
+    "Replace newline chars in region START END by single spaces.
 This command does the reverse of `fill-region'."
     (interactive "r")
     (let ((fill-column most-positive-fixnum))
@@ -182,6 +182,21 @@ This command does the reverse of `fill-region'."
   (interactive)
   (jump-to-register 1))
 (global-set-key (kbd "C-c z") 'gniuk/restore-window-layout-config)
+
+(defun gniuk/indent-region-line-by-line-without-format (start end)
+  "Indent region START END without format, not like `indent-region'."
+  (interactive "r")
+  (save-excursion
+    (goto-char end)
+    (setq end (copy-marker end))
+    (goto-char start)
+    (while (< (point) end)
+      (beginning-of-line)
+      (or (and (bolp) (eolp))
+          (indent-according-to-mode))
+      (forward-line 1)))
+  (setq deactivate-mark t))
+(global-set-key (kbd "C-x g TAB") 'gniuk/indent-region-line-by-line-without-format)
 
 (provide 'useful-single-key)
 
