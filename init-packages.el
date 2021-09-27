@@ -1234,7 +1234,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (with-eval-after-load 'magit
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (define-key magit-status-mode-map   (kbd "..") 'magit-section-up)
-  (define-key magit-revision-mode-map (kbd "..") 'magit-section-up))
+  (define-key magit-revision-mode-map (kbd "..") 'magit-section-up)
+  (define-key magit-hunk-section-map  (kbd "C-x g k") 'magit-smerge-keep-current)
+  (define-key smerge-mode-map         (kbd "C-x g k") 'smerge-keep-current) ; keep current or just edit the conflict buffer.
+  (define-key smerge-mode-map         (kbd "C-x g n") 'smerge-next))
 (global-set-key (kbd "C-x g g") 'magit-status)
 (global-set-key (kbd "C-x g b") 'magit-blame)
 
