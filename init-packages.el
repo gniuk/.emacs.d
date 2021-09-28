@@ -1605,13 +1605,13 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 (defun gniuk/scroll-previous-line (&optional arg)
   "Wrap `previous-line', use it in fast-scroll advice, pass ARG to builtin command."
-  (interactive)
+  (interactive "p")
   (or arg (setq arg 1))
   (previous-line arg))
 
 (defun gniuk/scroll-next-line (&optional arg)
   "Wrap `next-line', use it in fast-scroll advice, pass ARG to builtin command."
-  (interactive)
+  (interactive "p")
   (or arg (setq arg 1))
   (next-line arg))
 
