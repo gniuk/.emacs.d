@@ -85,7 +85,7 @@ No more indentation adjustment after paste to the destination point."
     (beginning-of-line 1)
     (yank)))
 (global-set-key (kbd "C-x x c") 'gniuk/cpAboveLine)
-(global-set-key (kbd "C-x x x") 'gniuk/cpAndCommentOutAboveLine)
+(global-set-key (kbd "C-x x ;") 'gniuk/cpAndCommentOutAboveLine)
 
 (defun gniuk/copyLine (arg)
   "Copy lines (as many as prefix ARG) in the kill ring."

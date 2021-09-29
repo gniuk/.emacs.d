@@ -1943,5 +1943,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;; for bookmark changes in emacs-dev 28.1
 (setq bookmark-fontify nil)
 
+;;; hexl-mode
+(global-set-key (kbd "C-x x x") 'hexl-mode) ; back to normal text in hexl-mode via C-c C-c
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
