@@ -786,15 +786,6 @@
    (setq shell-pop-window-position "right"))
 (global-set-key (kbd "<f1>") 'shell-pop)
 
-;;;;; dot in org-mode
-; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
-; #+END_SRC
-; C-c C-c to run src code
-; put cursor on link, C-c C-x v to toggle view pic
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((dot . t)))
-
 ;;;;; proced
 (global-set-key (kbd "C-x p p") 'proced)
 
@@ -1248,17 +1239,51 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-evince)
 ;(setq x86-lookup-browse-pdf-function 'x86-lookup-browse-pdf-mupdf)
 
-;;;;; org
+;;;;; org-mode
+
+(setq org-startup-indented t
+      org-hide-emphasis-markers t
+      org-fontify-done-headline t
+      )
+
+;;; babel
+;; #+BEGIN_SRC dot :file dot_output.png :cmdline -Kdot -Tpng
+;; #+END_SRC
+;; C-c C-c to run src code
+;; put cursor on link, C-c C-x v to toggle view pic
+(add-hook 'org-mode-hook
+          (lambda ()
+            (define-key org-mode-map (kbd "C-c SPC") nil)
+            (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field)
+            (org-babel-do-load-languages
+             'org-babel-load-languages
+             '((shell . t)
+               (C . t)
+               (python . t)
+               (js . t)
+               (sql . t)
+               (gnuplot . t)
+               (dot . t)
+               (plantuml . t)))))
+
+(setq-default prettify-symbols-alist '(("#+BEGIN_SRC" . "§")
+                                       ("#+END_SRC" . "§")
+                                       ("#+begin_src" . "§")
+                                       ("#+end_src" . "§")
+                                       (">=" . "≥")
+                                       ("=>" . "⇨")))
+(setq prettify-symbols-unprettify-at-point 'right-edge)
+(add-hook 'org-mode-hook 'prettify-symbols-mode)
+
 (with-eval-after-load 'org
-  (define-key org-mode-map (kbd "C-c SPC") nil)
-  (define-key org-mode-map (kbd "C-c C-SPC") 'org-table-blank-field))
-(defhydra hydra-org-goto-heading (org-mode-map "C-c")
-  "goto heading"
-  ("p" org-previous-visible-heading)
-  ("n" org-next-visible-heading)
-  ("u" outline-up-heading)
-  ("M-p" org-backward-heading-same-level)
-  ("M-n" org-forward-heading-same-level))
+  (defhydra hydra-org-goto-heading (org-mode-map "C-c")
+    "goto heading"
+    ("p" org-previous-visible-heading)
+    ("n" org-next-visible-heading)
+    ("u" outline-up-heading)
+    ("M-p" org-backward-heading-same-level)
+    ("M-n" org-forward-heading-same-level))
+)
 
 ;;; org-table align for cjk and latin characters by using the same mono font
 (when (not (eq window-system nil))
@@ -1266,11 +1291,15 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
             (lambda ()
               (set-face-font 'org-table (get-preferable-cjk-sc-font)))))
 
-;;;;; org-bullets
+;;; org-bullets
 (add-hook 'org-mode-hook 'org-bullets-mode)
 (with-eval-after-load 'org-bullets
   (setq org-bullets-bullet-list
         '("◉" "○" "✸" "✿" "✤" "✜" "◆" "▶")))
+
+(push "~/.emacs.d/nonmelpa/org-pretty-table" load-path)
+(require 'org-pretty-table)
+(add-hook 'org-mode-hook (lambda () (org-pretty-table-mode)))
 
 ;;;;; symbol-overlay
 ;(require 'symbol-overlay)
