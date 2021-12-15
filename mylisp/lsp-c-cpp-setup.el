@@ -31,6 +31,7 @@
               (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
               (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
               (setq lsp-ui-doc-delay 0.6)
+              (setq lsp-ui-doc-show-with-cursor t) ; they are doing opposite things for old users
               ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
               (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
               (setq lsp-prefer-flymake nil)
@@ -44,6 +45,7 @@
               (setq lsp-enable-snippet nil)
               (setq lsp-diagnostics-provider :none) ; no real time syntax check, do we need it?
               (setq lsp-enable-links nil) ; what's this used for?
+              (setq lsp-lens-enable nil) ; default nil -> t. make it nil again, too much overhead.
               (custom-set-faces
                '(lsp-ui-peek-filename     ; use helm interface instead.
                  ((t (:background "dodger blue" :foreground "black"))))
