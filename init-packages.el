@@ -1978,5 +1978,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; highlight in hexl-mode, but also change other highlight.
 (set-face-background 'highlight "RoyalBlue4")
 
+;;; try builtin faster scroll feature introduced in 28.0.50
+(setq redisplay-skip-fontification-on-input t)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
