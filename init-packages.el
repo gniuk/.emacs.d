@@ -1543,7 +1543,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (custom-set-variables
  '(git-gutter:hide-gutter t)
  '(git-gutter:ask-p nil)
- '(git-gutter:disabled-modes '(image-mode)))
+ '(git-gutter:disabled-modes '(image-mode))
+ '(git-gutter:update-interval 1))
 (set-face-attribute 'git-gutter:added nil :foreground "SpringGreen")
 
 ;;;;; vdiff-magit
