@@ -1121,6 +1121,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
                                                                         ; in evil-normal-state and evil-insert-state, unlike 'u', actually 'u' can't undo in insert state.
                                                                         ; A pity is that I can't use 'd' to scroll-up-command as in less and surfing-keys.
 (define-key evil-normal-state-map (kbd "s")       'evil-delete) ; Use u d to up and down, consistent with less and surfingkeys. 's' used as delete, not bad. Just more practice.
+(define-key evil-normal-state-map (kbd "C-o")     'gniuk/insert-line-below)
 (advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
 

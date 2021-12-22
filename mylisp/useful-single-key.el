@@ -34,6 +34,7 @@
 (defun gniuk/insert-line-below ()
   "Insert line below current line and goto it."
   (interactive)
+  (evil-emacs-state nil)
   (move-end-of-line 1)
   (newline-and-indent))
 
