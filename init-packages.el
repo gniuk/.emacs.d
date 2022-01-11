@@ -1528,7 +1528,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "z k") 'vimish-fold-previous-fold)
 
 ;;;;; git-gutter
-(global-git-gutter-mode t)
+;; comment out the next line in mixed dev environment.
+(global-git-gutter-mode t) ;; has some problem in chinese-gbk buffer, e.g. popup selecting coding system. Use zgg manually.
 (define-key evil-normal-state-map (kbd "zgg") 'git-gutter)
 (define-key evil-normal-state-map (kbd "zgj") 'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "zgk") 'git-gutter:previous-hunk)
@@ -1545,7 +1546,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
  '(git-gutter:ask-p nil)
  '(git-gutter:disabled-modes '(image-mode))
  '(git-gutter:update-interval 1))
-(set-face-attribute 'git-gutter:added nil :foreground "SpringGreen")
+(with-eval-after-load 'git-gutter
+  (set-face-attribute 'git-gutter:added nil :foreground "SpringGreen"))
 
 ;;;;; vdiff-magit
 ;; (with-eval-after-load 'magit
