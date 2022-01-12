@@ -654,9 +654,19 @@
 ;; (smooth-scrolling-mode)
 
 ;; builtin scroll tuning, don't recenter, this is the smooth I want.
+;; Vertical Scroll
+(setq scroll-step 1)
+(setq scroll-margin 0) ;; scroll when there is N lines between the cursor and the window margin.
 (setq scroll-conservatively 101)
-(setq mouse-wheel-scroll-amount '(1))
+(setq scroll-up-aggressively 0.01)
+(setq scroll-down-aggressively 0.01)
+(setq auto-window-vscroll nil)
+(setq fast-but-imprecise-scrolling nil)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 (setq mouse-wheel-progressive-speed nil)
+;; Horizontal Scroll
+(setq hscroll-step 1)
+(setq hscroll-margin 1)
 
 ;;;;; readline-complete [awesome!]
 ;(require 'readline-complete)
