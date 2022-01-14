@@ -667,6 +667,7 @@
 ;; Horizontal Scroll
 (setq hscroll-step 1)
 (setq hscroll-margin 1)
+;;; problem about flicker in terminal, workaround: set the virtual terminal background color same as the theme background color.
 
 ;;;;; readline-complete [awesome!]
 ;(require 'readline-complete)
