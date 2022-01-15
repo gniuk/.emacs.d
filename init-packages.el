@@ -1996,5 +1996,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;; try builtin faster scroll feature introduced in 28.0.50
 (setq redisplay-skip-fontification-on-input t)
 
+;;; native-comp
+(setq native-comp-always-compile t)
+
 (provide 'init-packages)
 ;;; init-packages.el ends here
