@@ -24,7 +24,7 @@
 
 (with-eval-after-load 'company
   (setq-default company-minimum-prefix-length 1)
-  (setq-default company-show-numbers t)
+  (setq-default company-show-quick-access t)
   (setq-default company-sort-by-occurrence 1)
   (setq-default company-tooltip-limit 20)                      ; bigger popup window
   (setq-default company-idle-delay 0.6)                        ; autocompletion popup actually block my typing, manually M-/ (also M-l) or TAB
@@ -80,9 +80,9 @@
      ((t (:foreground "gold"))))
    '(company-tooltip-common-selection
      ((t (:foreground "gold"))))
-   '(company-scrollbar-bg
+   '(company-tooltip-scrollbar-track
      ((t (:background "gray15" :foreground "red"))))
-   '(company-scrollbar-fg
+   '(company-tooltip-scrollbar-thumb
      ((t (:background "red" :foreground "gray15"))))))
 
 
