@@ -11,7 +11,18 @@
 ;; (require 'package)
 ;; (package-initialize)
 
-;; ;;;;; benchmark-init
+;;;;; util funcitons
+(defun which-linux-distribution ()
+  "From lsb_release."
+  (interactive)
+  (when (eq system-type 'gnu/linux)
+     (shell-command-to-string "lsb_release -sd")))
+
+(defun is-ubuntu-16_04 ()
+  "Check if the distro is ubuntu16.04."
+  (string-match-p (regexp-quote "Ubuntu 16.04") (which-linux-distribution)))
+
+;;;;; benchmark-init
 ;; (require 'benchmark-init)
 ;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 
@@ -1540,7 +1551,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;;;; git-gutter
 ;; comment out the next line in mixed dev environment.
-(global-git-gutter-mode t) ;; has some problem in chinese-gbk buffer, e.g. popup selecting coding system. Use zgg manually.
+;; (global-git-gutter-mode t) ;; has some problem in chinese-gbk buffer, e.g. popup selecting coding system. Use zgg manually.
+(if (not (is-ubuntu-16_04))
+    (global-git-gutter-mode t))
 (define-key evil-normal-state-map (kbd "zgg") 'git-gutter)
 (define-key evil-normal-state-map (kbd "zgj") 'git-gutter:next-hunk)
 (define-key evil-normal-state-map (kbd "zgk") 'git-gutter:previous-hunk)
