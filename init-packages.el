@@ -931,8 +931,7 @@
 ;; (global-set-key (kbd "M-p") 'highlight-symbol-prev)
 
 ;;;;; highlight-indent-guides, replace indent-guide.
-(require 'highlight-indent-guides)
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+;; (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
 ;; (setq highlight-indent-guides-character ?\|) default is │,?\x2502, C-x 8 RET BOX DRAWINGS LIGHT VERTICAL
 ;; default is │,?\x2502. C-x 8 RET BOX DRAWINGS LIGHT QUADRUPLE DASH VERTICAL, or insert-char #x250a
@@ -941,7 +940,9 @@
 
 ; emacs -q: list-colors-display, /usr/share/X11/rgb.txt, or https://jonasjacek.github.io/colors/
 (setq highlight-indent-guides-auto-enabled nil)
-(set-face-foreground 'highlight-indent-guides-character-face "grey27")
+(with-eval-after-load 'highlight-indent-guides
+  (set-face-foreground 'highlight-indent-guides-character-face "grey27"))
+(global-set-key (kbd "C-c <f8>") 'highlight-indent-guides-mode)
 
 ;;;;; company-shell. $PATH bin, fish-shell-builtin, env
 ;; (eval-after-load 'company
@@ -1676,7 +1677,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (add-hook 'fast-scroll-start-hook (lambda () (font-lock-mode -1)))
 (add-hook 'fast-scroll-end-hook (lambda () (font-lock-mode 1)))
 (add-hook 'fast-scroll-start-hook (lambda () (highlight-indent-guides-mode -1)))
-(add-hook 'fast-scroll-end-hook (lambda () (highlight-indent-guides-mode 1)))
+;; (add-hook 'fast-scroll-end-hook (lambda () (highlight-indent-guides-mode 1)))
 ;;; lsp-ui-doc--make-request
 (add-hook 'fast-scroll-start-hook (lambda ()
                                     (when (or (eq major-mode 'c-mode)
