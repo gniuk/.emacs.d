@@ -1157,9 +1157,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-set-key (kbd "<f6>") 'vterm)
 (add-hook 'vterm-mode-hook
           (lambda ()
-             (evil-emacs-state)
+             ;(evil-emacs-state)
              (linum-mode -1)
              (display-line-numbers-mode -1)))
+(add-to-list 'evil-emacs-state-modes 'vterm-mode)
 
 ;;;;; golden-ratio
 ; manually call golden-ratio-mode or golden-ratio
