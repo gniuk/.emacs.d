@@ -42,7 +42,7 @@
               ;(setq lsp-completion-provider :capf)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
               (setq lsp-enable-folding nil)
-              (setq lsp-enable-snippet nil)
+              (setq lsp-enable-snippet t) ; auto complete function prototype, we need this
               (setq lsp-diagnostics-provider :none) ; no real time syntax check, do we need it?
               (setq lsp-enable-links nil) ; what's this used for?
               (setq lsp-lens-enable nil) ; default nil -> t. make it nil again, too much overhead.
