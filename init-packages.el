@@ -1089,7 +1089,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (doom-modeline-mode 1)
 
 ;;;;; evil
-(setq-default evil-disable-insert-state-keybindings t)
+(setq-default evil-disable-insert-state-bindings t)
 (evil-mode 1)
 ;; (setq evil-move-beyond-eol t)
 (setq evil-move-cursor-back nil)
@@ -1774,12 +1774,12 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-motion-state-map (kbd "TAB") nil)
 ; reserve C-d and C-t in evil-insert. replace C-n and C-p. Use M-/ instead.
 ; C-x C-n and C-x C-p is good, bind it to C-x M-/, use hydra to make it more convenient.
-(define-key evil-insert-state-map (kbd "C-n") 'next-line)
-(define-key evil-insert-state-map (kbd "C-p") 'previous-line)
-(define-key evil-insert-state-map (kbd "C-a") nil)
-(define-key evil-insert-state-map (kbd "C-e") nil)
-(define-key evil-insert-state-map (kbd "C-o") nil)
-(define-key evil-insert-state-map (kbd "C-k") nil)
+;; (define-key evil-insert-state-map (kbd "C-n") 'next-line)
+;; (define-key evil-insert-state-map (kbd "C-p") 'previous-line)
+;; (define-key evil-insert-state-map (kbd "C-a") nil)
+;; (define-key evil-insert-state-map (kbd "C-e") nil)
+;; (define-key evil-insert-state-map (kbd "C-o") nil)
+;; (define-key evil-insert-state-map (kbd "C-k") nil)
 ;;; use C-n, C-p to speedup scroll; j,k to scroll short distance. see fast-scroll above.
 (define-key evil-normal-state-map (kbd "C-p") 'gniuk/scroll-previous-line)
 (define-key evil-normal-state-map (kbd "C-n") 'gniuk/scroll-next-line)
