@@ -518,6 +518,7 @@
 (add-to-list 'projectile-globally-ignored-files ".rgignore") ; rg ignores files and dirs in it
 (add-to-list 'projectile-globally-ignored-files ".dir-locals.el") ; local setup, like project read only
 (add-to-list 'projectile-globally-ignored-directories ".ccls-cache")
+(add-to-list 'projectile-globally-ignored-directories ".cache")
 (which-function-mode t)
 
 ;;;;; rtags
