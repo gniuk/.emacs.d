@@ -1757,6 +1757,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-unset-key (kbd "C-z")) ; C-z is suspend-frame originally.
 (define-key evil-normal-state-map (kbd "C-z") 'evil-normal-state)
 (define-key evil-insert-state-map (kbd "C-z") 'evil-normal-state)
+(define-key evil-emacs-state-map  (kbd "C-z") 'evil-normal-state)
 (define-key evil-replace-state-map (kbd "C-z") 'evil-normal-state)
 ; C-v not act as VISUAL MODE, but original emacs scroll-up-command, pair with M-v. Block editing with Emacs.
 (define-key evil-normal-state-map (kbd "C-v") 'scroll-up-command)
