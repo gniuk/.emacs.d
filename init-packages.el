@@ -1474,6 +1474,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
              (setq realgud-window-split-orientation 'horizontal)
              (setq-local comint-input-ring-file-name "./.gdb_history")
              (comint-read-input-ring t)
+             (setq comint-scroll-to-bottom-on-input 'this) ; common insert dont edit text but goto input prompt
+             (setq comint-scroll-to-bottom-on-output 'this) ; dont scroll cursor into output text everytime
              (company-mode -1)
              (evil-emacs-state)))
 
