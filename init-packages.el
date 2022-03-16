@@ -15,8 +15,9 @@
 (defun which-linux-distribution ()
   "From lsb_release."
   (interactive)
-  (when (eq system-type 'gnu/linux)
-     (shell-command-to-string "lsb_release -sd")))
+  (if (eq system-type 'gnu/linux)
+      (shell-command-to-string "lsb_release -sd")
+    (symbol-name system-type)))
 
 (defun is-ubuntu-16_04 ()
   "Check if the distro is ubuntu16.04."
