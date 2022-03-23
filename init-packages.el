@@ -278,6 +278,9 @@
 ;;             (tern-mode t)))
 
 ;;;;; undo-tree
+(setq undo-tree-history-directory-alist
+      `(("." . ,(concat user-emacs-directory "undo-tree-history"))))
+
 (global-undo-tree-mode 1)
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-c Z") 'redo)
