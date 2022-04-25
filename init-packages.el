@@ -1664,41 +1664,39 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;;;; fast-scroll. profiler-start and profiler-report to find the bottle neck
 ;;; fase-scroll.el modified: previous-line and next-line added, change to barebone mode-line commented out.
-;; (add-hook 'fast-scroll-start-hook (lambda () (flycheck-mode -1)))
-;; (add-hook 'fast-scroll-end-hook (lambda () (flycheck-mode 1)))
 ;;; symbol-overlay-post-command
-(add-hook 'fast-scroll-start-hook (lambda () (symbol-overlay-mode -1)))
-(add-hook 'fast-scroll-end-hook (lambda () (symbol-overlay-mode 1)))
+;; (add-hook 'fast-scroll-start-hook (lambda () (symbol-overlay-mode -1)))
+;; (add-hook 'fast-scroll-end-hook (lambda () (symbol-overlay-mode 1)))
 
-(defun gniuk/scroll-previous-line (&optional arg)
-  "Wrap `previous-line', use it in fast-scroll advice, pass ARG to builtin command."
-  (interactive "p")
-  (or arg (setq arg 1))
-  (previous-line arg))
+;; (defun gniuk/scroll-previous-line (&optional arg)
+;;   "Wrap `previous-line', use it in fast-scroll advice, pass ARG to builtin command."
+;;   (interactive "p")
+;;   (or arg (setq arg 1))
+;;   (previous-line arg))
 
-(defun gniuk/scroll-next-line (&optional arg)
-  "Wrap `next-line', use it in fast-scroll advice, pass ARG to builtin command."
-  (interactive "p")
-  (or arg (setq arg 1))
-  (next-line arg))
+;; (defun gniuk/scroll-next-line (&optional arg)
+;;   "Wrap `next-line', use it in fast-scroll advice, pass ARG to builtin command."
+;;   (interactive "p")
+;;   (or arg (setq arg 1))
+;;   (next-line arg))
 
-(add-hook 'fast-scroll-start-hook (lambda () (font-lock-mode -1)))
-(add-hook 'fast-scroll-end-hook (lambda () (font-lock-mode 1)))
-(add-hook 'fast-scroll-start-hook (lambda () (highlight-indent-guides-mode -1)))
-;; (add-hook 'fast-scroll-end-hook (lambda () (highlight-indent-guides-mode 1)))
-;;; lsp-ui-doc--make-request
-(add-hook 'fast-scroll-start-hook (lambda ()
-                                    (when (or (eq major-mode 'c-mode)
-                                              (eq major-mode 'c++-mode))
-                                      (lsp-ui-doc-mode -1))))
-(add-hook 'fast-scroll-end-hook (lambda ()
-                                    (when (or (eq major-mode 'c-mode)
-                                              (eq major-mode 'c++-mode))
-                                      (lsp-ui-doc-mode 1))))
-;;; set system repeat rate faster than this, makes font-lock more responsive after scroll
-(setq fast-scroll-throttle 0.08)
-(fast-scroll-config)
-(fast-scroll-mode 1)
+;; (add-hook 'fast-scroll-start-hook (lambda () (font-lock-mode -1)))
+;; (add-hook 'fast-scroll-end-hook (lambda () (font-lock-mode 1)))
+;; (add-hook 'fast-scroll-start-hook (lambda () (highlight-indent-guides-mode -1)))
+;; ;; (add-hook 'fast-scroll-end-hook (lambda () (highlight-indent-guides-mode 1)))
+;; ;;; lsp-ui-doc--make-request
+;; (add-hook 'fast-scroll-start-hook (lambda ()
+;;                                     (when (or (eq major-mode 'c-mode)
+;;                                               (eq major-mode 'c++-mode))
+;;                                       (lsp-ui-doc-mode -1))))
+;; (add-hook 'fast-scroll-end-hook (lambda ()
+;;                                     (when (or (eq major-mode 'c-mode)
+;;                                               (eq major-mode 'c++-mode))
+;;                                       (lsp-ui-doc-mode 1))))
+;; ;;; set system repeat rate faster than this, makes font-lock more responsive after scroll
+;; (setq fast-scroll-throttle 0.08)
+;; (fast-scroll-config)
+;; (fast-scroll-mode 1)
 
 ;;;;; helm-fzf
 (push "~/.emacs.d/nonmelpa/helm-fzf" load-path)
@@ -1789,8 +1787,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; (define-key evil-insert-state-map (kbd "C-o") nil)
 ;; (define-key evil-insert-state-map (kbd "C-k") nil)
 ;;; use C-n, C-p to speedup scroll; j,k to scroll short distance. see fast-scroll above.
-(define-key evil-normal-state-map (kbd "C-p") 'gniuk/scroll-previous-line)
-(define-key evil-normal-state-map (kbd "C-n") 'gniuk/scroll-next-line)
+;; (define-key evil-normal-state-map (kbd "C-p") 'gniuk/scroll-previous-line)
+;; (define-key evil-normal-state-map (kbd "C-n") 'gniuk/scroll-next-line)
+(define-key evil-normal-state-map (kbd "C-p") 'previous-line)
+(define-key evil-normal-state-map (kbd "C-n") 'next-line)
 
 ;; I get pinky hurts in just one week due to intensive use of ' to jump across marks!
 ;; After a serious thinking, I found the answer: use ' to mark while use m to jump!
