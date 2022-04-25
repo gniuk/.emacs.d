@@ -139,6 +139,7 @@ There are two things you can do about this warning:
     disaster
     spacemacs-theme
     pyim
+    ;rime ;; mark
     ;; company-statistics ; seems no need?
     x86-lookup
     org-bullets

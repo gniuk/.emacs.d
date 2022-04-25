@@ -1249,7 +1249,14 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; bind
 (global-set-key (kbd "C-x j") 'pyim-convert-string-at-point)
 (global-set-key (kbd "C-\\") 'toggle-input-method)
+;; work around crash when C-x C-c exit emacs
+(add-hook 'kill-emacs-hook #'liberime-finalize) ;; crash when exit emacs
 
+;;;;; emacs-rime
+;;; M-x rime-select-schema to choose flypy
+;; (setq default-input-method "rime")
+;; (setq rime-show-candidate 'posframe)
+;; (add-hook 'kill-emacs-hook #'rime-lib-finalize) ;; crash when exit emacs
 
 ;;;;; magit
 (with-eval-after-load 'magit
