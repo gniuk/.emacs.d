@@ -1208,6 +1208,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; (liberime-select-schema "luna_pinyin_simp") ; 使用全拼
 ;; (liberime-select-schema "double_pinyin_flypy") ; 使用小鹤双拼
 (liberime-try-select-schema "double_pinyin_flypy")
+;; work around crash when C-x C-c exit emacs
+(add-hook 'kill-emacs-hook #'liberime-finalize) ;; crash when exit emacs
 ;; ========== pyim with rime as first choice ==========
 ) (progn
 ;; ========== bare pyim as second choice ==========
@@ -1249,8 +1251,6 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;; bind
 (global-set-key (kbd "C-x j") 'pyim-convert-string-at-point)
 (global-set-key (kbd "C-\\") 'toggle-input-method)
-;; work around crash when C-x C-c exit emacs
-(add-hook 'kill-emacs-hook #'liberime-finalize) ;; crash when exit emacs
 
 ;;;;; emacs-rime
 ;;; M-x rime-select-schema to choose flypy
