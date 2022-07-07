@@ -1039,10 +1039,10 @@
     '((t (:foreground "purple"
           :inherit (mode-line-emphasis bold))))
     "Face used for the workspace-name segment in the mode-line."
-    :group 'doom-modeline-faces)
+    :group 'doom-modeline-faces))
   ;; glitches bug in tty due to this commit 4956606a5455a3968ca10cbdb8de3889e6bd1d85
   ;; seems interfere with highlight-indent-guides
-  (doom-modeline--set-char-widths doom-modeline-rhs-icons-alist))
+  ;; (doom-modeline--set-char-widths doom-modeline-rhs-icons-alist))
 (with-eval-after-load 'doom-modeline-segments
   (doom-modeline-def-segment workspace-name
     "The current workspace name or number.
