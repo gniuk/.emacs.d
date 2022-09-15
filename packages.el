@@ -178,7 +178,7 @@ There are two things you can do about this warning:
     rainbow-mode
     counsel ; insert-char of emacs-28.0.50 is not working with helm, thus give counsel a try
     fanyi
-    helm-dogears ;; requires dogears by defalut
+    ;; helm-dogears ;; requires dogears by defalut
     ;fast-scroll
     ;; lsp-jedi ; mark python lsp server, if anaconda-mode not usable any more, use this.
     ;; rg ; helm-ag is good enough

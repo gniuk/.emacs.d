@@ -1662,12 +1662,12 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-set-key (kbd "C-c F") 'fanyi-dwim)
 
 ;;;;; dogears
-(global-set-key (kbd "M-g d") 'dogears-go)
-(global-set-key (kbd "M-g r") 'dogears-remember)
-(global-set-key (kbd "M-g M-d") 'dogears-list)
-;; (global-set-key (kbd "M-g C-d") 'dogears-list-delete) ;; just k in dogears list or sidebar to clean item.
-;; (global-set-key (kbd "M-g M-D") 'dogears-sidebar) ;; what's different between dogears-list and dogears-sidebar?
-(add-hook 'prog-mode-hook 'dogears-mode)
+;; (global-set-key (kbd "M-g d") 'dogears-go)
+;; (global-set-key (kbd "M-g r") 'dogears-remember)
+;; (global-set-key (kbd "M-g M-d") 'dogears-list)
+;; ;; (global-set-key (kbd "M-g C-d") 'dogears-list-delete) ;; just k in dogears list or sidebar to clean item.
+;; ;; (global-set-key (kbd "M-g M-D") 'dogears-sidebar) ;; what's different between dogears-list and dogears-sidebar?
+;; (add-hook 'prog-mode-hook 'dogears-mode)
 
 ;;;;; fast-scroll. profiler-start and profiler-report to find the bottle neck
 ;;; fase-scroll.el modified: previous-line and next-line added, change to barebone mode-line commented out.
