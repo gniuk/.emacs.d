@@ -1661,6 +1661,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; fanyi
 (global-set-key (kbd "C-c F") 'fanyi-dwim)
 
+;;;;; lsp-dart
+(add-hook 'dart-mode-hook 'lsp)
+
 ;;;;; dogears
 ;; (global-set-key (kbd "M-g d") 'dogears-go)
 ;; (global-set-key (kbd "M-g r") 'dogears-remember)
