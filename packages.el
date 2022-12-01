@@ -180,6 +180,7 @@ There are two things you can do about this warning:
     fanyi
     lsp-dart
     lsp-treemacs
+    yaml-mode
     ;; helm-dogears ;; requires dogears by defalut
     ;fast-scroll
     ;; lsp-jedi ; mark python lsp server, if anaconda-mode not usable any more, use this.

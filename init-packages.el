@@ -1664,6 +1664,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; lsp-dart
 (add-hook 'dart-mode-hook 'lsp)
 
+;;;;; yaml-mode
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
 ;;;;; dogears
 ;; (global-set-key (kbd "M-g d") 'dogears-go)
 ;; (global-set-key (kbd "M-g r") 'dogears-remember)
