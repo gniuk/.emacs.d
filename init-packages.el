@@ -1668,6 +1668,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
 
+;;;;; pipenv
+(add-hook 'python-mode-hook 'pipenv-mode)
+
 ;;;;; dogears
 ;; (global-set-key (kbd "M-g d") 'dogears-go)
 ;; (global-set-key (kbd "M-g r") 'dogears-remember)
