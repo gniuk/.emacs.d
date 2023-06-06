@@ -185,6 +185,7 @@ There are two things you can do about this warning:
     ;; helm-dogears ;; requires dogears by defalut
     ;fast-scroll
     ;; lsp-jedi ; mark python lsp server, if anaconda-mode not usable any more, use this.
+    lsp-pyright
     ;; rg ; helm-ag is good enough
     ;; company-restclient ; mark
     ;; org-brain ; mark

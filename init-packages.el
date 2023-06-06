@@ -249,10 +249,15 @@
 ;; python3 -m pip install service_factory --target ~/.emacs.d/anaconda-mode/0.1.14-py3/ --trusted-host mirrors.aliyun.com
 
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
-(add-hook 'python-mode-hook 'anaconda-mode)
-(with-eval-after-load "anaconda-mode"
-  ;; (define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
-  (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments))
+;; (add-hook 'python-mode-hook 'anaconda-mode)
+;; (with-eval-after-load "anaconda-mode"
+;;   ;; (define-key anaconda-mode-map (kbd "M-,") 'anaconda-mode-go-back)
+;;   (define-key anaconda-mode-map (kbd "M-s") 'anaconda-mode-find-assignments))
+
+;;; use lsp-pyright with lsp-mode, python3 -m pip install pyright --trusted-host mirrors.aliyun.com
+(add-hook 'python-mode-hook 'lsp)
+(add-hook 'python-mode-hook 'lsp-ui-mode)
+
 (add-hook 'python-mode-hook (lambda ()
                               (set (make-local-variable 'company-backends)
                                    '(company-anaconda
