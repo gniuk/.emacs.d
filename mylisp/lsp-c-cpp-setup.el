@@ -16,6 +16,8 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
             (unless (not gniuk-lsp-c-cpp--enabled)
               (set (make-local-variable 'company-backends)
                    '(company-capf company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
@@ -27,7 +29,10 @@
               (lsp)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
               )))
-
+(add-hook 'c-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)))
 (provide 'lsp-c-cpp-setup)
 
 ;;; lsp-c-cpp-setup.el ends here
