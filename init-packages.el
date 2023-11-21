@@ -982,21 +982,23 @@
                                  company-dabbrev))))
 
 ;;;;; go mode
+(add-hook 'go-mode-hook 'lsp)
+(add-hook 'go-mode-hook 'lsp-ui-mode)
 
 ;; go get -u github.com/nsf/gocode
 ;; go get -u github.com/rogpeppe/godef
 
-(defun my-go-mode-hook ()
-  "Call Gofmt before saving."
-  (add-hook 'before-save-hook 'gofmt-before-save)
-  ; Godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump)
-  (local-set-key (kbd "M-,") 'pop-tag-mark))
-(add-hook 'go-mode-hook 'my-go-mode-hook)
+;; (defun my-go-mode-hook ()
+;;   "Call Gofmt before saving."
+;;   (add-hook 'before-save-hook 'gofmt-before-save)
+;;   ; Godef jump key binding
+;;   (local-set-key (kbd "M-.") 'godef-jump)
+;;   (local-set-key (kbd "M-,") 'pop-tag-mark))
+;; (add-hook 'go-mode-hook 'my-go-mode-hook)
 
-;;;;; go-eldoc
+;;;;; go-eldoc (obsolete, use gopls)
 ;(require 'go-eldoc) ;; Don't need to require, if you install by package.el
-(add-hook 'go-mode-hook 'go-eldoc-setup)
+;; (add-hook 'go-mode-hook 'go-eldoc-setup)
 
 ;;;;; set go-playground basedir, default is ~/go/src/playground
 ;; (custom-set-variables '(go-playground-basedir (getenv "GO_PLAYGROUND_BASE_DIR")))
@@ -1007,7 +1009,13 @@
 ;; Use gocode and the counterparts instead
 ;; lsp-mode and lsp related. Mark them here, as well as the related packages in packages.el
 ;(require 'lsp-mode)
-;(add-hook 'go-mode-hook #'lsp-deferred)
+(add-hook 'go-mode-hook #'lsp-deferred)
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  ;; (add-hook 'before-save-hook #'lsp-organize-imports t t)
+  )
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+
 ;; company-lsp
 ;(require 'company-lsp)
 ;(push 'company-lsp company-backends)
@@ -1719,6 +1727,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 
 ;;;;; pipenv
 (add-hook 'python-mode-hook 'pipenv-mode)
+
+;;;;; exec-path-from-shell
+(exec-path-from-shell-initialize)
 
 ;;;;; dogears
 ;; (global-set-key (kbd "M-g d") 'dogears-go)
