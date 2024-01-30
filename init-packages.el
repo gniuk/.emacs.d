@@ -578,7 +578,7 @@
                                          xref-find-definitions-other-frame
                                          xref-find-references))
   ;; (define-key c-mode-base-map (kbd "M-r") 'xref-find-references)
-  (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references)
+  ;; (define-key c-mode-base-map (kbd "M-r") 'lsp-find-references) ; set it in lsp-mode-map
   (define-key c-mode-base-map (kbd "C-x i") 'helm-imenu))
 (global-set-key (kbd "C-c r r") 'use-rtags)
 (global-set-key (kbd "C-c r u") 'unuse-rtags)
@@ -1484,6 +1484,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
           (lambda ()
             (setq lsp-headerline-breadcrumb-enable nil) ; default changed to t. no need, there is which-function-mode globally.
             ;; (define-key lsp-mode-map (kbd "M-r") 'lsp-ui-peek-find-references) ; use helm interface instead.
+            (define-key lsp-mode-map (kbd "M-r") 'lsp-find-references)
             (setq lsp-enable-symbol-highlighting nil) ; shall not collide with symbol-overlay
             (setq lsp-prefer-flymake nil)
             (setq lsp-file-watch-threshold nil) ; don't bother me
