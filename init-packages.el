@@ -1493,9 +1493,13 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
             ;; (setq lsp-completion-provider :capf)
             (setq lsp-enable-folding nil)
             (setq lsp-enable-snippet t) ; auto complete function prototype, we need this
-            (setq lsp-diagnostics-provider :none) ; no real time syntax check, do we need it?
+            (setq lsp-diagnostics-provider :flycheck) ; no real time syntax check, do we need it? :none
             (setq lsp-enable-links nil) ; what's this used for?
             (setq lsp-lens-enable nil) ; default nil -> t. make it nil again, too much overhead.
+            (setq lsp-modeline-code-actions-enable t)
+            (setq lsp-ui-sideline-enable t)
+            (setq lsp-ui-sideline-show-diagnostics t)
+            (setq lsp-modeline-diagnostics-enable t)
             ))
 
 (add-hook 'lsp-ui-mode-hook
