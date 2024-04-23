@@ -1905,10 +1905,13 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
   (setq gniuk/point-in-fun (point))
   (beginning-of-line)
   (beginning-of-defun)
-  (mwim-end-of-code-or-line)
-  (evil-find-char-backward 1 40)
-  (backward-word 1)
-  (gniuk/beginning-of-symbol))
+  (if (eq major-mode 'go-mode)
+      (evil-forward-WORD-begin)
+    (progn
+      (mwim-end-of-code-or-line)
+      (evil-find-char-backward 1 40)
+      (backward-word 1)
+      (gniuk/beginning-of-symbol))))
 (defun gniuk/back-to-point-in-fun ()
   "Back to the point where we call \"gniuk/beginning-of-defun\"."
   (interactive)
