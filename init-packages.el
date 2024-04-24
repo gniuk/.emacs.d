@@ -1906,7 +1906,12 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
   (beginning-of-line)
   (beginning-of-defun)
   (if (eq major-mode 'go-mode)
-      (evil-forward-WORD-begin)
+      (progn
+        (evil-forward-WORD-begin)
+        (if (eq 40 (char-after))
+            (progn
+              (evil-find-char 1 41)
+              (evil-forward-WORD-begin))))
     (progn
       (mwim-end-of-code-or-line)
       (evil-find-char-backward 1 40)
