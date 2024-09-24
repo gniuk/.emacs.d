@@ -48,7 +48,8 @@
         (cond
          ((member "Sarasa Term SC" (font-family-list)) (get-properly-sized-font "Sarasa Mono SC")) ; don't know why the name "Sarasa Mono SC" not detected.
          ((member "Noto Sans Mono CJK SC" (font-family-list)) (get-properly-sized-font "NotoSansMonoCJKSC")) ; Noto Sans CJK has no italic style
-         ((member "等距更纱黑体 SC" (font-family-list)) (get-properly-sized-font "等距更纱黑体 SC")))) ; for Windows NT using Sarasa
+         ((member "等距更纱黑体 SC" (font-family-list)) (get-properly-sized-font "等距更纱黑体 SC")) ; for Windows NT using Sarasa
+         ((member "微软雅黑" (font-family-list)) (get-properly-sized-font "微软雅黑")))) ; for bare Windows NT
 
       (add-to-list 'default-frame-alist
                    `(font . ,(get-preferable-coding-font)))
