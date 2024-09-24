@@ -199,6 +199,16 @@ This command does the reverse of `fill-region'."
   (setq deactivate-mark t))
 (global-set-key (kbd "C-x g TAB") 'gniuk/indent-region-line-by-line-without-format)
 
+(defun show-full-font-family-list ()
+  "Display the full list of font families in a new buffer."
+  (interactive)
+  (let ((font-families (font-family-list)))
+    (with-current-buffer (get-buffer-create "*Font Families*")
+      (erase-buffer)
+      (insert (mapconcat #'identity font-families "\n"))
+      (goto-char (point-min)))
+    (display-buffer "*Font Families*")))
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
