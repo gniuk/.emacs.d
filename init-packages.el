@@ -1734,7 +1734,8 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (add-hook 'python-mode-hook 'pipenv-mode)
 
 ;;;;; exec-path-from-shell
-(exec-path-from-shell-initialize)
+(if (not (eq system-type 'windows-nt))
+    (exec-path-from-shell-initialize))
 
 ;;;;; dogears
 ;; (global-set-key (kbd "M-g d") 'dogears-go)
