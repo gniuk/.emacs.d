@@ -170,7 +170,8 @@ There are two things you can do about this warning:
     ;evil-escape ; my Ctrl key is convenient :)
     ;evil-vimish-fold ; overrides evil default fold, not good
     vimish-fold
-    git-gutter
+    ;; git-gutter ; orphan
+    diff-hl
     ;vdiff-magit ; patience is not good as expected, ediff is enough, beyond compare is the goal
     ranger
     ztree

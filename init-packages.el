@@ -1145,9 +1145,9 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (define-key evil-normal-state-map (kbd "SPC 9")   (lambda () (interactive) (window-configuration-to-register 1))) ; quick save (SPC 9) and restore (SPC z)
 (define-key evil-normal-state-map (kbd "SPC z")   'gniuk/restore-window-layout-config)
 (define-key evil-normal-state-map (kbd "SPC 0")   (lambda () (interactive) (jump-to-register 0))) ; for quick open this config file
-(define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
-(define-key evil-normal-state-map (kbd "SPC J")   'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
-(define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
+;; (define-key evil-normal-state-map (kbd "SPC j")   'git-gutter:next-hunk)
+;; (define-key evil-normal-state-map (kbd "SPC J")   'git-gutter:end-of-hunk) ; for other git-gutter commands, use zg[X] operations
+;; (define-key evil-normal-state-map (kbd "SPC k")   'git-gutter:previous-hunk)
 ;; (define-key evil-normal-state-map (kbd "SPC .")   'lsp-find-type-definition) ; just use (C-c M-.)
 (define-key evil-normal-state-map (kbd "SPC i")   'helm-swoop-back-to-last-point) ; (M-i) swoop, (M-I) and (SPC i) back
 (define-key evil-normal-state-map (kbd "SPC SPC") 'ace-jump-projectile-no-third-buffers) ; just for convenience, no meaning
@@ -1163,7 +1163,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
                                                                         ; A pity is that I can't use 'd' to scroll-up-command as in less and surfing-keys.
 (define-key evil-normal-state-map (kbd "s")       'evil-delete) ; Use u d to up and down, consistent with less and surfingkeys. 's' used as delete, not bad. Just more practice.
 (define-key evil-normal-state-map (kbd "C-o")     'gniuk/insert-line-below)
-(advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
+;; (advice-add 'git-gutter:next-hunk :after (lambda (&rest arg) (recenter)))
 
 
 ;;;;; evil-matchit
@@ -1634,26 +1634,35 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 ;;;;; git-gutter
 ;; comment out the next line in mixed dev environment.
 ;; (global-git-gutter-mode t) ;; has some problem in chinese-gbk buffer, e.g. popup selecting coding system. Use zgg manually.
-(if (not (is-ubuntu-16_04))
-    (global-git-gutter-mode t))
-(define-key evil-normal-state-map (kbd "zgg") 'git-gutter)
-(define-key evil-normal-state-map (kbd "zgj") 'git-gutter:next-hunk)
-(define-key evil-normal-state-map (kbd "zgk") 'git-gutter:previous-hunk)
-(define-key evil-normal-state-map (kbd "zgn") 'git-gutter:next-hunk)
-(define-key evil-normal-state-map (kbd "zgp") 'git-gutter:previous-hunk)
-(define-key evil-normal-state-map (kbd "zge") 'git-gutter:end-of-hunk) ; end of current hunk
-(define-key evil-normal-state-map (kbd "zgm") 'git-gutter:mark-hunk)
-(define-key evil-normal-state-map (kbd "zgs") 'git-gutter:stage-hunk)
-(define-key evil-normal-state-map (kbd "zgP") 'git-gutter:popup-hunk) ; what can be done in the popup?
-(define-key evil-normal-state-map (kbd "zgr") 'git-gutter:revert-hunk)
-(define-key evil-normal-state-map (kbd "zgU") 'git-gutter:update-all-windows)
-(custom-set-variables
- '(git-gutter:hide-gutter t)
- '(git-gutter:ask-p nil)
- '(git-gutter:disabled-modes '(image-mode))
- '(git-gutter:update-interval 1))
-(with-eval-after-load 'git-gutter
-  (set-face-attribute 'git-gutter:added nil :foreground "SpringGreen"))
+;; (if (not (is-ubuntu-16_04))
+;;     (global-git-gutter-mode t))
+;; (define-key evil-normal-state-map (kbd "zgg") 'git-gutter)
+;; (define-key evil-normal-state-map (kbd "zgj") 'git-gutter:next-hunk)
+;; (define-key evil-normal-state-map (kbd "zgk") 'git-gutter:previous-hunk)
+;; (define-key evil-normal-state-map (kbd "zgn") 'git-gutter:next-hunk)
+;; (define-key evil-normal-state-map (kbd "zgp") 'git-gutter:previous-hunk)
+;; (define-key evil-normal-state-map (kbd "zge") 'git-gutter:end-of-hunk) ; end of current hunk
+;; (define-key evil-normal-state-map (kbd "zgm") 'git-gutter:mark-hunk)
+;; (define-key evil-normal-state-map (kbd "zgs") 'git-gutter:stage-hunk)
+;; (define-key evil-normal-state-map (kbd "zgP") 'git-gutter:popup-hunk) ; what can be done in the popup?
+;; (define-key evil-normal-state-map (kbd "zgr") 'git-gutter:revert-hunk)
+;; (define-key evil-normal-state-map (kbd "zgU") 'git-gutter:update-all-windows)
+;; (custom-set-variables
+;;  '(git-gutter:hide-gutter t)
+;;  '(git-gutter:ask-p nil)
+;;  '(git-gutter:disabled-modes '(image-mode))
+;;  '(git-gutter:update-interval 1))
+;; (with-eval-after-load 'git-gutter
+;;   (set-face-attribute 'git-gutter:added nil :foreground "SpringGreen"))
+
+;;;;; diff-hl
+(global-diff-hl-mode)
+(diff-hl-margin-mode)
+(define-key evil-normal-state-map (kbd "SPC j")   'diff-hl-next-hunk)
+(define-key evil-normal-state-map (kbd "SPC k")   'diff-hl-previous-hunk)
+(define-key evil-normal-state-map (kbd "SPC v s") 'diff-hl-show-hunk)
+(define-key evil-normal-state-map (kbd "SPC v =") 'diff-hl-diff-goto-hunk)
+(advice-add 'diff-hl-next-hunk :after (lambda (&rest arg) (recenter)))
 
 ;;;;; vdiff-magit
 ;; (with-eval-after-load 'magit
