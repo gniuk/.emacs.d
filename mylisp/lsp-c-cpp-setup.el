@@ -35,6 +35,13 @@
           (lambda ()
             (setq indent-tabs-mode nil)
             (setq tab-width 4)))
+
+(defun namespace-c++-mode-hook ()
+  "Custom indent settings for C++ mode."
+  (setq c-offsets-alist
+        (append '((innamespace . [0])) c-offsets-alist)))
+(add-hook 'c++-mode-hook 'namespace-c++-mode-hook)
+
 (provide 'lsp-c-cpp-setup)
 
 ;;; lsp-c-cpp-setup.el ends here
