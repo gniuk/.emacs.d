@@ -2115,7 +2115,10 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (setq redisplay-skip-fontification-on-input t)
 
 ;;; native-comp
-(setq native-comp-always-compile t)
+(setq native-comp-always-compile nil) ;; comment out the following and set native-comp-always-compile to t if need native compilation
+(setq native-comp-jit-compilation nil)
+(setq native-comp-speed -1)
+(setq comp-deferred-compilation nil)
 
 (provide 'init-packages)
 ;;; init-packages.el ends here
