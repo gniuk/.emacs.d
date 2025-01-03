@@ -1506,10 +1506,14 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (add-hook 'lsp-ui-mode-hook
           (lambda ()
             (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
+            (if (not (eq window-system nil))
+                (setq lsp-ui-doc-use-childframe t)
+              (setq lsp-ui-doc-use-childframe nil))
             (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
-            (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
+            ;; (setq lsp-ui-doc-use-childframe nil)    ; don't popup child frame in gui
             (setq lsp-ui-doc-delay 0.6)
             (setq lsp-ui-doc-show-with-cursor t) ; they are doing opposite things for old users
+            (setq lsp-ui-doc-alignment 'window) ; set the popup info box belong to the corresponding window
             (custom-set-faces
              '(lsp-ui-peek-filename     ; use helm interface instead.
                ((t (:background "dodger blue" :foreground "black"))))

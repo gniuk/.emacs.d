@@ -3,6 +3,7 @@
 ;;; Code:
 
 (defvar gniuk-lsp-c-cpp--enabled t)
+(defvar gniuk-lsp-c-cpp--use-ccls nil)
 
 (defun gniuk/enable-lsp-c-cpp ()
   "Enable lsp."
@@ -21,10 +22,11 @@
             (unless (not gniuk-lsp-c-cpp--enabled)
               (set (make-local-variable 'company-backends)
                    '(company-capf company-files company-yasnippet (company-dabbrev-code company-gtags company-etags company-keywords) company-dabbrev))
-              (setq ccls-executable "/usr/bin/ccls")
-              (require 'ccls)
-              (define-key ccls-tree-mode-map (kbd "n") #'next-line)
-              (define-key ccls-tree-mode-map (kbd "p") #'previous-line)
+	          (unless (not gniuk-lsp-c-cpp--use-ccls)
+		        (setq ccls-executable "/usr/bin/ccls")
+		        (require 'ccls)
+		        (define-key ccls-tree-mode-map (kbd "n") #'next-line)
+		        (define-key ccls-tree-mode-map (kbd "p") #'previous-line))
               (lsp-ui-mode)
               (lsp)
               (setq-default flycheck-disabled-checkers '(c/c++-clang c/c++-cppcheck c/c++-gcc))
