@@ -199,7 +199,7 @@
         helm-semantic-fuzzy-match t
         ;; http://tuhdo.github.io/helm-intro.html
         helm-split-window-inside-p t ; open helm buffer inside current window, not occupy whole other window
-        ;; helm-move-to-line-cycle-in-source t ; move to end or beginning of source when reaching top or bottom of source.
+        helm-move-to-line-cycle-in-source nil ; move to end or beginning of source when reaching top or bottom of source.
         helm-ff-search-library-in-sexp t ; search for library in `require' and `declare-function' sexp.
         ;; helm-echo-input-in-header-line t
         helm-ff-file-name-history-use-recentf t
