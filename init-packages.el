@@ -839,7 +839,7 @@
 (setq url-automatic-caching t)
 
 ;; Example Key binding
-(global-set-key (kbd "C-c f") 'youdao-dictionary-search-at-point)
+(global-set-key (kbd "C-c F") 'youdao-dictionary-search-at-point) ; need API key. TODO: need a good translate tool, not just dict
 
 ;; Integrate with popwin-el (https://github.com/m2ym/popwin-el)
 (push "*Youdao Dictionary*" popwin:special-display-config)
@@ -1734,7 +1734,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-set-key (kbd "C-x 9 RET") 'counsel-unicode-char)
 
 ;;;;; fanyi
-(global-set-key (kbd "C-c F") 'fanyi-dwim)
+(global-set-key (kbd "C-c f") 'fanyi-dwim) ; replace youdao
 
 ;;;;; lsp-dart
 (add-hook 'dart-mode-hook 'lsp)
