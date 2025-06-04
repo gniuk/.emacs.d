@@ -1833,6 +1833,7 @@ Requires `eyebrowse-mode' or `tab-bar-mode' to be enabled."
 (global-set-key (kbd "M-0") 'er/expand-region)
 (define-key window-numbering-keymap (kbd "M-9") nil)
 (global-set-key (kbd "M-9") 'mc/mark-next-like-this)
+(global-set-key (kbd "M-o") 'mc/skip-to-next-like-this)
 (global-set-key (kbd "C-c SPC p") 'mc/unmark-previous-like-this)
 (global-set-key (kbd "C-c SPC n") 'mc/unmark-next-like-this)
 (custom-set-variables
