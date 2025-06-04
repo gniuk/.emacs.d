@@ -217,6 +217,36 @@ This command does the reverse of `fill-region'."
       (goto-char (point-min)))
     (display-buffer "*Font Families*")))
 
+;; Define the global variable for target column
+(defvar gniuk-insert-target-column 32
+  "Default target column for `gniuk-move-to-target-column'.")
+
+(defun gniuk-set-target-column (column)
+  "Set the value of `gniuk-insert-target-column' to COLUMN.
+COLUMN should be a positive integer."
+  (interactive "nTarget column: ")
+  (setq gniuk-insert-target-column column)
+  (message "Target column set to %d" gniuk-insert-target-column))
+
+(defun gniuk-move-to-target-column (&optional column)
+  "Move to the target column specified by COLUMN.
+If COLUMN is not provided, use the value of `gniuk-insert-target-column'.
+If the current line is shorter than the target column,
+spaces will be inserted to reach the target column."
+  (interactive (list (when current-prefix-arg
+                       (prefix-numeric-value current-prefix-arg))))
+  (let ((target (or column gniuk-insert-target-column)))
+    ;; First move to the end of the line
+    (end-of-line)
+    ;; Calculate current column position
+    (let ((current-col (current-column)))
+      (if (>= current-col target)
+          ;; If the line already extends past the target column, just move to it
+          (move-to-column target)
+        ;; Otherwise insert spaces to reach the target column from end of line
+        (insert (make-string (- target current-col) ?\s))))))
+(global-set-key (kbd "C-x g i") 'gniuk-move-to-target-column)
+
 (provide 'useful-single-key)
 
 ;; Local Variables:
